@@ -11,6 +11,7 @@
     max-width: 40rem;
     padding-bottom: 6rem;
     text-align: center;
+    color: $color-dark-l;
     @extend %h3;
   }
 
@@ -56,12 +57,14 @@
 
   &__title {
     @extend %h4;
+    color: $color-dark-l;
   }
 
   &__button {
     width: 18.7rem;
     border: 2px solid $color-primary;
     background-color: transparent;
+    color: $color-dark-3xl;
   }
 }
 .button {
