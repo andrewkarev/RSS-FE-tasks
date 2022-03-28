@@ -1,17 +1,46 @@
+.wrapper {
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
 .header {
   &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
+
 .logo {
   &__title {
+    @extend %logo-title;
+    color: $color-primary;
+    padding-bottom: 1rem;
   }
 
   &__subtitle {
+    @extend %logo-subtitle;
+    color: $color-light-xl;
   }
 }
+
 .navigation {
+  width: 443px;
+  padding-bottom: 3px;
 }
+
 .list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
   &__item {
+    @extend %paragraph-1;
+    color: $color-dark-s;
   }
 }
