@@ -1,0 +1,132 @@
+%h2 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 130%;
+  /* or 57px */
+
+  color: $text-color;
+}
+
+%h3 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  /* or 45px */
+
+  letter-spacing: 0.06em;
+
+  color: $text-color;
+}
+
+%h3-mobile {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 130%;
+  /* or 32px */
+
+  letter-spacing: 0.06em;
+
+  color: $text-color;
+}
+
+%h4 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  /* identical to box height, or 23px */
+
+  letter-spacing: 0.06em;
+
+  color: $text-color;
+}
+
+%h5 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+
+  letter-spacing: 0.06em;
+
+  color: $text-color;
+}
+
+%h5-modal-window {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+
+  letter-spacing: 0.06em;
+
+  color: $text-color;
+}
+
+%paragraph-1 {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 160%;
+  /* or 24px */
+
+  color: $text-color;
+}
+
+%paragraph-5 {
+  font-family: "Arial";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  /* identical to box height, or 18px */
+
+  color: $text-color;
+}
+
+%paragraph-mobile-menu {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 160%;
+  /* or 51px */
+
+  color: $text-color;
+}
+
+%logo-title {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 110%;
+  /* identical to box height, or 35px */
+
+  letter-spacing: 0.06em;
+
+  color: $text-color;
+}
+
+%logo-subtitle {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  /* identical to box height */
+
+  color: $text-color;
+}

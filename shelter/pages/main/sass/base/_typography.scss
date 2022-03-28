@@ -1,132 +1,39 @@
-%h2 {
+@font-face {
   font-family: "Georgia";
+  src: url("./../../../../assets/fonts/georgia/georgia-regular.eot");
+  src: url("./../../../../assets/fonts/georgia/georgia-regular.eot?#iefix") format("embedded-opentype"),
+    url("./../../../../assets/fonts/georgia/georgia-regular.woff") format("woff"),
+    url("./../../../../assets/fonts/georgia/georgia-regular.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 130%;
-  /* or 57px */
-
-  color: $text-color;
+  font-weight: normal;
 }
 
-%h3 {
+@font-face {
   font-family: "Georgia";
+  src: url("./../../../../assets/fonts/georgia/georgia-bold.eot");
+  src: url("./../../../../assets/fonts/georgia/georgia-bold.eot?#iefix") format("embedded-opentype"),
+    url("./../../../../assets/fonts/georgia/georgia-bold.woff") format("woff"),
+    url("./../../../../assets/fonts/georgia/georgia-bold.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  font-size: 35px;
-  line-height: 130%;
-  /* or 45px */
-
-  letter-spacing: 0.06em;
-
-  color: $text-color;
+  font-weight: bold;
 }
 
-%h3-mobile {
-  font-family: "Georgia";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 130%;
-  /* or 32px */
-
-  letter-spacing: 0.06em;
-
-  color: $text-color;
-}
-
-%h4 {
-  font-family: "Georgia";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 115%;
-  /* identical to box height, or 23px */
-
-  letter-spacing: 0.06em;
-
-  color: $text-color;
-}
-
-%h5 {
-  font-family: "Georgia";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 110%;
-  /* identical to box height, or 17px */
-
-  letter-spacing: 0.06em;
-
-  color: $text-color;
-}
-
-%h5-modal-window {
-  font-family: "Georgia";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 110%;
-  /* identical to box height, or 17px */
-
-  letter-spacing: 0.06em;
-
-  color: $text-color;
-}
-
-%paragraph-1 {
+@font-face {
   font-family: "Arial";
+  src: url("./../../../../assets/fonts/arial/arial-regular.eot");
+  src: url("./../../../../assets/fonts/arial/arial-regular.eot?#iefix") format("embedded-opentype"),
+    url("./../../../../assets/fonts//arial/arial-regular.woff") format("woff"),
+    url("./../../../../assets/fonts/arial/arial-regular.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 160%;
-  /* or 24px */
-
-  color: $text-color;
+  font-weight: normal;
 }
 
-%paragraph-5 {
+@font-face {
   font-family: "Arial";
+  src: url("./../../../../assets/fonts/arial/arial-italic.eot");
+  src: url("./../../../../assets/fonts/arial/arial-italic.eot?#iefix") format("embedded-opentype"),
+    url("./../../../../assets/fonts//arial/arial-italic.woff") format("woff"),
+    url("./../../../../assets/fonts/arial/arial-italic.ttf") format("truetype");
   font-style: italic;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 150%;
-  /* identical to box height, or 18px */
-
-  color: $text-color;
-}
-
-%paragraph-mobile-menu {
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 160%;
-  /* or 51px */
-
-  color: $text-color;
-}
-
-%logo-title {
-  font-family: "Georgia";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 110%;
-  /* identical to box height, or 35px */
-
-  letter-spacing: 0.06em;
-
-  color: $text-color;
-}
-
-%logo-subtitle {
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 15px;
-  /* identical to box height */
-
-  color: $text-color;
+  font-weight: normal;
 }
