@@ -6,7 +6,16 @@
   line-height: 130%;
 }
 
-.list__item, .hero__text {
+.about__title {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+}
+
+.list__item, .hero__text, .about__text {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -420,5 +429,41 @@ template {
 
 .hero__img {
   display: block;
+}
+
+.about {
+  background-color: #ffffff;
+}
+
+.about__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 8rem 4rem 10rem;
+}
+
+.about__img-wrapper {
+  padding-left: 17.5rem;
+}
+
+.about__img {
+  display: block;
+}
+
+.about__content {
+  padding: 1.4rem 17.5rem 1.4rem 12rem;
+}
+
+.about__title {
+  color: #545454;
+  padding-right: 6rem;
+}
+
+.about__text {
+  padding-top: 2.5rem;
 }
 /*# sourceMappingURL=style.css.map */

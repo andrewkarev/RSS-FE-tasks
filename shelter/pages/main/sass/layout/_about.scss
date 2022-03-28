@@ -1,20 +1,32 @@
 .about {
+  background-color: $color-light-xl;
   &__container {
+    display: flex;
+    flex-direction: row;
+    padding: 8rem 4rem 10rem;
   }
 
   &__img-wrapper {
+    padding-left: 17.5rem;
   }
 
   &__img {
+    display: block;
   }
 
   &__content {
+    padding: 1.4rem 17.5rem 1.4rem 12rem;
   }
 
   &__title {
+    @extend %h3;
+    color: $color-dark-l;
+    padding-right: 6rem;
   }
 
   &__text {
+    @extend %paragraph-1;
+    padding-top: 2.5rem;
   }
 }
 .title {
