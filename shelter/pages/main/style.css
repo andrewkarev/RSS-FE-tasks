@@ -6,12 +6,21 @@
   line-height: 130%;
 }
 
-.about__title {
+.about__title, .pets__title {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
   line-height: 130%;
+  letter-spacing: 0.06em;
+}
+
+.pets-card__title {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
   letter-spacing: 0.06em;
 }
 
@@ -308,6 +317,14 @@ template {
   color: #292929;
 }
 
+.button-arrow {
+  width: 5.2rem;
+  height: 5.2rem;
+  border: 2px solid #f1cdb3;
+  border-radius: 10rem;
+  background: transparent;
+}
+
 .wrapper {
   position: relative;
   max-width: 1280px;
@@ -465,5 +482,89 @@ template {
 
 .about__text {
   padding-top: 2.5rem;
+}
+
+.pets {
+  background-color: #f6f6f6;
+}
+
+.pets__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 8rem 4rem 10rem;
+}
+
+.pets__title {
+  max-width: 40rem;
+  padding-bottom: 6rem;
+  text-align: center;
+}
+
+.pets__slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding-bottom: 6rem;
+}
+
+.pets__button {
+  width: 26.1rem;
+  background-color: #f1cdb3;
+}
+
+.pets-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 9rem;
+}
+
+.pets-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  background-color: #fafafa;
+}
+
+.pets-card__img {
+  display: block;
+}
+
+.pets-card__button {
+  width: 18.7rem;
+  border: 2px solid #f1cdb3;
+  background-color: transparent;
 }
 /*# sourceMappingURL=style.css.map */

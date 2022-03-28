@@ -1,3 +1,7 @@
 .button {
   @include button();
 }
+
+.button-arrow {
+  @include button-arrow();
+}
