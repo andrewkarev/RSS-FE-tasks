@@ -1,10 +1,15 @@
 .wrapper {
+  position: relative;
   max-width: 1280px;
   min-width: 320px;
   margin: 0 auto;
 }
 
 .header {
+  position: absolute;
+  top: 6rem;
+  left: 4rem;
+  right: 4rem;
   &__container {
     display: flex;
     flex-direction: row;
@@ -25,12 +30,13 @@
   &__subtitle {
     @extend %logo-subtitle;
     color: $color-light-xl;
+    padding-left: 0.4rem;
   }
 }
 
 .navigation {
-  width: 443px;
-  padding-bottom: 3px;
+  width: 44.3rem;
+  padding-bottom: 0.3rem;
 }
 
 .list {
@@ -42,5 +48,21 @@
   &__item {
     @extend %paragraph-1;
     color: $color-dark-s;
+    padding-bottom: 0.3rem;
+  }
+  &__item--checked {
+    position: relative;
+    color: $color-light-s;
+  }
+  &__item--checked::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $color-primary;
   }
 }

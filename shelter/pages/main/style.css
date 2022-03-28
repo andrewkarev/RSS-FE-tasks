@@ -1,11 +1,17 @@
-.list__item {
+.hero__title {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 130%;
+}
+
+.list__item, .hero__text {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 160%;
-  /* or 24px */
-  color: #c4c4c4;
 }
 
 .logo__title {
@@ -14,9 +20,7 @@
   font-weight: 400;
   font-size: 32px;
   line-height: 110%;
-  /* identical to box height, or 35px */
   letter-spacing: 0.06em;
-  color: #c4c4c4;
 }
 
 .logo__subtitle {
@@ -25,9 +29,7 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 15px;
-  /* identical to box height */
   letter-spacing: 0.1em;
-  color: #c4c4c4;
 }
 
 @font-face {
@@ -66,6 +68,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -282,10 +285,32 @@ template {
   display: none;
 }
 
+.button {
+  height: 5.2rem;
+  border-radius: 10rem;
+  border: none;
+  outline: none;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+}
+
 .wrapper {
+  position: relative;
   max-width: 1280px;
   min-width: 320px;
   margin: 0 auto;
+}
+
+.header {
+  position: absolute;
+  top: 6rem;
+  left: 4rem;
+  right: 4rem;
 }
 
 .header__container {
@@ -313,11 +338,12 @@ template {
 
 .logo__subtitle {
   color: #ffffff;
+  padding-left: 0.4rem;
 }
 
 .navigation {
-  width: 443px;
-  padding-bottom: 3px;
+  width: 44.3rem;
+  padding-bottom: 0.3rem;
 }
 
 .list {
@@ -339,5 +365,60 @@ template {
 
 .list__item {
   color: #cdcdcd;
+  padding-bottom: 0.3rem;
+}
+
+.list__item--checked {
+  position: relative;
+  color: #fafafa;
+}
+
+.list__item--checked::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #f1cdb3;
+}
+
+.hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 18rem 4rem 0;
+  background: url(noise_lines_transparent@2X.png), -webkit-radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  background: url(noise_lines_transparent@2X.png), -o-radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  background: url(noise_lines_transparent@2X.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+}
+
+.hero__content {
+  padding: 16.3rem 4.2rem 0 0;
+}
+
+.hero__title {
+  color: #ffffff;
+  padding: 0 15rem 4.2rem 0;
+}
+
+.hero__text {
+  color: #cdcdcd;
+  padding-bottom: 4.2rem;
+}
+
+.hero__button {
+  width: 20.7rem;
+  background-color: #f1cdb3;
+}
+
+.hero__img {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */

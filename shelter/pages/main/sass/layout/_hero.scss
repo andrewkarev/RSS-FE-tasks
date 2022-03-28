@@ -1,25 +1,39 @@
 .main {
 }
 .hero {
+  display: flex;
+  flex-direction: row;
+  padding: 18rem 4rem 0;
+  background: $bg-gradient;
   &__content {
+    padding: 16.3rem 4.2rem 0 0;
   }
 
   &__title {
+    @extend %h2;
+    color: $color-light-xl;
+    padding: 0 15rem 4.2rem 0;
   }
 
   &__text {
+    @extend %paragraph-1;
+    color: $color-dark-s;
+    padding-bottom: 4.2rem;
   }
 
   &__button {
+    width: 20.7rem;
+    background-color: $color-primary;
   }
 
   &__img-wrapper {
   }
 
   &__img {
+    display: block;
   }
 }
+
+// Нужен данный класс?
 .text {
-}
-.button {
 }
