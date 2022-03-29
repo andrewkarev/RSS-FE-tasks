@@ -577,6 +577,7 @@ template {
           align-items: center;
   gap: 3rem;
   padding-bottom: 3rem;
+  border-radius: 0.9rem;
   background-color: #fafafa;
 }
 
