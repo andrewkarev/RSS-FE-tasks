@@ -1,29 +1,65 @@
 .footer {
   &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4rem 4rem 0;
+    background: $bg-gradient;
   }
 
   &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 6rem;
+  }
+
+  &__item:first-child {
+    width: 27.9rem;
+  }
+
+  &__item:nth-child(2) {
+    width: 30.2rem;
   }
 
   &__title {
+    @extend %h3;
+    color: $color-light-xl;
+    padding-top: 1.6rem;
   }
 
   &__subtitle {
+    @extend %h4;
+    text-align: left;
+    color: $color-primary;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
   }
 
   &__subtitle--email {
+    padding: 0.5rem 0 0.4rem 6rem;
+    background-image: url("/shelter/assets/icons/footer/icon-email.svg");
   }
 
   &__subtitle--phone {
+    padding: 0.5rem 0 0.4rem 6rem;
+    background-image: url("/shelter/assets/icons/footer/icon-phone.svg");
   }
 
   &__subtitle--mark {
+    padding-left: 4.2rem;
+    background-image: url("/shelter/assets/icons/footer/icon-marker.svg");
+  }
+
+  &__subtitle--mark:nth-child(3) {
+    padding: 0.5rem 0 0.4rem 4.2rem;
   }
 
   &__img-wrapper {
   }
 
   &__img {
+    display: block;
   }
 }
 .title {
