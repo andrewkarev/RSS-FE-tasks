@@ -1,29 +1,55 @@
 .donation {
   &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 8rem 18.2rem 10rem 18.3rem;
+    background: $color-light-l;
   }
 
   &__img-wrapper {
+    padding: 1.1rem 3rem 1rem 0;
   }
 
   &__img {
+    display: block;
   }
 
   &__content {
   }
 
   &__title {
+    @extend %h3;
+    color: $color-dark-l;
+    padding-right: 8rem;
   }
 
   &__subtitle {
+    @extend %h5;
+    color: $color-dark-l;
+    padding: 2rem 7.2rem 2rem 0;
   }
 
   &__credit-card {
+    padding-bottom: 2rem;
   }
 
   &__credit-card-content {
+    @extend %h4;
+    color: $color-dark-l;
+    padding: 1rem 1.5rem 1rem 5.9rem;
+    margin-right: 3.1rem;
+
+    background: $color-primary;
+    background-image: url("/shelter/assets/icons/donation/credit-card.svg");
+    background-repeat: no-repeat;
+    background-position: 1.5rem 50%;
+    border-radius: 0.9rem;
   }
 
   &__description {
+    @extend %paragraph-5;
+    color: $color-dark-m;
   }
 }
 .title {
