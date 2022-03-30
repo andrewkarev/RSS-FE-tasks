@@ -1,5 +1,6 @@
 .pets {
   background-color: $color-light-l;
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -28,6 +29,9 @@
     width: 26.1rem;
     background-color: $color-primary;
   }
+  &__button:hover {
+    background-color: $color-primary-light;
+  }
 }
 
 .pets-cards {
@@ -44,6 +48,7 @@
   padding-bottom: 3rem;
   border-radius: 0.9rem;
   background-color: $color-light-s;
+
   &__img-wrapper {
   }
 
@@ -61,5 +66,15 @@
     border: 2px solid $color-primary;
     background-color: transparent;
     color: $color-dark-3xl;
+    cursor: pointer;
   }
+
+  &__button:hover {
+    background-color: $color-primary-light;
+    border-color: $color-primary-light;
+  }
+}
+
+.pets-card:hover {
+  @include card-hover();
 }

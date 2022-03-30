@@ -354,6 +354,11 @@ template {
   border: 2px solid #f1cdb3;
   border-radius: 10rem;
   background: transparent;
+  cursor: pointer;
+}
+
+.button-arrow:hover {
+  background-color: #fddcc4;
 }
 
 .wrapper {
@@ -571,6 +576,10 @@ template {
   background-color: #f1cdb3;
 }
 
+.pets__button:hover {
+  background-color: #fddcc4;
+}
+
 .pets-cards {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -612,6 +621,17 @@ template {
   border: 2px solid #f1cdb3;
   background-color: transparent;
   color: #292929;
+  cursor: pointer;
+}
+
+.pets-card__button:hover {
+  background-color: #fddcc4;
+  border-color: #fddcc4;
+}
+
+.pets-card:hover {
+  -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+          box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
 
 .help__container {

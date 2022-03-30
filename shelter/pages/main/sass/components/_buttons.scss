@@ -5,3 +5,7 @@
 .button-arrow {
   @include button-arrow();
 }
+
+.button-arrow:hover {
+  background-color: $color-primary-light;
+}
