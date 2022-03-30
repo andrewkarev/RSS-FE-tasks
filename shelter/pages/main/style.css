@@ -823,28 +823,38 @@ template {
 }
 
 .footer__subtitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   text-align: left;
   color: #f1cdb3;
+}
+
+.footer__link {
+  display: block;
   background-repeat: no-repeat;
   background-position: 0 50%;
 }
 
-.footer__subtitle--email {
+.footer__link--email {
   padding: 0.5rem 0 0.4rem 6rem;
   background-image: url("/shelter/assets/icons/footer/icon-email.svg");
 }
 
-.footer__subtitle--phone {
+.footer__link--phone {
   padding: 0.5rem 0 0.4rem 6rem;
   background-image: url("/shelter/assets/icons/footer/icon-phone.svg");
 }
 
-.footer__subtitle--mark {
+.footer__link--mark {
   padding-left: 4.2rem;
   background-image: url("/shelter/assets/icons/footer/icon-marker.svg");
 }
 
-.footer__subtitle--mark:nth-child(3) {
+.footer__link--mark-1 {
   padding: 0.5rem 0 0.4rem 4.2rem;
 }
 

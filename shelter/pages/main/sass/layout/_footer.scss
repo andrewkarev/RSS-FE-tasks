@@ -29,29 +29,35 @@
   }
 
   &__subtitle {
+    display: flex;
+    justify-content: start;
     @extend %h4;
     text-align: left;
     color: $color-primary;
+  }
+
+  &__link {
+    display: block;
     background-repeat: no-repeat;
     background-position: 0 50%;
   }
 
-  &__subtitle--email {
+  &__link--email {
     padding: 0.5rem 0 0.4rem 6rem;
     background-image: url("/shelter/assets/icons/footer/icon-email.svg");
   }
 
-  &__subtitle--phone {
+  &__link--phone {
     padding: 0.5rem 0 0.4rem 6rem;
     background-image: url("/shelter/assets/icons/footer/icon-phone.svg");
   }
 
-  &__subtitle--mark {
+  &__link--mark {
     padding-left: 4.2rem;
     background-image: url("/shelter/assets/icons/footer/icon-marker.svg");
   }
 
-  &__subtitle--mark:nth-child(3) {
+  &__link--mark-1 {
     padding: 0.5rem 0 0.4rem 4.2rem;
   }
 
