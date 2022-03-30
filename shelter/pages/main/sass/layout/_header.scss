@@ -10,6 +10,7 @@
   top: 6rem;
   left: 4rem;
   right: 4rem;
+
   &__container {
     display: flex;
     flex-direction: row;
@@ -45,18 +46,22 @@
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
+
   &__item {
     @extend %paragraph-1;
     color: $color-dark-s;
     padding-bottom: 0.3rem;
   }
+
   &__link:hover {
     color: $color-light-s;
   }
+
   &__item--checked {
     position: relative;
     color: $color-light-s;
   }
+
   &__item--checked::after {
     content: "";
     position: absolute;
