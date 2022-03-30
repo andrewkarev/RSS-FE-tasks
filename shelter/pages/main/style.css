@@ -416,6 +416,10 @@ template {
   padding-bottom: 0.3rem;
 }
 
+.list__link:hover {
+  color: #fafafa;
+}
+
 .list__item--checked {
   position: relative;
   color: #fafafa;

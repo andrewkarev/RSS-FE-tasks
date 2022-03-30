@@ -50,6 +50,9 @@
     color: $color-dark-s;
     padding-bottom: 0.3rem;
   }
+  &__link:hover {
+    color: $color-light-s;
+  }
   &__item--checked {
     position: relative;
     color: $color-light-s;
