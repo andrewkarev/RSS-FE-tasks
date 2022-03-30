@@ -756,18 +756,22 @@ template {
 }
 
 .donation__credit-card {
-  padding-bottom: 2rem;
+  padding: 0 3.1rem 2rem 0;
 }
 
 .donation__credit-card-content {
   color: #545454;
   padding: 1rem 1.5rem 1rem 5.9rem;
-  margin-right: 3.1rem;
   background: #f1cdb3;
   background-image: url("/shelter/assets/icons/donation/credit-card.svg");
   background-repeat: no-repeat;
   background-position: 1.5rem 50%;
   border-radius: 0.9rem;
+  cursor: pointer;
+}
+
+.donation__credit-card-content:hover {
+  background-color: #fddcc4;
 }
 
 .donation__description {

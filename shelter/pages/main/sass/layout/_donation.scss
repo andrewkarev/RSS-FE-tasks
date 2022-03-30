@@ -31,20 +31,25 @@
   }
 
   &__credit-card {
-    padding-bottom: 2rem;
+    padding: 0 3.1rem 2rem 0;
   }
 
   &__credit-card-content {
     @extend %h4;
     color: $color-dark-l;
     padding: 1rem 1.5rem 1rem 5.9rem;
-    margin-right: 3.1rem;
 
     background: $color-primary;
     background-image: url("/shelter/assets/icons/donation/credit-card.svg");
     background-repeat: no-repeat;
     background-position: 1.5rem 50%;
     border-radius: 0.9rem;
+
+    cursor: pointer;
+  }
+
+  &__credit-card-content:hover {
+    background-color: $color-primary-light;
   }
 
   &__description {
