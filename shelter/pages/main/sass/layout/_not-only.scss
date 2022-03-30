@@ -3,6 +3,7 @@
   flex-direction: row;
   padding: 18rem 4rem 0;
   background: $bg-gradient;
+
   &__content {
     padding: 16.3rem 4.2rem 0 0;
   }
@@ -22,6 +23,10 @@
   &__button {
     width: 20.7rem;
     background-color: $color-primary;
+  }
+
+  &__button:hover {
+    background-color: $color-primary-light;
   }
 
   &__img-wrapper {

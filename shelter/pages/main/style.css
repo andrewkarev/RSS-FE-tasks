@@ -326,6 +326,15 @@ template {
 }
 
 .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 5.2rem;
   border-radius: 10rem;
   border: none;
@@ -468,6 +477,10 @@ template {
 .not-only__button {
   width: 20.7rem;
   background-color: #f1cdb3;
+}
+
+.not-only__button:hover {
+  background-color: #fddcc4;
 }
 
 .not-only__img {
