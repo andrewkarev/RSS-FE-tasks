@@ -20,6 +20,9 @@
 }
 
 @mixin button-arrow() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 5.2rem;
   height: 5.2rem;
   border: 2px solid $color-primary;

@@ -349,6 +349,15 @@ template {
 }
 
 .button-arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 5.2rem;
   height: 5.2rem;
   border: 2px solid #f1cdb3;
@@ -356,6 +365,11 @@ template {
   background: transparent;
   color: #292929;
   cursor: pointer;
+}
+
+.button-arrow__inner {
+  padding-left: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 
 .button-arrow--active {
