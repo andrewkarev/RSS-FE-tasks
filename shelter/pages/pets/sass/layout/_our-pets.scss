@@ -20,19 +20,11 @@
   column-gap: 4rem;
 }
 
-.pets-card {
-  &__img-wrapper {
-  }
-
-  &__img {
-  }
-
-  &__title {
-  }
-
-  &__button {
-  }
+.pets-card--our-friends:hover {
+  cursor: pointer;
 }
 
-.pets-card--our-friends {
+.pets-card--our-friends:hover .pets-card__button {
+  background-color: $color-primary-light;
+  border-color: $color-primary-light;
 }
