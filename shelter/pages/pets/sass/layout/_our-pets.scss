@@ -3,14 +3,23 @@
     margin-top: 12rem;
   }
 
-  &__cards-container {
+  &__title--our-friends {
   }
 
   &__navigation {
+    display: flex;
+    gap: 2rem;
+    padding-top: 6rem;
   }
 }
+
 .pets-cards--our-friends {
+  display: grid;
+  grid-template: repeat(2, auto) / repeat(4, max-content);
+  row-gap: 3rem;
+  column-gap: 4rem;
 }
+
 .pets-card {
   &__img-wrapper {
   }
@@ -24,5 +33,6 @@
   &__button {
   }
 }
+
 .pets-card--our-friends {
 }
