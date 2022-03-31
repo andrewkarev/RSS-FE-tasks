@@ -15,7 +15,7 @@
   letter-spacing: 0.06em;
 }
 
-.pets-card__title, .help__item-text, .donation__credit-card-content, .footer__subtitle {
+.button-arrow, .pets-card__title, .help__item-text, .donation__credit-card-content, .footer__subtitle {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
@@ -354,11 +354,32 @@ template {
   border: 2px solid #f1cdb3;
   border-radius: 10rem;
   background: transparent;
+  color: #292929;
   cursor: pointer;
+}
+
+.button-arrow--active {
+  background-color: #f1cdb3;
+  border-color: #f1cdb3;
 }
 
 .button-arrow:hover {
   background-color: #fddcc4;
+  border-color: #fddcc4;
+}
+
+.button-arrow--disabled {
+  border-color: #cdcdcd;
+}
+
+.button-arrow--disabled:hover {
+  background-color: transparent;
+  border-color: #cdcdcd;
+  cursor: auto;
+}
+
+.button-arrow--disabled svg path {
+  fill: #cdcdcd;
 }
 
 .wrapper {
@@ -906,5 +927,35 @@ template {
 
 .pets__container--our-friends {
   margin-top: 12rem;
+}
+
+.pets__navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  padding-top: 6rem;
+}
+
+.pets-cards--our-friends {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (auto)[2];
+  -ms-grid-columns: (-webkit-max-content)[4];
+  -ms-grid-columns: (max-content)[4];
+      grid-template: repeat(2, auto)/repeat(4, -webkit-max-content);
+      grid-template: repeat(2, auto)/repeat(4, max-content);
+  row-gap: 3rem;
+  -webkit-column-gap: 4rem;
+          column-gap: 4rem;
+}
+
+.pets-card--our-friends:hover {
+  cursor: pointer;
+}
+
+.pets-card--our-friends:hover .pets-card__button {
+  background-color: #fddcc4;
+  border-color: #fddcc4;
 }
 /*# sourceMappingURL=style.css.map */
