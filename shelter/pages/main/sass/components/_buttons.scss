@@ -6,6 +6,26 @@
   @include button-arrow();
 }
 
+.button-arrow--active {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+
 .button-arrow:hover {
   background-color: $color-primary-light;
+  border-color: $color-primary-light;
+}
+
+.button-arrow--disabled {
+  border-color: $color-dark-s;
+}
+
+.button-arrow--disabled:hover {
+  background-color: transparent;
+  border-color: $color-dark-s;
+  cursor: auto;
+}
+
+.button-arrow--disabled svg path {
+  fill: $color-dark-s;
 }
