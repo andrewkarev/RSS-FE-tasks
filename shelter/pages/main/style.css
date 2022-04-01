@@ -735,6 +735,14 @@ template {
   padding: 8rem 4rem 10rem;
   background-color: #ffffff;
 }
+@media screen and (max-width: 1279px) {
+  .help__container {
+    max-width: 63rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+}
 .help__title {
   max-width: 31rem;
   margin: 0 auto;
@@ -759,7 +767,17 @@ template {
      -moz-column-gap: 11.9rem;
           column-gap: 11.9rem;
   row-gap: 5.5rem;
-  padding: 0 8.7rem;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1279px) {
+  .help__items {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-column-gap: 0;
+       -moz-column-gap: 0;
+            column-gap: 0;
+  }
 }
 .help__item {
   display: -webkit-box;
@@ -775,6 +793,11 @@ template {
   height: 11.3rem;
   background-repeat: no-repeat;
   background-position: 50% 0;
+}
+@media screen and (max-width: 1279px) {
+  .help__item {
+    width: 17rem;
+  }
 }
 .help__item:first-child {
   background-image: url("/shelter/assets/icons/help/icon-pet-food.svg");
