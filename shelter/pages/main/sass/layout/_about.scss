@@ -4,10 +4,23 @@
     display: flex;
     flex-direction: row;
     padding: 8rem 4rem 10rem;
+    @media screen and (max-width: $breakpoint-1) {
+      max-width: 43rem;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin: 0 auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   &__img-wrapper {
     padding-left: 17.5rem;
+    @media screen and (max-width: $breakpoint-1) {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
   }
 
   &__img {
@@ -16,6 +29,9 @@
 
   &__content {
     padding: 1.4rem 17.5rem 1.4rem 12rem;
+    @media screen and (max-width: $breakpoint-1) {
+      padding: 0 0 8rem;
+    }
   }
 
   &__title {
