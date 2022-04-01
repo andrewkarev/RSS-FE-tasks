@@ -79,3 +79,8 @@
   background-color: $color-primary-light;
   border-color: $color-primary-light;
 }
+
+.pets-card:hover .pets-card__button:active {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}

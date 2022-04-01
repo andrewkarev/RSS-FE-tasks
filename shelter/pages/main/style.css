@@ -628,8 +628,14 @@ template {
   border-color: #fddcc4;
 }
 
+.pets-card:hover .pets-card__button:active {
+  background-color: #f1cdb3;
+  border-color: #f1cdb3;
+}
+
 .help__container {
   padding: 8rem 4rem 10rem;
+  background-color: #ffffff;
 }
 .help__title {
   max-width: 31rem;
