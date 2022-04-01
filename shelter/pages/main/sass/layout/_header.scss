@@ -11,6 +11,12 @@
   left: 4rem;
   right: 4rem;
 
+  @media screen and (max-width: $breakpoint-1) {
+    top: 3rem;
+    left: 3rem;
+    right: 3rem;
+  }
+
   &__container {
     display: flex;
     flex-direction: row;

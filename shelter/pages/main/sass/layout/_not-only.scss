@@ -4,8 +4,22 @@
   padding: 18rem 4rem 0;
   background: $bg-gradient;
 
+  @media screen and (max-width: $breakpoint-1) {
+    flex-direction: column;
+    align-items: center;
+    padding: 15rem 10rem 0 9.9rem;
+  }
+
   &__content {
     padding: 16.3rem 4.2rem 0 0;
+
+    @media screen and (max-width: $breakpoint-1) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 46rem;
+      padding: 0 0 10rem 0;
+    }
   }
 
   &__title {
@@ -30,9 +44,18 @@
   }
 
   &__img-wrapper {
+    @media screen and (max-width: $breakpoint-1) {
+      width: 56.9rem;
+      height: 59.3rem;
+    }
   }
 
   &__img {
     display: block;
+    @media screen and (max-width: $breakpoint-1) {
+      width: 100%;
+      position: relative;
+      left: 7rem;
+    }
   }
 }
