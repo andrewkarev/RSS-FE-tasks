@@ -68,13 +68,14 @@
     color: $color-dark-3xl;
     cursor: pointer;
   }
-
-  &__button:hover {
-    background-color: $color-primary-light;
-    border-color: $color-primary-light;
-  }
 }
 
 .pets-card:hover {
   @include card-hover();
+  cursor: pointer;
+}
+
+.pets-card:hover .pets-card__button {
+  background-color: $color-primary-light;
+  border-color: $color-primary-light;
 }
