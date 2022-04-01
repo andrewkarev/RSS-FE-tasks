@@ -5,10 +5,20 @@
     justify-content: center;
     padding: 8rem 18.2rem 10rem 18.3rem;
     background: $color-light-l;
+    @media screen and (max-width: $breakpoint-1) {
+      max-width: 50.5rem;
+      flex-direction: column-reverse;
+      margin: 0 auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   &__img-wrapper {
     padding: 1.1rem 3rem 1rem 0;
+    @media screen and (max-width: $breakpoint-1) {
+      padding: 0;
+    }
   }
 
   &__img {
@@ -16,6 +26,11 @@
   }
 
   &__content {
+    @media screen and (max-width: $breakpoint-1) {
+      max-width: 38rem;
+      margin: 0 auto;
+      padding-bottom: 6rem;
+    }
   }
 
   &__title {

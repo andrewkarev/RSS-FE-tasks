@@ -845,11 +845,35 @@ template {
   padding: 8rem 18.2rem 10rem 18.3rem;
   background: #f6f6f6;
 }
+@media screen and (max-width: 1279px) {
+  .donation__container {
+    max-width: 50.5rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 .donation__img-wrapper {
   padding: 1.1rem 3rem 1rem 0;
 }
+@media screen and (max-width: 1279px) {
+  .donation__img-wrapper {
+    padding: 0;
+  }
+}
 .donation__img {
   display: block;
+}
+@media screen and (max-width: 1279px) {
+  .donation__content {
+    max-width: 38rem;
+    margin: 0 auto;
+    padding-bottom: 6rem;
+  }
 }
 .donation__title {
   color: #545454;
