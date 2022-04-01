@@ -19,7 +19,7 @@
   color: $color-dark-3xl;
 }
 
-@mixin button-arrow() {
+@mixin navigation-item() {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,5 @@
   border: 2px solid $color-primary;
   border-radius: 10rem;
   background: transparent;
-  @extend %h4;
-  color: $color-dark-3xl;
-  cursor: pointer;
+
 }

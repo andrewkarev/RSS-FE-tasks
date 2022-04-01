@@ -3,17 +3,8 @@
 }
 
 .button-arrow {
-  @include button-arrow();
-}
-
-.button-arrow__inner {
-  padding-left: 0.1rem;
-  padding-bottom: 0.1rem;
-}
-
-.button-arrow--active {
-  background-color: $color-primary;
-  border-color: $color-primary;
+  @include navigation-item();
+  cursor: pointer;
 }
 
 .button-arrow:hover {

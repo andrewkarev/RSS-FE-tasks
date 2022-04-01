@@ -13,18 +13,22 @@
   }
 }
 
+.page-pointer {
+  @include navigation-item();
+  background-color: $color-primary;
+  border-color: $color-primary;
+  &__inner {
+    @extend %h4;
+    padding-left: 0.1rem;
+    padding-bottom: 0.1rem;
+    color: $color-dark-3xl;
+  }
+}
+
+
 .pets-cards--our-friends {
   display: grid;
   grid-template: repeat(2, auto) / repeat(4, max-content);
   row-gap: 3rem;
   column-gap: 4rem;
-}
-
-.pets-card--our-friends:hover {
-  cursor: pointer;
-}
-
-.pets-card--our-friends:hover .pets-card__button {
-  background-color: $color-primary-light;
-  border-color: $color-primary-light;
 }

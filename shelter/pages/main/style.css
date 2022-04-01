@@ -15,7 +15,8 @@
   letter-spacing: 0.06em;
 }
 
-.footer__subtitle, .donation__credit-card-content, .help__item-text, .pets-card__title, .button-arrow {
+
+.page-pointer__inner, .footer__subtitle, .donation__credit-card-content, .help__item-text, .pets-card__title {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
@@ -359,18 +360,7 @@ template {
   border: 2px solid #f1cdb3;
   border-radius: 10rem;
   background: transparent;
-  color: #292929;
   cursor: pointer;
-}
-
-.button-arrow__inner {
-  padding-left: 0.1rem;
-  padding-bottom: 0.1rem;
-}
-
-.button-arrow--active {
-  background-color: #f1cdb3;
-  border-color: #f1cdb3;
 }
 
 .button-arrow:hover {
@@ -627,18 +617,26 @@ template {
   color: #292929;
   cursor: pointer;
 }
-.pets-card__button:hover {
-  background-color: #fddcc4;
-  border-color: #fddcc4;
-}
 
 .pets-card:hover {
   -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
           box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  cursor: pointer;
+}
+
+.pets-card:hover .pets-card__button {
+  background-color: #fddcc4;
+  border-color: #fddcc4;
+}
+
+.pets-card:hover .pets-card__button:active {
+  background-color: #f1cdb3;
+  border-color: #f1cdb3;
 }
 
 .help__container {
   padding: 8rem 4rem 10rem;
+  background-color: #ffffff;
 }
 .help__title {
   max-width: 31rem;
@@ -882,6 +880,30 @@ template {
   padding-top: 6rem;
 }
 
+.page-pointer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  border: 2px solid #f1cdb3;
+  border-radius: 10rem;
+  background: transparent;
+  background-color: #f1cdb3;
+  border-color: #f1cdb3;
+}
+.page-pointer__inner {
+  padding-left: 0.1rem;
+  padding-bottom: 0.1rem;
+  color: #292929;
+}
+
 .pets-cards--our-friends {
   display: grid;
   grid-template: repeat(2, auto)/repeat(4, -webkit-max-content);
@@ -890,13 +912,5 @@ template {
   -webkit-column-gap: 4rem;
      -moz-column-gap: 4rem;
           column-gap: 4rem;
-}
 
-.pets-card--our-friends:hover {
-  cursor: pointer;
-}
-
-.pets-card--our-friends:hover .pets-card__button {
-  background-color: #fddcc4;
-  border-color: #fddcc4;
 }/*# sourceMappingURL=style.css.map */
