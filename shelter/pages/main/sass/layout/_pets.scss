@@ -94,7 +94,7 @@
   border-color: $color-primary;
 }
 
-.pets-card:nth-child(3) {
+.pets-cards--main-page:nth-child(3) {
   @media screen and (max-width: $breakpoint-1) {
     display: none;
   }
