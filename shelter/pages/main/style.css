@@ -726,7 +726,7 @@ template {
 }
 
 @media screen and (max-width: 1279px) {
-  .pets-card:nth-child(3) {
+  .pets-card--main-page:nth-child(3) {
     display: none;
   }
 }
@@ -1010,6 +1010,11 @@ template {
   padding: 3rem 0;
   background-color: #ffffff;
 }
+@media screen and (max-width: 1279px) {
+  .header--pets {
+    padding: 3rem;
+  }
+}
 
 .logo__title--pets {
   color: #545454;
@@ -1043,12 +1048,27 @@ template {
 .pets__container--our-friends {
   margin-top: 12rem;
 }
+@media screen and (max-width: 1279px) {
+  .pets__container--our-friends {
+    padding-bottom: 7.6rem;
+  }
+}
+@media screen and (max-width: 1279px) {
+  .pets__title--our-friends {
+    padding-bottom: 3rem;
+  }
+}
 .pets__navigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 2rem;
   padding-top: 6rem;
+}
+@media screen and (max-width: 1279px) {
+  .pets__navigation {
+    padding-top: 4rem;
+  }
 }
 
 .page-pointer {
@@ -1083,4 +1103,17 @@ template {
   -webkit-column-gap: 4rem;
      -moz-column-gap: 4rem;
           column-gap: 4rem;
+}
+@media screen and (max-width: 1279px) {
+  .pets-cards--our-friends {
+    grid-template: repeat(3, auto)/repeat(2, -webkit-max-content);
+    grid-template: repeat(3, auto)/repeat(2, max-content);
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .pets-card--our-friends:nth-child(7),
+.pets-card--our-friends:nth-child(8) {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */
