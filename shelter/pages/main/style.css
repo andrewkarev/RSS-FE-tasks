@@ -15,6 +15,7 @@
   letter-spacing: 0.06em;
 }
 
+
 .page-pointer__inner, .footer__subtitle, .donation__credit-card-content, .help__item-text, .pets-card__title {
   font-family: "Georgia";
   font-style: normal;
@@ -911,4 +912,5 @@ template {
   -webkit-column-gap: 4rem;
      -moz-column-gap: 4rem;
           column-gap: 4rem;
+
 }/*# sourceMappingURL=style.css.map */
