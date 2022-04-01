@@ -6,6 +6,12 @@
     flex-direction: column;
     align-items: center;
     padding: 8rem 4rem 10rem;
+    @media screen and (max-width: $breakpoint-1) {
+      max-width: 70.8rem;
+      padding-left: 0;
+      padding-right: 0;
+      margin: 0 auto;
+    }
   }
 
   &__title {
@@ -38,6 +44,9 @@
   display: flex;
   flex-direction: row;
   gap: 9rem;
+  @media screen and (max-width: $breakpoint-1) {
+    gap: 4rem;
+  }
 }
 
 .pets-card {
@@ -83,4 +92,10 @@
 .pets-card:hover .pets-card__button:active {
   background-color: $color-primary;
   border-color: $color-primary;
+}
+
+.pets-card:nth-child(3) {
+  @media screen and (max-width: $breakpoint-1) {
+    display: none;
+  }
 }

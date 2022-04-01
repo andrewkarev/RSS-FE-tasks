@@ -624,6 +624,14 @@ template {
           align-items: center;
   padding: 8rem 4rem 10rem;
 }
+@media screen and (max-width: 1279px) {
+  .pets__container {
+    max-width: 70.8rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+}
 .pets__title {
   max-width: 40rem;
   padding-bottom: 6rem;
@@ -664,6 +672,11 @@ template {
       -ms-flex-direction: row;
           flex-direction: row;
   gap: 9rem;
+}
+@media screen and (max-width: 1279px) {
+  .pets-cards {
+    gap: 4rem;
+  }
 }
 
 .pets-card {
@@ -710,6 +723,12 @@ template {
 .pets-card:hover .pets-card__button:active {
   background-color: #f1cdb3;
   border-color: #f1cdb3;
+}
+
+@media screen and (max-width: 1279px) {
+  .pets-card:nth-child(3) {
+    display: none;
+  }
 }
 
 .help__container {
