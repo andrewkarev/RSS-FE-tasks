@@ -17,6 +17,11 @@
     right: 3rem;
   }
 
+  @media screen and (max-width: $breakpoint-2) {
+    left: 1rem;
+    right: 5.3rem;
+  }
+
   &__container {
     display: flex;
     flex-direction: row;
@@ -44,6 +49,10 @@
 .navigation {
   width: 44.3rem;
   padding-bottom: 0.3rem;
+
+  @media screen and (max-width: $breakpoint-2) {
+    display: none;
+  }
 }
 
 .list {
