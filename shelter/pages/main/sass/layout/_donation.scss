@@ -1,16 +1,21 @@
 .donation {
+  background: $color-light-l;
   &__container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 8rem 18.2rem 10rem 18.3rem;
-    background: $color-light-l;
     @media screen and (max-width: $breakpoint-1) {
       max-width: 50.5rem;
       flex-direction: column-reverse;
       margin: 0 auto;
       padding-left: 0;
       padding-right: 0;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      max-width: 30rem;
+      align-items: center;
+      padding: 4.2rem 0;
     }
   }
 
@@ -19,10 +24,17 @@
     @media screen and (max-width: $breakpoint-1) {
       padding: 0;
     }
+    @media screen and (max-width: $breakpoint-2) {
+      width: 26rem;
+      height: 13.5rem;
+    }
   }
 
   &__img {
     display: block;
+    @media screen and (max-width: $breakpoint-2) {
+      width: 100%;
+    }
   }
 
   &__content {
@@ -31,44 +43,77 @@
       margin: 0 auto;
       padding-bottom: 6rem;
     }
+    @media screen and (max-width: $breakpoint-2) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 1.9rem;
+      padding-bottom: 4.2rem;
+    }
   }
 
   &__title {
     @extend %h3;
     color: $color-dark-l;
     padding-right: 8rem;
+    @media screen and (max-width: $breakpoint-2) {
+      @include h3-mobile();
+      padding-right: 0;
+      text-align: center;
+    }
   }
 
   &__subtitle {
     @extend %h5;
     color: $color-dark-l;
     padding: 2rem 7.2rem 2rem 0;
+    @media screen and (max-width: $breakpoint-2) {
+      padding: 0;
+      letter-spacing: normal;
+      line-height: 160%;
+      text-align: center;
+    }
   }
 
   &__credit-card {
     padding: 0 3.1rem 2rem 0;
+    @media screen and (max-width: $breakpoint-2) {
+      padding: 0;
+    }
   }
 
   &__credit-card-content {
     @extend %h4;
     color: $color-dark-l;
     padding: 1rem 1.5rem 1rem 5.9rem;
-
     background: $color-primary;
     background-image: url("/shelter/assets/icons/donation/credit-card.svg");
     background-repeat: no-repeat;
     background-position: 1.5rem 50%;
     border-radius: 0.9rem;
-
-    cursor: pointer;
+    @media screen and (max-width: $breakpoint-2) {
+      padding: 1.3rem 1.5rem 1.3rem 6rem;
+      font-family: "Georgia";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 110%;
+      letter-spacing: 0.06em;
+    }
   }
 
   &__credit-card-content:hover {
     background-color: $color-primary-light;
+    cursor: pointer;
   }
 
   &__description {
     @extend %paragraph-5;
     color: $color-dark-m;
+    @media screen and (max-width: $breakpoint-2) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-align: justify;
+    }
   }
 }
