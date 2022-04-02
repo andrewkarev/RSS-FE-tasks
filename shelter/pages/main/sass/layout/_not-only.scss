@@ -37,12 +37,7 @@
     padding: 0 15rem 4.2rem 0;
 
     @media screen and (max-width: $breakpoint-2) {
-      font-family: "Georgia";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 25px;
-      line-height: 130%;
-      letter-spacing: 0.06em;
+      @include h3-mobile();
       padding-right: 0;
       text-align: center;
     }
@@ -75,7 +70,7 @@
 
     @media screen and (max-width: $breakpoint-2) {
       width: 26rem;
-      height: 27.177rem;
+      height: 27.1rem;
     }
   }
 
