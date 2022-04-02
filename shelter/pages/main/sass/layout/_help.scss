@@ -8,6 +8,10 @@
       padding-right: 0;
       margin: 0 auto;
     }
+    @media screen and (max-width: $breakpoint-2) {
+      max-width: 29rem;
+      padding: 4.2rem 0;
+    }
   }
 
   &__title {
@@ -17,6 +21,11 @@
     text-align: center;
     color: $color-dark-l;
     @extend %h3;
+    @media screen and (max-width: $breakpoint-2) {
+      @include h3-mobile();
+      max-width: 22.2rem;
+      padding-bottom: 4.2rem;
+    }
   }
 
   &__items {
@@ -31,6 +40,10 @@
       justify-content: space-between;
       column-gap: 0;
     }
+    @media screen and (max-width: $breakpoint-2) {
+      row-gap: 3rem;
+      column-gap: 3rem;
+    }
   }
 
   &__item {
@@ -43,39 +56,78 @@
     @media screen and (max-width: $breakpoint-1) {
       width: 17rem;
     }
+    @media screen and (max-width: $breakpoint-2) {
+      width: 13rem;
+      height: 8.7rem;
+    }
   }
 
   &__item:first-child {
     background-image: url("/shelter/assets/icons/help/icon-pet-food.svg");
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-pet-food.svg");
+    }
   }
   &__item:nth-child(2) {
     background-image: url("/shelter/assets/icons/help/icon-transportation.svg");
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-transportation.svg");
+    }
   }
   &__item:nth-child(3) {
     background-image: url("/shelter/assets/icons/help/icon-toys.svg");
     padding: 0 0.7rem;
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-toys.svg");
+    }
   }
   &__item:nth-child(4) {
     background-image: url("/shelter/assets/icons/help/icon-bowls-and-cups.svg");
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-bowls-and-cups.svg");
+    }
   }
   &__item:nth-child(5) {
     background-image: url("/shelter/assets/icons/help/icon-shampoos.svg");
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-shampoos.svg");
+    }
   }
   &__item:nth-child(6) {
     background-image: url("/shelter/assets/icons/help/icon-vitamins.svg");
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-vitamins.svg");
+    }
   }
   &__item:nth-child(7) {
     background-image: url("/shelter/assets/icons/help/icon-medicines.svg");
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-medicines.svg");
+    }
   }
   &__item:nth-child(8) {
     background-image: url("/shelter/assets/icons/help/icon-collars-leashes.svg");
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-collars-leashes.svg");
+    }
   }
   &__item:last-child {
     background-image: url("/shelter/assets/icons/help/icon-sleeping-area.svg");
+    @media screen and (max-width: $breakpoint-2) {
+      background-image: url("/shelter/assets/icons/help/mobile/icon-sleeping-area.svg");
+    }
   }
 
   &__item-text {
     @extend %h4;
     color: $color-dark-l;
+    @media screen and (max-width: $breakpoint-2) {
+      font-family: "Georgia";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 110%;
+      letter-spacing: 0.06em;
+    }
   }
 }
