@@ -13,6 +13,10 @@
       padding: 3rem 0 0;
       margin: 0 auto;
     }
+    @media screen and (max-width: $breakpoint-2) {
+      max-width: 30rem;
+      row-gap: 4rem;
+    }
   }
 
   &__item {
@@ -22,6 +26,12 @@
     padding-bottom: 6rem;
     @media screen and (max-width: $breakpoint-1) {
       min-height: 29.4rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      align-items: center;
+      row-gap: 4rem;
+      padding-bottom: 0;
+      min-height: auto;
     }
   }
 
@@ -40,6 +50,11 @@
     @media screen and (max-width: $breakpoint-1) {
       padding-top: 0;
     }
+    @media screen and (max-width: $breakpoint-2) {
+      @include h3-mobile();
+      text-align: center;
+      padding: 0 1rem;
+    }
   }
 
   &__subtitle {
@@ -48,6 +63,12 @@
     @extend %h4;
     text-align: left;
     color: $color-primary;
+  }
+
+  &__subtitle--mobile {
+    @media screen and (max-width: $breakpoint-2) {
+      align-self: start;
+    }
   }
 
   &__link {
@@ -76,9 +97,16 @@
   }
 
   &__img-wrapper {
+    @media screen and (max-width: $breakpoint-2) {
+      width: 26rem;
+      height: 26.9rem;
+    }
   }
 
   &__img {
     display: block;
+    @media screen and (max-width: $breakpoint-2) {
+      width: 100%;
+    }
   }
 }
