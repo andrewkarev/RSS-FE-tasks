@@ -401,6 +401,12 @@ template {
     right: 3rem;
   }
 }
+@media screen and (max-width: 767px) {
+  .header {
+    left: 1rem;
+    right: 5.3rem;
+  }
+}
 .header__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -431,6 +437,11 @@ template {
 .navigation {
   width: 44.3rem;
   padding-bottom: 0.3rem;
+}
+@media screen and (max-width: 767px) {
+  .navigation {
+    display: none;
+  }
 }
 
 .list {
@@ -496,6 +507,12 @@ template {
     padding: 15rem 10rem 0 9.9rem;
   }
 }
+@media screen and (max-width: 767px) {
+  .not-only {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 .not-only__content {
   padding: 16.3rem 4.2rem 0 0;
 }
@@ -515,13 +532,35 @@ template {
     padding: 0 0 10rem 0;
   }
 }
+@media screen and (max-width: 767px) {
+  .not-only__content {
+    padding-bottom: 10.5rem;
+  }
+}
 .not-only__title {
   color: #ffffff;
   padding: 0 15rem 4.2rem 0;
 }
+@media screen and (max-width: 767px) {
+  .not-only__title {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    padding-right: 0;
+    text-align: center;
+  }
+}
 .not-only__text {
   color: #cdcdcd;
   padding-bottom: 4.2rem;
+}
+@media screen and (max-width: 767px) {
+  .not-only__text {
+    text-align: center;
+  }
 }
 .not-only__button {
   width: 20.7rem;
@@ -536,6 +575,12 @@ template {
     height: 59.3rem;
   }
 }
+@media screen and (max-width: 767px) {
+  .not-only__img-wrapper {
+    width: 26rem;
+    height: 27.1rem;
+  }
+}
 .not-only__img {
   display: block;
 }
@@ -544,6 +589,11 @@ template {
     width: 100%;
     position: relative;
     left: 7rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .not-only__img {
+    left: 2rem;
   }
 }
 
@@ -575,6 +625,12 @@ template {
     padding-right: 0;
   }
 }
+@media screen and (max-width: 767px) {
+  .about__container {
+    max-width: 30rem;
+    padding: 4.2rem 0;
+  }
+}
 .about__img-wrapper {
   padding-left: 17.5rem;
 }
@@ -589,8 +645,19 @@ template {
     padding: 0;
   }
 }
+@media screen and (max-width: 767px) {
+  .about__img-wrapper {
+    width: 26rem;
+    height: 35.2rem;
+  }
+}
 .about__img {
   display: block;
+}
+@media screen and (max-width: 767px) {
+  .about__img {
+    width: 100%;
+  }
 }
 .about__content {
   padding: 1.4rem 17.5rem 1.4rem 12rem;
@@ -600,12 +667,39 @@ template {
     padding: 0 0 8rem;
   }
 }
+@media screen and (max-width: 767px) {
+  .about__content {
+    padding: 0 1.5rem 4.2rem;
+  }
+}
 .about__title {
   color: #545454;
   padding-right: 6rem;
 }
+@media screen and (max-width: 767px) {
+  .about__title {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    padding-right: 0;
+    text-align: center;
+  }
+}
 .about__text {
   padding-top: 2.5rem;
+}
+@media screen and (max-width: 767px) {
+  .about__text {
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 767px) {
+  .about__text:nth-child(3) {
+    padding-top: 2.2rem;
+  }
 }
 
 .pets {
@@ -627,9 +721,16 @@ template {
 @media screen and (max-width: 1279px) {
   .pets__container {
     max-width: 70.8rem;
+    margin: 0 auto;
     padding-left: 0;
     padding-right: 0;
-    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .pets__container {
+    max-width: 30rem;
+    padding: 4.2rem 0;
+    row-gap: 4.2rem;
   }
 }
 .pets__title {
@@ -637,6 +738,17 @@ template {
   padding-bottom: 6rem;
   text-align: center;
   color: #545454;
+}
+@media screen and (max-width: 767px) {
+  .pets__title {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    padding-bottom: 0;
+  }
 }
 .pets__slider {
   display: -webkit-box;
@@ -654,6 +766,21 @@ template {
           align-items: center;
   width: 100%;
   padding-bottom: 6rem;
+}
+@media screen and (max-width: 767px) {
+  .pets__slider {
+    max-width: 27rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    row-gap: 2rem;
+    -webkit-column-gap: 8rem;
+       -moz-column-gap: 8rem;
+            column-gap: 8rem;
+    padding-bottom: 0;
+  }
 }
 .pets__button {
   width: 26.1rem;
@@ -725,9 +852,31 @@ template {
   border-color: #f1cdb3;
 }
 
+@media screen and (max-width: 767px) {
+  .pets-card--main-page:nth-child(2) {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1279px) {
   .pets-card--main-page:nth-child(3) {
     display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button-arrow--prev {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button-arrow--next {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
   }
 }
 
@@ -743,12 +892,30 @@ template {
     margin: 0 auto;
   }
 }
+@media screen and (max-width: 767px) {
+  .help__container {
+    max-width: 29rem;
+    padding: 4.2rem 0;
+  }
+}
 .help__title {
   max-width: 31rem;
   margin: 0 auto;
   padding-bottom: 6rem;
   text-align: center;
   color: #545454;
+}
+@media screen and (max-width: 767px) {
+  .help__title {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    max-width: 22.2rem;
+    padding-bottom: 4.2rem;
+  }
 }
 .help__items {
   display: -webkit-box;
@@ -779,6 +946,14 @@ template {
             column-gap: 0;
   }
 }
+@media screen and (max-width: 767px) {
+  .help__items {
+    row-gap: 3rem;
+    -webkit-column-gap: 3rem;
+       -moz-column-gap: 3rem;
+            column-gap: 3rem;
+  }
+}
 .help__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -799,38 +974,102 @@ template {
     width: 17rem;
   }
 }
+@media screen and (max-width: 767px) {
+  .help__item {
+    width: 13rem;
+    height: 8.7rem;
+  }
+}
 .help__item:first-child {
   background-image: url("/shelter/assets/icons/help/icon-pet-food.svg");
 }
+@media screen and (max-width: 767px) {
+  .help__item:first-child {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-pet-food.svg");
+  }
+}
 .help__item:nth-child(2) {
   background-image: url("/shelter/assets/icons/help/icon-transportation.svg");
+}
+@media screen and (max-width: 767px) {
+  .help__item:nth-child(2) {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-transportation.svg");
+  }
 }
 .help__item:nth-child(3) {
   background-image: url("/shelter/assets/icons/help/icon-toys.svg");
   padding: 0 0.7rem;
 }
+@media screen and (max-width: 767px) {
+  .help__item:nth-child(3) {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-toys.svg");
+  }
+}
 .help__item:nth-child(4) {
   background-image: url("/shelter/assets/icons/help/icon-bowls-and-cups.svg");
+}
+@media screen and (max-width: 767px) {
+  .help__item:nth-child(4) {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-bowls-and-cups.svg");
+  }
 }
 .help__item:nth-child(5) {
   background-image: url("/shelter/assets/icons/help/icon-shampoos.svg");
 }
+@media screen and (max-width: 767px) {
+  .help__item:nth-child(5) {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-shampoos.svg");
+  }
+}
 .help__item:nth-child(6) {
   background-image: url("/shelter/assets/icons/help/icon-vitamins.svg");
+}
+@media screen and (max-width: 767px) {
+  .help__item:nth-child(6) {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-vitamins.svg");
+  }
 }
 .help__item:nth-child(7) {
   background-image: url("/shelter/assets/icons/help/icon-medicines.svg");
 }
+@media screen and (max-width: 767px) {
+  .help__item:nth-child(7) {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-medicines.svg");
+  }
+}
 .help__item:nth-child(8) {
   background-image: url("/shelter/assets/icons/help/icon-collars-leashes.svg");
+}
+@media screen and (max-width: 767px) {
+  .help__item:nth-child(8) {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-collars-leashes.svg");
+  }
 }
 .help__item:last-child {
   background-image: url("/shelter/assets/icons/help/icon-sleeping-area.svg");
 }
+@media screen and (max-width: 767px) {
+  .help__item:last-child {
+    background-image: url("/shelter/assets/icons/help/mobile/icon-sleeping-area.svg");
+  }
+}
 .help__item-text {
   color: #545454;
 }
+@media screen and (max-width: 767px) {
+  .help__item-text {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+  }
+}
 
+.donation {
+  background: #f6f6f6;
+}
 .donation__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -843,7 +1082,6 @@ template {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 8rem 18.2rem 10rem 18.3rem;
-  background: #f6f6f6;
 }
 @media screen and (max-width: 1279px) {
   .donation__container {
@@ -857,6 +1095,15 @@ template {
     padding-right: 0;
   }
 }
+@media screen and (max-width: 767px) {
+  .donation__container {
+    max-width: 30rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 4.2rem 0;
+  }
+}
 .donation__img-wrapper {
   padding: 1.1rem 3rem 1rem 0;
 }
@@ -865,8 +1112,19 @@ template {
     padding: 0;
   }
 }
+@media screen and (max-width: 767px) {
+  .donation__img-wrapper {
+    width: 26rem;
+    height: 13.5rem;
+  }
+}
 .donation__img {
   display: block;
+}
+@media screen and (max-width: 767px) {
+  .donation__img {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 1279px) {
   .donation__content {
@@ -875,16 +1133,57 @@ template {
     padding-bottom: 6rem;
   }
 }
+@media screen and (max-width: 767px) {
+  .donation__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    row-gap: 1.9rem;
+    padding-bottom: 4.2rem;
+  }
+}
 .donation__title {
   color: #545454;
   padding-right: 8rem;
+}
+@media screen and (max-width: 767px) {
+  .donation__title {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    padding-right: 0;
+    text-align: center;
+  }
 }
 .donation__subtitle {
   color: #545454;
   padding: 2rem 7.2rem 2rem 0;
 }
+@media screen and (max-width: 767px) {
+  .donation__subtitle {
+    padding: 0;
+    letter-spacing: normal;
+    line-height: 160%;
+    text-align: center;
+  }
+}
 .donation__credit-card {
   padding: 0 3.1rem 2rem 0;
+}
+@media screen and (max-width: 767px) {
+  .donation__credit-card {
+    padding: 0;
+  }
 }
 .donation__credit-card-content {
   color: #545454;
@@ -894,13 +1193,31 @@ template {
   background-repeat: no-repeat;
   background-position: 1.5rem 50%;
   border-radius: 0.9rem;
-  cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+  .donation__credit-card-content {
+    padding: 1.3rem 1.5rem 1.3rem 6rem;
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+  }
 }
 .donation__credit-card-content:hover {
   background-color: #fddcc4;
+  cursor: pointer;
 }
 .donation__description {
   color: #b2b2b2;
+}
+@media screen and (max-width: 767px) {
+  .donation__description {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: justify;
+  }
 }
 
 .footer {
@@ -935,6 +1252,12 @@ template {
     margin: 0 auto;
   }
 }
+@media screen and (max-width: 767px) {
+  .footer__container {
+    max-width: 30rem;
+    row-gap: 4rem;
+  }
+}
 .footer__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -953,6 +1276,16 @@ template {
     min-height: 29.4rem;
   }
 }
+@media screen and (max-width: 767px) {
+  .footer__item {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    row-gap: 4rem;
+    padding-bottom: 0;
+    min-height: auto;
+  }
+}
 .footer__item:first-child {
   width: 27.9rem;
 }
@@ -968,6 +1301,18 @@ template {
     padding-top: 0;
   }
 }
+@media screen and (max-width: 767px) {
+  .footer__title {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 0 1rem;
+  }
+}
 .footer__subtitle {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -977,6 +1322,12 @@ template {
           justify-content: start;
   text-align: left;
   color: #f1cdb3;
+}
+@media screen and (max-width: 767px) {
+  .footer__subtitle--mobile {
+    -ms-flex-item-align: start;
+        align-self: start;
+  }
 }
 .footer__link {
   display: block;
@@ -998,8 +1349,19 @@ template {
 .footer__link--mark-1 {
   padding: 0.5rem 0 0.4rem 4.2rem;
 }
+@media screen and (max-width: 767px) {
+  .footer__img-wrapper {
+    width: 26rem;
+    height: 26.9rem;
+  }
+}
 .footer__img {
   display: block;
+}
+@media screen and (max-width: 767px) {
+  .footer__img {
+    width: 100%;
+  }
 }
 
 .header--pets {
