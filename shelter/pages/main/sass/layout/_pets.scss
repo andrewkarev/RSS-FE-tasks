@@ -8,9 +8,14 @@
     padding: 8rem 4rem 10rem;
     @media screen and (max-width: $breakpoint-1) {
       max-width: 70.8rem;
+      margin: 0 auto;
       padding-left: 0;
       padding-right: 0;
-      margin: 0 auto;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      max-width: 30rem;
+      padding: 4.2rem 0;
+      row-gap: 4.2rem;
     }
   }
 
@@ -20,6 +25,10 @@
     text-align: center;
     color: $color-dark-l;
     @extend %h3;
+    @media screen and (max-width: $breakpoint-2) {
+      @include h3-mobile();
+      padding-bottom: 0;
+    }
   }
 
   &__slider {
@@ -29,6 +38,14 @@
     align-items: center;
     width: 100%;
     padding-bottom: 6rem;
+    @media screen and (max-width: $breakpoint-2) {
+      max-width: 27rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      row-gap: 2rem;
+      column-gap: 8rem;
+      padding-bottom: 0;
+    }
   }
 
   &__button {
@@ -94,8 +111,26 @@
   border-color: $color-primary;
 }
 
+.pets-card--main-page:nth-child(2) {
+  @media screen and (max-width: $breakpoint-2) {
+    display: none;
+  }
+}
+
 .pets-card--main-page:nth-child(3) {
   @media screen and (max-width: $breakpoint-1) {
     display: none;
+  }
+}
+
+.button-arrow--prev {
+  @media screen and (max-width: $breakpoint-2) {
+    order: 1;
+  }
+}
+
+.button-arrow--next {
+  @media screen and (max-width: $breakpoint-2) {
+    order: 2;
   }
 }
