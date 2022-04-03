@@ -38,3 +38,13 @@
     line-height: 130%;
     letter-spacing: 0.06em;
 }
+
+
+
+@mixin paragraph-mobile-menu() {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 160%;
+}
