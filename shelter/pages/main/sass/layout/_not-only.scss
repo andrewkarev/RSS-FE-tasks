@@ -49,6 +49,7 @@
     padding-bottom: 4.2rem;
 
     @media screen and (max-width: $breakpoint-2) {
+      max-width: 30rem;
       text-align: center;
     }
   }
