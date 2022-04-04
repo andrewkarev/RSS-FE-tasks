@@ -5,6 +5,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 128rem;
+    margin: 0 auto;
     padding: 8rem 4rem 10rem;
   }
 
@@ -29,6 +31,7 @@
     width: 26.1rem;
     background-color: $color-primary;
   }
+
   &__button:hover {
     background-color: $color-primary-light;
   }

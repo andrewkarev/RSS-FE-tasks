@@ -1,8 +1,13 @@
 .not-only {
-  display: flex;
-  flex-direction: row;
-  padding: 18rem 4rem 0;
   background: $bg-gradient;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    max-width: 128rem;
+    margin: 0 auto;
+    padding: 18rem 4rem 0;
+  }
 
   &__content {
     padding: 16.3rem 4.2rem 0 0;

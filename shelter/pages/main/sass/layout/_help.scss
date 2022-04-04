@@ -1,7 +1,10 @@
 .help {
+  background-color: $color-light-xl;
+
   &__container {
+    max-width: 128rem;
+    margin: 0 auto;
     padding: 8rem 4rem 10rem;
-    background-color: $color-light-xl;
   }
 
   &__title {
@@ -35,28 +38,36 @@
   &__item:first-child {
     background-image: url("/shelter/assets/icons/help/icon-pet-food.svg");
   }
+
   &__item:nth-child(2) {
     background-image: url("/shelter/assets/icons/help/icon-transportation.svg");
   }
+
   &__item:nth-child(3) {
     background-image: url("/shelter/assets/icons/help/icon-toys.svg");
     padding: 0 0.7rem;
   }
+
   &__item:nth-child(4) {
     background-image: url("/shelter/assets/icons/help/icon-bowls-and-cups.svg");
   }
+
   &__item:nth-child(5) {
     background-image: url("/shelter/assets/icons/help/icon-shampoos.svg");
   }
+
   &__item:nth-child(6) {
     background-image: url("/shelter/assets/icons/help/icon-vitamins.svg");
   }
+
   &__item:nth-child(7) {
     background-image: url("/shelter/assets/icons/help/icon-medicines.svg");
   }
+
   &__item:nth-child(8) {
     background-image: url("/shelter/assets/icons/help/icon-collars-leashes.svg");
   }
+
   &__item:last-child {
     background-image: url("/shelter/assets/icons/help/icon-sleeping-area.svg");
   }

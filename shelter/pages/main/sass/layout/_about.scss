@@ -1,8 +1,11 @@
 .about {
   background-color: $color-light-xl;
+
   &__container {
     display: flex;
     flex-direction: row;
+    max-width: 128rem;
+    margin: 0 auto;
     padding: 8rem 4rem 10rem;
   }
 
