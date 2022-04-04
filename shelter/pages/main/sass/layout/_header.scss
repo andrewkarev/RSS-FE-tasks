@@ -16,16 +16,15 @@
   top: 6rem;
   left: 4rem;
   right: 4rem;
-
   @media screen and (max-width: $breakpoint-1) {
-    top: 3rem;
-    left: 3rem;
-    right: 3rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem;
   }
-
   @media screen and (max-width: $breakpoint-2) {
-    left: 1rem;
-    right: 5.3rem;
+    padding-left: 1rem;
+    padding-right: 5.3rem;
   }
 
   &__container {
@@ -34,28 +33,39 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin: 0 auto;
+    @media screen and (max-width: $breakpoint-2) {
+      margin-left: auto;
+      animation: changeWidth0 0.5s ease-in-out;
+      animation-fill-mode: forwards;
+    }
+
+  }
+
+  &__container--mobile {
+    @media screen and (max-width: $breakpoint-2) {
+      width: 25.7rem;
+      margin: 0 0 0 auto;
+      animation: changeWidth1 0.5s ease-in-out;
+      animation-fill-mode: forwards;
+    }
   }
 }
 
-.header--mobile {
-  @media screen and (max-width: $breakpoint-2) {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(41, 41, 41, 0.6);
-    transition: background-color 0.3s ease-in-out;
-    z-index: 1;
+@keyframes changeWidth0 {
+  from {
+    width: 25.7rem;
+  }
+  to {
+    width: 100%;
   }
 }
 
-.header__container--mobile {
-  @media screen and (max-width: $breakpoint-2) {
-    position: relative;
-    width: 32rem;
-    margin: 0 0 0 auto;
-    padding: 3rem 5.3rem 0 1rem;
+@keyframes changeWidth1 {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 25.7rem;
   }
 }
 
@@ -181,5 +191,33 @@
 .burger-menu--open {
   @media screen and (max-width: $breakpoint-2) {
     transform: rotate(90deg);
+  }
+}
+
+
+.background {
+  display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+.background--blured {
+  @media screen and (max-width: $breakpoint-2) {
+    display: block;
+    animation: blur 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes blur {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(41, 41, 41, 0.6);
   }
 }

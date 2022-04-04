@@ -402,15 +402,16 @@ template {
 }
 @media screen and (max-width: 1279px) {
   .header {
-    top: 3rem;
-    left: 3rem;
-    right: 3rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem;
   }
 }
 @media screen and (max-width: 767px) {
   .header {
-    left: 1rem;
-    right: 5.3rem;
+    padding-left: 1rem;
+    padding-right: 5.3rem;
   }
 }
 .header__container {
@@ -428,32 +429,60 @@ template {
       -ms-flex-align: center;
           align-items: center;
   max-width: 1200px;
-  margin: 0 auto;
 }
-
 @media screen and (max-width: 767px) {
-  .header--mobile {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(41, 41, 41, 0.6);
-    -webkit-transition: background-color 0.3s ease-in-out;
-    -o-transition: background-color 0.3s ease-in-out;
-    transition: background-color 0.3s ease-in-out;
-    z-index: 1;
+  .header__container {
+    margin-left: auto;
+    -webkit-animation: changeWidth0 0.5s ease-in-out;
+            animation: changeWidth0 0.5s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
   }
 }
-
 @media screen and (max-width: 767px) {
   .header__container--mobile {
-    position: relative;
-    width: 32rem;
+    width: 25.7rem;
     margin: 0 0 0 auto;
-    padding: 3rem 5.3rem 0 1rem;
+    -webkit-animation: changeWidth1 0.5s ease-in-out;
+            animation: changeWidth1 0.5s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
   }
 }
 
+@-webkit-keyframes changeWidth0 {
+  from {
+    width: 25.7rem;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes changeWidth0 {
+  from {
+    width: 25.7rem;
+  }
+  to {
+    width: 100%;
+  }
+}
+@-webkit-keyframes changeWidth1 {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 25.7rem;
+  }
+}
+@keyframes changeWidth1 {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 25.7rem;
+  }
+}
 .logo__title {
   color: #f1cdb3;
   padding-bottom: 1rem;
@@ -627,6 +656,43 @@ template {
   }
 }
 
+.background {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .background--blured {
+    display: block;
+    -webkit-animation: blur 0.5s ease-in-out;
+            animation: blur 0.5s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+}
+
+@-webkit-keyframes blur {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(41, 41, 41, 0.6);
+  }
+}
+
+@keyframes blur {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(41, 41, 41, 0.6);
+  }
+}
 .not-only {
   display: -webkit-box;
   display: -ms-flexbox;
