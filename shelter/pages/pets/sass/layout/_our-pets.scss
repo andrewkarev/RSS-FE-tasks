@@ -1,6 +1,5 @@
 .pets {
   &__container--our-friends {
-    margin-top: 12rem;
     @media screen and (max-width: $breakpoint-1) {
       padding-bottom: 7.6rem;
     }
