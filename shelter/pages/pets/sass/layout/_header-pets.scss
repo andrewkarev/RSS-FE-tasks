@@ -1,3 +1,8 @@
+.wrapper--pets {
+  padding-top: 12rem;
+  background-color: $color-light-l;
+}
+
 .header--pets {
   position: fixed;
   top: 0;
@@ -14,6 +19,12 @@
   }
 }
 
+.header--pets-mobile {
+    @media screen and (max-width: $breakpoint-2) {
+    background-color: transparent;
+  }
+}
+
 .logo {
   &__title--pets {
     color: $color-dark-l;
@@ -22,6 +33,11 @@
   &__subtitle--pets {
     color: $color-dark-3xl;
   }
+}
+
+.navigation--pets {
+  background-color: #ffffff;
+  z-index: 2;
 }
 
 .list {
@@ -49,4 +65,8 @@
     height: 3px;
     background-color: $color-primary;
   }
+}
+
+.burger-menu__line--pets {
+  background-color: #000000;
 }
