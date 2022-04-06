@@ -1,0 +1,32 @@
+@mixin card-hover() {
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+@mixin button() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5.2rem;
+  border-radius: 10rem;
+  border: none;
+  outline: none;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: $color-dark-3xl;
+}
+
+@mixin navigation-item() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  border: 2px solid $color-primary;
+  border-radius: 10rem;
+  background: transparent;
+
+}

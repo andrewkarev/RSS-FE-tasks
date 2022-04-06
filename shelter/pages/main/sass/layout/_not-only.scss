@@ -1,0 +1,43 @@
+.not-only {
+  background: $bg-gradient;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    max-width: 128rem;
+    margin: 0 auto;
+    padding: 18rem 4rem 0;
+  }
+
+  &__content {
+    padding: 16.3rem 4.2rem 0 0;
+  }
+
+  &__title {
+    @extend %h2;
+    color: $color-light-xl;
+    padding: 0 15rem 4.2rem 0;
+  }
+
+  &__text {
+    @extend %paragraph-1;
+    color: $color-dark-s;
+    padding-bottom: 4.2rem;
+  }
+
+  &__button {
+    width: 20.7rem;
+    background-color: $color-primary;
+  }
+
+  &__button:hover {
+    background-color: $color-primary-light;
+  }
+
+  &__img-wrapper {
+  }
+
+  &__img {
+    display: block;
+  }
+}

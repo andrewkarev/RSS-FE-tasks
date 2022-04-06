@@ -1,0 +1,89 @@
+.pets {
+  background-color: $color-light-l;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 128rem;
+    margin: 0 auto;
+    padding: 8rem 4rem 10rem;
+  }
+
+  &__title {
+    max-width: 40rem;
+    padding-bottom: 6rem;
+    text-align: center;
+    color: $color-dark-l;
+    @extend %h3;
+  }
+
+  &__slider {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 6rem;
+  }
+
+  &__button {
+    width: 26.1rem;
+    background-color: $color-primary;
+  }
+
+  &__button:hover {
+    background-color: $color-primary-light;
+  }
+}
+
+.pets-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 9rem;
+}
+
+.pets-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-radius: 0.9rem;
+  background-color: $color-light-s;
+
+  &__img-wrapper {
+  }
+
+  &__img {
+    display: block;
+  }
+
+  &__title {
+    @extend %h4;
+    color: $color-dark-l;
+  }
+
+  &__button {
+    width: 18.7rem;
+    border: 2px solid $color-primary;
+    background-color: transparent;
+    color: $color-dark-3xl;
+    cursor: pointer;
+  }
+}
+
+.pets-card:hover {
+  @include card-hover();
+  cursor: pointer;
+}
+
+.pets-card:hover .pets-card__button {
+  background-color: $color-primary-light;
+  border-color: $color-primary-light;
+}
+
+.pets-card:hover .pets-card__button:active {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}

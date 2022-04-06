@@ -1,0 +1,73 @@
+.footer {
+  background: $bg-gradient;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 128rem;
+    margin: 0 auto;
+    padding: 4rem 4rem 0;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 6rem;
+  }
+
+  &__item:first-child {
+    width: 27.9rem;
+  }
+
+  &__item:nth-child(2) {
+    width: 30.2rem;
+  }
+
+  &__title {
+    @extend %h3;
+    color: $color-light-xl;
+    padding-top: 1.6rem;
+  }
+
+  &__subtitle {
+    display: flex;
+    justify-content: start;
+    @extend %h4;
+    text-align: left;
+    color: $color-primary;
+  }
+
+  &__link {
+    display: block;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+  }
+
+  &__link--email {
+    padding: 0.5rem 0 0.4rem 6rem;
+    background-image: url("/shelter/assets/icons/footer/icon-email.svg");
+  }
+
+  &__link--phone {
+    padding: 0.5rem 0 0.4rem 6rem;
+    background-image: url("/shelter/assets/icons/footer/icon-phone.svg");
+  }
+
+  &__link--mark {
+    padding-left: 4.2rem;
+    background-image: url("/shelter/assets/icons/footer/icon-marker.svg");
+  }
+
+  &__link--mark-1 {
+    padding: 0.5rem 0 0.4rem 4.2rem;
+  }
+
+  &__img-wrapper {
+  }
+
+  &__img {
+    display: block;
+  }
+}
