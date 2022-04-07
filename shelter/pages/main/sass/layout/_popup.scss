@@ -16,12 +16,26 @@
     height: 50rem;
     background-color: $color-light-s;
     border-radius: 0.9rem;
+    @media screen and (max-width: $breakpoint-1) {
+      width: 63rem;
+      height: 35rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      width: 24rem;
+      height: 34.1rem;
+    }
   }
 
   &__close-button {
     position: absolute;
     top: -5.2rem;
     right: -4.2rem;
+    @media screen and (max-width: $breakpoint-1) {
+      right: -4.3rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      right: -3rem;
+    }
   }
 
   &__close-button--hover {
@@ -40,6 +54,15 @@
   &__img-wrapper {
     width: 50rem;
     height: 50rem;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    @media screen and (max-width: $breakpoint-1) {
+      width: 35rem;
+      height: 35rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      display: none;
+    }
   }
 
   &__img {
@@ -52,12 +75,26 @@
     height: 36.2rem;
     margin: 5rem 2rem 8.8rem 2.9rem;
     padding-left: 0.1rem;
+    @media screen and (max-width: $breakpoint-1) {
+      width: 26rem;
+      height: 30.3rem;
+      margin: 1rem 0.9rem 3.7rem 1.1rem;
+      padding-left: 0;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      width: 22rem;
+      height: 32.1rem;
+      margin: 1rem;
+    }
   }
 
   &__title {
     @extend %h3;
     padding-bottom: 1rem;
     color: #000000;
+    @media screen and (max-width: $breakpoint-2) {
+      text-align: center;
+    }
   }
 
   &__subtitle {
@@ -65,12 +102,26 @@
     padding-bottom: 4rem;
     text-align: left;
     color: #000000;
+    @media screen and (max-width: $breakpoint-1) {
+      padding-bottom: 2rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      text-align: center;
+    }
   }
 
   &__description {
     @extend %h5;
     padding-bottom: 4.3rem;
     color: #000000;
+    @media screen and (max-width: $breakpoint-1) {
+      padding-bottom: 2rem;
+      font-size: 13px;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      padding-bottom: 2.4rem;
+      text-align: justify;
+    }
   }
 
   &__list {
@@ -78,8 +129,10 @@
     flex-direction: column;
     justify-content: space-between;
     height: 10.2rem;
-
     list-style: none;
+    @media screen and (max-width: $breakpoint-1) {
+      height: 8.7rem;
+    }
   }
 
   &__list-item {

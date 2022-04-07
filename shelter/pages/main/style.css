@@ -387,6 +387,11 @@ template {
   padding-right: 15px;
   overflow: hidden;
 }
+@media screen and (max-width: 1279px) {
+  .body--lock {
+    padding-right: 0;
+  }
+}
 
 .wrapper {
   position: relative;
@@ -1612,10 +1617,32 @@ template {
   background-color: #fafafa;
   border-radius: 0.9rem;
 }
+@media screen and (max-width: 1279px) {
+  .popup__container {
+    width: 63rem;
+    height: 35rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .popup__container {
+    width: 24rem;
+    height: 34.1rem;
+  }
+}
 .popup__close-button {
   position: absolute;
   top: -5.2rem;
   right: -4.2rem;
+}
+@media screen and (max-width: 1279px) {
+  .popup__close-button {
+    right: -4.3rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .popup__close-button {
+    right: -3rem;
+  }
 }
 .popup__close-button--hover {
   background-color: #fddcc4;
@@ -1633,6 +1660,19 @@ template {
 .popup__img-wrapper {
   width: 50rem;
   height: 50rem;
+  border-radius: 0.9rem;
+  overflow: hidden;
+}
+@media screen and (max-width: 1279px) {
+  .popup__img-wrapper {
+    width: 35rem;
+    height: 35rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .popup__img-wrapper {
+    display: none;
+  }
 }
 .popup__img {
   display: block;
@@ -1644,18 +1684,60 @@ template {
   margin: 5rem 2rem 8.8rem 2.9rem;
   padding-left: 0.1rem;
 }
+@media screen and (max-width: 1279px) {
+  .popup__content {
+    width: 26rem;
+    height: 30.3rem;
+    margin: 1rem 0.9rem 3.7rem 1.1rem;
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .popup__content {
+    width: 22rem;
+    height: 32.1rem;
+    margin: 1rem;
+  }
+}
 .popup__title {
   padding-bottom: 1rem;
   color: #000000;
+}
+@media screen and (max-width: 767px) {
+  .popup__title {
+    text-align: center;
+  }
 }
 .popup__subtitle {
   padding-bottom: 4rem;
   text-align: left;
   color: #000000;
 }
+@media screen and (max-width: 1279px) {
+  .popup__subtitle {
+    padding-bottom: 2rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .popup__subtitle {
+    text-align: center;
+  }
+}
 .popup__description {
   padding-bottom: 4.3rem;
   color: #000000;
+}
+@media screen and (max-width: 1279px) {
+  .popup__description {
+    padding-bottom: 2rem;
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .popup__description {
+    padding-bottom: 2.4rem;
+    text-align: justify;
+  }
 }
 .popup__list {
   display: -webkit-box;
@@ -1670,6 +1752,11 @@ template {
           justify-content: space-between;
   height: 10.2rem;
   list-style: none;
+}
+@media screen and (max-width: 1279px) {
+  .popup__list {
+    height: 8.7rem;
+  }
 }
 .popup__list-item {
   color: #000000;
