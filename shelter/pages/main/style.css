@@ -382,10 +382,10 @@ template {
   fill: #cdcdcd;
 }
 
-@media screen and (max-width: 767px) {
-  .body--lock {
-    overflow: hidden;
-  }
+.body--lock {
+  height: 100vh;
+  padding-right: 15px;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -1591,9 +1591,7 @@ template {
 
 .popup {
   position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1618,6 +1616,10 @@ template {
   position: absolute;
   top: -5.2rem;
   right: -4.2rem;
+}
+.popup__close-button--hover {
+  background-color: #fddcc4;
+  border-color: #fddcc4;
 }
 .popup__modal-window {
   display: -webkit-box;
@@ -1675,6 +1677,12 @@ template {
 }
 .popup__list-annotation {
   font-weight: 700;
+}
+
+.popup--show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .wrapper--pets {

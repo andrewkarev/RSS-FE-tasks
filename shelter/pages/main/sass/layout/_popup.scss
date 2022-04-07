@@ -1,6 +1,6 @@
 .popup {
   position: fixed;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   top: 0;
@@ -22,6 +22,11 @@
     position: absolute;
     top: -5.2rem;
     right: -4.2rem;
+  }
+
+  &__close-button--hover {
+    background-color: $color-primary-light;
+    border-color: $color-primary-light;
   }
 
   &__modal-window {
@@ -87,4 +92,8 @@
   &__list-annotation {
     font-weight: 700;
   }
+}
+
+.popup--show {
+  display: flex;
 }
