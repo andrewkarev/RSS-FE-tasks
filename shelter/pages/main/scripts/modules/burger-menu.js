@@ -1,5 +1,5 @@
 export const burgerMenu = document.querySelector('.burger-menu');
-const body = document.querySelector('body');
+export const body = document.querySelector('body');
 const headerContainer = document.querySelector('.header__container');
 const headerPetsPage = document.querySelector('.header--pets');
 const navigation = document.querySelector('.navigation');
