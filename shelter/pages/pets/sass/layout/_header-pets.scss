@@ -19,6 +19,17 @@
   }
 }
 
+.header--pets-lock {
+  padding-right: 15px;
+  @media screen and (max-width: $breakpoint-1) {
+    padding: 3rem;
+  }
+  @media screen and (max-width: $breakpoint-2) {
+    padding-left: 1rem;
+    padding-right: 5rem;
+  }
+}
+
 .header--pets-mobile {
     @media screen and (max-width: $breakpoint-2) {
     background-color: transparent;

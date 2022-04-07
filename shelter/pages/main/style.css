@@ -1801,6 +1801,21 @@ template {
   }
 }
 
+.header--pets-lock {
+  padding-right: 15px;
+}
+@media screen and (max-width: 1279px) {
+  .header--pets-lock {
+    padding: 3rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .header--pets-lock {
+    padding-left: 1rem;
+    padding-right: 5rem;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .header--pets-mobile {
     background-color: transparent;

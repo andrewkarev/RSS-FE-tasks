@@ -1,4 +1,4 @@
-import { body } from './burger-menu.js';
+import { body, headerPetsPage } from './burger-menu.js';
 export const petsCard = document.querySelectorAll('.pets-card');
 export const popup = document.querySelector('.popup');
 export const popupCloseButton = document.querySelector('.popup__close-button');
@@ -7,11 +7,13 @@ export const popupCloseButton = document.querySelector('.popup__close-button');
 export function showPopup() {
   body.classList.add('body--lock');
   popup.classList.add('popup--show');
+  checkPage()
 }
 
 export function closePopup() {
   body.classList.remove('body--lock');
   popup.classList.remove('popup--show');
+  checkPage()
 }
 
 export function hoverCloseButton(e) {
@@ -21,5 +23,11 @@ export function hoverCloseButton(e) {
     popupCloseButton.classList.add('popup__close-button--hover');
   } else {
     popupCloseButton.classList.remove('popup__close-button--hover');
+  }
+}
+
+function checkPage() {
+  if (headerPetsPage) {
+    headerPetsPage.classList.toggle('header--pets-lock');
   }
 }

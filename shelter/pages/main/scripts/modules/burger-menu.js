@@ -1,7 +1,7 @@
 export const burgerMenu = document.querySelector('.burger-menu');
 export const body = document.querySelector('body');
 const headerContainer = document.querySelector('.header__container');
-const headerPetsPage = document.querySelector('.header--pets');
+export const headerPetsPage = document.querySelector('.header--pets');
 const navigation = document.querySelector('.navigation');
 const background = document.querySelector('.background');
 
