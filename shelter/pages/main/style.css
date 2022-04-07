@@ -1626,6 +1626,10 @@ template {
   display: -ms-flexbox;
   display: flex;
 }
+.popup__modal-window:hover {
+  -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+          box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
 .popup__img-wrapper {
   width: 50rem;
   height: 50rem;
