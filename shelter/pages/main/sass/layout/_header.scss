@@ -1,7 +1,7 @@
 .body--lock {
-  @media screen and (max-width: $breakpoint-2) {
-    overflow: hidden;
-  }
+  height: 100vh;
+  padding-right: 15px;
+  overflow: hidden;
 }
 
 .wrapper {
