@@ -47,13 +47,18 @@ function getRandomIndex() {
 
 let offset = 0;
 
-function pushSlide() {
+function pushSlide(target = null) {
   const sliderElement = document.createElement('div');
   const containerWidth = petsCards.offsetWidth
 
   const cardsGap = containerWidth === 990 ? 90 : containerWidth === 580 ? 40 : 0;
   sliderElement.classList.add('pets-cards__slide');
-  sliderElement.style.left = !cardIndices.length ? offset * containerWidth + 'px' : offset * containerWidth + cardsGap + 'px';
+
+  if (target) {
+    sliderElement.style.left = !cardIndices.length ? offset * containerWidth + 'px' : -(offset * containerWidth + cardsGap) + 'px';
+  } else {
+    sliderElement.style.left = !cardIndices.length ? offset * containerWidth + 'px' : offset * containerWidth + cardsGap + 'px';
+  }
 
   const cardsCount = 3;
   for (let i = 0; i < cardsCount; i++) {
@@ -61,33 +66,53 @@ function pushSlide() {
     sliderElement.innerHTML += petsCsrdsNodes[index];
   }
 
-  petsCards.appendChild(sliderElement);
+  if (target) {
+    petsCards.prepend(sliderElement);
+  } else {
+    petsCards.appendChild(sliderElement);
+  }
+
   offset = 1;
 }
 
-function shiftForward() {
-  pushSlide();
+function shiftForward(e) {
+  const eventTarget = e.target;
+
+  if (eventTarget === buttonPrevious) {
+    pushSlide();
+  } else {
+    pushSlide(eventTarget);
+  }
+
   cardIndices = cardIndices.slice(3);
 
   buttonNext.removeEventListener('click', shiftForward);
+  buttonPrevious.removeEventListener('click', shiftForward);
   const sliderElementsCount = document.querySelectorAll('.pets-cards__slide');
   const containerWidth = petsCards.offsetWidth
-  let offset2 = 0;
 
-  for (let i = 0; i < sliderElementsCount.length; i++) {
-    sliderElementsCount[i].style.left = offset2 * containerWidth - containerWidth + 'px';
-    offset2++;
+  if (eventTarget === buttonPrevious) {
+    let offset2 = 0;
+    for (let i = 0; i < sliderElementsCount.length; i++) {
+      sliderElementsCount[i].style.left = offset2 * containerWidth - containerWidth + 'px';
+      offset2++;
+    }
+  } else {
+    let offset2 = 1;
+    for (let i = sliderElementsCount.length - 1; i >= 0; i--) {
+      sliderElementsCount[i].style.left = offset2 * containerWidth + 'px';
+      offset2--;
+    }
   }
 
   setTimeout(() => {
     buttonNext.addEventListener('click', shiftForward);
-    sliderElementsCount[0].remove();
+    buttonPrevious.addEventListener('click', shiftForward);
+    eventTarget === buttonPrevious ? sliderElementsCount[0].remove() : sliderElementsCount[1].remove();
   }, 1300)
-
 }
 
 
 pushSlide();
 buttonNext.addEventListener('click', shiftForward);
-
-console.log(petsCards.innerHTML)
+buttonPrevious.addEventListener('click', shiftForward);
