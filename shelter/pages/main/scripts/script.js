@@ -23,7 +23,7 @@ const buttonNext = document.querySelector('.button-arrow--next');
 const petsCards = document.querySelector('.pets-cards');
 const petsCsrdsNodes = PETS.map(pet => createCardNode.call(pet));
 let cardIndices = [];
-
+let offset = 0;
 
 function createCardNode() {
   return `<div class="pets-card pets-card--main-page">
@@ -45,17 +45,19 @@ function getRandomIndex() {
   return randomIndex;
 }
 
-let offset = 0;
+function getCardsContainerWidth() {
+  return petsCards.offsetWidth;
+}
 
 function pushSlide(target = null) {
   const sliderElement = document.createElement('div');
-  const containerWidth = petsCards.offsetWidth
+  const containerWidth = getCardsContainerWidth();
 
   const cardsGap = containerWidth === 990 ? 90 : containerWidth === 580 ? 40 : 0;
   sliderElement.classList.add('pets-cards__slide');
 
   if (target) {
-    sliderElement.style.left = !cardIndices.length ? offset * containerWidth + 'px' : -(offset * containerWidth + cardsGap) + 'px';
+    sliderElement.style.left = -(offset * containerWidth + cardsGap) + 'px';
   } else {
     sliderElement.style.left = !cardIndices.length ? offset * containerWidth + 'px' : offset * containerWidth + cardsGap + 'px';
   }
@@ -89,18 +91,22 @@ function shiftForward(e) {
   buttonNext.removeEventListener('click', shiftForward);
   buttonPrevious.removeEventListener('click', shiftForward);
   const sliderElementsCount = document.querySelectorAll('.pets-cards__slide');
-  const containerWidth = petsCards.offsetWidth
+  const containerWidth = getCardsContainerWidth();
+  const cardsGap = containerWidth === 990 ? 90 : containerWidth === 580 ? 40 : 0;
+  let offset2;
 
   if (eventTarget === buttonPrevious) {
-    let offset2 = 0;
+    offset2 = 0;
     for (let i = 0; i < sliderElementsCount.length; i++) {
-      sliderElementsCount[i].style.left = offset2 * containerWidth - containerWidth + 'px';
+      i === 0 ? sliderElementsCount[i].style.left = offset2 * containerWidth - cardsGap - containerWidth + 'px' :
+        sliderElementsCount[i].style.left = offset2 * containerWidth - containerWidth + 'px';
       offset2++;
     }
   } else {
-    let offset2 = 1;
+    offset2 = 1;
     for (let i = sliderElementsCount.length - 1; i >= 0; i--) {
-      sliderElementsCount[i].style.left = offset2 * containerWidth + 'px';
+      i === sliderElementsCount.length - 1 ? sliderElementsCount[i].style.left = offset2 * containerWidth + cardsGap + 'px' :
+        sliderElementsCount[i].style.left = offset2 * containerWidth + 'px';
       offset2--;
     }
   }
@@ -111,7 +117,6 @@ function shiftForward(e) {
     eventTarget === buttonPrevious ? sliderElementsCount[0].remove() : sliderElementsCount[1].remove();
   }, 1300)
 }
-
 
 pushSlide();
 buttonNext.addEventListener('click', shiftForward);
