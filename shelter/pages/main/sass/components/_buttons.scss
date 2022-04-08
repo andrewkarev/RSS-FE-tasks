@@ -4,6 +4,8 @@
 
 .button-arrow {
   @include navigation-item();
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
 
