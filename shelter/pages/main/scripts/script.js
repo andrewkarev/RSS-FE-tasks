@@ -51,11 +51,12 @@ function pushSlide() {
   const sliderElement = document.createElement('div');
   const containerWidth = petsCards.offsetWidth
 
+  const cardsGap = containerWidth === 990 ? 90 : containerWidth === 580 ? 40 : 0;
   sliderElement.classList.add('pets-cards__slide');
-  sliderElement.style.left = offset * containerWidth + 'px';
+  sliderElement.style.left = !cardIndices.length ? offset * containerWidth + 'px' : offset * containerWidth + cardsGap + 'px';
 
-  // const cardsCount = containerWidth === 990 ? 3 : containerWidth === 580 ? 2 : 1;
-  for (let i = 0; i < 3; i++) {
+  const cardsCount = 3;
+  for (let i = 0; i < cardsCount; i++) {
     let index = getRandomIndex();
     sliderElement.innerHTML += petsCsrdsNodes[index];
   }
@@ -65,6 +66,10 @@ function pushSlide() {
 }
 
 function shiftForward() {
+  pushSlide();
+  cardIndices = cardIndices.slice(3);
+
+  buttonNext.removeEventListener('click', shiftForward);
   const sliderElementsCount = document.querySelectorAll('.pets-cards__slide');
   const containerWidth = petsCards.offsetWidth
   let offset2 = 0;
@@ -75,14 +80,14 @@ function shiftForward() {
   }
 
   setTimeout(() => {
-    cardIndices = cardIndices.slice(3);
+    buttonNext.addEventListener('click', shiftForward);
     sliderElementsCount[0].remove();
-    pushSlide();
-  }, 2000)
+  }, 1300)
 
 }
 
-pushSlide()
-pushSlide()
 
+pushSlide();
 buttonNext.addEventListener('click', shiftForward);
+
+console.log(petsCards.innerHTML)

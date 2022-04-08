@@ -1045,9 +1045,9 @@ template {
       -ms-flex-direction: row;
           flex-direction: row;
   gap: 9rem;
-  -webkit-transition: all 2s ease;
-  -o-transition: all 2s ease;
-  transition: all 2s ease;
+  -webkit-transition: all 1.3s linear;
+  -o-transition: all 1.3s linear;
+  transition: all 1.3s linear;
 }
 @media screen and (max-width: 1279px) {
   .pets-cards__slide {

@@ -86,7 +86,7 @@
     flex-direction: row;
     gap: 9rem;
 
-    transition: all 2s ease;
+    transition: all 1.3s linear;
     @media screen and (max-width: $breakpoint-1) {
       gap: 4rem;
     }
