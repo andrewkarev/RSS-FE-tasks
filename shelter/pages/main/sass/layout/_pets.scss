@@ -62,20 +62,12 @@
   position: relative;
   width: 99rem;
   height: 43.5rem;
-
   overflow: hidden;
-  // *********
-  // display: flex;
-  // flex-direction: row;
-  // gap: 9rem;
   @media screen and (max-width: $breakpoint-1) {
     width: 58rem;
-    // ***********
-    // gap: 4rem;
   }
   @media screen and (max-width: $breakpoint-2) {
     width: 27rem;
-    // ***********
   }
 
   &__slide {
