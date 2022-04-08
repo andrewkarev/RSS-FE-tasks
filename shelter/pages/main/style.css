@@ -360,6 +360,8 @@ template {
   border: 2px solid #f1cdb3;
   border-radius: 10rem;
   background: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
 
@@ -1062,6 +1064,11 @@ template {
 }
 
 .pets-card:hover {
+  -webkit-transition: -webkit-box-shadow 0s linear;
+  transition: -webkit-box-shadow 0s linear;
+  -o-transition: box-shadow 0s linear;
+  transition: box-shadow 0s linear;
+  transition: box-shadow 0s linear, -webkit-box-shadow 0s linear;
   -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
           box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   cursor: pointer;
@@ -1089,6 +1096,9 @@ template {
   }
 }
 
+.button-arrow--prev {
+  background-image: url("../../assets/icons/pets/arrow-previous.svg");
+}
 @media screen and (max-width: 767px) {
   .button-arrow--prev {
     -webkit-box-ordinal-group: 2;
@@ -1097,6 +1107,9 @@ template {
   }
 }
 
+.button-arrow--next {
+  background-image: url("../../assets/icons/pets/arrow-next.svg");
+}
 @media screen and (max-width: 767px) {
   .button-arrow--next {
     -webkit-box-ordinal-group: 3;
