@@ -1018,6 +1018,25 @@ template {
 }
 
 .pets-cards {
+  position: relative;
+  width: 99rem;
+  height: 43.5rem;
+  overflow: hidden;
+}
+@media screen and (max-width: 1279px) {
+  .pets-cards {
+    width: 58rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .pets-cards {
+    width: 27rem;
+  }
+}
+.pets-cards__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1026,9 +1045,12 @@ template {
       -ms-flex-direction: row;
           flex-direction: row;
   gap: 9rem;
+  -webkit-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  transition: all 2s ease;
 }
 @media screen and (max-width: 1279px) {
-  .pets-cards {
+  .pets-cards__slide {
     gap: 4rem;
   }
 }
