@@ -1,17 +1,17 @@
 .popup {
   position: fixed;
-  display: none;
-  justify-content: center;
-  align-items: center;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background: rgba(41, 41, 41, 0.6);
-  z-index: 50;
+  z-index: -50;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 
   &__container {
-    position: relative;
+    position: absolute;
+    left: calc(50% - 45rem);
     width: 90rem;
     height: 50rem;
     background-color: $color-light-s;
@@ -19,10 +19,52 @@
     @media screen and (max-width: $breakpoint-1) {
       width: 63rem;
       height: 35rem;
+      left: calc(50% - 31.5rem);
     }
     @media screen and (max-width: $breakpoint-2) {
       width: 24rem;
       height: 34.1rem;
+      left: calc(50% - 12rem);
+    }
+  }
+
+  &__container--show {
+    animation: showModal 0.4s ease-in-out;
+    animation-fill-mode: forwards;
+    @media screen and (max-width: $breakpoint-1) {
+      animation: showModalTablet 0.4s ease-in-out;
+      animation-fill-mode: forwards;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      animation: showModalMobile 0.4s ease-in-out;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  @keyframes showModal {
+    from {
+      top: -50%;
+    }
+    to {
+      top: calc(50% - 25rem);
+    }
+  }
+
+  @keyframes showModalTablet {
+    from {
+      top: -50%;
+    }
+    to {
+      top: calc(50% - 17.5rem);
+    }
+  }
+
+  @keyframes showModalMobile {
+    from {
+      top: -50%;
+    }
+    to {
+      top: calc(50% - 17.05rem);
     }
   }
 
@@ -152,5 +194,7 @@
 }
 
 .popup--show {
-  display: flex;
+  z-index: 50;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }

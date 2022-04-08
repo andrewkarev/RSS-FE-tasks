@@ -1596,22 +1596,20 @@ template {
 
 .popup {
   position: fixed;
-  display: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background: rgba(41, 41, 41, 0.6);
-  z-index: 50;
+  z-index: -50;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 .popup__container {
-  position: relative;
+  position: absolute;
+  left: calc(50% - 45rem);
   width: 90rem;
   height: 50rem;
   background-color: #fafafa;
@@ -1621,12 +1619,84 @@ template {
   .popup__container {
     width: 63rem;
     height: 35rem;
+    left: calc(50% - 31.5rem);
   }
 }
 @media screen and (max-width: 767px) {
   .popup__container {
     width: 24rem;
     height: 34.1rem;
+    left: calc(50% - 12rem);
+  }
+}
+.popup__container--show {
+  -webkit-animation: showModal 0.4s ease-in-out;
+          animation: showModal 0.4s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@media screen and (max-width: 1279px) {
+  .popup__container--show {
+    -webkit-animation: showModalTablet 0.4s ease-in-out;
+            animation: showModalTablet 0.4s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+}
+@media screen and (max-width: 767px) {
+  .popup__container--show {
+    -webkit-animation: showModalMobile 0.4s ease-in-out;
+            animation: showModalMobile 0.4s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+}
+@-webkit-keyframes showModal {
+  from {
+    top: -50%;
+  }
+  to {
+    top: calc(50% - 25rem);
+  }
+}
+@keyframes showModal {
+  from {
+    top: -50%;
+  }
+  to {
+    top: calc(50% - 25rem);
+  }
+}
+@-webkit-keyframes showModalTablet {
+  from {
+    top: -50%;
+  }
+  to {
+    top: calc(50% - 17.5rem);
+  }
+}
+@keyframes showModalTablet {
+  from {
+    top: -50%;
+  }
+  to {
+    top: calc(50% - 17.5rem);
+  }
+}
+@-webkit-keyframes showModalMobile {
+  from {
+    top: -50%;
+  }
+  to {
+    top: calc(50% - 17.05rem);
+  }
+}
+@keyframes showModalMobile {
+  from {
+    top: -50%;
+  }
+  to {
+    top: calc(50% - 17.05rem);
   }
 }
 .popup__close-button {
@@ -1771,9 +1841,11 @@ template {
 }
 
 .popup--show {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  z-index: 50;
+  opacity: 1;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .wrapper--pets {
