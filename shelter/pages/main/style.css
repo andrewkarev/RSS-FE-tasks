@@ -1086,13 +1086,12 @@ template {
 }
 
 .pets-card:hover {
-  -webkit-transition: -webkit-box-shadow 0s linear;
-  transition: -webkit-box-shadow 0s linear;
-  -o-transition: box-shadow 0s linear;
-  transition: box-shadow 0s linear;
-  transition: box-shadow 0s linear, -webkit-box-shadow 0s linear;
   -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
           box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  background-color: #ffffff;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
