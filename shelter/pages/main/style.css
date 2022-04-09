@@ -1186,7 +1186,7 @@ template {
           flex-direction: column;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: end;
+          justify-content: flex-end;
   height: 11.3rem;
   background-repeat: no-repeat;
   background-position: 50% 0;
@@ -1543,7 +1543,7 @@ template {
   display: flex;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
-          justify-content: start;
+          justify-content: flex-start;
   text-align: left;
   color: #f1cdb3;
 }
