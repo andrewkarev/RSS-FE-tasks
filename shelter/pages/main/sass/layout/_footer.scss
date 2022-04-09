@@ -33,7 +33,7 @@
 
   &__subtitle {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     @extend %h4;
     text-align: left;
     color: $color-primary;

@@ -1,5 +1,8 @@
 @mixin card-hover() {
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  background-color: $color-light-xl;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 @mixin button() {

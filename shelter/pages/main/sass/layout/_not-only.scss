@@ -32,6 +32,7 @@
 
   &__button:hover {
     background-color: $color-primary-light;
+    transition: all 0.3s ease;
   }
 
   &__img-wrapper {
