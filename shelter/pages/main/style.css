@@ -1117,22 +1117,22 @@ template {
   }
 }
 
-.button-arrow--prev {
+.button-arrow--next {
   background-image: url("../../assets/icons/pets/arrow-previous.svg");
 }
 @media screen and (max-width: 767px) {
-  .button-arrow--prev {
+  .button-arrow--next {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
   }
 }
 
-.button-arrow--next {
+.button-arrow--prev {
   background-image: url("../../assets/icons/pets/arrow-next.svg");
 }
 @media screen and (max-width: 767px) {
-  .button-arrow--next {
+  .button-arrow--prev {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
