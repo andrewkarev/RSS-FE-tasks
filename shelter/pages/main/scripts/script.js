@@ -25,6 +25,7 @@ const petsCsrdsNodes = PETS.map(pet => createCardNode.call(pet));
 let cardIndices = [];
 let offset = 0;
 
+// Create pets card element
 function createCardNode() {
   return `<div class="pets-card pets-card--main-page">
     <div class="pets-card__img-wrapper">
@@ -35,6 +36,7 @@ function createCardNode() {
   </div>`
 }
 
+// Roll random index
 function getRandomIndex() {
   let randomIndex = Math.floor(Math.random() * (petsCsrdsNodes.length));
   if (cardIndices.includes(randomIndex)) {
@@ -45,10 +47,12 @@ function getRandomIndex() {
   return randomIndex;
 }
 
+//
 function getCardsContainerWidth() {
   return petsCards.offsetWidth;
 }
 
+// Place slide in the pets cards element
 function pushSlide(target = null) {
   const sliderElement = document.createElement('div');
   const containerWidth = getCardsContainerWidth();
@@ -75,8 +79,13 @@ function pushSlide(target = null) {
   }
 
   offset = 1;
+
+  // Show popup on pets card button click
+  const petsCardButton = petsCards.querySelectorAll('.pets-card__button');
+  petsCardButton.forEach(button => button.addEventListener('click', showPopup));
 }
 
+// Replace first slide with second
 function shiftForward(e) {
   const eventTarget = e.target;
   petsCards.style.overflow = 'hidden';
