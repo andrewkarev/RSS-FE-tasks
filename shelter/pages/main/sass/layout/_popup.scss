@@ -13,17 +13,14 @@
     position: absolute;
     left: calc(50% - 45rem);
     width: 90rem;
-    height: 50rem;
     background-color: $color-light-s;
     border-radius: 0.9rem;
     @media screen and (max-width: $breakpoint-1) {
       width: 63rem;
-      height: 35rem;
       left: calc(50% - 31.5rem);
     }
     @media screen and (max-width: $breakpoint-2) {
       width: 24rem;
-      height: 34.1rem;
       left: calc(50% - 12rem);
     }
   }
@@ -97,6 +94,7 @@
   &__img-wrapper {
     width: 50rem;
     height: 50rem;
+    align-self: center;
     border-radius: 0.9rem;
     overflow: hidden;
     @media screen and (max-width: $breakpoint-1) {
@@ -115,18 +113,15 @@
 
   &__content {
     width: 35.1rem;
-    height: 36.2rem;
-    margin: 5rem 2rem 8.8rem 2.9rem;
+    margin: 5rem 2rem 5rem 2.9rem;
     padding-left: 0.1rem;
     @media screen and (max-width: $breakpoint-1) {
       width: 26rem;
-      height: 30.3rem;
       margin: 1rem 0.9rem 3.7rem 1.1rem;
       padding-left: 0;
     }
     @media screen and (max-width: $breakpoint-2) {
       width: 22rem;
-      height: 32.1rem;
       margin: 1rem;
     }
   }
@@ -170,11 +165,10 @@
   &__list {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 10.2rem;
+    gap: 1rem;
     list-style: none;
     @media screen and (max-width: $breakpoint-1) {
-      height: 8.7rem;
+      gap: 0.5rem;
     }
   }
 
