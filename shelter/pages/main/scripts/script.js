@@ -79,6 +79,7 @@ function pushSlide(target = null) {
 
 function shiftForward(e) {
   const eventTarget = e.target;
+  petsCards.style.overflow = 'hidden';
 
   if (eventTarget === buttonPrevious) {
     pushSlide();
@@ -114,6 +115,7 @@ function shiftForward(e) {
   setTimeout(() => {
     buttonNext.addEventListener('click', shiftForward);
     buttonPrevious.addEventListener('click', shiftForward);
+    petsCards.style.overflow = 'initial';
     eventTarget === buttonPrevious ? sliderElementsCount[0].remove() : sliderElementsCount[1].remove();
   }, 1300)
 }
