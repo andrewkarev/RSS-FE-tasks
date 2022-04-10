@@ -15,7 +15,7 @@ function createCardNode() {
       <img class="pets-card__img" src="${this.img}" alt="${this.breed}">
     </div>
     <h4 class="pets-card__title">${this.name}</h4>
-    <button class="pets-card__button button">Learn more</button>
+    <button class="pets-card__button button" data-id="${this.id}">Learn more</button>
   </div>`
 }
 
