@@ -1736,6 +1736,7 @@ template {
   position: absolute;
   top: -5.2rem;
   right: -4.2rem;
+  background-image: url("../../assets/icons/popup/close.svg");
 }
 @media screen and (max-width: 1279px) {
   .popup__close-button {
