@@ -1,7 +1,9 @@
 import { burgerMenu, toggleMenu, closeMenu } from './modules/burger-menu.js';
-import { popupCloseButton, popup, showPopup, hoverCloseButton, closePopup } from './modules/popup.js';
+import { popupCloseButton, popup, hoverCloseButton, closePopup } from './modules/popup.js';
 import { buttonNext, buttonPrevious, pushSlide, shiftForward } from './modules/slider.js';
 import PETS from './modules/our-pets.js';
+
+export const body = document.querySelector('body');
 
 // Burger-menu
 document.addEventListener('click', closeMenu);
@@ -18,6 +20,9 @@ popup.addEventListener('click', (e) => {
 });
 
 // Slider
-pushSlide();
-buttonNext.addEventListener('click', shiftForward);
-buttonPrevious.addEventListener('click', shiftForward);
+if (body.dataset.page === 'main') {
+  pushSlide();
+  buttonNext.addEventListener('click', shiftForward);
+  buttonPrevious.addEventListener('click', shiftForward);
+}
+

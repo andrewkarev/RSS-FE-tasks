@@ -1,4 +1,5 @@
-import { body, headerPetsPage } from './burger-menu.js';
+import { body } from './../script.js';
+import { headerPetsPage } from './burger-menu.js';
 import PETS from './our-pets.js';
 
 export const popup = document.querySelector('.popup');
@@ -19,6 +20,11 @@ export function showPopup(petId) {
   popup.classList.add('popup--show');
   popupContainer.classList.add('popup__container--show');
   checkPage();
+  // *********
+  // const modalWindowHeight = modalWindow.offsetHeight;
+  // const popupContainerShow = modalWindow.querySelector('.popup__container--show');
+  // const topOffset = (document.documentElement.clientHeight - modalWindowHeight) / 2;
+  // popupContainer.style.top = topOffset + 'px';
 }
 
 function createPopupInner() {
