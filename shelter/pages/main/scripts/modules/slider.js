@@ -65,7 +65,10 @@ export function pushSlide(target = null) {
 
   // Show popup on pets card button click
   const petsCardButton = petsCards.querySelectorAll('.pets-card__button');
-  petsCardButton.forEach(button => button.addEventListener('click', showPopup));
+  petsCardButton.forEach(button => button.addEventListener('click', (e) => {
+    const id = Number(e.target.dataset.id);
+    showPopup(id);
+  }));
 }
 
 // Replace first slide with second
