@@ -1863,11 +1863,14 @@ template {
   }
 }
 .popup__list-item {
+  position: relative;
+  margin-left: 1.4rem;
   color: #000000;
 }
 .popup__list-item::before {
+  position: absolute;
+  left: -1.4rem;
   content: "▪";
-  padding-right: 0.7rem;
   color: #f1cdb3;
 }
 .popup__list-annotation {

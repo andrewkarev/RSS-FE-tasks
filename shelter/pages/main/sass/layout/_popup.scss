@@ -179,13 +179,16 @@
   }
 
   &__list-item {
+    position: relative;
+    margin-left: 1.4rem;
     @extend %h5;
     color: #000000;
   }
 
   &__list-item::before {
+    position: absolute;
+    left: -1.4rem;
     content: "▪";
-    padding-right: 0.7rem;
     color: $color-primary;
   }
 

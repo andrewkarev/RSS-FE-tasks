@@ -1,5 +1,5 @@
 import { burgerMenu, toggleMenu, closeMenu } from './modules/burger-menu.js';
-import { petsCard, popupCloseButton, popup, showPopup, hoverCloseButton, closePopup } from './modules/popup.js';
+import { popupCloseButton, popup, showPopup, hoverCloseButton, closePopup } from './modules/popup.js';
 import { buttonNext, buttonPrevious, pushSlide, shiftForward } from './modules/slider.js';
 import PETS from './modules/our-pets.js';
 
@@ -8,7 +8,6 @@ document.addEventListener('click', closeMenu);
 burgerMenu.addEventListener('click', toggleMenu);
 
 // Popup
-petsCard.forEach(card => card.addEventListener('click', showPopup));
 document.addEventListener('mouseover', hoverCloseButton);
 popupCloseButton.addEventListener('click', closePopup);
 popup.addEventListener('click', (e) => {
