@@ -53,77 +53,11 @@
         <div class="pets__container pets__container--our-friends">
           <h3 class="pets__title pets__title--our-friends">Our friends who<br> are looking for a house</h3>
 
-          <div class="pets-cards--our-friends">
-
-            <div class="pets-card pets-card--our-friends">
-              <div class="pets-card__img-wrapper">
-                <img class="pets-card__img" src="../../assets/images/our-friends/pets-katrine.webp" alt="Animal photo">
-              </div>
-              <h4 class="pets-card__title">Katrine</h4>
-              <button class="pets-card__button button">Learn more</button>
-            </div>
-
-            <div class="pets-card pets-card--our-friends">
-              <div class="pets-card__img-wrapper">
-                <img class="pets-card__img" src="../../assets/images/our-friends/pets-jennifer.webp" alt="Animal photo">
-              </div>
-              <h4 class="pets-card__title">Jennifer</h4>
-              <button class="pets-card__button button">Learn more</button>
-            </div>
-
-            <div class="pets-card pets-card--our-friends">
-              <div class="pets-card__img-wrapper">
-                <img class="pets-card__img" src="../../assets/images/our-friends/pets-woody.webp" alt="Animal photo">
-              </div>
-              <h4 class="pets-card__title">Woody</h4>
-              <button class="pets-card__button button">Learn more</button>
-            </div>
-
-            <div class="pets-card pets-card--our-friends">
-              <div class="pets-card__img-wrapper">
-                <img class="pets-card__img" src="../../assets/images/our-friends/pets-sophia.webp" alt="Animal photo">
-              </div>
-              <h4 class="pets-card__title">Sophia</h4>
-              <button class="pets-card__button button">Learn more</button>
-            </div>
-
-            <div class="pets-card pets-card--our-friends">
-              <div class="pets-card__img-wrapper">
-                <img class="pets-card__img" src="../../assets/images/our-friends/pets-timmy.webp" alt="Animal photo">
-              </div>
-              <h4 class="pets-card__title">Timmy</h4>
-              <button class="pets-card__button button">Learn more</button>
-            </div>
-
-            <div class="pets-card pets-card--our-friends">
-              <div class="pets-card__img-wrapper">
-                <img class="pets-card__img" src="../../assets/images/our-friends/pets-charly.webp" alt="Animal photo">
-              </div>
-              <h4 class="pets-card__title">Charly</h4>
-              <button class="pets-card__button button">Learn more</button>
-            </div>
-
-            <div class="pets-card pets-card--our-friends">
-              <div class="pets-card__img-wrapper">
-                <img class="pets-card__img" src="../../assets/images/our-friends/pets-scarlet.webp" alt="Animal photo">
-              </div>
-              <h4 class="pets-card__title">Scarlett</h4>
-              <button class="pets-card__button button">Learn more</button>
-            </div>
-
-            <div class="pets-card pets-card--our-friends">
-              <div class="pets-card__img-wrapper">
-                <img class="pets-card__img" src="../../assets/images/our-friends/pets-freddie.webp" alt="Animal photo">
-              </div>
-              <h4 class="pets-card__title">Freddie</h4>
-              <button class="pets-card__button button">Learn more</button>
-            </div>
-
-          </div>
+          <div class="pets-cards--our-friends"></div>
 
           <div class="pets__navigation">
 
-            <button class="button-arrow button-arrow--disabled" type="button">
+            <button class="button-arrow button-arrow--disabled button-arrow--first-page" type="button">
               <svg width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M9.94687 10.7852L0.913671 6.08789V4.98438L9.94687 0.287109V1.625L2.43711 5.53125L9.94687 9.44727V10.7852ZM24.018 10.7852L14.9848 6.08789V4.98438L24.018 0.287109V1.625L16.5082 5.53125L24.018 9.44727V10.7852Z"
@@ -131,7 +65,7 @@
               </svg>
             </button>
 
-            <button class="button-arrow button-arrow--disabled" type="button">
+            <button class="button-arrow button-arrow--disabled button-arrow--previous-page" type="button">
               <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M9.98242 10.7852L0.949219 6.08789V4.98438L9.98242 0.287109V1.625L2.47266 5.53125L9.98242 9.44727V10.7852Z"
@@ -143,7 +77,7 @@
               <span class="page-pointer__inner">1</span>
             </div>
 
-            <button class="button-arrow" type="button">
+            <button class="button-arrow button-arrow--next-page" type="button">
               <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M9.04102 6.08789L0.0078125 10.7852V9.44727L7.51758 5.53125L0.0078125 1.625V0.287109L9.04102 4.98438V6.08789Z"
@@ -151,7 +85,7 @@
               </svg>
             </button>
 
-            <button class="button-arrow" type="button">
+            <button class="button-arrow button-arrow--last-page" type="button">
               <svg width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M10.0055 6.08789L0.972265 10.7852V9.44727L8.48203 5.53125L0.972265 1.625V0.287109L10.0055 4.98438V6.08789ZM24.0766 6.08789L15.0434 10.7852V9.44727L22.5531 5.53125L15.0434 1.625V0.287109L24.0766 4.98438V6.08789Z"
@@ -200,37 +134,7 @@
 
     <div class="popup">
       <div class="popup__container">
-        <button class="button-arrow popup__close-button" type="button">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z"
-              fill="#292929" />
-          </svg>
-        </button>
-        <div class="popup__modal-window">
-          <div class="popup__img-wrapper">
-            <img class="popup__img" src="../../assets/images/our-friends/pets-jennifer.png" alt="Animal photo">
-          </div>
-          <div class="popup__content">
-            <h3 class="popup__title">Jennifer</h3>
-            <h4 class="popup__subtitle">Dog - Labrador</h4>
-            <p class="popup__description">
-              Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl
-              really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house
-              if she has all of her favorite toys.
-            </p>
-            <ul class="popup__list">
-              <li class="popup__list-item"><span class="popup__list-annotation">Age: </span><span
-                  class="popup__list--age">2 months</span></li>
-              <li class="popup__list-item"><span class="popup__list-annotation">Inoculations: </span><span
-                  class="popup__list--inoculations">none</span></li>
-              <li class="popup__list-item"><span class="popup__list-annotation">Diseases: </span><span
-                  class="popup__list--diseases">none</span></li>
-              <li class="popup__list-item"><span class="popup__list-annotation">Parasites: </span><span
-                  class="popup__list--parasites">none</span></li>
-            </ul>
-          </div>
-        </div>
+        <button class="button-arrow popup__close-button" type="button"></button>
       </div>
     </div>
 
