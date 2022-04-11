@@ -1890,6 +1890,7 @@ template {
   right: 0;
   padding: 3rem 0;
   background-color: #ffffff;
+  z-index: 2;
 }
 @media screen and (max-width: 1279px) {
   .header--pets {
@@ -2039,11 +2040,16 @@ template {
   -webkit-column-gap: 4rem;
      -moz-column-gap: 4rem;
           column-gap: 4rem;
+  height: 90rem;
+  -webkit-transition: opacity 0.3s ease-in;
+  -o-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 @media screen and (max-width: 1279px) {
   .pets-cards--our-friends {
     grid-template: repeat(3, auto)/repeat(2, -webkit-max-content);
     grid-template: repeat(3, auto)/repeat(2, max-content);
+    height: 136.5rem;
   }
 }
 @media screen and (max-width: 767px) {

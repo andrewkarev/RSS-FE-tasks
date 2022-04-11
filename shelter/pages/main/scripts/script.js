@@ -83,7 +83,7 @@ function showNextPage() {
   const currentPage = +paginationPagePointer.innerHTML + 1
   paginationPagePointer.innerHTML = `${currentPage}`;
 
-  renderCards();
+  pageChangeAnimation(renderCards)
   changePaginationButtonsState(true)
 }
 
@@ -93,7 +93,7 @@ function showLastPage() {
 
   paginationPagePointer.innerHTML = `${pagesAtAll}`;
 
-  renderCards();
+  pageChangeAnimation(renderCards)
   changePaginationButtonsState(true)
 }
 
@@ -103,7 +103,7 @@ function showPreviousPage() {
   const currentPage = +paginationPagePointer.innerHTML - 1
   paginationPagePointer.innerHTML = `${currentPage}`;
 
-  renderCards();
+  pageChangeAnimation(renderCards)
   changePaginationButtonsState()
 }
 
@@ -113,7 +113,7 @@ function showFirstPage() {
 
   paginationPagePointer.innerHTML = '1';
 
-  renderCards();
+  pageChangeAnimation(renderCards)
   changePaginationButtonsState()
 }
 
@@ -165,9 +165,21 @@ function checkPaginationButtonsHandlers(arg) {
   }
 }
 
+// Fade-out effect for pagination pages change
+function pageChangeAnimation(callback) {
+  petsCardsOurFriends.style.opacity = 0;
+  petsCardsOurFriends.addEventListener('transitionend', showAnimation)
+
+  function showAnimation() {
+    petsCardsOurFriends.removeEventListener('transitionend', showAnimation);
+    callback();
+    petsCardsOurFriends.style.opacity = 1;
+  }
+}
+
 
 fillPaginationElements()
-renderCards()
+pageChangeAnimation(renderCards)
 paginationButtonNext.addEventListener('click', showNextPage);
 paginationButtonLast.addEventListener('click', showLastPage);
 paginationButtonPrevious.addEventListener('click', showPreviousPage);
