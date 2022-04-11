@@ -343,6 +343,9 @@ template {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #292929;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .button-arrow {
@@ -362,6 +365,9 @@ template {
   background: transparent;
   background-repeat: no-repeat;
   background-position: center;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
