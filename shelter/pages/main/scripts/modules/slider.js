@@ -64,7 +64,11 @@ export function pushSlide(target = null) {
   offset = 1;
 
   // Show popup on pets card button click
-  const petsCardButton = petsCards.querySelectorAll('.pets-card__button');
+  addPopupHandler(petsCards)
+}
+
+export function addPopupHandler(cardsContainer) {
+  const petsCardButton = cardsContainer.querySelectorAll('.pets-card__button');
   petsCardButton.forEach(button => button.addEventListener('click', (e) => {
     const id = Number(e.target.dataset.id);
     showPopup(id);
