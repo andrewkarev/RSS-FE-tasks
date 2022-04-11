@@ -4,13 +4,13 @@ import { showPopup } from './popup.js';
 export const buttonPrevious = document.querySelector('.button-arrow--prev');
 export const buttonNext = document.querySelector('.button-arrow--next');
 const petsCards = document.querySelector('.pets-cards');
-const petsCsrdsNodes = PETS.map(pet => createCardInner.call(pet));
+const petsCsrdsNodes = PETS.map(pet => createCardInner.call(pet, 'pets-card--main-page'));
 export let cardIndices = [];
 let offset = 0;
 
 // Create pets card element
-function createCardInner() {
-  return `<div class="pets-card pets-card--main-page">
+export function createCardInner(additionalClass) {
+  return `<div class="pets-card ${additionalClass}">
     <div class="pets-card__img-wrapper">
       <img class="pets-card__img" src="${this.img}" alt="${this.breed}">
     </div>
