@@ -5,7 +5,7 @@ export const buttonPrevious = document.querySelector('.button-arrow--prev');
 export const buttonNext = document.querySelector('.button-arrow--next');
 const petsCards = document.querySelector('.pets-cards');
 const petsCsrdsNodes = PETS.map(pet => createCardInner.call(pet));
-let cardIndices = [];
+export let cardIndices = [];
 let offset = 0;
 
 // Create pets card element
@@ -20,7 +20,7 @@ function createCardInner() {
 }
 
 // Roll random index
-function getRandomIndex() {
+export function getRandomIndex() {
   let randomIndex = Math.floor(Math.random() * (petsCsrdsNodes.length));
   if (cardIndices.includes(randomIndex)) {
     randomIndex = getRandomIndex();
