@@ -1398,6 +1398,7 @@ template {
   background-repeat: no-repeat;
   background-position: 1.5rem 50%;
   border-radius: 0.9rem;
+  cursor: pointer;
 }
 @media screen and (max-width: 767px) {
   .donation__credit-card-content {
@@ -1412,7 +1413,6 @@ template {
 }
 .donation__credit-card-content:hover {
   background-color: #fddcc4;
-  cursor: pointer;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -1446,7 +1446,7 @@ template {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  max-width: 128rem;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 4rem 4rem 0;
 }
@@ -1597,7 +1597,7 @@ template {
 @media screen and (max-width: 767px) {
   .header--pets {
     padding-left: 1rem;
-    padding-right: 5rem;
+    padding-right: 5.3rem;
   }
 }
 
@@ -1722,6 +1722,7 @@ template {
   -webkit-column-gap: 4rem;
      -moz-column-gap: 4rem;
           column-gap: 4rem;
+}
 @media screen and (max-width: 1279px) {
   .pets-cards--our-friends {
     grid-template: repeat(3, auto)/repeat(2, -webkit-max-content);
