@@ -1,9 +1,10 @@
 .about {
   background-color: $color-light-xl;
+
   &__container {
     display: flex;
     flex-direction: row;
-    max-width: 1280px;
+    max-width: 128rem;
     margin: 0 auto;
     padding: 8rem 4rem 10rem;
     @media screen and (max-width: $breakpoint-1) {

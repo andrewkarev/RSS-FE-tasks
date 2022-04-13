@@ -4,7 +4,7 @@
   &__container {
     display: flex;
     flex-direction: row;
-    max-width: 1280px;
+    max-width: 128rem;;
     margin: 0 auto;
     padding: 18rem 4rem 0;
     @media screen and (max-width: $breakpoint-1) {
@@ -60,6 +60,7 @@
 
   &__button:hover {
     background-color: $color-primary-light;
+    transition: all 0.3s ease;
   }
 
   &__img-wrapper {

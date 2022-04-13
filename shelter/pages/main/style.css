@@ -71,7 +71,7 @@
 @font-face {
   font-family: "Georgia";
   src: url("../../assets/fonts/georgia/georgia-regular.eot");
-  src: url("../../assets/fonts/georgia/georgia-regular.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/georgia/georgia-regular.woff") format("woff"), url("../../shelter//fonts/georgia/georgia-regular.ttf") format("truetype");
+  src: url("../../assets/fonts/georgia/georgia-regular.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/georgia/georgia-regular.woff") format("woff"), url("../../assets/fonts/georgia/georgia-regular.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
@@ -365,6 +365,9 @@ template {
 .button-arrow:hover {
   background-color: #fddcc4;
   border-color: #fddcc4;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .button-arrow--disabled {
@@ -673,7 +676,7 @@ template {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  max-width: 1280px;
+  max-width: 128rem;
   margin: 0 auto;
   padding: 18rem 4rem 0;
 }
@@ -751,6 +754,9 @@ template {
 }
 .not-only__button:hover {
   background-color: #fddcc4;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 @media screen and (max-width: 1279px) {
   .not-only__img-wrapper {
@@ -791,7 +797,7 @@ template {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  max-width: 1280px;
+  max-width: 128rem;
   margin: 0 auto;
   padding: 8rem 4rem 10rem;
 }
@@ -900,7 +906,7 @@ template {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  max-width: 1280px;
+  max-width: 128rem;
   margin: 0 auto;
   padding: 8rem 4rem 10rem;
 }
@@ -973,6 +979,9 @@ template {
 }
 .pets__button:hover {
   background-color: #fddcc4;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .pets-cards {
@@ -1018,12 +1027,19 @@ template {
   border: 2px solid #f1cdb3;
   background-color: transparent;
   color: #292929;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .pets-card:hover {
   -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
           box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  background-color: #ffffff;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
@@ -1069,7 +1085,7 @@ template {
   background-color: #ffffff;
 }
 .help__container {
-  max-width: 1280px;
+  max-width: 128rem;
   margin: 0 auto;
   padding: 8rem 4rem 10rem;
 }
@@ -1269,7 +1285,7 @@ template {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  max-width: 1280px;
+  max-width: 128rem;
   margin: 0 auto;
   padding: 8rem 18.2rem 10rem 18.3rem;
 }
@@ -1397,6 +1413,12 @@ template {
 .donation__credit-card-content:hover {
   background-color: #fddcc4;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.donation__link--disabled {
+  pointer-events: none;
 }
 .donation__description {
   color: #b2b2b2;
@@ -1424,7 +1446,7 @@ template {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  max-width: 1280px;
+  max-width: 128rem;
   margin: 0 auto;
   padding: 4rem 4rem 0;
 }
@@ -1700,7 +1722,6 @@ template {
   -webkit-column-gap: 4rem;
      -moz-column-gap: 4rem;
           column-gap: 4rem;
-}
 @media screen and (max-width: 1279px) {
   .pets-cards--our-friends {
     grid-template: repeat(3, auto)/repeat(2, -webkit-max-content);
