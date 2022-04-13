@@ -1,15 +1,13 @@
 import { body } from './../script.js';
 
-export const burgerMenu = document.querySelector('.burger-menu');
+export const burgerMenu = document.querySelectorAll('.burger-menu');
 export const headerPetsPage = document.querySelector('.header--pets');
-const headerContainer = document.querySelector('.header__container');
 const navigation = document.querySelector('.navigation');
 const background = document.querySelector('.background');
 
 export function toggleMenu() {
   body.classList.toggle('body--lock');
-  burgerMenu.classList.toggle('burger-menu--open');
-  headerContainer.classList.toggle('header__container--mobile');
+  burgerMenu.forEach(burger => burger.classList.toggle('burger-menu--open'));
   navigation.classList.toggle('navigation--show');
   background.classList.toggle('background--blured');
   checkPage();
@@ -21,8 +19,7 @@ export function closeMenu(e) {
 
   if (isBackgroundElement || isNavigationItem) {
     body.classList.remove('body--lock');
-    burgerMenu.classList.remove('burger-menu--open');
-    headerContainer.classList.remove('header__container--mobile');
+    burgerMenu.forEach(burger => burger.classList.remove('burger-menu--open'));
     navigation.classList.remove('navigation--show');
     background.classList.remove('background--blured');
     checkPage();

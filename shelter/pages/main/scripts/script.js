@@ -7,7 +7,7 @@ export const body = document.querySelector('body');
 
 // Burger-menu
 document.addEventListener('click', closeMenu);
-burgerMenu.addEventListener('click', toggleMenu);
+burgerMenu.forEach(burger => burger.addEventListener('click', toggleMenu));
 
 // Popup
 document.addEventListener('mouseover', hoverCloseButton);
