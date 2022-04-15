@@ -7,28 +7,72 @@
     max-width: 128rem;
     margin: 0 auto;
     padding: 8rem 4rem 10rem;
+    @media screen and (max-width: $breakpoint-1) {
+      max-width: 43rem;
+      flex-direction: column-reverse;
+      align-items: center;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      max-width: 30rem;
+      padding: 4.2rem 0;
+    }
   }
+
 
   &__img-wrapper {
     padding-left: 17.5rem;
+    @media screen and (max-width: $breakpoint-1) {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      width: 26rem;
+      height: 35.2rem;
+    }
   }
 
   &__img {
     display: block;
+    @media screen and (max-width: $breakpoint-2) {
+      width: 100%;
+    }
   }
 
   &__content {
     padding: 1.4rem 17.5rem 1.4rem 12rem;
+    @media screen and (max-width: $breakpoint-1) {
+      padding: 0 0 8rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      padding: 0 1.5rem 4.2rem;
+    }
   }
 
   &__title {
     @extend %h3;
     color: $color-dark-l;
     padding-right: 6rem;
+    @media screen and (max-width: $breakpoint-2) {
+      @include h3-mobile();
+      padding-right: 0;
+      text-align: center;
+    }
   }
 
   &__text {
     @extend %paragraph-1;
     padding-top: 2.5rem;
+    @media screen and (max-width: $breakpoint-2) {
+      text-align: justify;
+    }
+  }
+
+  &__text:nth-child(3) {
+    @media screen and (max-width: $breakpoint-2) {
+      padding-top: 2.2rem;
+    }
   }
 }
