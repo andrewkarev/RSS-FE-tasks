@@ -38,3 +38,11 @@ if (body.dataset.page === 'pets=page') {
   // Should pagination be able to change in lifetime?
   window.addEventListener('resize', showFirstPage);
 }
+
+// Disable two last links in navigation menu
+// const listItems = document.querySelectorAll('.list__item');
+// const listItemsDisabled = [listItems[2], listItems[3]];
+// listItemsDisabled.forEach(item => item.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   e.stopPropagation();
+// }))
