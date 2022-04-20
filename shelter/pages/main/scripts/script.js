@@ -27,7 +27,7 @@ if (body.dataset.page === 'main') {
 }
 
 // Pagination
-if (body.dataset.page === 'pets=page') {
+if (body.dataset.page === 'pets-page') {
   fillPaginationElements();
   pageChangeAnimation(renderCards);
   paginationButtonNext.addEventListener('click', showNextPage);

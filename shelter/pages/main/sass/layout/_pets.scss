@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1280px;
+    max-width: 128rem;
     margin: 0 auto;
     padding: 8rem 4rem 10rem;
     @media screen and (max-width: $breakpoint-1) {
@@ -53,8 +53,10 @@
     width: 26.1rem;
     background-color: $color-primary;
   }
+
   &__button:hover {
     background-color: $color-primary-light;
+    transition: all 0.3s ease;
   }
 }
 
@@ -110,6 +112,7 @@
     border: 2px solid $color-primary;
     background-color: transparent;
     color: $color-dark-3xl;
+    transition: all 0.3s ease;
     cursor: pointer;
   }
 }
