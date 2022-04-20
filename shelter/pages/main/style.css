@@ -392,13 +392,7 @@ template {
 
 .body--lock {
   height: 100vh;
-  padding-right: 15px;
   overflow: hidden;
-}
-@media screen and (max-width: 1279px) {
-  .body--lock {
-    padding-right: 0;
-  }
 }
 
 .wrapper {
@@ -1874,21 +1868,6 @@ template {
 }
 @media screen and (max-width: 767px) {
   .header--pets {
-    padding-left: 1rem;
-    padding-right: 5.3rem;
-  }
-}
-
-.header--pets-lock {
-  padding-right: 15px;
-}
-@media screen and (max-width: 1279px) {
-  .header--pets-lock {
-    padding: 3rem;
-  }
-}
-@media screen and (max-width: 767px) {
-  .header--pets-lock {
     padding-left: 1rem;
     padding-right: 5.3rem;
   }
