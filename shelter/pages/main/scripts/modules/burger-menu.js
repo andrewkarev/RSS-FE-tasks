@@ -1,6 +1,7 @@
+import { body } from './../script.js';
+
 export const burgerMenu = document.querySelectorAll('.burger-menu');
-const body = document.querySelector('body');
-const headerPetsPage = document.querySelector('.header--pets');
+export const headerPetsPage = document.querySelector('.header--pets');
 const navigation = document.querySelector('.navigation');
 const background = document.querySelector('.background');
 

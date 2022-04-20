@@ -1,9 +1,13 @@
 .button {
   @include button();
+  transition: all 0.3s ease;;
 }
 
 .button-arrow {
   @include navigation-item();
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.3s ease;;
   cursor: pointer;
 }
 
