@@ -10,12 +10,12 @@ let offset = 0;
 
 // Create pets card element
 export function createCardInner(additionalClass) {
-  return `<div class="pets-card ${additionalClass}">
+  return `<div class="pets-card ${additionalClass}" data-id="${this.id}">
     <div class="pets-card__img-wrapper">
       <img class="pets-card__img" src="${this.img}" alt="${this.breed}">
     </div>
     <h4 class="pets-card__title">${this.name}</h4>
-    <button class="pets-card__button button" data-id="${this.id}">Learn more</button>
+    <button class="pets-card__button button">Learn more</button>
   </div>`
 }
 
@@ -68,9 +68,9 @@ export function pushSlide(target = null) {
 }
 
 export function addPopupHandler(cardsContainer) {
-  const petsCardButton = cardsContainer.querySelectorAll('.pets-card__button');
-  petsCardButton.forEach(button => button.addEventListener('click', (e) => {
-    const id = Number(e.target.dataset.id);
+  const allPetsCards = cardsContainer.querySelectorAll('.pets-card');
+  allPetsCards.forEach(card => card.addEventListener('click', (e) => {
+    const id = Number(e.currentTarget.dataset.id);
     showPopup(id);
   }));
 }
