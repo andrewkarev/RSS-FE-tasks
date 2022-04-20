@@ -36,7 +36,11 @@ if (body.dataset.page === 'pets=page') {
   paginationButtonFirst.addEventListener('click', showFirstPage);
 
   // Should pagination be able to change in lifetime?
-  window.addEventListener('resize', showFirstPage);
+  let resizeId;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeId);
+    resizeId = setTimeout(showFirstPage, 100);
+  });
 }
 
 // Disable two last links in navigation menu
