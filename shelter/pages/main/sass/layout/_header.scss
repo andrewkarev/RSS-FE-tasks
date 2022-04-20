@@ -66,10 +66,11 @@
   @media screen and (max-width: $breakpoint-2) {
     position: fixed;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: start;
     width: 32rem;
-    padding-top: 9rem;
+    height: 100vh;
+    padding-bottom: 0;
     top: 0;
     bottom: 0;
     right: -32rem;
@@ -93,8 +94,10 @@
   list-style-type: none;
   @media screen and (max-width: $breakpoint-2) {
     flex-direction: column;
-    height: 32.7rem;
-    margin-bottom: 9rem;
+    justify-content: center;
+    gap: 4rem;
+    padding-bottom: 9rem;
+    margin: auto 0;
     line-height: 160%;
   }
 
@@ -160,13 +163,10 @@
 .duplicate-elements {
   display: none;
   @media screen and (max-width: $breakpoint-2) {
-    position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    top: 3rem;
-    left: 1rem;
-    right: 5.3rem;
+    padding: 3rem 5.3rem 0 1rem ;
   }
 }
 
