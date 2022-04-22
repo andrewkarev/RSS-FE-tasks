@@ -50,8 +50,11 @@
   grid-template: repeat(2, auto) / repeat(4, max-content);
   row-gap: 3rem;
   column-gap: 4rem;
+  height: 90rem;
+  transition: opacity 0.3s ease-in;
   @media screen and (max-width: $breakpoint-1) {
     grid-template: repeat(3, auto) / repeat(2, max-content);
+    height: 136.5rem;
   }
   @media screen and (max-width: $breakpoint-2) {
     grid-template: repeat(3, auto) / max-content;

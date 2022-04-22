@@ -1,0 +1,198 @@
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(41, 41, 41, 0.6);
+  z-index: -50;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  &__container {
+    position: absolute;
+    left: calc(50% - 45rem);
+    width: 90rem;
+    background-color: $color-light-s;
+    border-radius: 0.9rem;
+    @media screen and (max-width: $breakpoint-1) {
+      width: 63rem;
+      left: calc(50% - 31.5rem);
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      width: 24rem;
+      left: calc(50% - 12rem);
+    }
+  }
+
+  &__container--show {
+    animation: showModal 0.4s ease-in-out;
+    animation-fill-mode: forwards;
+    @media screen and (max-width: $breakpoint-1) {
+      animation: showModalTablet 0.4s ease-in-out;
+      animation-fill-mode: forwards;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      animation: showModalMobile 0.4s ease-in-out;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  @keyframes showModal {
+    from {
+      top: -50%;
+    }
+    to {
+      top: calc(50% - 25rem);
+    }
+  }
+
+  @keyframes showModalTablet {
+    from {
+      top: -50%;
+    }
+    to {
+      top: calc(50% - 17.5rem);
+    }
+  }
+
+  @keyframes showModalMobile {
+    from {
+      top: -50%;
+    }
+    to {
+      top: calc(50% - 17.05rem);
+    }
+  }
+
+  &__close-button {
+    position: absolute;
+    top: -5.2rem;
+    right: -4.2rem;
+    background-image: url('../../assets/icons/popup/close.svg');
+    @media screen and (max-width: $breakpoint-1) {
+      right: -4.3rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      right: -3rem;
+    }
+  }
+
+  &__close-button--hover {
+    background-color: $color-primary-light;
+    border-color: $color-primary-light;
+  }
+
+  &__modal-window {
+    display: flex;
+  }
+
+  &__modal-window:hover {
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  }
+
+  &__img-wrapper {
+    width: 50rem;
+    height: 50rem;
+    align-self: center;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    @media screen and (max-width: $breakpoint-1) {
+      width: 35rem;
+      height: 35rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      display: none;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+
+  &__content {
+    width: 35.1rem;
+    margin: 5rem 2rem 5rem 2.9rem;
+    padding-left: 0.1rem;
+    @media screen and (max-width: $breakpoint-1) {
+      width: 26rem;
+      margin: 1rem 0.9rem 3.7rem 1.1rem;
+      padding-left: 0;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      width: 22rem;
+      margin: 1rem;
+    }
+  }
+
+  &__title {
+    @extend %h3;
+    padding-bottom: 1rem;
+    color: #000000;
+    @media screen and (max-width: $breakpoint-2) {
+      text-align: center;
+    }
+  }
+
+  &__subtitle {
+    @extend %h4;
+    padding-bottom: 4rem;
+    text-align: left;
+    color: #000000;
+    @media screen and (max-width: $breakpoint-1) {
+      padding-bottom: 2rem;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      text-align: center;
+    }
+  }
+
+  &__description {
+    @extend %h5;
+    padding-bottom: 4.3rem;
+    color: #000000;
+    @media screen and (max-width: $breakpoint-1) {
+      padding-bottom: 2rem;
+      font-size: 13px;
+    }
+    @media screen and (max-width: $breakpoint-2) {
+      padding-bottom: 2.4rem;
+      text-align: justify;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    @media screen and (max-width: $breakpoint-1) {
+      gap: 0.5rem;
+    }
+  }
+
+  &__list-item {
+    position: relative;
+    margin-left: 1.4rem;
+    @extend %h5;
+    color: #000000;
+  }
+
+  &__list-item::before {
+    position: absolute;
+    left: -1.4rem;
+    content: "▪";
+    color: $color-primary;
+  }
+
+  &__list-annotation {
+    font-weight: 700;
+  }
+}
+
+.popup--show {
+  z-index: 50;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}

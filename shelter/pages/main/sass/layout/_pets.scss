@@ -61,11 +61,28 @@
 }
 
 .pets-cards {
-  display: flex;
-  flex-direction: row;
-  gap: 9rem;
+  position: relative;
+  width: 99rem;
+  height: 43.5rem;
   @media screen and (max-width: $breakpoint-1) {
-    gap: 4rem;
+    width: 58rem;
+  }
+  @media screen and (max-width: $breakpoint-2) {
+    width: 27rem;
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 9rem;
+
+    transition: all 1.3s linear;
+    @media screen and (max-width: $breakpoint-1) {
+      gap: 4rem;
+    }
   }
 }
 
@@ -126,13 +143,15 @@
   }
 }
 
-.button-arrow--prev {
+.button-arrow--next {
+  background-image: url('../../assets/icons/pets/arrow-previous.svg');
   @media screen and (max-width: $breakpoint-2) {
     order: 1;
   }
 }
 
-.button-arrow--next {
+.button-arrow--prev {
+  background-image: url('../../assets/icons/pets/arrow-next.svg');
   @media screen and (max-width: $breakpoint-2) {
     order: 2;
   }
