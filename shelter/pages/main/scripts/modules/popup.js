@@ -1,5 +1,4 @@
 import { body } from './../script.js';
-import { headerPetsPage } from './burger-menu.js';
 import PETS from './our-pets.js';
 
 export const popup = document.querySelector('.popup');
@@ -18,13 +17,7 @@ export function showPopup(petId) {
 
   body.classList.add('body--lock');
   popup.classList.add('popup--show');
-  popupContainer.classList.add('popup__container--show');
-  checkPage();
-  // *********
-  // const modalWindowHeight = modalWindow.offsetHeight;
-  // const popupContainerShow = modalWindow.querySelector('.popup__container--show');
-  // const topOffset = (document.documentElement.clientHeight - modalWindowHeight) / 2;
-  // popupContainer.style.top = topOffset + 'px';
+  animateModalWindow(modalWindow);
 }
 
 function createPopupInner() {
@@ -52,8 +45,6 @@ export function closePopup() {
 
   body.classList.remove('body--lock');
   popup.classList.remove('popup--show');
-  popupContainer.classList.remove('popup__container--show');
-  checkPage()
 }
 
 export function hoverCloseButton(e) {
@@ -66,8 +57,33 @@ export function hoverCloseButton(e) {
   }
 }
 
-function checkPage() {
-  if (headerPetsPage) {
-    headerPetsPage.classList.toggle('header--pets-lock');
+function animateModalWindow(modalWindow) {
+  const POPUP_MAXIMAL_HEIGHT = 552;
+  const currentPopupHeight = document.documentElement.clientHeight
+  const modalWindowHalfHeight = modalWindow.offsetHeight / 2;
+  const popupHeight = currentPopupHeight > POPUP_MAXIMAL_HEIGHT ? currentPopupHeight : POPUP_MAXIMAL_HEIGHT;
+  const additionalOffset = (modalWindowHalfHeight * 100) / popupHeight;
+
+  function animate({ timing, draw, duration }) {
+    let start = performance.now();
+    requestAnimationFrame(function animate(time) {
+      let timeFraction = (time - start) / duration;
+      if (timeFraction > 1) timeFraction = 1;
+      let progress = timing(timeFraction);
+      draw(progress);
+      if (timeFraction < 1) {
+        requestAnimationFrame(animate);
+      }
+    });
   }
+
+  animate({
+    duration: 400,
+    timing: function (timeFraction) {
+      return timeFraction;
+    },
+    draw: function (progress) {
+      popupContainer.style.top = `${progress * 50 - additionalOffset}%`;
+    }
+  });
 }

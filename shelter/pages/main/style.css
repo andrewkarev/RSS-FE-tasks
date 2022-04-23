@@ -490,6 +490,7 @@ template {
     -o-transition: transform 0.7s ease-in-out;
     transition: transform 0.7s ease-in-out;
     transition: transform 0.7s ease-in-out, -webkit-transform 0.7s ease-in-out;
+    overflow-y: auto;
     z-index: 19;
   }
 }
@@ -528,8 +529,8 @@ template {
         -ms-flex-pack: center;
             justify-content: center;
     gap: 4rem;
-    padding-bottom: 9rem;
-    margin: auto 0;
+    padding-top: 0.3rem;
+    margin: 15.8rem 0 24.8rem;
     line-height: 160%;
   }
 }
@@ -1628,7 +1629,7 @@ template {
   transition: opacity 0.3s ease-in-out;
 }
 .popup__container {
-  position: absolute;
+  position: relative;
   left: calc(50% - 45rem);
   width: 90rem;
   background-color: #fafafa;
@@ -1644,76 +1645,6 @@ template {
   .popup__container {
     width: 24rem;
     left: calc(50% - 12rem);
-  }
-}
-.popup__container--show {
-  -webkit-animation: showModal 0.4s ease-in-out;
-          animation: showModal 0.4s ease-in-out;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-}
-@media screen and (max-width: 1279px) {
-  .popup__container--show {
-    -webkit-animation: showModalTablet 0.4s ease-in-out;
-            animation: showModalTablet 0.4s ease-in-out;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
-  }
-}
-@media screen and (max-width: 767px) {
-  .popup__container--show {
-    -webkit-animation: showModalMobile 0.4s ease-in-out;
-            animation: showModalMobile 0.4s ease-in-out;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
-  }
-}
-@-webkit-keyframes showModal {
-  from {
-    top: -50%;
-  }
-  to {
-    top: calc(50% - 25rem);
-  }
-}
-@keyframes showModal {
-  from {
-    top: -50%;
-  }
-  to {
-    top: calc(50% - 25rem);
-  }
-}
-@-webkit-keyframes showModalTablet {
-  from {
-    top: -50%;
-  }
-  to {
-    top: calc(50% - 17.5rem);
-  }
-}
-@keyframes showModalTablet {
-  from {
-    top: -50%;
-  }
-  to {
-    top: calc(50% - 17.5rem);
-  }
-}
-@-webkit-keyframes showModalMobile {
-  from {
-    top: -50%;
-  }
-  to {
-    top: calc(50% - 17.05rem);
-  }
-}
-@keyframes showModalMobile {
-  from {
-    top: -50%;
-  }
-  to {
-    top: calc(50% - 17.05rem);
   }
 }
 .popup__close-button {
@@ -1856,13 +1787,13 @@ template {
 .popup__list-annotation {
   font-weight: 700;
 }
-
 .popup--show {
   z-index: 50;
   opacity: 1;
   -webkit-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
+  overflow-y: auto;
 }
 
 .wrapper--pets {
