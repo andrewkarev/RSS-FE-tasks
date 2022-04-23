@@ -58,7 +58,7 @@ export function pushSlide(target = null) {
   if (target) {
     petsCards.prepend(sliderElement);
   } else {
-    petsCards.appendChild(sliderElement);
+    petsCards.append(sliderElement);
   }
 
   offset = 1;

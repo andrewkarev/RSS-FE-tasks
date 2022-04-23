@@ -13,7 +13,7 @@ export function showPopup(petId) {
   modalWindow.classList.add('popup__modal-window');
   modalWindow.innerHTML = popupInner;
 
-  popupContainer.appendChild(modalWindow);
+  popupContainer.append(modalWindow);
 
   body.classList.add('body--lock');
   popup.classList.add('popup--show');
