@@ -1,3 +1,12 @@
+.body--lock {
+  .header--pets {
+    padding-right: 17px;
+    @media screen and (max-width: $breakpoint-1) {
+      padding-right: 0;
+    }
+  }
+}
+
 .wrapper--pets {
   padding-top: 12rem;
   background-color: $color-light-l;
