@@ -1857,13 +1857,13 @@ template {
 .popup__list-annotation {
   font-weight: 700;
 }
-
 .popup--show {
   z-index: 50;
   opacity: 1;
   -webkit-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
+  overflow-y: auto;
 }
 
 .wrapper--pets {

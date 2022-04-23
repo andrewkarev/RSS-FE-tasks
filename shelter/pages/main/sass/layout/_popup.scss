@@ -189,10 +189,11 @@
   &__list-annotation {
     font-weight: 700;
   }
-}
 
-.popup--show {
-  z-index: 50;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
+  &--show {
+    z-index: 50;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    overflow-y: auto;
+  }
 }
