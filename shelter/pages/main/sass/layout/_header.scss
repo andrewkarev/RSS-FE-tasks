@@ -76,6 +76,7 @@
     right: -32rem;
     background-color: $color-dark-3xl;
     transition: transform 0.7s ease-in-out;
+    overflow-y: auto;
     z-index: 19;
   }
 }
@@ -96,8 +97,8 @@
     flex-direction: column;
     justify-content: center;
     gap: 4rem;
-    padding-bottom: 9rem;
-    margin: auto 0;
+    padding-top: 0.3rem;
+    margin: 15.8rem 0 24.8rem;
     line-height: 160%;
   }
 
