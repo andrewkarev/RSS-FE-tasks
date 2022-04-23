@@ -1802,6 +1802,15 @@ template {
   overflow-y: auto;
 }
 
+.body--lock .header--pets {
+  padding-right: 17px;
+}
+@media screen and (max-width: 1279px) {
+  .body--lock .header--pets {
+    padding-right: 0;
+  }
+}
+
 .wrapper--pets {
   padding-top: 12rem;
   background-color: #f6f6f6;
