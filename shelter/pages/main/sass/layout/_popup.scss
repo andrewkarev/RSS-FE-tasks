@@ -10,7 +10,7 @@
   transition: opacity 0.3s ease-in-out;
 
   &__container {
-    position: absolute;
+    position: relative;
     left: calc(50% - 45rem);
     width: 90rem;
     background-color: $color-light-s;
@@ -22,46 +22,6 @@
     @media screen and (max-width: $breakpoint-2) {
       width: 24rem;
       left: calc(50% - 12rem);
-    }
-  }
-
-  &__container--show {
-    animation: showModal 0.4s ease-in-out;
-    animation-fill-mode: forwards;
-    @media screen and (max-width: $breakpoint-1) {
-      animation: showModalTablet 0.4s ease-in-out;
-      animation-fill-mode: forwards;
-    }
-    @media screen and (max-width: $breakpoint-2) {
-      animation: showModalMobile 0.4s ease-in-out;
-      animation-fill-mode: forwards;
-    }
-  }
-
-  @keyframes showModal {
-    from {
-      top: -50%;
-    }
-    to {
-      top: calc(50% - 25rem);
-    }
-  }
-
-  @keyframes showModalTablet {
-    from {
-      top: -50%;
-    }
-    to {
-      top: calc(50% - 17.5rem);
-    }
-  }
-
-  @keyframes showModalMobile {
-    from {
-      top: -50%;
-    }
-    to {
-      top: calc(50% - 17.05rem);
     }
   }
 
