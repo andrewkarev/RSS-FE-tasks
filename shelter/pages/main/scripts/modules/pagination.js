@@ -8,12 +8,16 @@ export const paginationButtonNext = document.querySelector('.button-arrow--next-
 export const paginationButtonPrevious = document.querySelector('.button-arrow--previous-page');
 const paginationPagePointer = document.querySelector('.page-pointer__inner');
 const paginationElements = [];
-let step = 8;
 const paginationElementsCounter = 48;
+const cardArr = []
+const finalCardsOrder = []
+let step = 8;
 let pagesAtAll;
 let elementsOnPage = 0;
 let isNextButtonsActive = true;
 let isPreviousButtonsActive = true;
+const cardIdx = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7];
+
 
 // Calculate current step
 function getStep() {
@@ -24,14 +28,31 @@ function getStep() {
 // Create initial pets page pagination elements list
 export function fillPaginationElements() {
   step = getStep();
-  for (let i = 0; i < paginationElementsCounter; i++) {
-    if (cardIndices.length === step) {
-      cardIndices.length = 0;
+
+  if (step === 8) {
+    for (let i = 0; i < paginationElementsCounter; i++) {
+      if (cardIndices.length === step) {
+        cardIndices.length = 0;
+      }
+      let index = getRandomIndex(step);
+      paginationElements.push(PETS[index]);
+    }
+  } else {
+    for (let k = 0, j = step; k < paginationElementsCounter; k += step, j += step) {
+      cardArr.push(cardIdx.slice(k, j))
     }
 
-    let index = getRandomIndex();
-    paginationElements.push(PETS[index]);
+    for (let i = 0; i < paginationElementsCounter / step; i++) {
+      if (cardIndices.length === 8) {
+        cardIndices.length = 0;
+      }
+      let index = getRandomIndex(cardArr.length);
+      finalCardsOrder.push(cardArr[index])
+    }
+
+    finalCardsOrder.flat().forEach(i => paginationElements.push(PETS[i]));
   }
+
 }
 
 // Draw pets cards
