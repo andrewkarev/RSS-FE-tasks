@@ -20,10 +20,10 @@ export function createCardInner(additionalClass) {
 }
 
 // Roll random index
-export function getRandomIndex() {
-  let randomIndex = Math.floor(Math.random() * (petsCsrdsNodes.length));
+export function getRandomIndex(maxIndex) {
+  let randomIndex = Math.floor(Math.random() * maxIndex);
   if (cardIndices.includes(randomIndex)) {
-    randomIndex = getRandomIndex();
+    randomIndex = getRandomIndex(maxIndex);
   } else {
     cardIndices.push(randomIndex);
   }
@@ -51,7 +51,7 @@ export function pushSlide(target = null) {
 
   const cardsCount = 3;
   for (let i = 0; i < cardsCount; i++) {
-    let index = getRandomIndex();
+    let index = getRandomIndex(petsCsrdsNodes.length);
     sliderElement.innerHTML += petsCsrdsNodes[index];
   }
 
