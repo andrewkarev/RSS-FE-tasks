@@ -23,6 +23,7 @@ function getStep() {
 
 // Create initial pets page pagination elements list
 export function fillPaginationElements() {
+  step = getStep();
   for (let i = 0; i < paginationElementsCounter; i++) {
     if (cardIndices.length === step) {
       cardIndices.length = 0;

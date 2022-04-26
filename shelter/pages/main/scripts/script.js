@@ -28,19 +28,24 @@ if (body.dataset.page === 'main') {
 
 // Pagination
 if (body.dataset.page === 'pets-page') {
-  fillPaginationElements();
-  pageChangeAnimation(renderCards);
-  paginationButtonNext.addEventListener('click', showNextPage);
-  paginationButtonLast.addEventListener('click', showLastPage);
-  paginationButtonPrevious.addEventListener('click', showPreviousPage);
-  paginationButtonFirst.addEventListener('click', showFirstPage);
+  function init() {
+    fillPaginationElements();
+    pageChangeAnimation(renderCards);
+    paginationButtonNext.addEventListener('click', showNextPage);
+    paginationButtonLast.addEventListener('click', showLastPage);
+    paginationButtonPrevious.addEventListener('click', showPreviousPage);
+    paginationButtonFirst.addEventListener('click', showFirstPage);
+  }
+
+  init();
+
 
   // Should pagination be able to change in lifetime?
-  let resizeId;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeId);
-    resizeId = setTimeout(showFirstPage, 100);
-  });
+  // let resizeId;
+  // window.addEventListener('resize', function () {
+  //   clearTimeout(resizeId);
+  // resizeId = setTimeout(showFirstPage, 100);
+  // });
 }
 
 // Disable two last links in navigation menu
