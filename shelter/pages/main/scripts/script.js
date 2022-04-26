@@ -33,8 +33,8 @@ if (body.dataset.page === 'pets-page') {
     pageChangeAnimation(renderCards);
     paginationButtonNext.addEventListener('click', showNextPage);
     paginationButtonLast.addEventListener('click', showLastPage);
-    paginationButtonPrevious.addEventListener('click', showPreviousPage);
-    paginationButtonFirst.addEventListener('click', showFirstPage);
+    // paginationButtonPrevious.addEventListener('click', showPreviousPage);
+    // paginationButtonFirst.addEventListener('click', showFirstPage);
   }
 
   init();

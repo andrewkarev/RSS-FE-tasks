@@ -15,7 +15,7 @@ let step = 8;
 let pagesAtAll;
 let elementsOnPage = 0;
 let isNextButtonsActive = true;
-let isPreviousButtonsActive = true;
+let isPreviousButtonsActive = false;
 const cardIdx = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7];
 
 
