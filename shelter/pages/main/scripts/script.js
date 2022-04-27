@@ -44,7 +44,7 @@ if (body.dataset.page === 'pets-page') {
   // let resizeId;
   // window.addEventListener('resize', function () {
   //   clearTimeout(resizeId);
-  // resizeId = setTimeout(showFirstPage, 100);
+  //   // resizeId = setTimeout(showFirstPage, 100);
   // });
 }
 
