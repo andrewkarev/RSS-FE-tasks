@@ -9,8 +9,8 @@ export const paginationButtonPrevious = document.querySelector('.button-arrow--p
 const paginationPagePointer = document.querySelector('.page-pointer__inner');
 const paginationElements = [];
 const paginationElementsCounter = 48;
-const cardArr = []
-const finalCardsOrder = []
+const cardArr = [];
+const finalCardsOrder = [];
 let step = 8;
 let pagesAtAll;
 let elementsOnPage = 0;
@@ -39,17 +39,15 @@ export function fillPaginationElements() {
     }
   } else {
     for (let k = 0, j = step; k < paginationElementsCounter; k += step, j += step) {
-      cardArr.push(cardIdx.slice(k, j))
+      cardArr.push(cardIdx.slice(k, j));
     }
 
     for (let i = 0; i < paginationElementsCounter / step; i++) {
-      if (cardIndices.length === 8) {
-        cardIndices.length = 0;
-      }
       let index = getRandomIndex(cardArr.length);
-      finalCardsOrder.push(cardArr[index])
+      finalCardsOrder.push(cardArr[index]);
     }
-
+    console.log(finalCardsOrder);
+    console.log(finalCardsOrder.flat().sort((a, b) => a - b));
     finalCardsOrder.flat().forEach(i => paginationElements.push(PETS[i]));
   }
 
