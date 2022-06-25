@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb-base",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "tsconfig.json",
+        "tsconfigRootDir": "news-api",
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "error"
+    }
+}
