@@ -1,35 +1,82 @@
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+  color: #fff;
+  background: #17181c;
+  font-family: sans-serif;
 }
 
 header {
-    padding: 10px 30px;
+  padding: 10px 30px;
 }
 
 header h1 {
-    font-size: 40px;
-    font-weight: 800;
+  font-size: 40px;
+  font-weight: 800;
 }
 
-footer {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.footer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
 }
-footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
+
+.footer__copyright {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  flex-basis: 30%;
 }
-footer .copyright a {
-    color: #444;
+
+.footer__copyright a {
+  color: #444;
 }
-footer .copyright a:hover {
-    color: #555;
+
+.footer__copyright a:hover {
+  color: #555;
 }
-footer .copyright:before {
-    content: '©';
+
+.footer__copyright:before {
+  content: '©';
+}
+
+.footer__year {
+  flex-basis: 30%;
+}
+
+.footer__links {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-basis: 30%;
+}
+
+.footer__github {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer__github::first-letter {
+  color: #70d6ff;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer__github:hover,
+.footer__github:hover::first-letter {
+  color: #30c5ff;
+}
+
+.footer__rsschool {
+  margin-left: 80px;
+}
+
+.rsschool path {
+  transition: fill 0.3s ease-in-out;
+}
+
+.rsschool:hover path {
+  fill: #30c5ff;
 }
