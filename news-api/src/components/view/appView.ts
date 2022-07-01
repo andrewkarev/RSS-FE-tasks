@@ -1,5 +1,6 @@
 import News from './news/news';
 import Sources from './sources/sources';
+import Pagination from './pagination/pagination';
 import IArticle from '../utils/interfaces/IArticle';
 import ISource from '../utils/interfaces/ISource';
 import IAPIresponse from '../utils/interfaces/IAPIresponse';
@@ -9,9 +10,12 @@ export class AppView {
 
   private sources: Sources;
 
+  private pagination: Pagination;
+
   constructor() {
     this.news = new News();
     this.sources = new Sources();
+    this.pagination = new Pagination();
   }
 
   public drawNews(data: IAPIresponse): void {
@@ -19,9 +23,25 @@ export class AppView {
     this.news.draw(values);
   }
 
-  public drawSources(data: IAPIresponse): void {
+  public drawSources(data: IAPIresponse, choosenSources = 'A'): void {
     const values: Array<ISource> = data?.sources ? data?.sources : [];
-    this.sources.draw(values);
+    this.sources.draw(values, choosenSources);
+  }
+
+  public drawPagination(data: IAPIresponse) {
+    const values: Array<ISource> = data?.sources ? data?.sources : [];
+    const sourceNamesFirstChars: string[] = values.map((item) => item.name.charAt(0));
+    const uniqueChars: Set<string> = new Set(sourceNamesFirstChars);
+    const uniqueCharsArray: string[] = [...uniqueChars];
+    this.pagination.draw(uniqueCharsArray);
+  }
+
+  public stylizePaginationElement(choosenSources?: HTMLElement) {
+    if (choosenSources) {
+      this.pagination.stylizeElement(choosenSources);
+    } else {
+      this.pagination.stylizeElement();
+    }
   }
 }
 
