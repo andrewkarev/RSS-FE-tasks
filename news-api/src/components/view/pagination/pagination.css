@@ -1,0 +1,30 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 20px;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.page {
+  color: #70d6ff;
+  padding: 0 6px;
+}
+
+.page.active {
+  color: #69db7e;
+  text-decoration: underline;
+}
+
+.page:hover {
+  color: #69db7e;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  text-decoration: underline;
+}
