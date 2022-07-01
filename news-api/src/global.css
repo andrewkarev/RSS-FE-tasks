@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   color: #fff;
   background: #17181c;
@@ -13,12 +19,16 @@ header h1 {
   font-weight: 800;
 }
 
+header h1::first-letter {
+  color: #70d6ff
+}
+
 .footer {
-  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  width: 100%;
+  padding: 20px 30px;
 }
 
 .footer__copyright {
@@ -79,4 +89,11 @@ header h1 {
 
 .rsschool:hover path {
   fill: #30c5ff;
+}
+
+@media(max-width: 590px) {
+  .footer {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
