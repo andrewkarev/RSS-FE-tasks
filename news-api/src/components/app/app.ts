@@ -32,6 +32,11 @@ class App {
       this.view.drawPagination(data);
       this.view.drawSources(data);
       this.view.stylizePaginationElement();
+
+      const defaultSourceId = data.sources?.shift()?.id;
+
+      this.controller
+        .getDefaultNews((currentData) => this.view.drawNews(currentData), defaultSourceId);
     });
   }
 }

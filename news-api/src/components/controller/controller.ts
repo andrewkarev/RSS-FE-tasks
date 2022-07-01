@@ -35,6 +35,18 @@ class AppController extends AppLoader {
       return;
     }
   }
+
+  public getDefaultNews(callback: CallbackFunction, defaultSourceId = 'bbc-news'): void {
+    super.getResp(
+      {
+        endpoint: 'everything',
+        options: {
+          sources: defaultSourceId,
+        },
+      },
+      callback,
+    );
+  }
 }
 
 export default AppController;
