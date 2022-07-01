@@ -3,7 +3,7 @@ import ISource from '../../utils/interfaces/ISource';
 
 class Sources {
   // eslint-disable-next-line class-methods-use-this
-  public draw(data: ISource[]) {
+  public draw(data: ISource[], choosenSources: string) {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
@@ -18,12 +18,15 @@ class Sources {
         sourceItem.setAttribute('data-source-id', item.id);
       }
 
-      fragment.append(sourceClone);
+      if (item.name.startsWith(choosenSources)) {
+        fragment.append(sourceClone);
+      }
     });
 
     const sourcesList = document.querySelector('.sources');
 
     if (sourcesList) {
+      sourcesList.innerHTML = '';
       sourcesList.append(fragment);
     }
   }
