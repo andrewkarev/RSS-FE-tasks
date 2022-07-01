@@ -5,21 +5,21 @@ import ISource from '../utils/interfaces/ISource';
 import IAPIresponse from '../utils/interfaces/IAPIresponse';
 
 export class AppView {
-  news: News;
+  private news: News;
 
-  sources: Sources;
+  private sources: Sources;
 
   constructor() {
     this.news = new News();
     this.sources = new Sources();
   }
 
-  drawNews(data: IAPIresponse): void {
+  public drawNews(data: IAPIresponse): void {
     const values: Array<IArticle> = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
 
-  drawSources(data: IAPIresponse): void {
+  public drawSources(data: IAPIresponse): void {
     const values: Array<ISource> = data?.sources ? data?.sources : [];
     this.sources.draw(values);
   }

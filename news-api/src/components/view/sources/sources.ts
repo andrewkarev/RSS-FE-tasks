@@ -3,7 +3,7 @@ import ISource from '../../utils/interfaces/ISource';
 
 class Sources {
   // eslint-disable-next-line class-methods-use-this
-  draw(data: ISource[]) {
+  public draw(data: ISource[]) {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 

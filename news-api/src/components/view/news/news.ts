@@ -3,7 +3,7 @@ import IArticle from '../../utils/interfaces/IArticle';
 
 class News {
   // eslint-disable-next-line class-methods-use-this
-  draw(data: IArticle[]): void {
+  public draw(data: IArticle[]): void {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
     const fragment = document.createDocumentFragment();
