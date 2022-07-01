@@ -13,10 +13,26 @@ class App {
 
   public start(): void {
     const sourcesList = document.querySelector('.sources');
+    const pagesList = document.querySelector('.pagination');
+
     if (sourcesList) {
       sourcesList.addEventListener('click', (e) => this.controller.getNews<HTMLElement>(e, (data) => this.view.drawNews(data)));
-      this.controller.getSources((data) => this.view.drawSources(data));
     }
+
+    if (pagesList) {
+      pagesList.addEventListener('click', (e) => {
+        const currentPage = e.target as HTMLElement;
+        const choosenSources = currentPage.dataset.letter;
+        this.controller.getSources((data) => this.view.drawSources(data, choosenSources));
+        this.view.stylizePaginationElement(currentPage);
+      });
+    }
+
+    this.controller.getSources((data) => {
+      this.view.drawPagination(data);
+      this.view.drawSources(data);
+      this.view.stylizePaginationElement();
+    });
   }
 }
 
