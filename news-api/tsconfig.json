@@ -14,15 +14,8 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
 
-    // "strict": false,
-    // Disable after finishing migration
-    "alwaysStrict": true,
+    "strict": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "strictBindCallApply": true,
 
     "allowJs": true,
     "checkJs": false,
