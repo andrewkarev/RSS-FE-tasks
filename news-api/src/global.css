@@ -11,7 +11,10 @@ body {
 }
 
 header {
-  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 30px;
 }
 
 header h1 {
@@ -20,9 +23,40 @@ header h1 {
 }
 
 header h1::first-letter {
-  color: #70d6ff
+  color: #70d6ff;
 }
 
+/*  */
+.header__form {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.header__search {
+  width: 15rem;
+  height: 2.5rem;
+  background-color: transparent;
+  border: 2px solid #70d6ff;
+  /* border-radius: 1.25rem; */
+  outline: none;
+  padding: 0 3rem 0 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.2rem;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+.header__search:focus {
+  background-color: var(--primary-color);
+  border-color: #69db7e;
+}
+
+.header__search::placeholder {
+  color: #a5a5a5;
+  ;
+}
+
+/*  */
 .footer {
   display: flex;
   align-items: center;
@@ -92,6 +126,15 @@ header h1::first-letter {
 }
 
 @media(max-width: 590px) {
+  header {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .header__form {
+    padding-left: 0;
+  }
+
   .footer {
     flex-direction: column;
     gap: 15px;
