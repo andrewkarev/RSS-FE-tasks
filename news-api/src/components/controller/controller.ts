@@ -36,16 +36,21 @@ class AppController extends AppLoader {
     }
   }
 
-  public getDefaultNews(callback: CallbackFunction, defaultSourceId = 'bbc-news'): void {
+  public findNews(callback: CallbackFunction): void {
+    const search = document.querySelector('.header__search') as HTMLInputElement;
+    const searchQuery: string = search.value || 'TypeScript';
+
     super.getResp(
       {
         endpoint: 'everything',
         options: {
-          sources: defaultSourceId,
+          q: searchQuery,
         },
       },
       callback,
     );
+
+    search.value = '';
   }
 }
 

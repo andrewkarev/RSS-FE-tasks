@@ -14,6 +14,7 @@ class App {
   public start(): void {
     const sourcesList = document.querySelector('.sources');
     const pagesList = document.querySelector('.pagination');
+    const form = document.querySelector('.header__form') as HTMLFormElement;
 
     if (sourcesList) {
       sourcesList.addEventListener('click', (e) => this.controller.getNews<HTMLElement>(e, (data) => this.view.drawNews(data)));
@@ -28,15 +29,17 @@ class App {
       });
     }
 
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.controller.findNews((data) => this.view.drawNews(data));
+    });
+
     this.controller.getSources((data) => {
       this.view.drawPagination(data);
       this.view.drawSources(data);
       this.view.stylizePaginationElement();
 
-      const defaultSourceId = data.sources?.shift()?.id;
-
-      this.controller
-        .getDefaultNews((currentData) => this.view.drawNews(currentData), defaultSourceId);
+      this.controller.findNews((currentData) => this.view.drawNews(currentData));
     });
   }
 }

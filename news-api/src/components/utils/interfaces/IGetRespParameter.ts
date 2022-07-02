@@ -1,7 +1,8 @@
 interface IGetRespParameter {
   endpoint: string;
   options?: {
-    sources: string | null;
+    sources?: string | null;
+    q?: string;
   };
 }
 
