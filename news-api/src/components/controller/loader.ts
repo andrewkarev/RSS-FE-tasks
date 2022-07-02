@@ -2,6 +2,7 @@
 import IGetRespParameter from '../utils/interfaces/IGetRespParameter';
 import IResponse from '../utils/interfaces/IResponse';
 import CallbackFunction from '../utils/types/callback';
+import StatusCodeEnum from '../utils/enums/statusCode';
 
 class Loader {
   private baseLink: string;
@@ -20,7 +21,7 @@ class Loader {
   // eslint-disable-next-line class-methods-use-this
   private errorHandler = (res: IResponse): never | IResponse => {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404) {
+      if (res.status === StatusCodeEnum.Unathorized || res.status === StatusCodeEnum.NotFound) {
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       }
       throw Error(res.statusText);
@@ -30,7 +31,7 @@ class Loader {
   };
 
   private makeUrl(options: object, endpoint: string): string {
-    const urlOptions: {[index: string]: string} = { ...this.options, ...options };
+    const urlOptions: { [index: string]: string } = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
     Object.keys(urlOptions).forEach((key) => {
