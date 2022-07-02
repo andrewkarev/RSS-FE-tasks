@@ -3,13 +3,14 @@ import IGetRespParameter from '../utils/interfaces/IGetRespParameter';
 import IResponse from '../utils/interfaces/IResponse';
 import CallbackFunction from '../utils/types/callback';
 import StatusCodeEnum from '../utils/enums/statusCode';
+import IResponseOptions from '../utils/interfaces/IResponseOptions';
 
 class Loader {
   private baseLink: string;
 
-  private options: { apiKey: string };
+  private options: Partial<IResponseOptions>;
 
-  constructor(baseLink: string, options: { apiKey: string }) {
+  constructor(baseLink: string, options: Partial<IResponseOptions>) {
     this.baseLink = baseLink;
     this.options = options;
   }
