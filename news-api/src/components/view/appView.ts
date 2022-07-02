@@ -18,17 +18,17 @@ export class AppView {
     this.pagination = new Pagination();
   }
 
-  public drawNews(data: IAPIresponse): void {
+  public drawNews(data: Pick<IAPIresponse, 'articles'>): void {
     const values: Array<IArticle> = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
 
-  public drawSources(data: IAPIresponse, choosenSources = 'A'): void {
+  public drawSources(data: Pick<IAPIresponse, 'sources'>, choosenSources = 'A'): void {
     const values: Array<ISource> = data?.sources ? data?.sources : [];
     this.sources.draw(values, choosenSources);
   }
 
-  public drawPagination(data: IAPIresponse) {
+  public drawPagination(data: Pick<IAPIresponse, 'sources'>) {
     const values: Array<ISource> = data?.sources ? data?.sources : [];
     const sourceNamesFirstChars: string[] = values.map((item) => item.name.charAt(0));
     const uniqueChars: Set<string> = new Set(sourceNamesFirstChars);
