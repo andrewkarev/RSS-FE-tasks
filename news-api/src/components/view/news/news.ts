@@ -27,8 +27,9 @@ class News {
         const newsDescriptionSource = newsClone.querySelector('.news__description-source') as HTMLElement;
         const newsDescriptionContent = newsClone.querySelector('.news__description-content') as HTMLElement;
         const newsReadMoreLink = newsClone.querySelector('.news__read-more a') as HTMLElement;
+        const placeholderImage = 'https://allegralaboratory.net/wp-content/uploads/2018/08/Breaking-News.jpg';
 
-        newsMetaPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+        newsMetaPhoto.style.backgroundImage = `url(${item.urlToImage || placeholderImage})`;
         newsMetaAuthor.textContent = item.author || item.source.name;
         newsMetaDate.textContent = item.publishedAt
           .slice(0, 10)
