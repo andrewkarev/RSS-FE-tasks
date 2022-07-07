@@ -37,14 +37,18 @@ const config = {
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, 'src/assets//icons/favicon.ico'),
-    //       to: path.resolve(__dirname, 'dist')
-    //     },
-    //   ],
-    // }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/assets/images/cards'),
+          to: path.resolve(__dirname, 'dist/assets/images/cards')
+        },
+        {
+          from: path.resolve(__dirname, 'src/assets/icons'),
+          to: path.resolve(__dirname, 'dist/assets/icons')
+        },
+      ],
+    }),
   ],
   module: {
     rules: [
