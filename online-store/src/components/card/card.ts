@@ -6,11 +6,11 @@ export default class Card {
 
   model: string;
 
-  year: string;
+  year: number;
 
   color: string;
 
-  storage: string;
+  storage: number;
 
   price: number;
 

@@ -1,9 +1,9 @@
 interface ICard {
   brand: string;
   model: string;
-  year: string;
+  year: number;
   color: string;
-  storage: string;
+  storage: number;
   price: number;
   popular: boolean;
   img: string;
