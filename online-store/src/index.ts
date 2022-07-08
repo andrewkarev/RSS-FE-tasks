@@ -3,4 +3,4 @@ import App from './components/app/app';
 
 const app = new App();
 
-app.generateCards();
+app.init('name-decreasing');
