@@ -13,7 +13,7 @@ class Sort {
     this.sortingContainer?.appendChild(sortingTitle);
 
     sortingElements.forEach((element) => {
-      const sortingEl = createEl('div', element.classes, element.content, this.sortingContainer, ['sortID', element.sortID]);
+      const sortingEl = createEl('div', element.classes, element.content, this.sortingContainer, ['sortId', element.sortID]);
       this.sortingContainer?.appendChild(sortingEl);
     });
   }
