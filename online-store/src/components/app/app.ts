@@ -4,20 +4,20 @@ import goods from '../data/goods-db';
 import AppMenu from '../appMenu/appMenu';
 import ICard from '../utils/interfaces/ICard';
 import IMenuItems from '../utils/interfaces/iMenuItems';
-import sortingElements from '../data/sorting-elements';
-import createEl from '../utils/create-el';
+import Sort from '../cards-sort/sort';
 
 class App {
   cards: Card[];
 
   cardsContainer?: Node;
 
-  sortingContainer?: HTMLElement;
+  sorting: Sort;
 
   menu: AppMenu;
 
   constructor() {
     this.cards = [];
+    this.sorting = new Sort();
     this.menu = new AppMenu();
   }
 
@@ -27,22 +27,9 @@ class App {
     const relevantGoods: ICard[] = goods;
 
     // Implement render function
-    const chosenGoods = App.sort(relevantGoods, sortingOrder);
+    const chosenGoods = Sort.sort(relevantGoods, sortingOrder);
     this.generateCards(chosenGoods);
-    this.generateSorting();
-  }
-
-  // Add param chosenSorting
-  generateSorting() {
-    this.sortingContainer = document.querySelector('.sorting') as HTMLElement;
-
-    const sortingTitle = createEl('h2', 'sorting__title', 'Sort by:');
-    this.sortingContainer?.appendChild(sortingTitle);
-
-    sortingElements.forEach((element) => {
-      const sortingEl = createEl('div', element.classes, element.content, this.sortingContainer, ['sortID', element.sortID]);
-      this.sortingContainer?.appendChild(sortingEl);
-    });
+    this.sorting.generateSorting();
   }
 
   generateCards(chosenGoods: ICard[]): void {
@@ -100,40 +87,6 @@ class App {
         }
       }
     });
-  }
-
-  static sort(relevantGoods: ICard[], sortingOrder: string) {
-    if (sortingOrder === 'oldest') relevantGoods.sort((a, b) => a.year - b.year);
-
-    if (sortingOrder === 'newest') relevantGoods.sort((a, b) => b.year - a.year);
-
-    if (sortingOrder === 'most') relevantGoods.sort((a, b) => b.price - a.price);
-
-    if (sortingOrder === 'least') relevantGoods.sort((a, b) => a.price - b.price);
-
-    if (sortingOrder === 'ascending') {
-      relevantGoods.sort((a, b) => {
-        const nameA: string = a.model.toLowerCase();
-        const nameB: string = b.model.toLowerCase();
-
-        if (nameA < nameB) return -1;
-        if (nameA > nameB) return 1;
-        return 0;
-      });
-    }
-
-    if (sortingOrder === 'descending') {
-      relevantGoods.sort((a, b) => {
-        const nameA: string = a.model.toLowerCase();
-        const nameB: string = b.model.toLowerCase();
-
-        if (nameA > nameB) return -1;
-        if (nameA < nameB) return 1;
-        return 0;
-      });
-    }
-
-    return relevantGoods;
   }
 }
 
