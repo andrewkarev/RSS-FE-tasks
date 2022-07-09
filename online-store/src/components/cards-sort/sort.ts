@@ -1,6 +1,7 @@
 import sortingElements from '../data/sorting-elements';
 import createEl from '../utils/create-el';
 import ICard from '../utils/interfaces/ICard';
+import { get } from '../utils/storage';
 
 class Sort {
   sortingContainer?: HTMLElement;
@@ -12,8 +13,14 @@ class Sort {
     const sortingTitle = createEl('h2', 'sorting__title', 'Sort by:');
     this.sortingContainer?.appendChild(sortingTitle);
 
+    const sortingOrder: string = get('sortingOption', '"ascending"');
+
     sortingElements.forEach((element) => {
-      const sortingEl = createEl('div', element.classes, element.content, this.sortingContainer, ['sortId', element.sortID]);
+      const elementClasses = element.classes;
+
+      if (element.sortID === sortingOrder) elementClasses.push('active');
+
+      const sortingEl = createEl('div', elementClasses, element.content, this.sortingContainer, ['sortId', element.sortID]);
       this.sortingContainer?.appendChild(sortingEl);
     });
   }
