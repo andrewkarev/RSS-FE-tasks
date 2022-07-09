@@ -45,6 +45,8 @@ export default class Card {
   create() {
     const savedCards: string[] = get('savedItems', '[]');
     const cardsInCart: string[] = get('shoppingCart', '[]');
+    const isSaved = savedCards.includes(this.serialNum);
+    const isInCArt = cardsInCart.includes(this.serialNum);
 
     const cardInner = `
       <h2 class="goods__title">${this.model}</h2>
@@ -56,8 +58,8 @@ export default class Card {
         </figcaption>
       </figure>
       <div class="btn-container">
-        <button class=" goods__save-button button ${savedCards.includes(this.serialNum) ? 'checked' : ''}" type="button">Save</button>
-        <button class="goods__buy-button button ${cardsInCart.includes(this.serialNum) ? 'checked' : ''}" type="button">Buy</button>
+        <button class=" goods__save-button button ${isSaved ? 'checked' : ''}" type="button">${isSaved ? '✔' : 'Save'}</button>
+        <button class="goods__buy-button button ${isInCArt ? 'checked' : ''}" type="button">${isInCArt ? '✔' : 'Buy'}</button>
       </div>`;
 
     this.div = createEl('div', 'goods__card', cardInner, undefined, ['serialNum', +this.serialNum]);
