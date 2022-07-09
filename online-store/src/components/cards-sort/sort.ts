@@ -1,10 +1,12 @@
 import sortingElements from '../data/sorting-elements';
 import createEl from '../utils/create-el';
 import ICard from '../utils/interfaces/ICard';
-import { get } from '../utils/storage';
+import { get, set } from '../utils/storage';
 
 class Sort {
   sortingContainer?: HTMLElement;
+
+  sortingOptions?: NodeListOf<Element> | undefined;
 
   // Add param chosenSorting
   generateSorting() {
@@ -23,6 +25,29 @@ class Sort {
       const sortingEl = createEl('div', elementClasses, element.content, this.sortingContainer, ['sortId', element.sortID]);
       this.sortingContainer?.appendChild(sortingEl);
     });
+  }
+
+  handleSortingClick(e: Event, relevantGoods: ICard[]): ICard[] {
+    if (!this.sortingOptions) {
+      this.sortingOptions = this.sortingContainer?.querySelectorAll('.sorting__option');
+    }
+
+    this.sortingOptions?.forEach((option) => option.classList.remove('active'));
+
+    const currentTarget = e.target;
+
+    let sortedGoods: ICard[] = relevantGoods;
+
+    if (currentTarget instanceof HTMLElement) {
+      if (currentTarget.classList.contains('sorting__option') && currentTarget.dataset.sortId) {
+        currentTarget.classList.add('active');
+        const chosenSortingOrder = currentTarget.dataset.sortId;
+        sortedGoods = Sort.sort(relevantGoods, chosenSortingOrder);
+        set('sortingOption', chosenSortingOrder);
+      }
+    }
+
+    return sortedGoods;
   }
 
   static sort(relevantGoods: ICard[], sortingOrder: string) {

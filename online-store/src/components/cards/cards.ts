@@ -13,6 +13,8 @@ class Cards {
   generateCards(chosenGoods: ICard[]): void {
     this.cardsContainer = document.querySelector('.goods') as HTMLElement;
 
+    this.cardsContainer.innerHTML = '';
+
     chosenGoods.forEach((item) => {
       const card = new Card(item);
       card.create();

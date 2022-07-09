@@ -12,19 +12,20 @@ class App {
 
   menu: AppMenu;
 
+  relevantGoods: ICard[];
+
   constructor() {
     this.cards = new Cards();
     this.sorting = new Sort();
     this.menu = new AppMenu();
+    this.relevantGoods = goods;
   }
 
   init(sortingOrder: string, menuItems: IMenuItems) {
     this.menu.initMenu(menuItems);
 
-    const relevantGoods: ICard[] = goods;
-
     // Implement render function
-    const chosenGoods = Sort.sort(relevantGoods, sortingOrder);
+    const chosenGoods = Sort.sort(this.relevantGoods, sortingOrder);
     this.cards.generateCards(chosenGoods);
     this.sorting.generateSorting();
     this.handleEvents();
@@ -32,6 +33,10 @@ class App {
 
   handleEvents(): void {
     this.cards.cardsContainer?.addEventListener('click', (e) => this.menu.handleCardClick(e));
+    this.sorting.sortingContainer?.addEventListener('click', (e) => {
+      const chosenGoods: ICard[] = this.sorting.handleSortingClick(e, this.relevantGoods);
+      this.cards.generateCards(chosenGoods);
+    });
   }
 }
 
