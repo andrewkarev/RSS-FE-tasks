@@ -6,8 +6,9 @@ interface ICard {
   storage: number;
   price: number;
   popular: boolean;
+  quantity: number;
   img: string;
-  serialNum: number;
+  serialNum: string;
 }
 
 export default ICard;
