@@ -2,7 +2,7 @@
 import IMenuItems from '../utils/interfaces/iMenuItems';
 import { set } from '../utils/storage';
 
-class AppMenu {
+class NavMenu {
   savedItems?: HTMLElement;
 
   shoppingCart?: HTMLElement;
@@ -118,4 +118,4 @@ class AppMenu {
   }
 }
 
-export default AppMenu;
+export default NavMenu;
