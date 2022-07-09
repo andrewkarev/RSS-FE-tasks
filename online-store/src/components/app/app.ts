@@ -3,23 +3,30 @@ import Card from '../card/card';
 import goods from '../data/goods-db';
 import AppMenu from '../appMenu/appMenu';
 import ICard from '../utils/interfaces/ICard';
+import IMenuItems from '../utils/interfaces/iMenuItems';
+import sortingElements from '../data/sorting-elements';
+import createEl from '../utils/create-el';
 
 class App {
   cards: Card[];
 
   cardsContainer?: Node;
 
+  sortingContainer?: HTMLElement;
+
   menu: AppMenu;
 
   constructor() {
     this.cards = [];
-    // Should get from local storage
-    this.menu = new AppMenu(0, 0);
+    this.menu = new AppMenu();
   }
 
-  init(sortingOrder: string) {
+  init(sortingOrder: string, menuItems: IMenuItems) {
+    this.menu.initMenu(menuItems);
+
     const relevantGoods: ICard[] = goods;
 
+    // Implement render function
     const chosenGoods = App.sort(relevantGoods, sortingOrder);
     this.generateCards(chosenGoods);
   }
@@ -42,15 +49,21 @@ class App {
   }
 
   handleEvents(): void {
+    // write out handler function as a part of module
     this.cardsContainer?.addEventListener('click', (e) => {
       const currentTarget = e.target;
 
       let card: HTMLElement | null = null;
       let isSaveBtn = false;
+      let cardSerialNum = '';
 
       if (currentTarget instanceof HTMLElement) {
         card = currentTarget.closest('.goods__card');
         isSaveBtn = currentTarget.classList.contains('goods__save-button');
+      }
+
+      if (card && card?.dataset.serialNum) {
+        cardSerialNum = card?.dataset.serialNum;
       }
 
       if (card && !isSaveBtn) {
@@ -58,8 +71,8 @@ class App {
 
         if (buyBtn) {
           buyBtn.classList.contains('checked')
-            ? this.menu.handleCardClick(buyBtn, isSaveBtn, 'decrease')
-            : this.menu.handleCardClick(buyBtn, isSaveBtn, 'increase');
+            ? this.menu.handleCardClick(buyBtn, isSaveBtn, 'decrease', cardSerialNum)
+            : this.menu.handleCardClick(buyBtn, isSaveBtn, 'increase', cardSerialNum);
         }
       }
 
@@ -68,31 +81,23 @@ class App {
 
         if (saveBtn) {
           saveBtn.classList.contains('checked')
-            ? this.menu.handleCardClick(saveBtn, isSaveBtn, 'decrease')
-            : this.menu.handleCardClick(saveBtn, isSaveBtn, 'increase');
+            ? this.menu.handleCardClick(saveBtn, isSaveBtn, 'decrease', cardSerialNum)
+            : this.menu.handleCardClick(saveBtn, isSaveBtn, 'increase', cardSerialNum);
         }
       }
     });
   }
 
   static sort(relevantGoods: ICard[], sortingOrder: string) {
-    if (sortingOrder === 'oldest') {
-      relevantGoods.sort((a, b) => a.year - b.year);
-    }
+    if (sortingOrder === 'oldest') relevantGoods.sort((a, b) => a.year - b.year);
 
-    if (sortingOrder === 'newest') {
-      relevantGoods.sort((a, b) => b.year - a.year);
-    }
+    if (sortingOrder === 'newest') relevantGoods.sort((a, b) => b.year - a.year);
 
-    if (sortingOrder === 'highest') {
-      relevantGoods.sort((a, b) => b.price - a.price);
-    }
+    if (sortingOrder === 'most') relevantGoods.sort((a, b) => b.price - a.price);
 
-    if (sortingOrder === 'lowest') {
-      relevantGoods.sort((a, b) => a.price - b.price);
-    }
+    if (sortingOrder === 'least') relevantGoods.sort((a, b) => a.price - b.price);
 
-    if (sortingOrder === 'name-increasing') {
+    if (sortingOrder === 'ascending') {
       relevantGoods.sort((a, b) => {
         const nameA: string = a.model.toLowerCase();
         const nameB: string = b.model.toLowerCase();
@@ -103,7 +108,7 @@ class App {
       });
     }
 
-    if (sortingOrder === 'name-decreasing') {
+    if (sortingOrder === 'descending') {
       relevantGoods.sort((a, b) => {
         const nameA: string = a.model.toLowerCase();
         const nameB: string = b.model.toLowerCase();

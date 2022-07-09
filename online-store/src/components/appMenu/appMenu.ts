@@ -1,63 +1,81 @@
+import IMenuItems from '../utils/interfaces/iMenuItems';
+import { set } from '../utils/storage';
+
 class AppMenu {
   savedItems?: HTMLElement;
 
   shoppingCart?: HTMLElement;
 
-  savedItemsCounter: number;
+  savedItemsStorage: string[];
 
-  shoppingCartCounter: number;
+  shoppingCartStorage: string[];
 
-  constructor(savedItemsCounter: number, shoppingCartCounter: number) {
-    this.savedItemsCounter = savedItemsCounter;
-    this.shoppingCartCounter = shoppingCartCounter;
+  constructor() {
+    this.savedItemsStorage = [];
+    this.shoppingCartStorage = [];
   }
 
-  handleCardClick(element: Element, isSaveBtn: boolean, direction: 'increase' | 'decrease'): void {
+  initMenu({ savedCards, cardsInCart }: IMenuItems) {
+    this.savedItems = document.querySelector('.header__nav-counter--saved-items') as HTMLElement;
+    this.shoppingCart = document.querySelector('.header__nav-counter--bag') as HTMLElement;
+
+    this.savedItemsStorage = savedCards;
+    this.shoppingCartStorage = cardsInCart;
+
+    this.savedItems.textContent = `${this.savedItemsStorage.length}`;
+    this.shoppingCart.textContent = `${this.shoppingCartStorage.length}`;
+
+    if (this.savedItemsStorage.length > 0) this.savedItems.classList.add('active');
+    if (this.shoppingCartStorage.length > 0) this.shoppingCart.classList.add('active');
+  }
+
+  handleCardClick(element: Element, isSaveBtn: boolean, direction: 'increase' | 'decrease', cardSerialNum: string): void {
     const currentElement = element;
     element.classList.toggle('checked');
 
     if (isSaveBtn) {
-      this.savedItems = document.querySelector('.header__nav-counter--saved-items') as HTMLElement;
-
       if (direction === 'decrease') {
-        this.savedItemsCounter -= 1;
         currentElement.textContent = 'Save';
+        this.savedItemsStorage = this.savedItemsStorage.filter((item) => item !== cardSerialNum);
       }
 
       if (direction === 'increase') {
-        this.savedItemsCounter += 1;
         currentElement.textContent = '✔';
+        this.savedItemsStorage.push(cardSerialNum);
       }
 
-      this.savedItems.textContent = `${this.savedItemsCounter}`;
+      if (this.savedItems) this.savedItems.textContent = `${this.savedItemsStorage.length}`;
 
-      if (this.savedItemsCounter > 0) {
+      if (this.savedItemsStorage.length > 0) {
         this.savedItems?.classList.add('active');
       } else {
         this.savedItems?.classList.remove('active');
       }
+
+      set('savedItems', this.savedItemsStorage);
     }
 
     if (!isSaveBtn) {
-      this.shoppingCart = document.querySelector('.header__nav-counter--bag') as HTMLElement;
-
       if (direction === 'decrease') {
-        this.shoppingCartCounter -= 1;
         currentElement.textContent = 'Buy';
+        this.shoppingCartStorage = this.shoppingCartStorage
+          .filter((item) => item !== cardSerialNum);
       }
 
       if (direction === 'increase') {
-        this.shoppingCartCounter += 1;
         currentElement.textContent = '✔';
+        this.shoppingCartStorage.push(cardSerialNum);
       }
 
-      this.shoppingCart.textContent = `${this.shoppingCartCounter}`;
+      if (this.shoppingCart) this.shoppingCart.textContent = `${this.shoppingCartStorage.length}`;
 
-      if (this.shoppingCartCounter > 0) {
+      if (this.shoppingCartStorage.length > 0) {
         this.shoppingCart?.classList.add('active');
       } else {
         this.shoppingCart?.classList.remove('active');
       }
+
+      set('shoppingCart', this.shoppingCartStorage);
     }
   }
 }
