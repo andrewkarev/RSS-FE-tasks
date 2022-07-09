@@ -23,9 +23,9 @@ class Sort {
 
     if (sortingOrder === 'newest') relevantGoods.sort((a, b) => b.year - a.year);
 
-    if (sortingOrder === 'most') relevantGoods.sort((a, b) => b.price - a.price);
+    if (sortingOrder === 'most') relevantGoods.sort((a, b) => b.quantity - a.quantity);
 
-    if (sortingOrder === 'least') relevantGoods.sort((a, b) => a.price - b.price);
+    if (sortingOrder === 'least') relevantGoods.sort((a, b) => a.quantity - b.quantity);
 
     if (sortingOrder === 'ascending') {
       relevantGoods.sort((a, b) => {
