@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import IMenuItems from '../utils/interfaces/iMenuItems';
 import { set } from '../utils/storage';
 
@@ -29,7 +30,44 @@ class AppMenu {
     if (this.shoppingCartStorage.length > 0) this.shoppingCart.classList.add('active');
   }
 
-  handleCardClick(element: Element, isSaveBtn: boolean, direction: 'increase' | 'decrease', cardSerialNum: string): void {
+  handleCardClick(e: Event) {
+    const currentTarget = e.target;
+
+    let card: HTMLElement | null = null;
+    let isSaveBtn = false;
+    let cardSerialNum = '';
+
+    if (currentTarget instanceof HTMLElement) {
+      card = currentTarget.closest('.goods__card');
+      isSaveBtn = currentTarget.classList.contains('goods__save-button');
+    }
+
+    if (card && card?.dataset.serialNum) {
+      cardSerialNum = card?.dataset.serialNum;
+    }
+
+    if (card && !isSaveBtn) {
+      const buyBtn = card.querySelector('.goods__buy-button');
+
+      if (buyBtn) {
+        buyBtn.classList.contains('checked')
+          ? this.changeCardState(buyBtn, isSaveBtn, 'decrease', cardSerialNum)
+          : this.changeCardState(buyBtn, isSaveBtn, 'increase', cardSerialNum);
+      }
+    }
+
+    if (card && isSaveBtn) {
+      const saveBtn = card.querySelector('.goods__save-button');
+
+      if (saveBtn) {
+        saveBtn.classList.contains('checked')
+          ? this.changeCardState(saveBtn, isSaveBtn, 'decrease', cardSerialNum)
+          : this.changeCardState(saveBtn, isSaveBtn, 'increase', cardSerialNum);
+      }
+    }
+  }
+
+  changeCardState(element: Element, isSaveBtn: boolean, direction: 'increase' | 'decrease', cardSerialNum: string): void {
     const currentElement = element;
     element.classList.toggle('checked');
 

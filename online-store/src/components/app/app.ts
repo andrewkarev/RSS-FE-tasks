@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions */
-// import Card from '../card/card';
 import goods from '../data/goods-db';
 import AppMenu from '../appMenu/appMenu';
 import ICard from '../utils/interfaces/ICard';
@@ -33,43 +31,7 @@ class App {
   }
 
   handleEvents(): void {
-    // write out handler function as a part of module
-    this.cards.cardsContainer?.addEventListener('click', (e) => {
-      const currentTarget = e.target;
-
-      let card: HTMLElement | null = null;
-      let isSaveBtn = false;
-      let cardSerialNum = '';
-
-      if (currentTarget instanceof HTMLElement) {
-        card = currentTarget.closest('.goods__card');
-        isSaveBtn = currentTarget.classList.contains('goods__save-button');
-      }
-
-      if (card && card?.dataset.serialNum) {
-        cardSerialNum = card?.dataset.serialNum;
-      }
-
-      if (card && !isSaveBtn) {
-        const buyBtn = card.querySelector('.goods__buy-button');
-
-        if (buyBtn) {
-          buyBtn.classList.contains('checked')
-            ? this.menu.handleCardClick(buyBtn, isSaveBtn, 'decrease', cardSerialNum)
-            : this.menu.handleCardClick(buyBtn, isSaveBtn, 'increase', cardSerialNum);
-        }
-      }
-
-      if (card && isSaveBtn) {
-        const saveBtn = card.querySelector('.goods__save-button');
-
-        if (saveBtn) {
-          saveBtn.classList.contains('checked')
-            ? this.menu.handleCardClick(saveBtn, isSaveBtn, 'decrease', cardSerialNum)
-            : this.menu.handleCardClick(saveBtn, isSaveBtn, 'increase', cardSerialNum);
-        }
-      }
-    });
+    this.cards.cardsContainer?.addEventListener('click', (e) => this.menu.handleCardClick(e));
   }
 }
 
