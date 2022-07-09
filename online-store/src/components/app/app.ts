@@ -29,6 +29,20 @@ class App {
     // Implement render function
     const chosenGoods = App.sort(relevantGoods, sortingOrder);
     this.generateCards(chosenGoods);
+    this.generateSorting();
+  }
+
+  // Add param chosenSorting
+  generateSorting() {
+    this.sortingContainer = document.querySelector('.sorting') as HTMLElement;
+
+    const sortingTitle = createEl('h2', 'sorting__title', 'Sort by:');
+    this.sortingContainer?.appendChild(sortingTitle);
+
+    sortingElements.forEach((element) => {
+      const sortingEl = createEl('div', element.classes, element.content, this.sortingContainer, ['sortID', element.sortID]);
+      this.sortingContainer?.appendChild(sortingEl);
+    });
   }
 
   generateCards(chosenGoods: ICard[]): void {
