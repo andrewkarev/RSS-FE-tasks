@@ -1,22 +1,21 @@
 /* eslint-disable no-unused-expressions */
-import Card from '../card/card';
+// import Card from '../card/card';
 import goods from '../data/goods-db';
 import AppMenu from '../appMenu/appMenu';
 import ICard from '../utils/interfaces/ICard';
 import IMenuItems from '../utils/interfaces/iMenuItems';
 import Sort from '../cards-sort/sort';
+import Cards from '../cards/cards';
 
 class App {
-  cards: Card[];
-
-  cardsContainer?: Node;
+  cards: Cards;
 
   sorting: Sort;
 
   menu: AppMenu;
 
   constructor() {
-    this.cards = [];
+    this.cards = new Cards();
     this.sorting = new Sort();
     this.menu = new AppMenu();
   }
@@ -28,30 +27,14 @@ class App {
 
     // Implement render function
     const chosenGoods = Sort.sort(relevantGoods, sortingOrder);
-    this.generateCards(chosenGoods);
+    this.cards.generateCards(chosenGoods);
     this.sorting.generateSorting();
-  }
-
-  generateCards(chosenGoods: ICard[]): void {
-    this.cardsContainer = document.querySelector('.goods') as Node;
-
-    chosenGoods.forEach((item) => {
-      const card = new Card(item);
-      card.create();
-
-      this.cards.push(card);
-
-      if (card.div) {
-        this.cardsContainer?.appendChild(card.div);
-      }
-    });
-
     this.handleEvents();
   }
 
   handleEvents(): void {
     // write out handler function as a part of module
-    this.cardsContainer?.addEventListener('click', (e) => {
+    this.cards.cardsContainer?.addEventListener('click', (e) => {
       const currentTarget = e.target;
 
       let card: HTMLElement | null = null;
