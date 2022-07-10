@@ -2,12 +2,12 @@ import Card from '../card/card';
 import ICard from '../utils/interfaces/ICard';
 
 class Cards {
-  cards: Card[];
+  renderedCards: Card[];
 
   cardsContainer?: HTMLElement;
 
   constructor() {
-    this.cards = [];
+    this.renderedCards = [];
   }
 
   generateCards(chosenGoods: ICard[]): void {
@@ -19,7 +19,7 @@ class Cards {
       const card = new Card(item);
       card.create();
 
-      this.cards.push(card);
+      this.renderedCards.push(card);
 
       if (card.div) {
         this.cardsContainer?.appendChild(card.div);
