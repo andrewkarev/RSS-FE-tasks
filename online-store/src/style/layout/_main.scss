@@ -45,7 +45,7 @@
   }
 
   &__item--popularity,
-  &__item--display-size,
+  &__item--storage-memory,
   &__item--brand {
     align-items: start;
     gap: 0.2rem;
@@ -57,7 +57,7 @@
   }
 
   &__popularity,
-  &__display-size,
+  &__storage-memory,
   &__brand {
     margin-left: 1rem;
     font-size: 1rem;
