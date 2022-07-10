@@ -25,6 +25,13 @@ module.exports = {
       'error'
     ],
     '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/array-type': [
+      'error',
+      {
+        'default': 'array',
+        'readonly?': 'array'
+      }
+    ],
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -34,7 +41,7 @@ module.exports = {
         'ts': 'never',
         'tsx': 'never'
       }
-    ]
+    ],
   },
   settings: {
     'import/resolver': {
@@ -52,5 +59,5 @@ module.exports = {
     'webpack.config.js',
     '.eslintrc.js',
   ],
-  'root': true
+  'root': true,
 }
