@@ -28,33 +28,45 @@ class App {
   init(sortingOrder: string, menuItems: IMenuItems, searchFieldValue: string) {
     this.navMenu.initMenu(menuItems);
 
-    const chosenGoods = Sort.sort(this.relevantGoods, sortingOrder);
-    this.cards.generateCards(chosenGoods);
-    this.sorting.generateSorting();
     this.search.getSearchField(searchFieldValue);
+    this.sorting.generateSorting();
+
+    this.getRelevantGoods();
+    this.relevantGoods = Sort.sort(this.relevantGoods, sortingOrder);
+
+    this.cards.generateCards(this.relevantGoods);
 
     this.handleEvents();
   }
 
   handleEvents(): void {
     this.cards.cardsContainer?.addEventListener('click', (e) => this.navMenu.handleCardClick(e));
+
     this.sorting.sortingContainer?.addEventListener('click', (e) => {
-      const chosenGoods: ICard[] = this.sorting.handleSortingClick(e, this.relevantGoods);
-      this.cards.generateCards(chosenGoods);
-    });
-    this.search.searchField?.addEventListener('input', () => {
-      const chosenGoods: ICard[] = this.search.filterData(this.relevantGoods);
-      this.cards.generateCards(chosenGoods);
-    });
-    this.search.searchFieldResetBtn?.addEventListener('click', () => {
-      // Is filtering necessary?
-      // const chosenGoods: ICard[] = this.search.filterData(this.relevantGoods);
-      // this.cards.generateCards(chosenGoods);
+      this.getRelevantGoods();
+      this.relevantGoods = this.sorting.handleSortingClick(e, this.relevantGoods);
       this.cards.generateCards(this.relevantGoods);
     });
+
+    this.search.searchField?.addEventListener('input', () => {
+      this.getRelevantGoods();
+      this.relevantGoods = this.search.filterData(this.relevantGoods);
+      this.cards.generateCards(this.relevantGoods);
+    });
+
+    this.search.searchFieldResetBtn?.addEventListener('click', () => {
+      const searchRequest = this.search.searchField;
+
+      if (searchRequest) searchRequest.value = '';
+
+      this.getRelevantGoods();
+      this.cards.generateCards(this.relevantGoods);
+    });
+  }
+
+  getRelevantGoods() {
+    this.relevantGoods = this.search.filterData(goods);
   }
 }
 
 export default App;
-// Find a way to combine sorting and filtrtion (i'm need function for prehandling goods data base)
-// Render function necessary
