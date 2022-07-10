@@ -32,8 +32,8 @@ class Loader {
     throw Error(res.statusText);
   };
 
-  private makeUrl(options: object, endpoint: string): string {
-    const urlOptions: { [index: string]: string } = { ...this.options, ...options };
+  private makeUrl(options: { [index: string]: string }, endpoint: string): string {
+    const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
     Object.entries(urlOptions).forEach(([key, value]) => {
