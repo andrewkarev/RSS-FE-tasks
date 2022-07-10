@@ -21,14 +21,15 @@ class Loader {
 
   // eslint-disable-next-line class-methods-use-this
   private errorHandler = (res: IResponse): never | IResponse => {
-    if (!res.ok) {
-      if (res.status === StatusCodeEnum.Unathorized || res.status === StatusCodeEnum.NotFound) {
-        console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
-      }
-      throw Error(res.statusText);
+    if (res.ok) {
+      return res;
     }
 
-    return res;
+    if (res.status === StatusCodeEnum.Unathorized || res.status === StatusCodeEnum.NotFound) {
+      console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+    }
+
+    throw Error(res.statusText);
   };
 
   private makeUrl(options: object, endpoint: string): string {
