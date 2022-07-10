@@ -4,8 +4,8 @@ import ISource from './ISource';
 interface IAPIresponse {
   status: string;
   totalResults?: number;
-  articles?: Array<IArticle>;
-  sources?: Array<ISource>;
+  articles?: IArticle[];
+  sources?: ISource[];
 }
 
 export default IAPIresponse;

@@ -19,17 +19,17 @@ export class AppView {
   }
 
   public drawNews(data: Pick<IAPIresponse, 'articles'>): void {
-    const values: Array<IArticle> = data?.articles ? data?.articles : [];
+    const values: IArticle[] = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
 
   public drawSources(data: Pick<IAPIresponse, 'sources'>, choosenSources = 'A'): void {
-    const values: Array<ISource> = data?.sources ? data?.sources : [];
+    const values: ISource[] = data?.sources ? data?.sources : [];
     this.sources.draw(values, choosenSources);
   }
 
   public drawPagination(data: Pick<IAPIresponse, 'sources'>) {
-    const values: Array<ISource> = data?.sources ? data?.sources : [];
+    const values: ISource[] = data?.sources ? data?.sources : [];
     const sourceNamesFirstChars: string[] = values.map((item) => item.name.charAt(0));
     const uniqueChars: Set<string> = new Set(sourceNamesFirstChars);
     const uniqueCharsArray: string[] = [...uniqueChars];
