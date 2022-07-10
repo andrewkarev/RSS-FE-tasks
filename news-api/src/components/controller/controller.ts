@@ -38,7 +38,7 @@ class AppController extends AppLoader {
 
   public findNews(callback: CallbackFunction): void {
     const search = document.querySelector('.header__search') as HTMLInputElement;
-    const searchQuery: string = search.value || 'TypeScript';
+    const searchQuery = search.value || 'TypeScript';
 
     this.getResp(
       {
