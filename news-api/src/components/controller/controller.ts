@@ -3,7 +3,7 @@ import CallbackFunction from '../utils/types/callback';
 
 class AppController extends AppLoader {
   public getSources(callback: CallbackFunction): void {
-    super.getResp({ endpoint: 'sources' }, callback);
+    this.getResp({ endpoint: 'sources' }, callback);
   }
 
   public getNews<T extends HTMLElement>(e: Event, callback: CallbackFunction): void {
@@ -21,7 +21,7 @@ class AppController extends AppLoader {
 
       if (sourceId && newsContainer.getAttribute('data-source') !== sourceId) {
         newsContainer.setAttribute('data-source', sourceId);
-        super.getResp(
+        this.getResp(
           {
             endpoint: 'everything',
             options: {
@@ -40,7 +40,7 @@ class AppController extends AppLoader {
     const search = document.querySelector('.header__search') as HTMLInputElement;
     const searchQuery: string = search.value || 'TypeScript';
 
-    super.getResp(
+    this.getResp(
       {
         endpoint: 'everything',
         options: {
