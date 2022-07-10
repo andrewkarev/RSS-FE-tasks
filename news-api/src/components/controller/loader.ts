@@ -6,14 +6,7 @@ import StatusCodeEnum from '../utils/enums/statusCode';
 import IResponseOptions from '../utils/interfaces/IResponseOptions';
 
 class Loader {
-  private baseLink: string;
-
-  private options: Partial<IResponseOptions>;
-
-  constructor(baseLink: string, options: Partial<IResponseOptions>) {
-    this.baseLink = baseLink;
-    this.options = options;
-  }
+  constructor(private baseLink: string, private options: Partial<IResponseOptions>) { }
 
   protected getResp({ endpoint, options }: IGetRespParameter, callback: CallbackFunction = () => { console.error('No callback for GET response'); }): void {
     this.load('GET', endpoint, callback, options);
