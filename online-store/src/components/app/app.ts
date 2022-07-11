@@ -5,6 +5,7 @@ import IMenuItems from '../utils/interfaces/iMenuItems';
 import Sort from '../cards-sort/sort';
 import Cards from '../cards/cards';
 import Search from '../search/search';
+import Filters from '../filters/filters';
 
 class App {
   cards: Cards;
@@ -15,6 +16,8 @@ class App {
 
   search: Search;
 
+  filters: Filters;
+
   relevantGoods: ICard[];
 
   constructor() {
@@ -22,6 +25,7 @@ class App {
     this.sorting = new Sort();
     this.navMenu = new NavMenu();
     this.search = new Search();
+    this.filters = new Filters();
     this.relevantGoods = goods;
   }
 
@@ -30,6 +34,7 @@ class App {
 
     this.search.getSearchField(searchFieldValue);
     this.sorting.generateSorting();
+    this.filters.generateFilters();
 
     this.getRelevantGoods();
     this.relevantGoods = Sort.sort(this.relevantGoods, sortingOrder);
