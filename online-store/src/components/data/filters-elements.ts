@@ -32,7 +32,7 @@ const filtersElements = {
     elements: ['32', '64', '128', '256'],
   },
   popularityFilter: {
-    name: 'popularity',
+    name: 'popular',
     parentNodeName: '.filters__item--popularity',
     classNames: ['filters__popularity', 'button'],
     attributes: ['type', 'button'],
