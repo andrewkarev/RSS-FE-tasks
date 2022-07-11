@@ -36,7 +36,7 @@ const createEl: CreateElement = (
   if (attributes) {
     attributes.forEach(([attrName, attrValue]) => {
       if (attrValue) {
-        if (attrName.match(/serialNum|sortId/)) {
+        if (attrName.match(/serialNum|sortId|brand|color|storage/)) {
           element.dataset[attrName] = `${attrValue}`;
         } else {
           element.setAttribute(attrName, `${attrValue}`);
