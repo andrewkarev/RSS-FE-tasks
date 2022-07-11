@@ -1,65 +1,63 @@
 import sortingElements from '../data/sorting-elements';
 import createEl from '../utils/create-el';
 import ICard from '../utils/interfaces/ICard';
-import { get, set } from '../utils/storage';
+import { set } from '../utils/storage';
 
 class Sort {
   sortingContainer?: HTMLElement;
 
   sortingOptions?: NodeListOf<Element> | undefined;
 
-  // Add param chosenSorting
-  generateSorting() {
+  sortingOrder?: string;
+
+  generateSorting(sortingOrder: string) {
     this.sortingContainer = document.querySelector('.sorting') as HTMLElement;
 
-    const sortingTitle = createEl('h2', 'sorting__title', 'Sort by:');
-    this.sortingContainer?.appendChild(sortingTitle);
+    createEl('h2', 'sorting__title', 'Sort by:', this.sortingContainer);
 
-    const sortingOrder: string = get('sortingOption', '"ascending"');
+    this.sortingOrder = sortingOrder;
 
     sortingElements.forEach((element) => {
-      const elementClasses = element.classes;
+      const elementClasses = [...element.classes];
 
-      if (element.sortID === sortingOrder) elementClasses.push('active');
+      if (element.sortID === this.sortingOrder) elementClasses.push('active');
 
-      const sortingEl = createEl('div', elementClasses, element.content, this.sortingContainer, ['sortId', element.sortID]);
-      this.sortingContainer?.appendChild(sortingEl);
+      createEl('div', elementClasses, element.content, this.sortingContainer, ['sortId', element.sortID]);
     });
   }
 
-  handleSortingClick(e: Event, relevantGoods: ICard[]): ICard[] {
+  handleSortingClick(e: Event) {
     if (!this.sortingOptions) {
       this.sortingOptions = this.sortingContainer?.querySelectorAll('.sorting__option');
     }
 
-    this.sortingOptions?.forEach((option) => option.classList.remove('active'));
-
     const currentTarget = e.target;
-
-    let sortedGoods: ICard[] = relevantGoods;
 
     if (currentTarget instanceof HTMLElement) {
       if (currentTarget.classList.contains('sorting__option') && currentTarget.dataset.sortId) {
-        currentTarget.classList.add('active');
         const chosenSortingOrder = currentTarget.dataset.sortId;
-        sortedGoods = Sort.sort(relevantGoods, chosenSortingOrder);
+
+        this.sortingOrder = chosenSortingOrder;
+
+        this.sortingOptions?.forEach((option) => option.classList.remove('active'));
+
+        currentTarget.classList.add('active');
+
         set('sortingOption', chosenSortingOrder);
       }
     }
-
-    return sortedGoods;
   }
 
-  static sort(relevantGoods: ICard[], sortingOrder: string) {
-    if (sortingOrder === 'oldest') relevantGoods.sort((a, b) => a.year - b.year);
+  sortGoods(relevantGoods: ICard[]) {
+    if (this.sortingOrder === 'oldest') relevantGoods.sort((a, b) => a.year - b.year);
 
-    if (sortingOrder === 'newest') relevantGoods.sort((a, b) => b.year - a.year);
+    if (this.sortingOrder === 'newest') relevantGoods.sort((a, b) => b.year - a.year);
 
-    if (sortingOrder === 'most') relevantGoods.sort((a, b) => b.quantity - a.quantity);
+    if (this.sortingOrder === 'most') relevantGoods.sort((a, b) => b.quantity - a.quantity);
 
-    if (sortingOrder === 'least') relevantGoods.sort((a, b) => a.quantity - b.quantity);
+    if (this.sortingOrder === 'least') relevantGoods.sort((a, b) => a.quantity - b.quantity);
 
-    if (sortingOrder === 'ascending') {
+    if (this.sortingOrder === 'ascending') {
       relevantGoods.sort((a, b) => {
         const nameA: string = a.model.toLowerCase();
         const nameB: string = b.model.toLowerCase();
@@ -70,7 +68,7 @@ class Sort {
       });
     }
 
-    if (sortingOrder === 'descending') {
+    if (this.sortingOrder === 'descending') {
       relevantGoods.sort((a, b) => {
         const nameA: string = a.model.toLowerCase();
         const nameB: string = b.model.toLowerCase();
