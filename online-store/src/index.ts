@@ -9,7 +9,8 @@ const menuItems: IMenuItems = {
   savedCards: get('savedItems', '[]'),
   cardsInCart: get('shoppingCart', '[]'),
 };
+const brandFilterOptions: string[] = get('brandFilter', '[]');
 
 const app = new App();
 
-app.init(sortingOrder, menuItems, searchFieldValue);
+app.init(sortingOrder, menuItems, searchFieldValue, brandFilterOptions);

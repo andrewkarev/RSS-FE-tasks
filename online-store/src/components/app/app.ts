@@ -29,15 +29,19 @@ class App {
     this.relevantGoods = goods;
   }
 
-  init(sortingOrder: string, menuItems: IMenuItems, searchFieldValue: string) {
+  init(
+    sortingOrder: string,
+    menuItems: IMenuItems,
+    searchFieldValue: string,
+    brandFilterOptions: string[],
+  ) {
     this.navMenu.initMenu(menuItems);
 
     this.search.getSearchField(searchFieldValue);
-    this.sorting.generateSorting();
-    this.filters.generateFilters();
+    this.sorting.generateSorting(sortingOrder);
+    this.filters.generateFilters(brandFilterOptions);
 
     this.getRelevantGoods();
-    this.relevantGoods = Sort.sort(this.relevantGoods, sortingOrder);
 
     this.cards.generateCards(this.relevantGoods);
 
@@ -49,7 +53,8 @@ class App {
 
     this.sorting.sortingContainer?.addEventListener('click', (e) => {
       this.getRelevantGoods();
-      this.relevantGoods = this.sorting.handleSortingClick(e, this.relevantGoods);
+      this.sorting.handleSortingClick(e);
+      this.relevantGoods = this.sorting.sortGoods(this.relevantGoods);
       this.cards.generateCards(this.relevantGoods);
     });
 
@@ -67,10 +72,21 @@ class App {
       this.getRelevantGoods();
       this.cards.generateCards(this.relevantGoods);
     });
+
+    this.filters.brandFilter.container?.addEventListener('click', (e) => {
+      this.filters.brandFilter.handleClick(e);
+      this.getRelevantGoods();
+      this.relevantGoods = this.filters.brandFilter.filterData(this.relevantGoods);
+      this.cards.generateCards(this.relevantGoods);
+    });
   }
 
   getRelevantGoods() {
     this.relevantGoods = this.search.filterData(goods);
+    this.relevantGoods = this.filters.brandFilter.filterData(this.relevantGoods);
+    this.relevantGoods = this.sorting.sortGoods(this.relevantGoods);
+
+    console.log(this.relevantGoods);
   }
 }
 
