@@ -24,6 +24,12 @@ module.exports = {
     '@typescript-eslint/no-shadow': [
       'error'
     ],
+    'no-unused-expressions': [
+      'error',
+      {
+        "allowTernary": true
+      }
+    ],
     '@typescript-eslint/no-explicit-any': 'error',
     'import/extensions': [
       'error',
