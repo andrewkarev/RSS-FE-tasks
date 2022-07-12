@@ -41,28 +41,29 @@ class NavMenu {
       isSaveBtn = currentTarget.classList.contains('goods__save-button');
     }
 
-    if (card && card?.dataset.serialNum) {
-      cardSerialNum = card?.dataset.serialNum;
-    }
+    if (card && card?.dataset.serialNum) cardSerialNum = card?.dataset.serialNum;
 
     if (card && !isSaveBtn) {
-      const buyBtn = card.querySelector('.goods__buy-button');
-
-      if (buyBtn) {
-        buyBtn.classList.contains('checked')
-          ? this.changeCardState(buyBtn, isSaveBtn, 'decrease', cardSerialNum)
-          : this.changeCardState(buyBtn, isSaveBtn, 'increase', cardSerialNum);
-      }
+      this.handleAccordingToButtonType(card, isSaveBtn, '.goods__buy-button', cardSerialNum);
     }
 
     if (card && isSaveBtn) {
-      const saveBtn = card.querySelector('.goods__save-button');
+      this.handleAccordingToButtonType(card, isSaveBtn, '.goods__save-button', cardSerialNum);
+    }
+  }
 
-      if (saveBtn) {
-        saveBtn.classList.contains('checked')
-          ? this.changeCardState(saveBtn, isSaveBtn, 'decrease', cardSerialNum)
-          : this.changeCardState(saveBtn, isSaveBtn, 'increase', cardSerialNum);
-      }
+  handleAccordingToButtonType(
+    card: HTMLElement,
+    isSaveBtn: boolean,
+    className: string,
+    cardSerialNum: string,
+  ) {
+    const btn = card.querySelector(className);
+
+    if (btn) {
+      btn.classList.contains('checked')
+        ? this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum)
+        : this.changeCardState(btn, isSaveBtn, 'increase', cardSerialNum);
     }
   }
 
