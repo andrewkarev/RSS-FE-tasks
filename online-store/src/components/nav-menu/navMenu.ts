@@ -59,8 +59,25 @@ class NavMenu {
     cardSerialNum: string,
   ) {
     const btn = card.querySelector(className);
+    let itemsInCart = 0;
 
-    if (btn) {
+    if (!isSaveBtn) itemsInCart = this.shoppingCartStorage.length;
+
+    if (!isSaveBtn && itemsInCart >= 20 && btn && btn.classList.contains('checked')) {
+      this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum);
+    }
+
+    if (!isSaveBtn && itemsInCart >= 20 && btn && !btn.classList.contains('checked')) {
+      console.log('There is no free slots in the shopping cart');
+    }
+
+    if (!isSaveBtn && itemsInCart < 20 && btn) {
+      btn.classList.contains('checked')
+        ? this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum)
+        : this.changeCardState(btn, isSaveBtn, 'increase', cardSerialNum);
+    }
+
+    if (isSaveBtn && btn) {
       btn.classList.contains('checked')
         ? this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum)
         : this.changeCardState(btn, isSaveBtn, 'increase', cardSerialNum);
