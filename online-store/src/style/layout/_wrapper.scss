@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body.lock {
+  overflow: hidden;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

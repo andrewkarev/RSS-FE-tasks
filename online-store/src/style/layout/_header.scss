@@ -209,3 +209,7 @@
     transform: rotate(45deg) translate(0px, -1.5px);
   }
 }
+
+body.lock > .wrapper > .header {
+  padding-right: 45px;
+}
