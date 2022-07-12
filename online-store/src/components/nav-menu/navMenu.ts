@@ -1,4 +1,5 @@
 import IMenuItems from '../utils/interfaces/iMenuItems';
+import Popup from '../popup/menuPopup';
 import { set } from '../utils/storage';
 
 class NavMenu {
@@ -10,9 +11,12 @@ class NavMenu {
 
   shoppingCartStorage: string[];
 
+  popup: Popup;
+
   constructor() {
     this.savedItemsStorage = [];
     this.shoppingCartStorage = [];
+    this.popup = new Popup();
   }
 
   initMenu({ savedCards, cardsInCart }: IMenuItems) {
@@ -24,6 +28,8 @@ class NavMenu {
 
     this.savedItems.textContent = `${this.savedItemsStorage.length}`;
     this.shoppingCart.textContent = `${this.shoppingCartStorage.length}`;
+
+    this.popup.initPopupElement();
 
     if (this.savedItemsStorage.length > 0) this.savedItems.classList.add('active');
     if (this.shoppingCartStorage.length > 0) this.shoppingCart.classList.add('active');
@@ -63,18 +69,18 @@ class NavMenu {
 
     if (!isSaveBtn) itemsInCart = this.shoppingCartStorage.length;
 
-    if (!isSaveBtn && itemsInCart >= 20 && btn && btn.classList.contains('checked')) {
-      this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum);
-    }
-
-    if (!isSaveBtn && itemsInCart >= 20 && btn && !btn.classList.contains('checked')) {
-      console.log('There is no free slots in the shopping cart');
-    }
-
     if (!isSaveBtn && itemsInCart < 20 && btn) {
       btn.classList.contains('checked')
         ? this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum)
         : this.changeCardState(btn, isSaveBtn, 'increase', cardSerialNum);
+    }
+
+    if (!isSaveBtn && itemsInCart >= 20 && btn && !btn.classList.contains('checked')) {
+      this.popup.displayPopup();
+    }
+
+    if (!isSaveBtn && itemsInCart >= 20 && btn && btn.classList.contains('checked')) {
+      this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum);
     }
 
     if (isSaveBtn && btn) {
