@@ -34,12 +34,20 @@ class App {
     menuItems: IMenuItems,
     searchFieldValue: string,
     brandFilterOptions: string[],
+    colorFilterOptions: string[],
+    storageFilterOptions: string[],
+    popularityFilterOption: string[],
   ) {
     this.navMenu.initMenu(menuItems);
 
     this.search.getSearchField(searchFieldValue);
     this.sorting.generateSorting(sortingOrder);
-    this.filters.generateFilters(brandFilterOptions);
+    this.filters.generateFilters(
+      brandFilterOptions,
+      colorFilterOptions,
+      storageFilterOptions,
+      popularityFilterOption,
+    );
 
     this.getRelevantGoods();
 
@@ -79,11 +87,35 @@ class App {
       this.relevantGoods = this.filters.brandFilter.filterData(this.relevantGoods);
       this.cards.generateCards(this.relevantGoods);
     });
+
+    this.filters.colorFilter.container?.addEventListener('click', (e) => {
+      this.filters.colorFilter.handleClick(e);
+      this.getRelevantGoods();
+      this.relevantGoods = this.filters.colorFilter.filterData(this.relevantGoods);
+      this.cards.generateCards(this.relevantGoods);
+    });
+
+    this.filters.storageFilter.container?.addEventListener('click', (e) => {
+      this.filters.storageFilter.handleClick(e);
+      this.getRelevantGoods();
+      this.relevantGoods = this.filters.storageFilter.filterData(this.relevantGoods);
+      this.cards.generateCards(this.relevantGoods);
+    });
+
+    this.filters.popularityFilter.container?.addEventListener('click', (e) => {
+      this.filters.popularityFilter.handleClick(e);
+      this.getRelevantGoods();
+      this.relevantGoods = this.filters.popularityFilter.filterData(this.relevantGoods);
+      this.cards.generateCards(this.relevantGoods);
+    });
   }
 
   getRelevantGoods() {
     this.relevantGoods = this.search.filterData(goods);
     this.relevantGoods = this.filters.brandFilter.filterData(this.relevantGoods);
+    this.relevantGoods = this.filters.colorFilter.filterData(this.relevantGoods);
+    this.relevantGoods = this.filters.storageFilter.filterData(this.relevantGoods);
+    this.relevantGoods = this.filters.popularityFilter.filterData(this.relevantGoods);
     this.relevantGoods = this.sorting.sortGoods(this.relevantGoods);
 
     console.log(this.relevantGoods);
