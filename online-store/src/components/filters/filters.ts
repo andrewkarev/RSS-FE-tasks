@@ -19,11 +19,16 @@ class Filters {
     this.popularityFilter = new PopularityFilter();
   }
 
-  generateFilters(brandfilterOptions: string[]): void {
+  generateFilters(
+    brandfilterOptions: string[],
+    colorFilterOptions: string[],
+    storageFilterOptions: string[],
+    popularityFilterOption: string[],
+  ): void {
     this.brandFilter.generateFilter(brandfilterOptions);
-    this.colorFilter.generateFilter();
-    this.storageFilter.generateFilter();
-    this.popularityFilter.generateFilter();
+    this.colorFilter.generateFilter(colorFilterOptions);
+    this.storageFilter.generateFilter(storageFilterOptions);
+    this.popularityFilter.generateFilter(popularityFilterOption);
   }
 }
 
