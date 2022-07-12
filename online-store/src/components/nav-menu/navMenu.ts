@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 import IMenuItems from '../utils/interfaces/iMenuItems';
 import { set } from '../utils/storage';
 
