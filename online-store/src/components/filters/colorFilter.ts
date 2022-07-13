@@ -1,10 +1,10 @@
-import AbstractFilterClass from '../utils/abstract-classes/filterClass';
+import ClickFilter from '../utils/abstract-classes/clickFilterClass';
 import filtersElements from '../data/filters-elements';
 import createEl from '../utils/create-el';
 import ICard from '../utils/interfaces/ICard';
 import { set } from '../utils/storage';
 
-class ColorFilter extends AbstractFilterClass {
+class ColorFilter extends ClickFilter {
   container?: HTMLElement;
 
   relevantValue?: string[];
