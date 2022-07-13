@@ -1,0 +1,32 @@
+#year-slider.noUi-target {
+  border: none;
+  height: 10px;
+}
+
+#year-slider .noUi-base {
+  background-color: rgb(20, 124, 229, 0.4);
+}
+
+#year-slider .noUi-origin {
+  background-color: red;
+}
+
+#year-slider .noUi-handle {
+  width: 1rem;
+  height: 1rem;
+  top: -3px;
+  right: -7px;
+  border: 1px solid black;
+
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+#year-slider .noUi-connect	{
+  background-color: #147ce5;
+}

@@ -120,9 +120,16 @@
   }
 
   &__item--device-model-year {
+    gap: 0.2rem;
   }
 
   &__item--price {
+  }
+
+  &__price,
+  &__year {
+    margin-left: 1rem;
+    padding: 2rem 0 0.5rem 0;
   }
 }
 
