@@ -5,14 +5,17 @@ import IMenuItems from './components/utils/interfaces/iMenuItems';
 
 const sortingOrder: string = get('sortingOption', '"ascending"');
 const searchFieldValue: string = get('searchFieldValue', '""');
-const menuItems: IMenuItems = {
-  savedCards: get('savedItems', '[]'),
-  cardsInCart: get('shoppingCart', '[]'),
-};
 const brandFilterOptions: string[] = get('brandFilter', '[]');
 const colorFilterOptions: string[] = get('colorFilter', '[]');
 const storageFilterOptions: string[] = get('storageFilter', '[]');
 const popularityFilterOption: string[] = get('popularityFilter', '[]');
+const yearFilterOptions: string[] = get('yearFilter', '["2019", "2022"]');
+const priceFilterOptions: string[] = get('priceFilter', '["1", "1299"]');
+const quantityFilterOptions: string[] = get('quantityFilter', '["1", "19"]');
+const menuItems: IMenuItems = {
+  savedCards: get('savedItems', '[]'),
+  cardsInCart: get('shoppingCart', '[]'),
+};
 
 const app = new App();
 
@@ -24,4 +27,7 @@ app.init(
   colorFilterOptions,
   storageFilterOptions,
   popularityFilterOption,
+  yearFilterOptions,
+  priceFilterOptions,
+  quantityFilterOptions,
 );

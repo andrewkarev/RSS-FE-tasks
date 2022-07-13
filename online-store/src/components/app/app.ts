@@ -37,6 +37,9 @@ class App {
     colorFilterOptions: string[],
     storageFilterOptions: string[],
     popularityFilterOption: string[],
+    yearFilterOptions: string[],
+    priceFilterOptions: string[],
+    quantityFilterOptions: string[],
   ) {
     this.navMenu.initMenu(menuItems);
 
@@ -47,6 +50,9 @@ class App {
       colorFilterOptions,
       storageFilterOptions,
       popularityFilterOption,
+      yearFilterOptions,
+      priceFilterOptions,
+      quantityFilterOptions,
     );
 
     this.getRelevantGoods();
@@ -108,6 +114,27 @@ class App {
       this.relevantGoods = this.filters.popularityFilter.filterData(this.relevantGoods);
       this.cards.generateCards(this.relevantGoods);
     });
+
+    this.filters.yearFilter.yearSlider?.noUiSlider?.on('end', () => {
+      this.filters.yearFilter.handleDrag();
+      this.getRelevantGoods();
+      this.relevantGoods = this.filters.yearFilter.filterData(this.relevantGoods);
+      this.cards.generateCards(this.relevantGoods);
+    });
+
+    this.filters.priceFilter.priceSlider?.noUiSlider?.on('end', () => {
+      this.filters.priceFilter.handleDrag();
+      this.getRelevantGoods();
+      this.relevantGoods = this.filters.priceFilter.filterData(this.relevantGoods);
+      this.cards.generateCards(this.relevantGoods);
+    });
+
+    this.filters.quantityFilter.quantitySlider?.noUiSlider?.on('end', () => {
+      this.filters.quantityFilter.handleDrag();
+      this.getRelevantGoods();
+      this.relevantGoods = this.filters.quantityFilter.filterData(this.relevantGoods);
+      this.cards.generateCards(this.relevantGoods);
+    });
   }
 
   getRelevantGoods() {
@@ -116,6 +143,9 @@ class App {
     this.relevantGoods = this.filters.colorFilter.filterData(this.relevantGoods);
     this.relevantGoods = this.filters.storageFilter.filterData(this.relevantGoods);
     this.relevantGoods = this.filters.popularityFilter.filterData(this.relevantGoods);
+    this.relevantGoods = this.filters.yearFilter.filterData(this.relevantGoods);
+    this.relevantGoods = this.filters.priceFilter.filterData(this.relevantGoods);
+    this.relevantGoods = this.filters.quantityFilter.filterData(this.relevantGoods);
     this.relevantGoods = this.sorting.sortGoods(this.relevantGoods);
 
     console.log(this.relevantGoods);
