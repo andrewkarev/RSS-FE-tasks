@@ -7,8 +7,6 @@ abstract class AbstractFilterClass {
 
   abstract generateFilter(filterOptions: string[]): void;
 
-  abstract handleClick(e: Event): void;
-
   abstract filterData(elevantGoods: ICard[]): ICard[];
 }
 
