@@ -17,6 +17,10 @@ class Cards {
         this.cardsContainer?.appendChild(card.div);
       }
     });
+
+    if (!this.cardsContainer?.children.length) {
+      this.cardsContainer.innerHTML = '<h2>Sorry, no matches found :(</h2>';
+    }
   }
 }
 
