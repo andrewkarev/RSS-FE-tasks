@@ -1,17 +1,25 @@
-#year-slider.noUi-target {
+#year-slider.noUi-target,
+#price-slider.noUi-target,
+#quantity-slider.noUi-target {
   border: none;
   height: 10px;
 }
 
-#year-slider .noUi-base {
+#year-slider .noUi-base,
+#price-slider .noUi-base,
+#quantity-slider .noUi-base   {
   background-color: rgb(20, 124, 229, 0.4);
 }
 
-#year-slider .noUi-origin {
+#year-slider .noUi-origin,
+#price-slider .noUi-origin,
+#quantity-slider .noUi-origin {
   background-color: red;
 }
 
-#year-slider .noUi-handle {
+#year-slider .noUi-handle,
+#price-slider .noUi-handle,
+#quantity-slider .noUi-handle {
   width: 1rem;
   height: 1rem;
   top: -3px;
@@ -27,6 +35,8 @@
   }
 }
 
-#year-slider .noUi-connect	{
+#year-slider .noUi-connect,
+#price-slider .noUi-connect,
+#quantity-slider .noUi-connect	{
   background-color: #147ce5;
 }
