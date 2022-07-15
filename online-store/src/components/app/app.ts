@@ -6,6 +6,7 @@ import Sort from '../cards-sort/sort';
 import Cards from '../cards/cards';
 import Search from '../search/search';
 import Filters from '../filters/filters';
+import ResetButtons from '../resetBtns/resetButtons';
 
 class App {
   cards: Cards;
@@ -18,6 +19,8 @@ class App {
 
   filters: Filters;
 
+  resetButtons: ResetButtons;
+
   relevantGoods: ICard[];
 
   constructor() {
@@ -26,6 +29,7 @@ class App {
     this.navMenu = new NavMenu();
     this.search = new Search();
     this.filters = new Filters();
+    this.resetButtons = new ResetButtons();
     this.relevantGoods = goods;
   }
 
@@ -42,6 +46,8 @@ class App {
     quantityFilterOptions: string[],
   ) {
     this.navMenu.initMenu(menuItems);
+
+    this.resetButtons.getButtons();
 
     this.search.getSearchField(searchFieldValue);
     this.sorting.generateSorting(sortingOrder);
@@ -134,6 +140,30 @@ class App {
       this.getRelevantGoods();
       this.relevantGoods = this.filters.quantityFilter.filterData(this.relevantGoods);
       this.cards.generateCards(this.relevantGoods);
+    });
+
+    this.resetButtons.filtersResetBtn?.addEventListener('click', (e) => {
+      this.resetButtons.updateLocalStorage(e);
+
+      this.filters.brandFilter.reset();
+      this.filters.colorFilter.reset();
+      this.filters.storageFilter.reset();
+      this.filters.popularityFilter.reset();
+      this.filters.yearFilter.reset();
+      this.filters.priceFilter.reset();
+      this.filters.quantityFilter.reset();
+
+      const searchRequest = this.search.searchField;
+
+      if (searchRequest) searchRequest.value = '';
+
+      this.getRelevantGoods();
+      this.cards.generateCards(this.relevantGoods);
+    });
+
+    this.resetButtons.totalResetBtn?.addEventListener('click', (e) => {
+      this.resetButtons.updateLocalStorage(e);
+      document.location.reload();
     });
   }
 
