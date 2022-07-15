@@ -19,7 +19,7 @@ class Cards {
     });
 
     if (!this.cardsContainer?.children.length) {
-      this.cardsContainer.innerHTML = '<h2>Sorry, no matches found :(</h2>';
+      this.cardsContainer.innerHTML = '<h2>Sorry, no matches found ¯\\_(ツ)_/¯</h2>';
     }
   }
 }
