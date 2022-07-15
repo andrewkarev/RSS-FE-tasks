@@ -6,7 +6,7 @@ import { set } from '../utils/storage';
 class Sort {
   sortingContainer?: HTMLElement;
 
-  sortingOptions?: NodeListOf<Element> | undefined;
+  sortingOptions?: NodeListOf<Element>;
 
   sortingOrder?: string;
 
@@ -28,7 +28,7 @@ class Sort {
 
   handleSortingClick(e: Event) {
     if (!this.sortingOptions) {
-      this.sortingOptions = this.sortingContainer?.querySelectorAll('.sorting__option');
+      this.sortingOptions = this.sortingContainer?.querySelectorAll('.sorting__option') as NodeListOf<Element>;
     }
 
     const currentTarget = e.target;
