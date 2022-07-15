@@ -1,7 +1,7 @@
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import ICard from '../utils/interfaces/ICard';
-import { set } from '../utils/storage';
+import { set, get } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';
 
 class PriceFilter extends DragFilter {
@@ -57,6 +57,11 @@ class PriceFilter extends DragFilter {
     filtredGoods = relevantGoods.filter((item) => item.price >= fromPrice && item.price <= toPrice);
 
     return filtredGoods;
+  }
+
+  reset(): void {
+    this.relevantValue = get('priceFilter', '["1", "1299"]');
+    this.priceSlider?.noUiSlider?.set(this.relevantValue);
   }
 }
 

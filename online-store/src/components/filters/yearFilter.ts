@@ -1,7 +1,7 @@
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import ICard from '../utils/interfaces/ICard';
-import { set } from '../utils/storage';
+import { set, get } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';
 
 class YearFilter extends DragFilter {
@@ -56,6 +56,11 @@ class YearFilter extends DragFilter {
     filtredGoods = relevantGoods.filter((item) => item.year >= fromYear && item.year <= toYear);
 
     return filtredGoods;
+  }
+
+  reset(): void {
+    this.relevantValue = get('yearFilter', '["2019", "2022"]');
+    this.yearSlider?.noUiSlider?.set(this.relevantValue);
   }
 }
 

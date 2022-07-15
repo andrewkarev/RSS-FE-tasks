@@ -1,7 +1,7 @@
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import ICard from '../utils/interfaces/ICard';
-import { set } from '../utils/storage';
+import { set, get } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';
 
 class QuantityFilter extends DragFilter {
@@ -57,6 +57,11 @@ class QuantityFilter extends DragFilter {
       .filter((item) => item.quantity >= fromQuantity && item.quantity <= toQuantity);
 
     return filtredGoods;
+  }
+
+  reset(): void {
+    this.relevantValue = get('quantityFilter', '["1", "19"]');
+    this.quantitySlider?.noUiSlider?.set(this.relevantValue);
   }
 }
 

@@ -2,7 +2,7 @@ import ClickFilter from '../utils/abstract-classes/clickFilterClass';
 import filtersElements from '../data/filters-elements';
 import createEl from '../utils/create-el';
 import ICard from '../utils/interfaces/ICard';
-import { set } from '../utils/storage';
+import { set, get } from '../utils/storage';
 
 class BrandFilter extends ClickFilter {
   container?: HTMLElement;
@@ -60,6 +60,14 @@ class BrandFilter extends ClickFilter {
     }
 
     return filtredGoods;
+  }
+
+  reset(): void {
+    const brandFiltersElements = this.container?.querySelectorAll('.filters__brand');
+
+    brandFiltersElements?.forEach((element) => element.classList.remove('checked'));
+
+    this.relevantValue = get('brandFilter', '[]');
   }
 }
 
