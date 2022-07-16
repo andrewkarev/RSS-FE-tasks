@@ -19,7 +19,7 @@ class NavMenu {
     this.popup = new Popup();
   }
 
-  initMenu({ savedCards, cardsInCart }: IMenuItems) {
+  initMenu({ savedCards, cardsInCart }: IMenuItems): void {
     this.savedItems = document.querySelector('.header__nav-counter--saved-items') as HTMLElement;
     this.shoppingCart = document.querySelector('.header__nav-counter--bag') as HTMLElement;
 
@@ -35,7 +35,7 @@ class NavMenu {
     if (this.shoppingCartStorage.length > 0) this.shoppingCart.classList.add('active');
   }
 
-  handleCardClick(e: Event) {
+  handleCardClick(e: Event): void {
     const currentTarget = e.target;
 
     let card: HTMLElement | null = null;
@@ -63,7 +63,7 @@ class NavMenu {
     isSaveBtn: boolean,
     className: string,
     cardSerialNum: string,
-  ) {
+  ): void {
     const btn = card.querySelector(className);
     let itemsInCart = 0;
 

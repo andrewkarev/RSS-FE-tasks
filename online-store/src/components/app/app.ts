@@ -44,7 +44,7 @@ class App {
     yearFilterOptions: string[],
     priceFilterOptions: string[],
     quantityFilterOptions: string[],
-  ) {
+  ): void {
     this.navMenu.initMenu(menuItems);
 
     this.resetButtons.getButtons();
@@ -167,7 +167,7 @@ class App {
     });
   }
 
-  getRelevantGoods() {
+  getRelevantGoods(): void {
     this.relevantGoods = this.search.filterData(goods);
     this.relevantGoods = this.filters.brandFilter.filterData(this.relevantGoods);
     this.relevantGoods = this.filters.colorFilter.filterData(this.relevantGoods);

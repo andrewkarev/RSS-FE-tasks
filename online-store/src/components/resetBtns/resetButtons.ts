@@ -5,12 +5,12 @@ class ResetButtons {
 
   totalResetBtn?: HTMLElement;
 
-  getButtons() {
+  getButtons(): void {
     this.filtersResetBtn = document.querySelector('.filters__reset-btn--filters') as HTMLElement;
     this.totalResetBtn = document.querySelector('.filters__reset-btn--total') as HTMLElement;
   }
 
-  updateLocalStorage(e: Event) {
+  updateLocalStorage(e: Event): void {
     if (e.target === this.totalResetBtn) {
       del('sortingOption');
       del('savedItems');

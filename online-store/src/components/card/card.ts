@@ -42,7 +42,7 @@ export default class Card {
     this.serialNum = serialNum;
   }
 
-  create() {
+  create(): void {
     const savedCards: string[] = get('savedItems', '[]');
     const cardsInCart: string[] = get('shoppingCart', '[]');
     const isSaved = savedCards.includes(this.serialNum);

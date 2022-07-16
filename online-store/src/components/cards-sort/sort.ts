@@ -26,7 +26,7 @@ class Sort {
     });
   }
 
-  handleSortingClick(e: Event) {
+  handleSortingClick(e: Event): void {
     if (!this.sortingOptions) {
       this.sortingOptions = this.sortingContainer?.querySelectorAll('.sorting__option') as NodeListOf<Element>;
     }
@@ -48,7 +48,7 @@ class Sort {
     }
   }
 
-  sortGoods(relevantGoods: ICard[]) {
+  sortGoods(relevantGoods: ICard[]): ICard[] {
     if (this.sortingOrder === 'oldest') relevantGoods.sort((a, b) => a.year - b.year);
 
     if (this.sortingOrder === 'newest') relevantGoods.sort((a, b) => b.year - a.year);
