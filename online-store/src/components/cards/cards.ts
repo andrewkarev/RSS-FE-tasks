@@ -5,7 +5,9 @@ class Cards {
   cardsContainer?: HTMLElement;
 
   generateCards(chosenGoods: ICard[]): void {
-    this.cardsContainer = document.querySelector('.goods') as HTMLElement;
+    if (!this.cardsContainer) {
+      this.cardsContainer = document.querySelector('.goods') as HTMLElement;
+    }
 
     this.cardsContainer.innerHTML = '';
 
