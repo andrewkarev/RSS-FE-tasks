@@ -1,4 +1,4 @@
-import CreateElement from './types/create-el-func';
+import CreateElement from './types/createElFunc';
 import Attributes from './types/attributes';
 
 const createEl: CreateElement = (
