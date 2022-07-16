@@ -1,4 +1,4 @@
-import goods from '../data/goods-db';
+import goods from '../data/goodsDataBase';
 import NavMenu from '../nav-menu/navMenu';
 import ICard from '../utils/interfaces/ICard';
 import IMenuItems from '../utils/interfaces/iMenuItems';
@@ -21,6 +21,8 @@ class App {
 
   resetButtons: ResetButtons;
 
+  filtersKeys: (keyof Filters)[];
+
   relevantGoods: ICard[];
 
   constructor() {
@@ -30,6 +32,7 @@ class App {
     this.search = new Search();
     this.filters = new Filters();
     this.resetButtons = new ResetButtons();
+    this.filtersKeys = [];
     this.relevantGoods = goods;
   }
 
@@ -61,9 +64,9 @@ class App {
       quantityFilterOptions,
     );
 
-    this.getRelevantGoods();
+    this.filtersKeys = Object.keys(this.filters) as (keyof Filters)[];
 
-    this.cards.generateCards(this.relevantGoods);
+    this.updateGoodsAppearance();
 
     this.handleEvents();
   }
@@ -72,16 +75,12 @@ class App {
     this.cards.cardsContainer?.addEventListener('click', (e) => this.navMenu.handleCardClick(e));
 
     this.sorting.sortingContainer?.addEventListener('click', (e) => {
-      this.getRelevantGoods();
       this.sorting.handleSortingClick(e);
-      this.relevantGoods = this.sorting.sortGoods(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.search.searchField?.addEventListener('input', () => {
-      this.getRelevantGoods();
-      this.relevantGoods = this.search.filterData(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.search.searchFieldResetBtn?.addEventListener('click', () => {
@@ -89,76 +88,57 @@ class App {
 
       if (searchRequest) searchRequest.value = '';
 
-      this.getRelevantGoods();
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.filters.brandFilter.container?.addEventListener('click', (e) => {
       this.filters.brandFilter.handleClick(e);
-      this.getRelevantGoods();
-      this.relevantGoods = this.filters.brandFilter.filterData(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.filters.colorFilter.container?.addEventListener('click', (e) => {
       this.filters.colorFilter.handleClick(e);
-      this.getRelevantGoods();
-      this.relevantGoods = this.filters.colorFilter.filterData(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.filters.storageFilter.container?.addEventListener('click', (e) => {
       this.filters.storageFilter.handleClick(e);
-      this.getRelevantGoods();
-      this.relevantGoods = this.filters.storageFilter.filterData(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.filters.popularityFilter.container?.addEventListener('click', (e) => {
       this.filters.popularityFilter.handleClick(e);
-      this.getRelevantGoods();
-      this.relevantGoods = this.filters.popularityFilter.filterData(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.filters.yearFilter.yearSlider?.noUiSlider?.on('end', () => {
       this.filters.yearFilter.handleDrag();
-      this.getRelevantGoods();
-      this.relevantGoods = this.filters.yearFilter.filterData(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.filters.priceFilter.priceSlider?.noUiSlider?.on('end', () => {
       this.filters.priceFilter.handleDrag();
-      this.getRelevantGoods();
-      this.relevantGoods = this.filters.priceFilter.filterData(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.filters.quantityFilter.quantitySlider?.noUiSlider?.on('end', () => {
       this.filters.quantityFilter.handleDrag();
-      this.getRelevantGoods();
-      this.relevantGoods = this.filters.quantityFilter.filterData(this.relevantGoods);
-      this.cards.generateCards(this.relevantGoods);
+      this.updateGoodsAppearance();
     });
 
     this.resetButtons.filtersResetBtn?.addEventListener('click', (e) => {
-      this.resetButtons.updateLocalStorage(e);
-
-      this.filters.brandFilter.reset();
-      this.filters.colorFilter.reset();
-      this.filters.storageFilter.reset();
-      this.filters.popularityFilter.reset();
-      this.filters.yearFilter.reset();
-      this.filters.priceFilter.reset();
-      this.filters.quantityFilter.reset();
-
       const searchRequest = this.search.searchField;
 
       if (searchRequest) searchRequest.value = '';
 
-      this.getRelevantGoods();
-      this.cards.generateCards(this.relevantGoods);
+      this.resetButtons.updateLocalStorage(e);
+
+      this.filtersKeys.forEach((key) => {
+        const filter = this.filters[key];
+        if ('reset' in filter) filter.reset();
+      });
+
+      this.updateGoodsAppearance();
     });
 
     this.resetButtons.totalResetBtn?.addEventListener('click', (e) => {
@@ -169,16 +149,17 @@ class App {
 
   getRelevantGoods(): void {
     this.relevantGoods = this.search.filterData(goods);
-    this.relevantGoods = this.filters.brandFilter.filterData(this.relevantGoods);
-    this.relevantGoods = this.filters.colorFilter.filterData(this.relevantGoods);
-    this.relevantGoods = this.filters.storageFilter.filterData(this.relevantGoods);
-    this.relevantGoods = this.filters.popularityFilter.filterData(this.relevantGoods);
-    this.relevantGoods = this.filters.yearFilter.filterData(this.relevantGoods);
-    this.relevantGoods = this.filters.priceFilter.filterData(this.relevantGoods);
-    this.relevantGoods = this.filters.quantityFilter.filterData(this.relevantGoods);
     this.relevantGoods = this.sorting.sortGoods(this.relevantGoods);
 
-    console.log(this.relevantGoods);
+    this.filtersKeys.forEach((key) => {
+      const filter = this.filters[key];
+      if ('filterData' in filter) this.relevantGoods = filter.filterData(this.relevantGoods);
+    });
+  }
+
+  updateGoodsAppearance() {
+    this.getRelevantGoods();
+    this.cards.generateCards(this.relevantGoods);
   }
 }
 
