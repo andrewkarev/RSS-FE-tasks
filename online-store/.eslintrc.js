@@ -20,6 +20,8 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-useless-constructor": ["error"],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': [
       'error'
@@ -31,6 +33,13 @@ module.exports = {
       }
     ],
     '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/array-type': [
+      'error',
+      {
+        'default': 'array',
+        'readonly?': 'array'
+      }
+    ],
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -58,5 +67,5 @@ module.exports = {
     'webpack.config.js',
     '.eslintrc.js',
   ],
-  'root': true
+  'root': true,
 }
