@@ -1,4 +1,4 @@
-import createEl from '../utils/create-el';
+import createEl from '../utils/createEl';
 import ICard from '../utils/interfaces/ICard';
 import { get } from '../utils/storage';
 

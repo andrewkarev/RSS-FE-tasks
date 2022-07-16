@@ -1,6 +1,6 @@
 import ClickFilter from '../utils/abstract-classes/clickFilterClass';
-import filtersElements from '../data/filters-elements';
-import createEl from '../utils/create-el';
+import filtersElements from '../data/filtersElements';
+import createEl from '../utils/createEl';
 import ICard from '../utils/interfaces/ICard';
 import { set, get } from '../utils/storage';
 

@@ -1,5 +1,5 @@
-import sortingElements from '../data/sorting-elements';
-import createEl from '../utils/create-el';
+import sortingElements from '../data/sortingElements';
+import createEl from '../utils/createEl';
 import ICard from '../utils/interfaces/ICard';
 import { set } from '../utils/storage';
 

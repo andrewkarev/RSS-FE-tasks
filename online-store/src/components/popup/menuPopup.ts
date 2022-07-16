@@ -1,4 +1,4 @@
-import createEl from '../utils/create-el';
+import createEl from '../utils/createEl';
 
 class Popup {
   popupElement?: HTMLElement;
