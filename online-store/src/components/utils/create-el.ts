@@ -41,7 +41,9 @@ const createEl: CreateElement = (
         } else {
           element.setAttribute(attrName, `${attrValue}`);
         }
-      } else {
+      }
+
+      if (!attrValue) {
         element.setAttribute(attrName, '');
       }
     });
