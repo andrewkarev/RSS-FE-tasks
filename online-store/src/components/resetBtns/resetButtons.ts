@@ -1,4 +1,5 @@
 import { del } from '../utils/storage';
+import localStorageItemsNames from '../data/localStorageItemsNames';
 
 class ResetButtons {
   filtersResetBtn?: HTMLElement;
@@ -12,19 +13,14 @@ class ResetButtons {
 
   updateLocalStorage(e: Event): void {
     if (e.target === this.totalResetBtn) {
-      del('sortingOption');
-      del('savedItems');
-      del('shoppingCart');
+      localStorageItemsNames.forEach((name) => {
+        if (name.match(/sortingOption|savedItems|shoppingCart/)) del(name);
+      });
     }
 
-    del('brandFilter');
-    del('colorFilter');
-    del('storageFilter');
-    del('popularityFilter');
-    del('yearFilter');
-    del('priceFilter');
-    del('searchFieldValue');
-    del('quantityFilter');
+    localStorageItemsNames.forEach((name) => {
+      if (!name.match(/sortingOption|savedItems|shoppingCart/)) del(name);
+    });
   }
 }
 
