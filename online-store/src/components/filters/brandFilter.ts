@@ -5,11 +5,11 @@ import ICard from '../utils/interfaces/ICard';
 import { set, get } from '../utils/storage';
 
 class BrandFilter extends ClickFilter {
-  container?: HTMLElement;
+  public container?: HTMLElement;
 
-  relevantValue?: string[];
+  protected relevantValue?: string[];
 
-  generateFilter(filterOptions: string[]): void {
+  public generateFilter(filterOptions: string[]): void {
     const currentFilter = filtersElements.brandFilter;
 
     this.container = document.querySelector(currentFilter.parentNodeName) as HTMLElement;
@@ -31,7 +31,7 @@ class BrandFilter extends ClickFilter {
     });
   }
 
-  handleClick(e: Event): void {
+  public handleClick(e: Event): void {
     const currentEventTarget = e.target;
 
     if (currentEventTarget && currentEventTarget instanceof HTMLButtonElement) {
@@ -52,7 +52,7 @@ class BrandFilter extends ClickFilter {
     }
   }
 
-  filterData(relevantGoods: ICard[]): ICard[] {
+  public filterData(relevantGoods: ICard[]): ICard[] {
     let filtredGoods: ICard[] = relevantGoods;
 
     if (this.relevantValue?.length) {
@@ -62,7 +62,7 @@ class BrandFilter extends ClickFilter {
     return filtredGoods;
   }
 
-  reset(): void {
+  public reset(): void {
     const brandFiltersElements = this.container?.querySelectorAll('.filters__brand');
 
     brandFiltersElements?.forEach((element) => element.classList.remove('checked'));

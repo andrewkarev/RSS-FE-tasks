@@ -5,11 +5,11 @@ import { set, get } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';
 
 class QuantityFilter extends DragFilter {
-  quantitySlider?: noUiSlider.target;
+  public quantitySlider?: noUiSlider.target;
 
-  relevantValue?: string[];
+  protected relevantValue?: string[];
 
-  generateFilter([from, to]: string[]): void {
+  public generateFilter([from, to]: string[]): void {
     this.quantitySlider = document.getElementById('quantity-slider') as noUiSlider.target;
 
     this.relevantValue = [from, to];
@@ -37,13 +37,13 @@ class QuantityFilter extends DragFilter {
     }
   }
 
-  handleDrag(): void {
+  public handleDrag(): void {
     const currentValues = this.quantitySlider?.noUiSlider?.get() as string[];
     this.relevantValue = currentValues;
     set('quantityFilter', this.relevantValue);
   }
 
-  filterData(relevantGoods: ICard[]): ICard[] {
+  public filterData(relevantGoods: ICard[]): ICard[] {
     let filtredGoods: ICard[] = relevantGoods;
     let fromQuantity: number;
     let toQuantity: number;
@@ -59,7 +59,7 @@ class QuantityFilter extends DragFilter {
     return filtredGoods;
   }
 
-  reset(): void {
+  public reset(): void {
     this.relevantValue = get('quantityFilter', '["1", "19"]');
     this.quantitySlider?.noUiSlider?.set(this.relevantValue);
   }

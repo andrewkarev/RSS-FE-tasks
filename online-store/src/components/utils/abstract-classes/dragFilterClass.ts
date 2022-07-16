@@ -1,7 +1,7 @@
 import AbstractFilterClass from './filterClass';
 
 abstract class DragFilter extends AbstractFilterClass {
-  abstract handleDrag(e: Event): void;
+  public abstract handleDrag(e: Event): void;
 }
 
 export default DragFilter;

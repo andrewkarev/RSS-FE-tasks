@@ -5,11 +5,11 @@ import { set, get } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';
 
 class PriceFilter extends DragFilter {
-  priceSlider?: noUiSlider.target;
+  public priceSlider?: noUiSlider.target;
 
-  relevantValue?: string[];
+  protected relevantValue?: string[];
 
-  generateFilter([from, to]: string[]): void {
+  public generateFilter([from, to]: string[]): void {
     this.priceSlider = document.getElementById('price-slider') as noUiSlider.target;
 
     this.relevantValue = [from, to];
@@ -38,13 +38,13 @@ class PriceFilter extends DragFilter {
     }
   }
 
-  handleDrag(): void {
+  public handleDrag(): void {
     const currentValues = this.priceSlider?.noUiSlider?.get() as string[];
     this.relevantValue = currentValues;
     set('priceFilter', this.relevantValue);
   }
 
-  filterData(relevantGoods: ICard[]): ICard[] {
+  public filterData(relevantGoods: ICard[]): ICard[] {
     let filtredGoods: ICard[] = relevantGoods;
     let fromPrice: number;
     let toPrice: number;
@@ -59,7 +59,7 @@ class PriceFilter extends DragFilter {
     return filtredGoods;
   }
 
-  reset(): void {
+  public reset(): void {
     this.relevantValue = get('priceFilter', '["1", "1299"]');
     this.priceSlider?.noUiSlider?.set(this.relevantValue);
   }

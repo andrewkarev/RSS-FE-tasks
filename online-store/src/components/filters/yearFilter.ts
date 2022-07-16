@@ -5,11 +5,11 @@ import { set, get } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';
 
 class YearFilter extends DragFilter {
-  yearSlider?: noUiSlider.target;
+  public yearSlider?: noUiSlider.target;
 
-  relevantValue?: string[];
+  protected relevantValue?: string[];
 
-  generateFilter([from, to]: string[]): void {
+  public generateFilter([from, to]: string[]): void {
     this.yearSlider = document.getElementById('year-slider') as noUiSlider.target;
 
     this.relevantValue = [from, to];
@@ -37,13 +37,13 @@ class YearFilter extends DragFilter {
     }
   }
 
-  handleDrag(): void {
+  public handleDrag(): void {
     const currentValues = this.yearSlider?.noUiSlider?.get() as string[];
     this.relevantValue = currentValues;
     set('yearFilter', this.relevantValue);
   }
 
-  filterData(relevantGoods: ICard[]): ICard[] {
+  public filterData(relevantGoods: ICard[]): ICard[] {
     let filtredGoods: ICard[] = relevantGoods;
     let fromYear: number;
     let toYear: number;
@@ -58,7 +58,7 @@ class YearFilter extends DragFilter {
     return filtredGoods;
   }
 
-  reset(): void {
+  public reset(): void {
     this.relevantValue = get('yearFilter', '["2019", "2022"]');
     this.yearSlider?.noUiSlider?.set(this.relevantValue);
   }

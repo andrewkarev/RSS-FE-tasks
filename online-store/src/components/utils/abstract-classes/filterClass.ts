@@ -1,15 +1,15 @@
 import ICard from '../interfaces/ICard';
 
 abstract class AbstractFilterClass {
-  container?: HTMLElement;
+  public container?: HTMLElement;
 
-  relevantValue?: string[];
+  protected relevantValue?: string[];
 
-  abstract generateFilter(filterOptions: string[]): void;
+  public abstract generateFilter(filterOptions: string[]): void;
 
-  abstract filterData(elevantGoods: ICard[]): ICard[];
+  public abstract filterData(relevantGoods: ICard[]): ICard[];
 
-  abstract reset(): void;
+  public abstract reset(): void;
 }
 
 export default AbstractFilterClass;

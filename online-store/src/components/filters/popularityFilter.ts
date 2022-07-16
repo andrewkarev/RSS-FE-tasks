@@ -5,11 +5,11 @@ import ICard from '../utils/interfaces/ICard';
 import { set, get } from '../utils/storage';
 
 class PopularityFilter extends ClickFilter {
-  container?: HTMLElement;
+  public container?: HTMLElement;
 
-  relevantValue?: string[];
+  protected relevantValue?: string[];
 
-  generateFilter(filterOptions: string[]): void {
+  public generateFilter(filterOptions: string[]): void {
     const currentFilter = filtersElements.popularityFilter;
 
     this.container = document.querySelector(currentFilter.parentNodeName) as HTMLElement;
@@ -31,7 +31,7 @@ class PopularityFilter extends ClickFilter {
     });
   }
 
-  handleClick(e: Event): void {
+  public handleClick(e: Event): void {
     const currentEventTarget = e.target;
 
     if (currentEventTarget && currentEventTarget instanceof HTMLButtonElement) {
@@ -45,7 +45,7 @@ class PopularityFilter extends ClickFilter {
     }
   }
 
-  filterData(relevantGoods: ICard[]): ICard[] {
+  public filterData(relevantGoods: ICard[]): ICard[] {
     let filtredGoods: ICard[] = relevantGoods;
 
     if (this.relevantValue?.length) {
@@ -55,7 +55,7 @@ class PopularityFilter extends ClickFilter {
     return filtredGoods;
   }
 
-  reset(): void {
+  public reset(): void {
     const popularityFiltersElements = this.container?.querySelectorAll('.filters__popularity');
 
     popularityFiltersElements?.forEach((element) => element.classList.remove('checked'));

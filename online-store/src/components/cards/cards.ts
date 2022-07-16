@@ -4,7 +4,7 @@ import ICard from '../utils/interfaces/ICard';
 class Cards {
   cardsContainer?: HTMLElement;
 
-  generateCards(chosenGoods: ICard[]): void {
+  public generateCards(chosenGoods: ICard[]): void {
     if (!this.cardsContainer) {
       this.cardsContainer = document.querySelector('.goods') as HTMLElement;
     }

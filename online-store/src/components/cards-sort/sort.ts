@@ -4,13 +4,13 @@ import ICard from '../utils/interfaces/ICard';
 import { set } from '../utils/storage';
 
 class Sort {
-  sortingContainer?: HTMLElement;
+  public sortingContainer?: HTMLElement;
 
-  sortingOptions?: NodeListOf<Element>;
+  private sortingOptions?: NodeListOf<Element>;
 
-  sortingOrder?: string;
+  private sortingOrder?: string;
 
-  generateSorting(sortingOrder: string) {
+  public generateSorting(sortingOrder: string) {
     this.sortingContainer = document.querySelector('.sorting') as HTMLElement;
 
     createEl('h2', 'sorting__title', 'Sort by:', this.sortingContainer);
@@ -26,7 +26,7 @@ class Sort {
     });
   }
 
-  handleSortingClick(e: Event): void {
+  public handleSortingClick(e: Event): void {
     if (!this.sortingOptions) {
       this.sortingOptions = this.sortingContainer?.querySelectorAll('.sorting__option') as NodeListOf<Element>;
     }
@@ -48,7 +48,7 @@ class Sort {
     }
   }
 
-  sortGoods(relevantGoods: ICard[]): ICard[] {
+  public sortGoods(relevantGoods: ICard[]): ICard[] {
     if (this.sortingOrder === 'oldest') relevantGoods.sort((a, b) => a.year - b.year);
 
     if (this.sortingOrder === 'newest') relevantGoods.sort((a, b) => b.year - a.year);

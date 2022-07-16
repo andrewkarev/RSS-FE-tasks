@@ -2,18 +2,18 @@ import ICard from '../utils/interfaces/ICard';
 import { set } from '../utils/storage';
 
 class Search {
-  searchField?: HTMLInputElement;
+  public searchField?: HTMLInputElement;
 
-  searchFieldResetBtn?: HTMLButtonElement;
+  public searchFieldResetBtn?: HTMLButtonElement;
 
-  getSearchField(searchFieldValue: string): void {
+  public getSearchField(searchFieldValue: string): void {
     this.searchField = document.querySelector('.header__search') as HTMLInputElement;
     this.searchFieldResetBtn = document.querySelector('.reset-btn') as HTMLButtonElement;
 
     if (this.searchField) this.searchField.value = searchFieldValue;
   }
 
-  filterData(relevantGoods: ICard[]): ICard[] {
+  public filterData(relevantGoods: ICard[]): ICard[] {
     const searchRequest = this.searchField?.value;
     let filteredGoods: ICard[] = relevantGoods;
     let searchFieldValue = '';

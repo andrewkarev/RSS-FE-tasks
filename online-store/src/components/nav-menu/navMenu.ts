@@ -3,15 +3,15 @@ import Popup from '../popup/menuPopup';
 import { set } from '../utils/storage';
 
 class NavMenu {
-  savedItems?: HTMLElement;
+  private savedItems?: HTMLElement;
 
-  shoppingCart?: HTMLElement;
+  private shoppingCart?: HTMLElement;
 
-  savedItemsStorage: string[];
+  private savedItemsStorage: string[];
 
-  shoppingCartStorage: string[];
+  private shoppingCartStorage: string[];
 
-  popup: Popup;
+  private popup: Popup;
 
   constructor() {
     this.savedItemsStorage = [];
@@ -19,7 +19,7 @@ class NavMenu {
     this.popup = new Popup();
   }
 
-  initMenu({ savedCards, cardsInCart }: IMenuItems): void {
+  public initMenu({ savedCards, cardsInCart }: IMenuItems): void {
     this.savedItems = document.querySelector('.header__nav-counter--saved-items') as HTMLElement;
     this.shoppingCart = document.querySelector('.header__nav-counter--bag') as HTMLElement;
 
@@ -35,7 +35,7 @@ class NavMenu {
     if (this.shoppingCartStorage.length > 0) this.shoppingCart.classList.add('active');
   }
 
-  handleCardClick(e: Event): void {
+  public handleCardClick(e: Event): void {
     const currentTarget = e.target;
 
     let card: HTMLElement | null = null;
@@ -58,7 +58,7 @@ class NavMenu {
     }
   }
 
-  handleAccordingToButtonType(
+  private handleAccordingToButtonType(
     card: HTMLElement,
     isSaveBtn: boolean,
     className: string,
@@ -90,7 +90,7 @@ class NavMenu {
     }
   }
 
-  changeCardState(element: Element, isSaveBtn: boolean, direction: 'increase' | 'decrease', cardSerialNum: string): void {
+  private changeCardState(element: Element, isSaveBtn: boolean, direction: 'increase' | 'decrease', cardSerialNum: string): void {
     const currentElement = element;
     element.classList.toggle('checked');
 

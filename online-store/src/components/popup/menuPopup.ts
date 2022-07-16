@@ -1,11 +1,11 @@
 import createEl from '../utils/createEl';
 
 class Popup {
-  popupElement?: HTMLElement;
+  private popupElement?: HTMLElement;
 
-  parentElement?: HTMLElement;
+  private parentElement?: HTMLElement;
 
-  initPopupElement(): void {
+  public initPopupElement(): void {
     const popupInner = `
     <div class="popup__content">
       <h1 class="popup__title">Sorry.</h1>
@@ -29,7 +29,7 @@ class Popup {
     });
   }
 
-  displayPopup(): void {
+  public displayPopup(): void {
     this.parentElement?.classList.add('lock');
 
     if (this.popupElement) {

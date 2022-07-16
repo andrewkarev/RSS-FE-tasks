@@ -7,19 +7,19 @@ import PriceFilter from './priceFilter';
 import QuantityFilter from './quantityFilter';
 
 class Filters {
-  brandFilter: BrandFilter;
+  public brandFilter: BrandFilter;
 
-  colorFilter: ColorFilter;
+  public colorFilter: ColorFilter;
 
-  storageFilter: StorageFilter;
+  public storageFilter: StorageFilter;
 
-  popularityFilter: PopularityFilter;
+  public popularityFilter: PopularityFilter;
 
-  yearFilter: YearFilter;
+  public yearFilter: YearFilter;
 
-  priceFilter: PriceFilter;
+  public priceFilter: PriceFilter;
 
-  quantityFilter: QuantityFilter;
+  public quantityFilter: QuantityFilter;
 
   constructor() {
     this.brandFilter = new BrandFilter();
@@ -31,7 +31,7 @@ class Filters {
     this.quantityFilter = new QuantityFilter();
   }
 
-  generateFilters(
+  public generateFilters(
     brandfilterOptions: string[],
     colorFilterOptions: string[],
     storageFilterOptions: string[],

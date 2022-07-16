@@ -9,21 +9,21 @@ import Filters from '../filters/filters';
 import ResetButtons from '../resetBtns/resetButtons';
 
 class App {
-  cards: Cards;
+  private cards: Cards;
 
-  sorting: Sort;
+  private sorting: Sort;
 
-  navMenu: NavMenu;
+  private navMenu: NavMenu;
 
-  search: Search;
+  private search: Search;
 
-  filters: Filters;
+  private filters: Filters;
 
-  resetButtons: ResetButtons;
+  private resetButtons: ResetButtons;
 
-  filtersKeys: (keyof Filters)[];
+  private filtersKeys: (keyof Filters)[];
 
-  relevantGoods: ICard[];
+  private relevantGoods: ICard[];
 
   constructor() {
     this.cards = new Cards();
@@ -36,7 +36,7 @@ class App {
     this.relevantGoods = goods;
   }
 
-  init(
+  public init(
     sortingOrder: string,
     menuItems: IMenuItems,
     searchFieldValue: string,
@@ -71,7 +71,7 @@ class App {
     this.handleEvents();
   }
 
-  handleEvents(): void {
+  private handleEvents(): void {
     this.cards.cardsContainer?.addEventListener('click', (e) => this.navMenu.handleCardClick(e));
 
     this.sorting.sortingContainer?.addEventListener('click', (e) => {
@@ -147,7 +147,7 @@ class App {
     });
   }
 
-  getRelevantGoods(): void {
+  private getRelevantGoods(): void {
     this.relevantGoods = this.search.filterData(goods);
     this.relevantGoods = this.sorting.sortGoods(this.relevantGoods);
 
@@ -157,7 +157,7 @@ class App {
     });
   }
 
-  updateGoodsAppearance() {
+  private updateGoodsAppearance() {
     this.getRelevantGoods();
     this.cards.generateCards(this.relevantGoods);
   }

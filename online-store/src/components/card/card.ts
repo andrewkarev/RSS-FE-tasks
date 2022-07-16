@@ -3,27 +3,27 @@ import ICard from '../utils/interfaces/ICard';
 import { get } from '../utils/storage';
 
 export default class Card {
-  brand: string;
+  private brand: string;
 
-  model: string;
+  private model: string;
 
-  year: number;
+  private year: number;
 
-  color: string;
+  private color: string;
 
-  storage: number;
+  private storage: number;
 
-  price: number;
+  private price: number;
 
-  popular: boolean;
+  private popular: boolean;
 
-  quantity: number;
+  private quantity: number;
 
-  img: string;
+  private img: string;
 
-  serialNum: string;
+  private serialNum: string;
 
-  div?: Node;
+  public div?: Node;
 
   constructor(
     {
@@ -42,7 +42,7 @@ export default class Card {
     this.serialNum = serialNum;
   }
 
-  create(): void {
+  public create(): void {
     const savedCards: string[] = get('savedItems', '[]');
     const cardsInCart: string[] = get('shoppingCart', '[]');
     const isSaved = savedCards.includes(this.serialNum);
