@@ -2,6 +2,7 @@ import './style/main.scss';
 import App from './components/app/app';
 import { get } from './components/utils/storage';
 import IMenuItems from './components/utils/interfaces/iMenuItems';
+import message from './selfEval';
 
 const sortingOrder: string = get('sortingOption', '"ascending"');
 const searchFieldValue: string = get('searchFieldValue', '""');
@@ -31,3 +32,5 @@ app.init(
   priceFilterOptions,
   quantityFilterOptions,
 );
+
+console.log(message);
