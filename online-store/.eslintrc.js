@@ -66,6 +66,7 @@ module.exports = {
   ignorePatterns: [
     'webpack.config.js',
     '.eslintrc.js',
+    'jest.config.js',
   ],
   'root': true,
 }
