@@ -1,5 +1,4 @@
 import * as noUiSlider from 'nouislider';
-import 'nouislider/dist/nouislider.css';
 import ICard from '../utils/interfaces/ICard';
 import { set, get } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';

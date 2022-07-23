@@ -1,4 +1,5 @@
 import './style/main.scss';
+import 'nouislider/dist/nouislider.css';
 import App from './components/app/app';
 import { get } from './components/utils/storage';
 import IMenuItems from './components/utils/interfaces/iMenuItems';
