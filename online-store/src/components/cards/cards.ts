@@ -2,7 +2,7 @@ import Card from '../card/card';
 import ICard from '../utils/interfaces/ICard';
 
 class Cards {
-  cardsContainer?: HTMLElement;
+  public cardsContainer?: HTMLElement;
 
   public generateCards(chosenGoods: ICard[]): void {
     if (!this.cardsContainer) {
