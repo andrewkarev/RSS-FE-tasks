@@ -1,0 +1,237 @@
+@font-face {
+  font-family: 'NFS font';
+  src: url(./assets/fonts/NFS_by_JLTV.ttf);
+  src: local("☺"),   url("./assets/fonts/NFS_by_JLTV.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 1rem;
+  font-family: 'NFS font';
+  letter-spacing: 0.15rem;
+  color: #ffffff;
+  background-color: #000000;
+  background-image: url(./assets/images/background.jpg);
+  background-size: cover;
+}
+
+.button {
+  width: 10rem;
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  font-family: 'NFS font';
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: #3c3a36;
+  background-color: #f7d299;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #f9c26f;
+    color: #ffffff;
+    cursor: pointer;
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 2rem;
+
+  &__button {
+    width: 12rem;
+  }
+}
+
+.garage {
+  padding-bottom: 2rem;
+
+  &__menu {
+    padding-bottom: 2rem;
+  }
+
+  &__form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: 0.5rem;
+  }
+
+  &__input {
+    color: #ffffff;
+  }
+
+  &__input[type="text"] {
+    width: 10rem;
+    height: 2rem;
+    padding: 0.3rem;
+    border: none;
+    outline: none;
+    font-family: 'NFS font';
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    border-radius: 0.3rem;
+    background-color: rgb(255, 255, 255, 0.3);
+
+    &:focus {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 1);
+    }
+  }
+
+  &__input[type="color"] {
+    cursor: pointer;
+  }
+
+  &__button {
+    &-controls{
+      width: 8rem;
+    }
+
+    &-options {
+      width: 7rem;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__track {
+  }
+
+  &__track-title {
+  }
+
+  &__track-subtitle {
+    padding-bottom: 0.5rem;
+  }
+
+  &__track-cars {
+  }
+
+  &__track-car {
+    padding-bottom: 0.5rem;
+  }
+
+  &__car-controls {
+    padding: 0.5rem 0;
+  }
+
+  &__car-name {
+    padding-top: 0.5rem;
+  }
+
+  &__track-road {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: dashed 3px #ffffff;
+  }
+
+  &__track-launch-pad {
+    display: flex;
+  }
+
+  &__car {
+    height: 38px;
+  }
+
+  &__track-flag {
+    position: absolute;
+    right: 100px;
+    bottom: 2px;
+    font-size: 32px;
+  }
+
+  &__winning-message {
+  }
+}
+
+.engine-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 1rem;
+}
+
+.engine-button {
+  width: 1.5rem;
+  height: 1.5rem;
+  outline: none;
+  border: 2px solid;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.disabled {
+    border-color: #576257;
+    color: #576257
+  }
+}
+
+.start-engine-button {
+  border-color: #27c527;
+  color: #27c527;
+}
+
+.stop-engine-button {
+  border-color: #cf4e4e;
+  color: #cf4e4e;
+}
+
+.winners {
+  display: none;
+  padding-bottom: 2rem;
+
+  &__title {
+
+  }
+
+  &__subtitle {
+  }
+
+  &__table {
+  }
+
+  &__table-button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__table-cell {
+    padding: 0.3rem 01rem 0.3rem 0;
+  }
+
+  &__table-header-cell {
+    padding: 0.3rem 1rem 0.3rem 0;
+    text-align: left;
+  }
+}
+
+.pagination {
+  &__button {
+    width: 7rem;
+  }
+}
