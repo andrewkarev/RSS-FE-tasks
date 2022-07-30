@@ -17,7 +17,8 @@ export const getCars = async (page = 1, limit = 7): Cars => {
   try {
     const response = await fetch(queryURL);
     const cars = await response.json() as ICar[];
-    const count = response.headers.get('X-Total-Count');
+    const carsCount = response.headers.get('X-Total-Count');
+    const count = Number(carsCount);
 
     if (response.status === 200) return { cars, count };
   } catch (error) {
@@ -123,7 +124,9 @@ export const getWinners = async (
   try {
     const response = await fetch(`${WINNERS}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`);
     const winners = await response.json() as IWinner[];
-    const count = response.headers.get('X-Total-Count');
+    const winnersCount = response.headers.get('X-Total-Count');
+    const count = Number(winnersCount);
+
     if (response.status === 200) return { winners, count };
   } catch (error) {
     if (error instanceof Error) throw new Error(error.message);
