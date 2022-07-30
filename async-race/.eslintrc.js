@@ -20,8 +20,14 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    "no-useless-constructor": "off",
-    "@typescript-eslint/no-useless-constructor": ["error"],
+    'no-void': [
+      'error',
+      {
+        'allowAsStatement': true
+      }
+    ],
+    'no-useless-constructor': 'off',
+    '@typescript-eslint/no-useless-constructor': ['error'],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': [
       'error'
