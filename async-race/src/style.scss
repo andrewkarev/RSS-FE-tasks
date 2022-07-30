@@ -13,6 +13,7 @@
 }
 
 body {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -172,9 +173,6 @@ body {
     bottom: 2px;
     font-size: 32px;
   }
-
-  &__winning-message {
-  }
 }
 
 .engine-controls {
@@ -220,7 +218,6 @@ body {
   padding-bottom: 2rem;
 
   &__title {
-
   }
 
   &__subtitle {
@@ -248,5 +245,44 @@ body {
 .pagination {
   &__button {
     width: 7rem;
+  }
+}
+
+.winning-message {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 1.5rem;
+    color: #02adcb;
+    border-radius: 2rem;
+    box-shadow: 0 0 6rem 3.6rem #000000;
+
+    &::before,
+    &::after {
+      content: '';
+      height: 3px;
+      width: 100%;
+      background-color: #02adcb;
+    }
+
+    &::before {
+      margin-bottom: 0.3rem;
+      transform: translateX(1rem);
+    }
+
+    &::after {
+      margin-top: 0.4rem;
+      transform: translateX(-0.7rem);
+    }
   }
 }
