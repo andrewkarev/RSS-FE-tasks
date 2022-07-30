@@ -22,13 +22,14 @@
         <button class="garage__button button" id="button-create" type="submit">Create</button>
       </form>
       <form class="garage__form" id="update">
-        <input class="garage__input" id="update-model" name="model" type="text">
-        <input class="garage__input" id="update-color" name="color" type="color">
-        <button class="garage__button button" id="button-update" type="submit">Update</button>
+        <input class="garage__input disabled" id="update-model" name="model" type="text" disabled>
+        <input class="garage__input disabled" id="update-color" name="color" type="color" disabled>
+        <button class="garage__button button disabled" id="button-update" type="submit" disabled>Update</button>
       </form>
       <div class="garage__controls">
         <button class="garage__button garage__button-controls button" id="button-race" type="button">Race</button>
-        <button class="garage__button garage__button-controls button" id="button-reset" type="button">Reset</button>
+        <button class="garage__button garage__button-controls button disabled" id="button-reset" type="button"
+          disabled>Reset</button>
         <button class="garage__button garage__button-controls button" id="button-generate"
           type="button">Generate</button>
       </div>
@@ -49,7 +50,7 @@
             <div class="garage__track-launch-pad">
               <div class="engine-controls">
                 <button class="engine-button start-engine-button" id="start-engine-car-1">A</button>
-                <button class="engine-button stop-engine-button" id="stop-engine-car-1">B</button>
+                <button class="engine-button stop-engine-button disabled" id="stop-engine-car-1">B</button>
               </div>
               <div class="garage__car" id="car-1">
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="84" height="42"
