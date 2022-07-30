@@ -44,6 +44,12 @@ body {
     color: #ffffff;
     cursor: pointer;
   }
+
+  &.disabled {
+    background-color: #576257;
+    color: #000000;
+    cursor: default;
+  }
 }
 
 .menu {
@@ -90,10 +96,18 @@ body {
     &:focus {
       box-shadow: 0 0 5px rgba(255, 255, 255, 1);
     }
+
+    &.disabled {
+      background-color: #576257;
+    }
   }
 
   &__input[type="color"] {
     cursor: pointer;
+
+    &.disabled {
+      background-color: #576257;
+    }
   }
 
   &__button {
@@ -186,7 +200,8 @@ body {
 
   &.disabled {
     border-color: #576257;
-    color: #576257
+    color: #576257;
+    cursor: default;
   }
 }
 
