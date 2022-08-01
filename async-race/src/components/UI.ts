@@ -1,6 +1,6 @@
 const renderMenu = (): string => `
   <div class="menu">
-    <button class="menu__button button" id="button-garage">Garage</button>
+    <button class="menu__button button active" id="button-garage">Garage</button>
     <button class="menu__button button" id="button-winners">Leaderboard</button>
   </div>
 `;
@@ -10,7 +10,7 @@ const renderGarageMenu = (): string => `
     <form class="garage__form" id="create">
       <input class="garage__input" id="create-model" name="model" type="text">
       <input class="garage__input" id="create-color" name="color" type="color">
-      <button class="garage__button button" id="button-create" type="submit">Create</button>
+      <button class="garage__button button disabled" id="button-create" type="submit" disabled>Create</button>
     </form>
     <form class="garage__form" id="update">
       <input class="garage__input disabled" id="update-model" name="model" type="text" disabled>
@@ -130,11 +130,11 @@ export const getCarImage = (color: string): string => `
 `;
 
 export const renderTrackCar = (id: number, name: string, color: string, isEngineStarted?: boolean): string => `
-  <div class="garage__track-car">
+  <div class="garage__track-car" id ="track-car-${id}">
   <div class="garage__car-controls">
     <button class="garage__button garage__button-options button" id="button-select-${id}" type="button">Select</button>
     <button class="garage__button garage__button-options button" id="button-remove-${id}" type="button">Remove</button>
-    <p class="garage__car-name">${name}</p>
+    <p class="garage__car-name" id="car-name-${id}">${name}</p>
   </div>
   <div class="garage__track-road">
     <div class="garage__track-launch-pad">
@@ -153,16 +153,16 @@ export const renderTrackCar = (id: number, name: string, color: string, isEngine
 
 export const renderGarageTrack = (carsAtAll: number, cars: string[], page = 1): string => `
   <div class="garage__track">
-    <h1 class="garage__track-title">Garage &nbsp;${carsAtAll}</h1>
-    <h2 class="garage__track-subtitle">Page &nbsp; ${page}</h2>
-    <div class="garage__track-cars">
+    <h1 class="garage__track-title">Garage &nbsp;<span id="garage-cars-count">${carsAtAll}</span></h1>
+    <h2 class="garage__track-subtitle">Page &nbsp; <span id="garage-page-count">${page}</span></h2>
+    <div class="garage__track-cars" id="cars">
       ${cars.join('')}
     </div>
   </div>
 `;
 
 export const renderGarage = (garageTrack: string): string => `
-<div class="garage">
+<div class="garage" id="garage">
   ${renderGarageMenu()}
   ${garageTrack}
 </div>
@@ -179,7 +179,7 @@ export const renderWinner = (position: number, image: string, name: string, wins
 `;
 
 export const renderWinners = (winners: string[], winnersAtAll: number, page = 1): string => `
-  <div class="winners">
+  <div class="winners" id="winners">
     <h1 class="winners__title">Winners &nbsp;${winnersAtAll}</h1>
     <h2 class="winners__subtitle">Page &nbsp; ${page}</h2>
     <table class="winners__table">
@@ -215,7 +215,7 @@ export const renderWinningMessage = (name: string, time: number): HTMLElement =>
 };
 
 export const render = (garageView: string, winnersView: string): void => {
-  const rootElement = document.querySelector('body');
+  const rootElement = document.getElementById('body');
   const content = renderMenu().concat(garageView, winnersView, renderPagination());
 
   if (rootElement) rootElement.innerHTML = content;
