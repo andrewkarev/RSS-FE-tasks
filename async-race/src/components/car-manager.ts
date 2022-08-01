@@ -184,10 +184,6 @@ const updateCar = async (): Promise<void> => {
   updateWinnerView(name, color);
 };
 
-const handleUodateButtonClick = (): void => {
-  updateButton?.addEventListener('click', () => updateCar());
-};
-
 // add throwing curren page number to the renderWinners();
 const deleteWinner = async (): Promise<void> => {
   await deleteWinnerAPI(selectedCarId);
@@ -217,7 +213,7 @@ const deleteCar = async (): Promise<void> => {
 };
 
 const handleUpdateButtonClick = (): void => {
-  handleUodateButtonClick();
+  updateButton?.addEventListener('click', () => updateCar());
 
   carsContainer?.addEventListener('click', (e) => {
     const { target } = e;
