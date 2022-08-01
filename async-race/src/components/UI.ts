@@ -199,7 +199,7 @@ export const renderWinners = (winners: string[], winnersAtAll: number, page = 1)
           <th class="winners__table-button winners__table-header-cell" id="sort-by-time">Best time</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="winning-cars">
       ${winners.join('')}
       </tbody>
     </table>

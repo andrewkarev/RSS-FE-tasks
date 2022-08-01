@@ -2,9 +2,11 @@ import {
   createCar as createCarAPI,
   updateCar as updateCarAPI,
   deleteCar as deleteCarAPI,
+  deleteWinner as deleteWinnerAPI,
+  getWinners as getWinnersAPI,
 } from './api';
 import { renderTrackCar, getCarImage } from './UI';
-import { getCars } from './app-render';
+import { getCars, getWinners } from './app-render';
 
 const CARS_PER_PAGE_LIMIT = 7;
 
@@ -186,11 +188,22 @@ const handleUodateButtonClick = (): void => {
   updateButton?.addEventListener('click', () => updateCar());
 };
 
-const deleteCar = async (id: number): Promise<void> => {
-  const trackCar = document.getElementById(`track-car-${id}`);
+// add throwing curren page number to the renderWinners();
+const deleteWinner = async (): Promise<void> => {
+  await deleteWinnerAPI(selectedCarId);
+  const { winners } = await getWinners(1);
+  const winnersContainer = document.getElementById('winning-cars');
+  if (winnersContainer) winnersContainer.innerHTML = winners.join('');
+};
+
+// add throwing curren page number to the getWinnersAPI() and getCars();
+const deleteCar = async (): Promise<void> => {
+  const winnersResponse = await getWinnersAPI(1);
+  const winnersId = winnersResponse?.winners.map((winner) => winner.id);
+  const trackCar = document.getElementById(`track-car-${selectedCarId}`);
   let carsInGarage = Number(carsCounter?.innerHTML);
 
-  await deleteCarAPI(id);
+  await deleteCarAPI(selectedCarId);
 
   if (trackCar) trackCar.remove();
   if (carsCounter) carsCounter.innerText = `${carsInGarage -= 1}`;
@@ -198,6 +211,7 @@ const deleteCar = async (id: number): Promise<void> => {
     const { cars } = await getCars();
     if (carsContainer && cars) carsContainer.innerHTML = cars?.join('');
   }
+  if (winnersId?.includes(selectedCarId)) await deleteWinner();
 
   changeUpdateControlsView(true);
 };
@@ -225,7 +239,7 @@ const handleUpdateButtonClick = (): void => {
       }
     }
 
-    if (targetId.match('button-remove')) void deleteCar(selectedCarId);
+    if (targetId.match('button-remove')) void deleteCar();
   });
 };
 
