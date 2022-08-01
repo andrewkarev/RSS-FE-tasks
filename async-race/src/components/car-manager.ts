@@ -19,6 +19,7 @@ let pagesCounter: HTMLElement | null;
 let updateButton: HTMLElement | null;
 let updateModelInput: HTMLElement | null;
 let updateColorInput: HTMLElement | null;
+let winnersPageCounter: HTMLElement | null;
 
 let selectedCarId = 0;
 
@@ -32,6 +33,7 @@ const initGarageElements = (): void => {
   updateButton = document.getElementById('button-update');
   updateModelInput = document.getElementById('update-model');
   updateColorInput = document.getElementById('update-color');
+  winnersPageCounter = document.getElementById('winners-page-count');
 };
 
 const getCarAttributes = async (name: string, color: string): Promise<{
@@ -184,30 +186,33 @@ const updateCar = async (): Promise<void> => {
   updateWinnerView(name, color);
 };
 
-// add throwing curren page number to the renderWinners();
-const deleteWinner = async (): Promise<void> => {
+const deleteWinner = async (page: number, isOnPage: boolean): Promise<void> => {
   await deleteWinnerAPI(selectedCarId);
-  const { winners } = await getWinners(1);
-  const winnersContainer = document.getElementById('winning-cars');
-  if (winnersContainer) winnersContainer.innerHTML = winners.join('');
+  if (isOnPage) {
+    const { winners } = await getWinners(page);
+    const winnersContainer = document.getElementById('winning-cars');
+    if (winnersContainer) winnersContainer.innerHTML = winners.join('');
+  }
 };
 
-// add throwing curren page number to the getWinnersAPI() and getCars();
 const deleteCar = async (): Promise<void> => {
-  const winnersResponse = await getWinnersAPI(1);
+  const currentGaragePage = Number(pagesCounter?.innerHTML);
+  const currentWinnersPage = Number(winnersPageCounter?.innerHTML);
+  const winnersResponse = await getWinnersAPI(currentWinnersPage);
   const winnersId = winnersResponse?.winners.map((winner) => winner.id);
+  const isWinnerOnCurrentPage = winnersId?.includes(selectedCarId);
   const trackCar = document.getElementById(`track-car-${selectedCarId}`);
   let carsInGarage = Number(carsCounter?.innerHTML);
 
   await deleteCarAPI(selectedCarId);
+  await deleteWinner(currentWinnersPage, !!isWinnerOnCurrentPage);
 
   if (trackCar) trackCar.remove();
   if (carsCounter) carsCounter.innerText = `${carsInGarage -= 1}`;
   if (carsInGarage >= CARS_PER_PAGE_LIMIT) {
-    const { cars } = await getCars();
+    const { cars } = await getCars(currentGaragePage);
     if (carsContainer && cars) carsContainer.innerHTML = cars?.join('');
   }
-  if (winnersId?.includes(selectedCarId)) await deleteWinner();
 
   changeUpdateControlsView(true);
 };
