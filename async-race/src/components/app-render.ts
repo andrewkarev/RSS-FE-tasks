@@ -39,7 +39,7 @@ const getWinners = async (page = 1): Promise<{
   };
 };
 
-const init = async (page = 1): Promise<void> => {
+const renderApp = async (page = 1): Promise<void> => {
   const { cars, count: carsCount } = await getCars(page);
   const garageTrack = UI.renderGarageTrack(carsCount || 1, cars || [], page);
   const garageView = UI.renderGarage(garageTrack);
@@ -50,4 +50,4 @@ const init = async (page = 1): Promise<void> => {
   UI.render(garageView, winnersView);
 };
 
-export default init;
+export default renderApp;
