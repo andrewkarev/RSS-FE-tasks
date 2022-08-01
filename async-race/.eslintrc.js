@@ -39,6 +39,15 @@ module.exports = {
       }
     ],
     '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      {
+        "checksVoidReturn": {
+          "arguments": false,
+          "attributes": false
+        }
+      }
+    ],
     '@typescript-eslint/array-type': [
       'error',
       {
