@@ -1,6 +1,7 @@
 import {
   createCar as createCarAPI,
   updateCar as updateCarAPI,
+  deleteCar as deleteCarAPI,
 } from './api';
 import { renderTrackCar, getCarImage } from './UI';
 
@@ -171,6 +172,16 @@ const handleUodateButtonClick = (): void => {
   updateButton?.addEventListener('click', () => updateCar());
 };
 
+const deleteCar = async (id: number) => {
+  const trackCar = document.getElementById(`track-car-${id}`);
+  const carsInGarage = Number(carsCounter?.innerHTML);
+
+  await deleteCarAPI(id);
+
+  if (trackCar) trackCar.remove();
+  if (carsCounter) carsCounter.innerText = `${carsInGarage - 1}`;
+};
+
 const handleUpdateButtonClick = (): void => {
   handleUodateButtonClick();
   carsContainer?.addEventListener('click', (e) => {
@@ -193,9 +204,7 @@ const handleUpdateButtonClick = (): void => {
       }
     }
 
-    if (targetId.match('button-remove')) {
-      console.log('call car delete function');
-    }
+    if (targetId.match('button-remove')) void deleteCar(selectedCArId);
   });
 };
 
