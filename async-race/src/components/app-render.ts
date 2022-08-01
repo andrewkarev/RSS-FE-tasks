@@ -39,15 +39,28 @@ const getWinners = async (page = 1): Promise<{
   };
 };
 
-const renderApp = async (page = 1): Promise<void> => {
+const getGarageContent = async (page: number): Promise<string> => {
   const { cars, count: carsCount } = await getCars(page);
-  const garageTrack = UI.renderGarageTrack(carsCount || 1, cars || [], page);
+  const garageTrack = UI.renderGarageTrack(carsCount || 0, cars || [], page);
   const garageView = UI.renderGarage(garageTrack);
 
+  return garageView;
+};
+
+const getWinnersContent = async (page: number): Promise<string> => {
   const { winners, count: winnersCount } = await getWinners(page);
-  const winnersView = UI.renderWinners(winners || [], winnersCount || 1, page);
+  const winnersView = UI.renderWinners(winners || [], winnersCount || 0, page);
+
+  return winnersView;
+};
+
+const renderApp = async (page = 1): Promise<void> => {
+  const garageView = await getGarageContent(page);
+  const winnersView = await getWinnersContent(page);
 
   UI.render(garageView, winnersView);
 };
 
-export { renderApp, getCars };
+export {
+  renderApp, getCars, getWinners, getWinnersContent,
+};
