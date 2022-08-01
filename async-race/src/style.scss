@@ -254,6 +254,12 @@ body {
 .pagination {
   &__button {
     width: 7rem;
+    background-color: rgb(102, 199, 216);
+    color: #000;
+
+    &:hover {
+      background-color: #02adcb;
+    }
   }
 }
 
