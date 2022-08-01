@@ -25,7 +25,7 @@ const getWinners = async (page = 1): Promise<{
       const color = car?.color ? car?.color : '#ffffff';
       const image = UI.getCarImage(color);
       const name = car?.name ? car?.name : 'Tesla Model S';
-      return UI.renderWinner(i + 1, image, name, winner.wins, winner.time);
+      return UI.renderWinner(i + 1, image, name, winner.wins, winner.time, winner.id);
     });
   let winnersItems: string[] = [];
 

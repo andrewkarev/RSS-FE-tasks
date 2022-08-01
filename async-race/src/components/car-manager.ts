@@ -18,7 +18,7 @@ let updateButton: HTMLElement | null;
 let updateModelInput: HTMLElement | null;
 let updateColorInput: HTMLElement | null;
 
-let selectedCArId = 0;
+let selectedCarId = 0;
 
 const initGarageElements = (): void => {
   createButton = document.getElementById('button-create');
@@ -151,6 +151,17 @@ const deleteActiveClass = (): void => {
   buttons.forEach((button) => button.classList.remove('active'));
 };
 
+const updateWinnerView = (name: string, color: string): void => {
+  const winner = document.getElementById(`winner-${selectedCarId}`);
+  const carImageIndex = 1;
+  const carNameIndex = 2;
+
+  if (winner) {
+    winner.children[carImageIndex].innerHTML = getCarImage(color);
+    winner.children[carNameIndex].innerHTML = name;
+  }
+};
+
 const updateCar = async (): Promise<void> => {
   let name = '';
   let color = '';
@@ -162,11 +173,13 @@ const updateCar = async (): Promise<void> => {
 
   if (updateColorInput instanceof HTMLInputElement) color = updateColorInput?.value;
 
-  await updateCarAPI(selectedCArId, { name, color });
-  const carNameElement = document.getElementById(`car-name-${selectedCArId}`);
-  const carElement = document.getElementById(`car-${selectedCArId}`);
+  await updateCarAPI(selectedCarId, { name, color });
+  const carNameElement = document.getElementById(`car-name-${selectedCarId}`);
+  const carElement = document.getElementById(`car-${selectedCarId}`);
   if (carNameElement) carNameElement.textContent = name;
   if (carElement) carElement.innerHTML = getCarImage(color);
+
+  updateWinnerView(name, color);
 };
 
 const handleUodateButtonClick = (): void => {
@@ -198,7 +211,7 @@ const handleUpdateButtonClick = (): void => {
 
     if (target instanceof HTMLButtonElement) {
       targetId = target.id;
-      selectedCArId = Number(targetId.slice(targetId.lastIndexOf('-') + 1));
+      selectedCarId = Number(targetId.slice(targetId.lastIndexOf('-') + 1));
     }
 
     if (targetId.match('button-select') && target instanceof HTMLElement) {
@@ -212,7 +225,7 @@ const handleUpdateButtonClick = (): void => {
       }
     }
 
-    if (targetId.match('button-remove')) void deleteCar(selectedCArId);
+    if (targetId.match('button-remove')) void deleteCar(selectedCarId);
   });
 };
 

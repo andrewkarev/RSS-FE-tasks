@@ -168,8 +168,15 @@ export const renderGarage = (garageTrack: string): string => `
 </div>
 `;
 
-export const renderWinner = (position: number, image: string, name: string, wins: number, time: number): string => `
-  <tr>
+export const renderWinner = (
+  position: number,
+  image: string,
+  name: string,
+  wins: number,
+  time: number,
+  id: number,
+): string => `
+  <tr id="winner-${id}">
     <td class="winners__table-cell">${position}</td>
     <td class="winners__table-cell">${image}</td>
     <td class="winners__table-cell">${name}</td>
