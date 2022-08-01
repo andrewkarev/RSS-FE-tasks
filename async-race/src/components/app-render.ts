@@ -50,4 +50,4 @@ const renderApp = async (page = 1): Promise<void> => {
   UI.render(garageView, winnersView);
 };
 
-export default renderApp;
+export { renderApp, getCars };

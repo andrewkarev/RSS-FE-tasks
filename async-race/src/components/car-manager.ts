@@ -4,6 +4,7 @@ import {
   deleteCar as deleteCarAPI,
 } from './api';
 import { renderTrackCar, getCarImage } from './UI';
+import { getCars } from './app-render';
 
 const CARS_PER_PAGE_LIMIT = 7;
 
@@ -85,7 +86,7 @@ const updateButtonState = (input: HTMLElement, button: HTMLElement): void => {
   });
 };
 
-const handleCreateCarButtonClick = async (e: Event) => {
+const handleCreateCarButtonClick = async (e: Event): Promise<void> => {
   e.preventDefault();
   const carsInGarage = Number(carsCounter?.innerHTML);
   const currentPageCarLimit = CARS_PER_PAGE_LIMIT * Number(pagesCounter?.innerHTML);
@@ -145,12 +146,12 @@ const changeUpdateControlsView = (isOn = false): void => {
   }
 };
 
-const deleteActiveClass = () => {
+const deleteActiveClass = (): void => {
   const buttons = document.querySelectorAll('.garage__button-options');
   buttons.forEach((button) => button.classList.remove('active'));
 };
 
-const updateCar = async () => {
+const updateCar = async (): Promise<void> => {
   let name = '';
   let color = '';
 
@@ -172,18 +173,25 @@ const handleUodateButtonClick = (): void => {
   updateButton?.addEventListener('click', () => updateCar());
 };
 
-const deleteCar = async (id: number) => {
+const deleteCar = async (id: number): Promise<void> => {
   const trackCar = document.getElementById(`track-car-${id}`);
-  const carsInGarage = Number(carsCounter?.innerHTML);
+  let carsInGarage = Number(carsCounter?.innerHTML);
 
   await deleteCarAPI(id);
 
   if (trackCar) trackCar.remove();
-  if (carsCounter) carsCounter.innerText = `${carsInGarage - 1}`;
+  if (carsCounter) carsCounter.innerText = `${carsInGarage -= 1}`;
+  if (carsInGarage >= CARS_PER_PAGE_LIMIT) {
+    const { cars } = await getCars();
+    if (carsContainer && cars) carsContainer.innerHTML = cars?.join('');
+  }
+
+  changeUpdateControlsView(true);
 };
 
 const handleUpdateButtonClick = (): void => {
   handleUodateButtonClick();
+
   carsContainer?.addEventListener('click', (e) => {
     const { target } = e;
     let targetId = '';
