@@ -1,5 +1,8 @@
-import { createCar as createCarAPI } from './api';
-import { renderTrackCar } from './UI';
+import {
+  createCar as createCarAPI,
+  updateCar as updateCarAPI,
+} from './api';
+import { renderTrackCar, getCarImage } from './UI';
 
 const CARS_PER_PAGE_LIMIT = 7;
 
@@ -9,6 +12,11 @@ let createColorInput: HTMLElement | null;
 let carsContainer: HTMLElement | null;
 let carsCounter: HTMLElement | null;
 let pagesCounter: HTMLElement | null;
+let updateButton: HTMLElement | null;
+let updateModelInput: HTMLElement | null;
+let updateColorInput: HTMLElement | null;
+
+let selectedCArId = 0;
 
 const initGarageElements = (): void => {
   createButton = document.getElementById('button-create');
@@ -17,6 +25,9 @@ const initGarageElements = (): void => {
   carsContainer = document.getElementById('cars');
   carsCounter = document.getElementById('garage-cars-count');
   pagesCounter = document.getElementById('garage-page-count');
+  updateButton = document.getElementById('button-update');
+  updateModelInput = document.getElementById('update-model');
+  updateColorInput = document.getElementById('update-color');
 };
 
 const getCarAttributes = async (name: string, color: string): Promise<{
@@ -112,4 +123,80 @@ const createCar = (): void => {
   createButton?.addEventListener('click', (e) => handleCreateCarButtonClick(e));
 };
 
-export default createCar;
+const changeUpdateControlsView = (isOn = false): void => {
+  const updateInputElements = [updateModelInput, updateColorInput];
+
+  if (!isOn) {
+    updateInputElements.forEach((item) => {
+      item?.classList.remove('disabled');
+      item?.removeAttribute('disabled');
+    });
+
+    if (updateModelInput && updateButton) updateButtonState(updateModelInput, updateButton);
+  } else {
+    updateInputElements.forEach((item) => {
+      item?.classList.add('disabled');
+      item?.setAttribute('disabled', '');
+    });
+
+    if (updateModelInput instanceof HTMLInputElement) updateModelInput.value = '';
+    if (updateButton) disableButton(updateButton);
+  }
+};
+
+const deleteActiveClass = () => {
+  const buttons = document.querySelectorAll('.garage__button-options');
+  buttons.forEach((button) => button.classList.remove('active'));
+};
+
+const updateCar = async () => {
+  let name = '';
+  let color = '';
+
+  if (updateModelInput instanceof HTMLInputElement) {
+    name = updateModelInput.value;
+    updateModelInput.value = '';
+  }
+
+  if (updateColorInput instanceof HTMLInputElement) color = updateColorInput?.value;
+
+  await updateCarAPI(selectedCArId, { name, color });
+  const carNameElement = document.getElementById(`car-name-${selectedCArId}`);
+  const carElement = document.getElementById(`car-${selectedCArId}`);
+  if (carNameElement) carNameElement.textContent = name;
+  if (carElement) carElement.innerHTML = getCarImage(color);
+};
+
+const handleUodateButtonClick = (): void => {
+  updateButton?.addEventListener('click', () => updateCar());
+};
+
+const handleUpdateButtonClick = (): void => {
+  handleUodateButtonClick();
+  carsContainer?.addEventListener('click', (e) => {
+    const { target } = e;
+    let targetId = '';
+
+    if (target instanceof HTMLButtonElement) {
+      targetId = target.id;
+      selectedCArId = Number(targetId.slice(targetId.lastIndexOf('-') + 1));
+    }
+
+    if (targetId.match('button-select') && target instanceof HTMLElement) {
+      if (target.classList.contains('active')) {
+        target.classList.remove('active');
+        changeUpdateControlsView(true);
+      } else {
+        deleteActiveClass();
+        target.classList.add('active');
+        changeUpdateControlsView();
+      }
+    }
+
+    if (targetId.match('button-remove')) {
+      console.log('call car delete function');
+    }
+  });
+};
+
+export { handleUpdateButtonClick, createCar };
