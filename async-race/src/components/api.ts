@@ -41,18 +41,22 @@ export const getCar = async (id: number): Promise<ICar | null> => {
   return null;
 };
 
-export const createCar = async (body: Partial<ICar>): Promise<void> => {
+export const createCar = async (body: Partial<ICar>): Promise<ICar | null> => {
   try {
-    await fetch(GARAGE, {
+    const response = await fetch(GARAGE, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
         'Content-Type': 'application/json',
       },
     });
+    const data = await response.json() as ICar;
+    if (response.status === 201) return data;
   } catch (error) {
     if (error instanceof Error) throw new Error(error.message);
   }
+
+  return null;
 };
 
 export const deleteCar = async (id: number): Promise<void> => {
