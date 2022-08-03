@@ -7,8 +7,8 @@ import {
 } from './api';
 import { renderTrackCar, getCarImage } from './UI';
 import { getCars, getWinners } from './app-render';
-
-const CARS_PER_PAGE_LIMIT = 7;
+import { getRandomColor, getRandomCarName } from './utils';
+import state from './app-state';
 
 let createButton: HTMLElement | null;
 let createModelInput: HTMLElement | null;
@@ -20,8 +20,7 @@ let updateButton: HTMLElement | null;
 let updateModelInput: HTMLElement | null;
 let updateColorInput: HTMLElement | null;
 let winnersPageCounter: HTMLElement | null;
-
-let selectedCarId = 0;
+let generateButton: HTMLElement | null;
 
 const initGarageElements = (): void => {
   createButton = document.getElementById('button-create');
@@ -34,6 +33,7 @@ const initGarageElements = (): void => {
   updateModelInput = document.getElementById('update-model');
   updateColorInput = document.getElementById('update-color');
   winnersPageCounter = document.getElementById('winners-page-count');
+  generateButton = document.getElementById('button-generate');
 };
 
 const getCarAttributes = async (name: string, color: string): Promise<{
@@ -90,13 +90,29 @@ const updateButtonState = (input: HTMLElement, button: HTMLElement): void => {
   });
 };
 
+const renderCarView = async (name: string, color: string, limit: number): Promise<void> => {
+  const carAttributes = await getCarAttributes(name, color);
+  const { id, carName, carColor } = carAttributes;
+
+  let car = '';
+
+  if (id && carName && carColor && state.carsInGarage < limit) {
+    car = renderTrackCar(id, carName, carColor);
+  }
+
+  if (carsContainer && state.carsInGarage < limit) {
+    carsContainer.innerHTML += car;
+  }
+
+  if (carsCounter) carsCounter.innerText = `${state.carsInGarage += 1}`;
+};
+
 const handleCreateCarButtonClick = async (e: Event): Promise<void> => {
   e.preventDefault();
-  const carsInGarage = Number(carsCounter?.innerHTML);
-  const currentPageCarLimit = CARS_PER_PAGE_LIMIT * Number(pagesCounter?.innerHTML);
+  state.carsInGarage = Number(carsCounter?.innerHTML);
+  const currentPageCarLimit = state.carsPerPageLimit * Number(pagesCounter?.innerHTML);
   let name = '';
   let color = '';
-  let car = '';
 
   if (createModelInput instanceof HTMLInputElement) {
     name = createModelInput.value;
@@ -105,18 +121,7 @@ const handleCreateCarButtonClick = async (e: Event): Promise<void> => {
 
   if (createColorInput instanceof HTMLInputElement) color = createColorInput?.value;
 
-  const carAttributes = await getCarAttributes(name, color);
-  const { id, carName, carColor } = carAttributes;
-
-  if (id && carName && carColor && carsInGarage < currentPageCarLimit) {
-    car = renderTrackCar(id, carName, carColor);
-  }
-
-  if (carsContainer && carsInGarage < currentPageCarLimit) {
-    carsContainer.innerHTML += car;
-  }
-
-  if (carsCounter) carsCounter.innerText = `${carsInGarage + 1}`;
+  await renderCarView(name, color, currentPageCarLimit);
 };
 
 const createCar = (): void => {
@@ -156,7 +161,7 @@ const deleteActiveClass = (): void => {
 };
 
 const updateWinnerView = (name: string, color: string): void => {
-  const winner = document.getElementById(`winner-${selectedCarId}`);
+  const winner = document.getElementById(`winner-${state.selectedCarId}`);
   const carImageIndex = 1;
   const carNameIndex = 2;
 
@@ -177,9 +182,9 @@ const updateCar = async (): Promise<void> => {
 
   if (updateColorInput instanceof HTMLInputElement) color = updateColorInput?.value;
 
-  await updateCarAPI(selectedCarId, { name, color });
-  const carNameElement = document.getElementById(`car-name-${selectedCarId}`);
-  const carElement = document.getElementById(`car-${selectedCarId}`);
+  await updateCarAPI(state.selectedCarId, { name, color });
+  const carNameElement = document.getElementById(`car-name-${state.selectedCarId}`);
+  const carElement = document.getElementById(`car-${state.selectedCarId}`);
   if (carNameElement) carNameElement.textContent = name;
   if (carElement) carElement.innerHTML = getCarImage(color);
 
@@ -187,7 +192,7 @@ const updateCar = async (): Promise<void> => {
 };
 
 const deleteWinner = async (page: number, isOnPage: boolean): Promise<void> => {
-  await deleteWinnerAPI(selectedCarId);
+  await deleteWinnerAPI(state.selectedCarId);
   if (isOnPage) {
     const { winners } = await getWinners(page);
     const winnersContainer = document.getElementById('winning-cars');
@@ -200,16 +205,16 @@ const deleteCar = async (): Promise<void> => {
   const currentWinnersPage = Number(winnersPageCounter?.innerHTML);
   const winnersResponse = await getWinnersAPI(currentWinnersPage);
   const winnersId = winnersResponse?.winners.map((winner) => winner.id);
-  const isWinnerOnCurrentPage = winnersId?.includes(selectedCarId);
-  const trackCar = document.getElementById(`track-car-${selectedCarId}`);
-  let carsInGarage = Number(carsCounter?.innerHTML);
+  const isWinnerOnCurrentPage = winnersId?.includes(state.selectedCarId);
+  const trackCar = document.getElementById(`track-car-${state.selectedCarId}`);
+  state.carsInGarage = Number(carsCounter?.innerHTML);
 
-  await deleteCarAPI(selectedCarId);
+  await deleteCarAPI(state.selectedCarId);
   await deleteWinner(currentWinnersPage, !!isWinnerOnCurrentPage);
 
   if (trackCar) trackCar.remove();
-  if (carsCounter) carsCounter.innerText = `${carsInGarage -= 1}`;
-  if (carsInGarage >= CARS_PER_PAGE_LIMIT) {
+  if (carsCounter) carsCounter.innerText = `${state.carsInGarage -= 1}`;
+  if (state.carsInGarage >= state.carsPerPageLimit) {
     const { cars } = await getCars(currentGaragePage);
     if (carsContainer && cars) carsContainer.innerHTML = cars?.join('');
   }
@@ -226,13 +231,14 @@ const handleUpdateButtonClick = (): void => {
 
     if (target instanceof HTMLButtonElement) {
       targetId = target.id;
-      selectedCarId = Number(targetId.slice(targetId.lastIndexOf('-') + 1));
+      state.selectedCarId = Number(targetId.slice(targetId.lastIndexOf('-') + 1));
     }
 
     if (targetId.match('button-select') && target instanceof HTMLElement) {
       if (target.classList.contains('active')) {
         target.classList.remove('active');
         changeUpdateControlsView(true);
+        state.selectedCarId = 0;
       } else {
         deleteActiveClass();
         target.classList.add('active');
@@ -244,4 +250,27 @@ const handleUpdateButtonClick = (): void => {
   });
 };
 
-export { handleUpdateButtonClick, createCar };
+const generaterandomCars = async (): Promise<void> => {
+  const carsToGenerate = 100;
+  state.carsInGarage = Number(carsCounter?.innerHTML);
+  const currentPageCarLimit = state.carsPerPageLimit * Number(pagesCounter?.innerHTML);
+  const cars: string[] = [];
+  const generatedCars: Promise<void>[] = [];
+
+  for (let i = 0; i < carsToGenerate; i += 1) {
+    cars.push(getRandomCarName());
+  }
+
+  cars.forEach((car) => {
+    const color = getRandomColor();
+    generatedCars.push(renderCarView(car, color, currentPageCarLimit));
+  });
+
+  await Promise.all(generatedCars);
+};
+
+const handleGenerateButtonClick = () => {
+  generateButton?.addEventListener('click', () => generaterandomCars());
+};
+
+export { handleUpdateButtonClick, createCar, handleGenerateButtonClick };

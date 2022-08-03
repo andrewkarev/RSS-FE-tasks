@@ -23,6 +23,9 @@ const state = {
     'AMG GT',
     'R8',
   ],
+  carsInGarage: 0,
+  carsPerPageLimit: 7,
+  selectedCarId: 0,
 };
 
 export default state;
