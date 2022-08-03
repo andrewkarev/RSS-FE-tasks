@@ -24,8 +24,13 @@ const state = {
     'R8',
   ],
   carsInGarage: 0,
+  winnersAtAll: 0,
   carsPerPageLimit: 7,
+  winnersPerPageLimit: 10,
   selectedCarId: 0,
+  currentGaragePage: 1,
+  currentWinnersPage: 1,
+  currentPage: 'garage',
 };
 
 export default state;

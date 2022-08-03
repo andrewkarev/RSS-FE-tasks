@@ -1,5 +1,6 @@
 import * as API from './api';
 import * as UI from './UI';
+import state from './app-state';
 
 const getCars = async (page = 1): Promise<{
   cars: string[] | undefined;
@@ -43,6 +44,7 @@ const getGarageContent = async (page: number): Promise<string> => {
   const { cars, count: carsCount } = await getCars(page);
   const garageTrack = UI.renderGarageTrack(carsCount || 0, cars || [], page);
   const garageView = UI.renderGarage(garageTrack);
+  state.carsInGarage = carsCount || 0;
 
   return garageView;
 };
@@ -50,6 +52,7 @@ const getGarageContent = async (page: number): Promise<string> => {
 const getWinnersContent = async (page: number): Promise<string> => {
   const { winners, count: winnersCount } = await getWinners(page);
   const winnersView = UI.renderWinners(winners || [], winnersCount || 0, page);
+  state.winnersAtAll = winnersCount || 0;
 
   return winnersView;
 };
