@@ -1,5 +1,5 @@
 import { renderWinningMessage } from './UI';
-import state from './appState';
+import state from './app-state';
 
 const getRandomNumber = (
   item: string | string[],
