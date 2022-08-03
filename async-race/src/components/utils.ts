@@ -1,4 +1,5 @@
 import { renderWinningMessage } from './UI';
+import state from './appState';
 
 const getRandomNumber = (
   item: string | string[],
@@ -20,4 +21,10 @@ export const getRandomColor = (): string => {
   }
 
   return color;
+};
+
+export const getRandomCarName = (): string => {
+  const brandOption = state.carsBrands[getRandomNumber(state.carsBrands)];
+  const modelOption = state.carsModels[getRandomNumber(state.carsModels)];
+  return `${brandOption} ${modelOption}`;
 };
