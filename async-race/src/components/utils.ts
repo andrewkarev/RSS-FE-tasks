@@ -1,6 +1,10 @@
 import { renderWinningMessage } from './UI';
 
-export const showWinningMessage = () => {
+const getRandomNumber = (
+  item: string | string[],
+): number => Math.floor(Math.random() * item.length);
+
+export const showWinningMessage = (): void => {
   const root = document.getElementById('body');
   const message = renderWinningMessage('BMW', 2.2);
   root?.append(message);
@@ -11,7 +15,7 @@ export const getRandomColor = (): string => {
   let color = '#';
 
   for (let i = 0; i < 6; i += 1) {
-    const randomIndex = Math.floor(Math.random() * hexadecimal.length);
+    const randomIndex = getRandomNumber(hexadecimal);
     color += hexadecimal[randomIndex];
   }
 
