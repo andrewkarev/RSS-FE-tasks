@@ -9,18 +9,20 @@ import { renderTrackCar, getCarImage } from './UI';
 import { getCars, getWinners } from './app-render';
 import { getRandomColor, getRandomCarName } from './utils';
 import state from './app-state';
+import { updatePaginationButtonsState } from './pagination';
 
 let createButton: HTMLElement | null;
 let createModelInput: HTMLElement | null;
 let createColorInput: HTMLElement | null;
 let carsContainer: HTMLElement | null;
 let carsCounter: HTMLElement | null;
-let pagesCounter: HTMLElement | null;
+let garagePagesCounter: HTMLElement | null;
 let updateButton: HTMLElement | null;
 let updateModelInput: HTMLElement | null;
 let updateColorInput: HTMLElement | null;
 let winnersPageCounter: HTMLElement | null;
 let generateButton: HTMLElement | null;
+let winnersContainer: HTMLElement | null;
 
 const initGarageElements = (): void => {
   createButton = document.getElementById('button-create');
@@ -28,12 +30,13 @@ const initGarageElements = (): void => {
   createColorInput = document.getElementById('create-color');
   carsContainer = document.getElementById('cars');
   carsCounter = document.getElementById('garage-cars-count');
-  pagesCounter = document.getElementById('garage-page-count');
+  garagePagesCounter = document.getElementById('garage-page-count');
   updateButton = document.getElementById('button-update');
   updateModelInput = document.getElementById('update-model');
   updateColorInput = document.getElementById('update-color');
   winnersPageCounter = document.getElementById('winners-page-count');
   generateButton = document.getElementById('button-generate');
+  winnersContainer = document.getElementById('winning-cars');
 };
 
 const getCarAttributes = async (name: string, color: string): Promise<{
@@ -110,7 +113,8 @@ const renderCarView = async (name: string, color: string, limit: number): Promis
 const handleCreateCarButtonClick = async (e: Event): Promise<void> => {
   e.preventDefault();
   state.carsInGarage = Number(carsCounter?.innerHTML);
-  const currentPageCarLimit = state.carsPerPageLimit * Number(pagesCounter?.innerHTML);
+
+  const currentPageCarLimit = state.carsPerPageLimit * Number(garagePagesCounter?.innerHTML);
   let name = '';
   let color = '';
 
@@ -122,6 +126,7 @@ const handleCreateCarButtonClick = async (e: Event): Promise<void> => {
   if (createColorInput instanceof HTMLInputElement) color = createColorInput?.value;
 
   await renderCarView(name, color, currentPageCarLimit);
+  updatePaginationButtonsState();
 };
 
 const createCar = (): void => {
@@ -195,31 +200,32 @@ const deleteWinner = async (page: number, isOnPage: boolean): Promise<void> => {
   await deleteWinnerAPI(state.selectedCarId);
   if (isOnPage) {
     const { winners } = await getWinners(page);
-    const winnersContainer = document.getElementById('winning-cars');
     if (winnersContainer) winnersContainer.innerHTML = winners.join('');
   }
 };
 
 const deleteCar = async (): Promise<void> => {
-  const currentGaragePage = Number(pagesCounter?.innerHTML);
-  const currentWinnersPage = Number(winnersPageCounter?.innerHTML);
-  const winnersResponse = await getWinnersAPI(currentWinnersPage);
+  state.currentGaragePage = Number(garagePagesCounter?.innerHTML);
+  state.currentWinnersPage = Number(winnersPageCounter?.innerHTML);
+
+  const winnersResponse = await getWinnersAPI(state.currentWinnersPage);
   const winnersId = winnersResponse?.winners.map((winner) => winner.id);
   const isWinnerOnCurrentPage = winnersId?.includes(state.selectedCarId);
   const trackCar = document.getElementById(`track-car-${state.selectedCarId}`);
   state.carsInGarage = Number(carsCounter?.innerHTML);
 
   await deleteCarAPI(state.selectedCarId);
-  await deleteWinner(currentWinnersPage, !!isWinnerOnCurrentPage);
+  await deleteWinner(state.currentWinnersPage, !!isWinnerOnCurrentPage);
 
   if (trackCar) trackCar.remove();
   if (carsCounter) carsCounter.innerText = `${state.carsInGarage -= 1}`;
   if (state.carsInGarage >= state.carsPerPageLimit) {
-    const { cars } = await getCars(currentGaragePage);
+    const { cars } = await getCars(state.currentGaragePage);
     if (carsContainer && cars) carsContainer.innerHTML = cars?.join('');
   }
 
   changeUpdateControlsView(true);
+  updatePaginationButtonsState();
 };
 
 const handleUpdateButtonClick = (): void => {
@@ -253,7 +259,7 @@ const handleUpdateButtonClick = (): void => {
 const generaterandomCars = async (): Promise<void> => {
   const carsToGenerate = 100;
   state.carsInGarage = Number(carsCounter?.innerHTML);
-  const currentPageCarLimit = state.carsPerPageLimit * Number(pagesCounter?.innerHTML);
+  const currentPageCarLimit = state.carsPerPageLimit * Number(garagePagesCounter?.innerHTML);
   const cars: string[] = [];
   const generatedCars: Promise<void>[] = [];
 
@@ -267,9 +273,10 @@ const generaterandomCars = async (): Promise<void> => {
   });
 
   await Promise.all(generatedCars);
+  updatePaginationButtonsState();
 };
 
-const handleGenerateButtonClick = () => {
+const handleGenerateButtonClick = (): void => {
   generateButton?.addEventListener('click', () => generaterandomCars());
 };
 
