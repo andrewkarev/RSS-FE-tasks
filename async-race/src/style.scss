@@ -47,7 +47,8 @@ body {
     cursor: pointer;
   }
 
-  &.disabled {
+  &.disabled,
+  &:hover.disabled {
     background-color: #576257;
     color: #000000;
     cursor: default;
