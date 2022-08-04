@@ -1,5 +1,5 @@
 import IMenuItems from '../utils/interfaces/iMenuItems';
-import Popup from '../popup/menuPopup';
+import ErrorCartPopup from '../popup/menuPopup';
 import { set as setLocalStorageValue } from '../utils/storage';
 
 class NavMenu {
@@ -11,12 +11,12 @@ class NavMenu {
 
   private shoppingCartStorage: string[];
 
-  private popup: Popup;
+  private popup: ErrorCartPopup;
 
   constructor() {
     this.savedItemsStorage = [];
     this.shoppingCartStorage = [];
-    this.popup = new Popup();
+    this.popup = new ErrorCartPopup();
   }
 
   public initMenu({ savedCards, cardsInCart }: IMenuItems): void {

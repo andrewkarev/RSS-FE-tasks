@@ -1,6 +1,6 @@
 import createEl from '../utils/createEl';
 
-class Popup {
+class ErrorCartPopup {
   private popupElement?: HTMLElement;
 
   private parentElement?: HTMLElement;
@@ -38,4 +38,4 @@ class Popup {
   }
 }
 
-export default Popup;
+export default ErrorCartPopup;
