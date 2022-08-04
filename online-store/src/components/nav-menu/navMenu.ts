@@ -47,7 +47,7 @@ class NavMenu {
       isSaveBtn = currentTarget.classList.contains('goods__save-button');
     }
 
-    if (card && card?.dataset.serialNum) cardSerialNum = card?.dataset.serialNum;
+    if (card && card?.dataset.serialNum) cardSerialNum = card.dataset.serialNum;
 
     if (card && !isSaveBtn) {
       this.handleAccordingToButtonType(card, isSaveBtn, '.goods__buy-button', cardSerialNum);
