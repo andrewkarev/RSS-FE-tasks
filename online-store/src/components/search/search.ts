@@ -6,7 +6,7 @@ class Search {
 
   public searchFieldResetBtn?: HTMLButtonElement;
 
-  public getSearchField(searchFieldValue: string): void {
+  public initSearchField(searchFieldValue: string): void {
     this.searchField = document.querySelector('.header__search') as HTMLInputElement;
     this.searchFieldResetBtn = document.querySelector('.reset-btn') as HTMLButtonElement;
 

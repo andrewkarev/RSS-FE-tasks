@@ -52,7 +52,7 @@ class App {
 
     this.resetButtons.getButtons();
 
-    this.search.getSearchField(searchFieldValue);
+    this.search.initSearchField(searchFieldValue);
     this.sorting.generateSorting(sortingOrder);
     this.filters.generateFilters(
       brandFilterOptions,
