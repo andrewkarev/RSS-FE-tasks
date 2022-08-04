@@ -66,24 +66,17 @@ class NavMenu {
 
     if (!isSaveBtn) itemsInCart = this.shoppingCartStorage.length;
 
-    if (!isSaveBtn && itemsInCart < 20 && btn) {
-      btn.classList.contains('checked')
-        ? this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum)
-        : this.changeCardState(btn, isSaveBtn, 'increase', cardSerialNum);
-    }
+    if (!btn) return;
 
-    if (!isSaveBtn && itemsInCart >= 20 && btn && !btn.classList.contains('checked')) {
-      this.popup.displayPopup();
-    }
-
-    if (!isSaveBtn && itemsInCart >= 20 && btn && btn.classList.contains('checked')) {
+    if (btn.classList.contains('checked')) {
       this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum);
+      return;
     }
 
-    if (isSaveBtn && btn) {
-      btn.classList.contains('checked')
-        ? this.changeCardState(btn, isSaveBtn, 'decrease', cardSerialNum)
-        : this.changeCardState(btn, isSaveBtn, 'increase', cardSerialNum);
+    if (!isSaveBtn && itemsInCart >= 20) {
+      this.popup.displayPopup();
+    } else {
+      this.changeCardState(btn, isSaveBtn, 'increase', cardSerialNum);
     }
   }
 
