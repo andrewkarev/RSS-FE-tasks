@@ -1,4 +1,4 @@
-import { del } from '../utils/storage';
+import { del as deleteLocalStorageValue } from '../utils/storage';
 import localStorageItemsNames from '../data/localStorageItemsNames';
 
 class ResetButtons {
@@ -14,12 +14,12 @@ class ResetButtons {
   public updateLocalStorage(e: Event): void {
     if (e.target === this.totalResetBtn) {
       localStorageItemsNames.forEach((name) => {
-        if (name.match(/sortingOption|savedItems|shoppingCart/)) del(name);
+        if (name.match(/sortingOption|savedItems|shoppingCart/)) deleteLocalStorageValue(name);
       });
     }
 
     localStorageItemsNames.forEach((name) => {
-      if (!name.match(/sortingOption|savedItems|shoppingCart/)) del(name);
+      if (!name.match(/sortingOption|savedItems|shoppingCart/)) deleteLocalStorageValue(name);
     });
   }
 }

@@ -1,5 +1,5 @@
 import ICard from '../utils/interfaces/ICard';
-import { set } from '../utils/storage';
+import { set as setLocalStorageValue } from '../utils/storage';
 
 class Search {
   public searchField?: HTMLInputElement;
@@ -25,7 +25,7 @@ class Search {
         .includes(searchFieldValue));
     }
 
-    set('searchFieldValue', searchFieldValue);
+    setLocalStorageValue('searchFieldValue', searchFieldValue);
 
     return filteredGoods;
   }

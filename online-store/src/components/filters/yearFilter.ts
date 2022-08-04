@@ -1,6 +1,6 @@
 import * as noUiSlider from 'nouislider';
 import ICard from '../utils/interfaces/ICard';
-import { set, get } from '../utils/storage';
+import { set as setLocalStorageValue, get as getLocalStorageValue } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';
 
 class YearFilter extends DragFilter {
@@ -39,7 +39,7 @@ class YearFilter extends DragFilter {
   public handleDrag(): void {
     const currentValues = this.yearSlider?.noUiSlider?.get() as string[];
     this.relevantValue = currentValues;
-    set('yearFilter', this.relevantValue);
+    setLocalStorageValue('yearFilter', this.relevantValue);
   }
 
   public filterData(relevantGoods: ICard[]): ICard[] {
@@ -58,7 +58,7 @@ class YearFilter extends DragFilter {
   }
 
   public reset(): void {
-    this.relevantValue = get('yearFilter', '["2019", "2022"]');
+    this.relevantValue = getLocalStorageValue('yearFilter', '["2019", "2022"]');
     this.yearSlider?.noUiSlider?.set(this.relevantValue);
   }
 }

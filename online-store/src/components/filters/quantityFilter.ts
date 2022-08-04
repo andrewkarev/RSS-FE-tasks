@@ -1,6 +1,6 @@
 import * as noUiSlider from 'nouislider';
 import ICard from '../utils/interfaces/ICard';
-import { set, get } from '../utils/storage';
+import { set as setLocalStorageValue, get as getLocalStorageValue } from '../utils/storage';
 import DragFilter from '../utils/abstract-classes/dragFilterClass';
 
 class QuantityFilter extends DragFilter {
@@ -39,7 +39,7 @@ class QuantityFilter extends DragFilter {
   public handleDrag(): void {
     const currentValues = this.quantitySlider?.noUiSlider?.get() as string[];
     this.relevantValue = currentValues;
-    set('quantityFilter', this.relevantValue);
+    setLocalStorageValue('quantityFilter', this.relevantValue);
   }
 
   public filterData(relevantGoods: ICard[]): ICard[] {
@@ -59,7 +59,7 @@ class QuantityFilter extends DragFilter {
   }
 
   public reset(): void {
-    this.relevantValue = get('quantityFilter', '["1", "19"]');
+    this.relevantValue = getLocalStorageValue('quantityFilter', '["1", "19"]');
     this.quantitySlider?.noUiSlider?.set(this.relevantValue);
   }
 }

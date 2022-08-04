@@ -1,6 +1,6 @@
 import createEl from '../utils/createEl';
 import ICard from '../utils/interfaces/ICard';
-import { get } from '../utils/storage';
+import { get as getLocalStorageValue } from '../utils/storage';
 
 export default class Card {
   private brand: string;
@@ -43,8 +43,8 @@ export default class Card {
   }
 
   public create(): void {
-    const savedCards: string[] = get('savedItems', '[]');
-    const cardsInCart: string[] = get('shoppingCart', '[]');
+    const savedCards: string[] = getLocalStorageValue('savedItems', '[]');
+    const cardsInCart: string[] = getLocalStorageValue('shoppingCart', '[]');
     const isSaved = savedCards.includes(this.serialNum);
     const isInCArt = cardsInCart.includes(this.serialNum);
 

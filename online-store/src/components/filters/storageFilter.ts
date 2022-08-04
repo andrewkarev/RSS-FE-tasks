@@ -2,7 +2,7 @@ import ClickFilter from '../utils/abstract-classes/clickFilterClass';
 import filtersElements from '../data/filtersElements';
 import createEl from '../utils/createEl';
 import ICard from '../utils/interfaces/ICard';
-import { set, get } from '../utils/storage';
+import { set as setLocalStorageValue, get as getLocalStorageValue } from '../utils/storage';
 
 class StorageFilter extends ClickFilter {
   public container?: HTMLElement;
@@ -48,7 +48,7 @@ class StorageFilter extends ClickFilter {
 
       currentEventTarget.classList.toggle('checked');
 
-      set('storageFilter', this.relevantValue);
+      setLocalStorageValue('storageFilter', this.relevantValue);
     }
   }
 
@@ -67,7 +67,7 @@ class StorageFilter extends ClickFilter {
 
     storageFiltersElements?.forEach((element) => element.classList.remove('checked'));
 
-    this.relevantValue = get('storageFilter', '[]');
+    this.relevantValue = getLocalStorageValue('storageFilter', '[]');
   }
 }
 

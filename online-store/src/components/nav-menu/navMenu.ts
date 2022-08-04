@@ -1,6 +1,6 @@
 import IMenuItems from '../utils/interfaces/iMenuItems';
 import Popup from '../popup/menuPopup';
-import { set } from '../utils/storage';
+import { set as setLocalStorageValue } from '../utils/storage';
 
 class NavMenu {
   private savedItems?: HTMLElement;
@@ -113,7 +113,7 @@ class NavMenu {
         this.savedItems?.classList.remove('active');
       }
 
-      set('savedItems', this.savedItemsStorage);
+      setLocalStorageValue('savedItems', this.savedItemsStorage);
     }
 
     if (!isSaveBtn) {
@@ -136,7 +136,7 @@ class NavMenu {
         this.shoppingCart?.classList.remove('active');
       }
 
-      set('shoppingCart', this.shoppingCartStorage);
+      setLocalStorageValue('shoppingCart', this.shoppingCartStorage);
     }
   }
 }

@@ -1,7 +1,7 @@
 import sortingElements from '../data/sortingElements';
 import createEl from '../utils/createEl';
 import ICard from '../utils/interfaces/ICard';
-import { set } from '../utils/storage';
+import { set as setLocalStorageValue } from '../utils/storage';
 
 class Sort {
   public sortingContainer?: HTMLElement;
@@ -43,7 +43,7 @@ class Sort {
 
         currentTarget.classList.add('active');
 
-        set('sortingOption', chosenSortingOrder);
+        setLocalStorageValue('sortingOption', chosenSortingOrder);
       }
     }
   }
