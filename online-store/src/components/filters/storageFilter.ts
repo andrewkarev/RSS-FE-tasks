@@ -1,4 +1,4 @@
-import ClickFilter from '../utils/abstract-classes/clickFilterClass';
+import ClickFilter from '../utils/abstract-classes/clickFilter';
 import filtersElements from '../data/filtersElements';
 import createEl from '../utils/createEl';
 import ICard from '../utils/interfaces/ICard';

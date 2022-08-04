@@ -1,7 +1,7 @@
 import * as noUiSlider from 'nouislider';
 import ICard from '../utils/interfaces/ICard';
 import { set as setLocalStorageValue, get as getLocalStorageValue } from '../utils/storage';
-import DragFilter from '../utils/abstract-classes/dragFilterClass';
+import DragFilter from '../utils/abstract-classes/dragFilter';
 
 class YearFilter extends DragFilter {
   public yearSlider?: noUiSlider.target;
