@@ -1,4 +1,6 @@
-const state = {
+import IState from './interfaces/IState';
+
+const state: IState = {
   carsBrands: [
     'Tesla',
     'Aston Martin',
@@ -31,6 +33,7 @@ const state = {
   currentGaragePage: 1,
   currentWinnersPage: 1,
   currentPage: 'garage',
+  carsAnimationId: {},
 };
 
 export default state;
