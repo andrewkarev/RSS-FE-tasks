@@ -33,18 +33,20 @@ class Sort {
 
     const currentTarget = e.target;
 
-    if (currentTarget instanceof HTMLElement) {
-      if (currentTarget.classList.contains('sorting__option') && currentTarget.dataset.sortId) {
-        const chosenSortingOrder = currentTarget.dataset.sortId;
+    if (
+      currentTarget instanceof HTMLElement
+      && currentTarget.classList.contains('sorting__option')
+      && currentTarget.dataset.sortId
+    ) {
+      const chosenSortingOrder = currentTarget.dataset.sortId;
 
-        this.sortingOrder = chosenSortingOrder;
+      this.sortingOrder = chosenSortingOrder;
 
-        this.sortingOptions?.forEach((option) => option.classList.remove('active'));
+      this.sortingOptions?.forEach((option) => option.classList.remove('active'));
 
-        currentTarget.classList.add('active');
+      currentTarget.classList.add('active');
 
-        setLocalStorageValue('sortingOption', chosenSortingOrder);
-      }
+      setLocalStorageValue('sortingOption', chosenSortingOrder);
     }
   }
 
