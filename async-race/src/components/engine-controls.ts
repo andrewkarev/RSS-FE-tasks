@@ -1,4 +1,5 @@
 import * as API from './api';
+import state from './app-state';
 
 let carsContainer: HTMLElement | null;
 
@@ -24,15 +25,15 @@ const getRaceParams = async (id: number) => {
   return { velocity, distance };
 };
 
-const startCarMovementAnimation = (duration: number, id: number): number => {
-  const carToAnimate = document.getElementById(`car-${id}`);
+const startCarMovementAnimation = (duration: number, id: number, car: HTMLElement) => {
+  const carToAnimate = car;
   const finishFlag = document.getElementById(`flag-${id}`);
   const carOffset = carToAnimate?.offsetLeft;
   const flagOffset = finishFlag?.offsetLeft;
   const flagWidth = finishFlag?.clientWidth;
   const start = performance.now();
 
-  const requestId = requestAnimationFrame(function animate(time) {
+  const animate = (time: number): void => {
     let timeFraction = ((time - start) / duration) ** 2;
     let trackWidth = 0;
 
@@ -44,18 +45,17 @@ const startCarMovementAnimation = (duration: number, id: number): number => {
     if (carToAnimate) carToAnimate.style.transform = `translateX(${progress}px)`;
 
     if (timeFraction < 1) {
-      window.requestAnimationFrame(animate);
+      state.carsAnimationId[`${id}`] = window.requestAnimationFrame(animate);
     }
-  });
+  };
 
-  return requestId;
+  state.carsAnimationId[`${id}`] = window.requestAnimationFrame(animate);
 };
 
 const handleEngineButtonsClick = (): void => {
   getCarsContainer();
 
   carsContainer?.addEventListener('click', async (e) => {
-    let requestId = 0;
     const { target } = e;
     let targetIdAttribute = '';
     let id = 0;
@@ -65,22 +65,25 @@ const handleEngineButtonsClick = (): void => {
       id = Number(targetIdAttribute.slice(targetIdAttribute.lastIndexOf('-') + 1));
     }
 
+    const carToAnimate = document.getElementById(`car-${id}`);
+
+    if (!carToAnimate) return;
+
     if (targetIdAttribute.match('start-engine-car') && target instanceof HTMLElement) {
       updateEngineButtonsView(target, true, id);
       const { velocity, distance } = await getRaceParams(id);
       const rideDuration = (distance || 0) / (velocity || 0);
-      requestId = startCarMovementAnimation(rideDuration, id);
-      // console.log(requestId);
+      startCarMovementAnimation(rideDuration, id, carToAnimate);
       const engineStatus = await API.switchEngineToDriveMode(id);
 
-      if (!engineStatus?.success) {
-        // console.log(requestId);
-        window.cancelAnimationFrame(requestId);
-      }
+      if (!engineStatus?.success) window.cancelAnimationFrame(state.carsAnimationId[`${id}`]);
     }
 
     if (targetIdAttribute.match('stop-engine-car') && target instanceof HTMLElement) {
+      await API.stopEngine(id);
       updateEngineButtonsView(target, false, id);
+      window.cancelAnimationFrame(state.carsAnimationId[`${id}`]);
+      carToAnimate.style.transform = 'translateX(0px)';
     }
   });
 };
