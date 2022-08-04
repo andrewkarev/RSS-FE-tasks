@@ -47,15 +47,12 @@ class NavMenu {
       isSaveBtn = currentTarget.classList.contains('goods__save-button');
     }
 
-    if (card && card?.dataset.serialNum) cardSerialNum = card.dataset.serialNum;
+    if (!card) return;
 
-    if (card && !isSaveBtn) {
-      this.handleAccordingToButtonType(card, isSaveBtn, '.goods__buy-button', cardSerialNum);
-    }
+    cardSerialNum = card.dataset.serialNum || '';
+    const buttonCssClassName = isSaveBtn ? '.goods__save-button' : '.goods__buy-button';
 
-    if (card && isSaveBtn) {
-      this.handleAccordingToButtonType(card, isSaveBtn, '.goods__save-button', cardSerialNum);
-    }
+    this.handleAccordingToButtonType(card, isSaveBtn, buttonCssClassName, cardSerialNum);
   }
 
   private handleAccordingToButtonType(
