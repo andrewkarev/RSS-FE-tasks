@@ -1,0 +1,88 @@
+import * as API from './api';
+
+let carsContainer: HTMLElement | null;
+
+const getCarsContainer = (): void => {
+  carsContainer = document.getElementById('cars');
+};
+
+const updateEngineButtonsView = (target: HTMLElement, isStart: boolean, id: number): void => {
+  const secondButton = isStart
+    ? document.getElementById(`stop-engine-car-${id}`)
+    : document.getElementById(`start-engine-car-${id}`);
+
+  target.classList.add('disabled');
+  target.setAttribute('disabled', '');
+  secondButton?.classList.remove('disabled');
+  secondButton?.removeAttribute('disabled');
+};
+
+const getRaceParams = async (id: number) => {
+  const response = await API.startEngine(id);
+  const velocity = response?.velocity;
+  const distance = response?.distance;
+  return { velocity, distance };
+};
+
+const startCarMovementAnimation = (duration: number, id: number): number => {
+  const carToAnimate = document.getElementById(`car-${id}`);
+  const finishFlag = document.getElementById(`flag-${id}`);
+  const carOffset = carToAnimate?.offsetLeft;
+  const flagOffset = finishFlag?.offsetLeft;
+  const flagWidth = finishFlag?.clientWidth;
+  const start = performance.now();
+
+  const requestId = requestAnimationFrame(function animate(time) {
+    let timeFraction = ((time - start) / duration) ** 2;
+    let trackWidth = 0;
+
+    if (timeFraction > 1) timeFraction = 1;
+    if (flagOffset && carOffset && flagWidth) trackWidth = flagOffset + flagWidth - carOffset;
+
+    const progress = timeFraction * trackWidth;
+
+    if (carToAnimate) carToAnimate.style.transform = `translateX(${progress}px)`;
+
+    if (timeFraction < 1) {
+      window.requestAnimationFrame(animate);
+    }
+  });
+
+  return requestId;
+};
+
+const handleEngineButtonsClick = (): void => {
+  getCarsContainer();
+
+  carsContainer?.addEventListener('click', async (e) => {
+    let requestId = 0;
+    const { target } = e;
+    let targetIdAttribute = '';
+    let id = 0;
+
+    if (target instanceof HTMLButtonElement) {
+      targetIdAttribute = target.id;
+      id = Number(targetIdAttribute.slice(targetIdAttribute.lastIndexOf('-') + 1));
+    }
+
+    if (targetIdAttribute.match('start-engine-car') && target instanceof HTMLElement) {
+      updateEngineButtonsView(target, true, id);
+      const { velocity, distance } = await getRaceParams(id);
+      const rideDuration = (distance || 0) / (velocity || 0);
+      requestId = startCarMovementAnimation(rideDuration, id);
+      // console.log(requestId);
+      const engineStatus = await API.switchEngineToDriveMode(id);
+
+      if (!engineStatus?.success) {
+        // console.log(requestId);
+        window.cancelAnimationFrame(requestId);
+      }
+    }
+
+    if (targetIdAttribute.match('stop-engine-car') && target instanceof HTMLElement) {
+      updateEngineButtonsView(target, false, id);
+    }
+  });
+};
+
+export default handleEngineButtonsClick;
