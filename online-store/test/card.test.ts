@@ -1,9 +1,9 @@
-import Card from '../src/components/card/card';
+import CardElement from '../src/components/card/card';
 import goodsDataBase from '../src/components/data/goodsDataBase';
 
 describe('create()', () => {
   const argument = goodsDataBase[0];
-  const card = new Card(argument);
+  const card = new CardElement(argument);
   const spy = jest.spyOn(card, 'create');
   const isCreated = card.create();
 

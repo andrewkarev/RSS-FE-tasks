@@ -1,4 +1,4 @@
-import Card from '../card/card';
+import CardElement from '../card/card';
 import ICard from '../utils/interfaces/ICard';
 
 class Cards {
@@ -12,7 +12,7 @@ class Cards {
     this.cardsContainer.innerHTML = '';
 
     chosenGoods.forEach((item) => {
-      const card = new Card(item);
+      const card = new CardElement(item);
       card.create();
 
       if (card.div) {

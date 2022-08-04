@@ -2,7 +2,7 @@ import createEl from '../utils/createEl';
 import ICard from '../utils/interfaces/ICard';
 import { get as getLocalStorageValue } from '../utils/storage';
 
-export default class Card {
+export default class CardElement {
   private brand: string;
 
   private model: string;
