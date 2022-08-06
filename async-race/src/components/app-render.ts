@@ -7,6 +7,7 @@ const getCars = async (page = 1): Promise<{
   count: number | undefined;
 }> => {
   const garageStats = await API.getCars(page);
+  state.carsOnPage = garageStats?.cars || [];
   const cars = garageStats?.cars.map((car) => UI.renderTrackCar(car.id, car.name, car.color));
   const count = garageStats?.count;
   return {

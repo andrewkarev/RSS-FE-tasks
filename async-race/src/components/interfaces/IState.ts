@@ -1,3 +1,5 @@
+import ICar from './ICar';
+
 interface IState {
   carsBrands: string[],
   carsModels: string[],
@@ -10,6 +12,7 @@ interface IState {
   currentWinnersPage: number,
   currentPage: string,
   carsAnimationId: { [index: string]: number },
+  carsOnPage: ICar[]
 }
 
 export default IState;

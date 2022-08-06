@@ -34,6 +34,7 @@ const state: IState = {
   currentWinnersPage: 1,
   currentPage: 'garage',
   carsAnimationId: {},
+  carsOnPage: [],
 };
 
 export default state;
