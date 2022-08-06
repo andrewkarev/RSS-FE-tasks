@@ -17,6 +17,14 @@ const getPaginationElements = () => {
   winnersContainer = document.getElementById('winning-cars');
 };
 
+const setToTheStateObject = () => {
+  const isPrevActive = !previousPageButton?.hasAttribute('disabled');
+  const isNextActive = !nextPageButton?.hasAttribute('disabled');
+
+  state.paginationButtonsState.prevIsActive = isPrevActive;
+  state.paginationButtonsState.nextIsActive = isNextActive;
+};
+
 const handleGaragePaginationButtonClick = async (isForward: boolean) => {
   isForward ? state.currentGaragePage += 1 : state.currentGaragePage -= 1;
   const { cars } = await getCars(state.currentGaragePage);
@@ -63,11 +71,11 @@ const updatePaginationButtonsState = () => {
     nextPageButton?.classList.add('disabled');
     nextPageButton?.setAttribute('disabled', '');
   }
+
+  setToTheStateObject();
 };
 
 const handlePaginationsButtonClick = () => {
-  getPaginationElements();
-
   previousPageButton?.addEventListener('click', async () => {
     if (state.currentPage === 'garage' && carsContainer) {
       await handleGaragePaginationButtonClick(false);
@@ -97,4 +105,9 @@ const handlePaginationsButtonClick = () => {
   });
 };
 
-export { handlePaginationsButtonClick, updatePaginationButtonsState };
+export {
+  handlePaginationsButtonClick,
+  updatePaginationButtonsState,
+  getPaginationElements,
+  setToTheStateObject,
+};
