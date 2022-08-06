@@ -128,6 +128,12 @@ body {
       &.active {
         border: 4px solid #f8a62a;
       }
+
+      &.disabled {
+        background-color: #576257;
+        color: #000000;
+        cursor: default;
+      }
     }
   }
 
