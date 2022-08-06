@@ -12,7 +12,13 @@ interface IState {
   currentWinnersPage: number,
   currentPage: string,
   carsAnimationId: { [index: string]: number },
-  carsOnPage: ICar[]
+  carsOnPage: ICar[],
+  raceWinnerId: number,
+  isRace: boolean,
+  paginationButtonsState: {
+    prevIsActive: boolean,
+    nextIsActive: boolean,
+  }
 }
 
 export default IState;

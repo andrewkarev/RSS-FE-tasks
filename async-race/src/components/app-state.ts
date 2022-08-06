@@ -35,6 +35,12 @@ const state: IState = {
   currentPage: 'garage',
   carsAnimationId: {},
   carsOnPage: [],
+  raceWinnerId: 0,
+  isRace: false,
+  paginationButtonsState: {
+    prevIsActive: false,
+    nextIsActive: false,
+  },
 };
 
 export default state;
