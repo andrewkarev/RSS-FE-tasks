@@ -6,11 +6,15 @@ import { switchEngineToDriveMode, stopEngine } from './api';
 let raceButton: HTMLElement | null;
 let resetButton: HTMLElement | null;
 let generateButton: HTMLElement | null;
+let previousPageButton: HTMLElement | null;
+let nextPageButton: HTMLElement | null;
 
 const initRaceButtons = () => {
   raceButton = document.getElementById('button-race');
   resetButton = document.getElementById('button-reset');
   generateButton = document.getElementById('button-generate');
+  previousPageButton = document.getElementById('button-prev');
+  nextPageButton = document.getElementById('button-next');
 };
 
 const updateRaceButtonsView = (firstButton: HTMLElement, secondButton: HTMLElement) => {
@@ -25,7 +29,29 @@ const updateRaceButtonsView = (firstButton: HTMLElement, secondButton: HTMLEleme
     : generateButton?.setAttribute('disabled', '');
 };
 
+const stopAllEngines = async () => {
+  const enginesToStop: Promise<IEngine | null>[] = [];
+
+  state.carsOnPage.forEach((car) => enginesToStop.push(stopEngine(car.id)));
+
+  await Promise.all(enginesToStop);
+
+  state.carsOnPage.forEach((car) => {
+    const carToAnimate = document.getElementById(`car-${car.id}`);
+    const stopEngineButton = document.getElementById(`stop-engine-car-${car.id}`);
+
+    if (stopEngineButton) updateEngineButtonsView(stopEngineButton, false, car.id);
+    window.cancelAnimationFrame(state.carsAnimationId[`${car.id}`]);
+    if (carToAnimate) carToAnimate.style.transform = 'translateX(0px)';
+  });
+};
+
 const launchAllEngines = async (): Promise<void> => {
+  await stopAllEngines();
+
+  state.isRace = true;
+  state.raceWinnerId = 0;
+
   const generatedCars: Promise<
     { velocity: number | undefined; distance: number | undefined; }>[] = [];
 
@@ -53,34 +79,42 @@ const launchAllEngines = async (): Promise<void> => {
   });
 };
 
-const stopAllEngines = async () => {
-  const enginesToStop: Promise<IEngine | null>[] = [];
-
-  state.carsOnPage.forEach((car) => enginesToStop.push(stopEngine(car.id)));
-
-  await Promise.all(enginesToStop);
-
-  state.carsOnPage.forEach((car) => {
-    const carToAnimate = document.getElementById(`car-${car.id}`);
-    const stopEngineButton = document.getElementById(`stop-engine-car-${car.id}`);
-
-    if (stopEngineButton) updateEngineButtonsView(stopEngineButton, false, car.id);
-    window.cancelAnimationFrame(state.carsAnimationId[`${car.id}`]);
-    if (carToAnimate) carToAnimate.style.transform = 'translateX(0px)';
-  });
+const disablePaginationButtons = (button: HTMLElement) => {
+  button?.classList.add('disabled');
+  button?.setAttribute('disabled', '');
 };
 
 const handleRaceButtonClick = () => {
   raceButton?.addEventListener('click', async () => {
     await launchAllEngines();
+
     if (resetButton && raceButton) updateRaceButtonsView(resetButton, raceButton);
+
+    if (previousPageButton && nextPageButton) {
+      disablePaginationButtons(previousPageButton);
+      disablePaginationButtons(nextPageButton);
+    }
   });
+};
+
+const restorePaginationButtonsView = (button: HTMLElement) => {
+  button?.classList.remove('disabled');
+  button?.removeAttribute('disabled');
 };
 
 const handleResetButtonClick = () => {
   resetButton?.addEventListener('click', async () => {
     await stopAllEngines();
+
     if (resetButton && raceButton) updateRaceButtonsView(raceButton, resetButton);
+
+    if (state.paginationButtonsState.prevIsActive && previousPageButton) {
+      restorePaginationButtonsView(previousPageButton);
+    }
+
+    if (state.paginationButtonsState.nextIsActive && nextPageButton) {
+      restorePaginationButtonsView(nextPageButton);
+    }
   });
 };
 
