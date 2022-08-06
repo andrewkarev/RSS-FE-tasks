@@ -1,5 +1,6 @@
 import * as API from './api';
 import state from './app-state';
+import { handleAnimationEnd } from './utils';
 
 let carsContainer: HTMLElement | null;
 
@@ -13,11 +14,14 @@ const updateEngineButtonsView = (target: HTMLElement, isStart: boolean, id: numb
     : document.getElementById(`start-engine-car-${id}`);
   const removeButton = document.getElementById(`button-remove-${id}`);
 
-  removeButton?.hasAttribute('disabled')
-    ? removeButton.removeAttribute('disabled')
-    : removeButton?.setAttribute('disabled', '');
+  if (isStart) {
+    removeButton?.setAttribute('disabled', '');
+    removeButton?.classList.add('disabled');
+  } else {
+    removeButton?.removeAttribute('disabled');
+    removeButton?.classList.remove('disabled');
+  }
 
-  removeButton?.classList.toggle('disabled');
   target.classList.add('disabled');
   target.setAttribute('disabled', '');
   secondButton?.classList.remove('disabled');
@@ -55,6 +59,8 @@ const startCarMovementAnimation = (duration: number, id: number, car: HTMLElemen
 
     if (timeFraction < 1) {
       state.carsAnimationId[`${id}`] = window.requestAnimationFrame(animate);
+    } else {
+      handleAnimationEnd(id, duration);
     }
   };
 
@@ -79,6 +85,7 @@ const handleEngineButtonsClick = (): void => {
     if (!carToAnimate) return;
 
     if (targetIdAttribute.match('start-engine-car') && target instanceof HTMLElement) {
+      state.isRace = false;
       updateEngineButtonsView(target, true, id);
       const { velocity, distance } = await getRaceParams(id);
       const rideDuration = (distance || 0) / (velocity || 0);
