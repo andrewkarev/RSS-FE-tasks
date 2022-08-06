@@ -5,9 +5,9 @@ const getRandomNumber = (
   item: string | string[],
 ): number => Math.floor(Math.random() * item.length);
 
-export const showWinningMessage = (): void => {
+export const showWinningMessage = (name: string, time: number): void => {
   const root = document.getElementById('body');
-  const message = renderWinningMessage('BMW', 2.2);
+  const message = renderWinningMessage(name, time);
   root?.append(message);
 };
 
