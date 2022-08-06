@@ -11,21 +11,30 @@ const updateEngineButtonsView = (target: HTMLElement, isStart: boolean, id: numb
   const secondButton = isStart
     ? document.getElementById(`stop-engine-car-${id}`)
     : document.getElementById(`start-engine-car-${id}`);
+  const removeButton = document.getElementById(`button-remove-${id}`);
 
+  removeButton?.hasAttribute('disabled')
+    ? removeButton.removeAttribute('disabled')
+    : removeButton?.setAttribute('disabled', '');
+
+  removeButton?.classList.toggle('disabled');
   target.classList.add('disabled');
   target.setAttribute('disabled', '');
   secondButton?.classList.remove('disabled');
   secondButton?.removeAttribute('disabled');
 };
 
-const getRaceParams = async (id: number) => {
+const getRaceParams = async (id: number): Promise<{
+  velocity: number | undefined;
+  distance: number | undefined;
+}> => {
   const response = await API.startEngine(id);
   const velocity = response?.velocity;
   const distance = response?.distance;
   return { velocity, distance };
 };
 
-const startCarMovementAnimation = (duration: number, id: number, car: HTMLElement) => {
+const startCarMovementAnimation = (duration: number, id: number, car: HTMLElement): void => {
   const carToAnimate = car;
   const finishFlag = document.getElementById(`flag-${id}`);
   const carOffset = carToAnimate?.offsetLeft;
@@ -88,4 +97,9 @@ const handleEngineButtonsClick = (): void => {
   });
 };
 
-export default handleEngineButtonsClick;
+export {
+  handleEngineButtonsClick,
+  getRaceParams,
+  startCarMovementAnimation,
+  updateEngineButtonsView,
+};
