@@ -199,7 +199,9 @@ const updateCar = async (): Promise<void> => {
 const deleteWinner = async (page: number, isOnPage: boolean): Promise<void> => {
   await deleteWinnerAPI(state.selectedCarId);
   if (isOnPage) {
-    const { winners } = await getWinners(page);
+    const { winners, count: winnersCount } = await getWinners(page);
+    state.winnersAtAll = winnersCount || 0;
+
     if (winnersContainer) winnersContainer.innerHTML = winners.join('');
   }
 };
