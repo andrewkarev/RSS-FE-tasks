@@ -46,8 +46,17 @@ const stopAllEngines = async () => {
   });
 };
 
+const changeCarsTrackButtonView = () => {
+  const carsIds = state.carsOnPage.map((car) => car.id);
+  carsIds.forEach((id) => {
+    const startEngineButton = document.getElementById(`start-engine-car-${id}`);
+    if (startEngineButton) updateEngineButtonsView(startEngineButton, true, id);
+  });
+};
+
 const launchAllEngines = async (): Promise<void> => {
   await stopAllEngines();
+  changeCarsTrackButtonView();
 
   state.isRace = true;
   state.raceWinnerId = 0;
@@ -65,11 +74,8 @@ const launchAllEngines = async (): Promise<void> => {
   });
 
   state.carsOnPage.forEach(async (car, i) => {
-    const time = await rideDuration[i];
     const carToAnimate = document.getElementById(`car-${car.id}`);
-    const startEngineButton = document.getElementById(`start-engine-car-${car.id}`);
-
-    if (startEngineButton) updateEngineButtonsView(startEngineButton, true, car.id);
+    const time = await rideDuration[i];
 
     if (carToAnimate) startCarMovementAnimation(time, car.id, carToAnimate);
 
@@ -86,14 +92,15 @@ const disablePaginationButtons = (button: HTMLElement) => {
 
 const handleRaceButtonClick = () => {
   raceButton?.addEventListener('click', async () => {
-    await launchAllEngines();
-
     if (resetButton && raceButton) updateRaceButtonsView(resetButton, raceButton);
 
     if (previousPageButton && nextPageButton) {
       disablePaginationButtons(previousPageButton);
       disablePaginationButtons(nextPageButton);
     }
+
+    changeCarsTrackButtonView();
+    await launchAllEngines();
   });
 };
 
