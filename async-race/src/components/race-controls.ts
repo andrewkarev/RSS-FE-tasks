@@ -17,13 +17,21 @@ const initRaceButtons = () => {
   nextPageButton = document.getElementById('button-next');
 };
 
-const updateRaceButtonsView = (firstButton: HTMLElement, secondButton: HTMLElement) => {
-  firstButton?.classList.remove('disabled');
-  firstButton?.removeAttribute('disabled');
-  secondButton?.classList.add('disabled');
-  secondButton?.setAttribute('disbled', '');
-  generateButton?.classList.toggle('disabled');
+const setAppropriateButtonStats = (button: HTMLElement, isAddition: boolean) => {
+  if (isAddition) {
+    button.classList.add('disabled');
+    button.setAttribute('disbled', '');
+  } else {
+    button.classList.remove('disabled');
+    button.removeAttribute('disabled');
+  }
+};
 
+const updateRaceButtonsView = (firstButton: HTMLElement, secondButton: HTMLElement) => {
+  setAppropriateButtonStats(firstButton, false);
+  setAppropriateButtonStats(secondButton, true);
+
+  generateButton?.classList.toggle('disabled');
   generateButton?.hasAttribute('disabled')
     ? generateButton.removeAttribute('disabled')
     : generateButton?.setAttribute('disabled', '');
@@ -93,7 +101,10 @@ const disablePaginationButtons = (button: HTMLElement) => {
 
 const handleRaceButtonClick = () => {
   raceButton?.addEventListener('click', async () => {
-    if (resetButton && raceButton) updateRaceButtonsView(resetButton, raceButton);
+    if (resetButton && raceButton) {
+      updateRaceButtonsView(resetButton, raceButton);
+      setAppropriateButtonStats(resetButton, true);
+    }
 
     if (previousPageButton && nextPageButton) {
       disablePaginationButtons(previousPageButton);
@@ -102,6 +113,10 @@ const handleRaceButtonClick = () => {
 
     changeCarsTrackButtonView();
     await launchAllEngines();
+
+    if (resetButton) {
+      setAppropriateButtonStats(resetButton, false);
+    }
   });
 };
 
