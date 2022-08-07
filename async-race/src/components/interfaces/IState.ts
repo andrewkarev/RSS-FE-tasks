@@ -18,7 +18,11 @@ interface IState {
   paginationButtonsState: {
     prevIsActive: boolean,
     nextIsActive: boolean,
-  }
+  },
+  sortBy: string,
+  order: string,
+  winsOrder: string,
+  timeOrder: string,
 }
 
 export default IState;

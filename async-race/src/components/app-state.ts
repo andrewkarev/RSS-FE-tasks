@@ -41,6 +41,10 @@ const state: IState = {
     prevIsActive: false,
     nextIsActive: false,
   },
+  sortBy: 'time',
+  order: 'ASC',
+  winsOrder: 'ASC',
+  timeOrder: 'ASC',
 };
 
 export default state;
