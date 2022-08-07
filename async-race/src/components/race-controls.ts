@@ -32,6 +32,7 @@ const updateRaceButtonsView = (firstButton: HTMLElement, secondButton: HTMLEleme
 const stopAllEngines = async () => {
   const enginesToStop: Promise<IEngine | null>[] = [];
 
+  state.isRace = false;
   state.carsOnPage.forEach((car) => enginesToStop.push(stopEngine(car.id)));
 
   await Promise.all(enginesToStop);
