@@ -101,6 +101,7 @@ const renderCarView = async (name: string, color: string, limit: number): Promis
 
   if (id && carName && carColor && state.carsInGarage < limit) {
     car = renderTrackCar(id, carName, carColor);
+    state.carsOnPage.push({ name, color, id });
   }
 
   if (carsContainer && state.carsInGarage < limit) {
