@@ -210,7 +210,7 @@ const deleteCar = async (): Promise<void> => {
   state.currentGaragePage = Number(garagePagesCounter?.innerHTML);
   state.currentWinnersPage = Number(winnersPageCounter?.innerHTML);
 
-  const winnersResponse = await getWinnersAPI(state.currentWinnersPage);
+  const winnersResponse = await getWinnersAPI(state.currentWinnersPage, state.sortBy, state.order);
   const winnersId = winnersResponse?.winners.map((winner) => winner.id);
   const isWinnerOnCurrentPage = winnersId?.includes(state.selectedCarId);
   const trackCar = document.getElementById(`track-car-${state.selectedCarId}`);

@@ -20,7 +20,7 @@ const getWinners = async (page = 1): Promise<{
   winners: string[];
   count: number | undefined;
 }> => {
-  const winnersStats = await API.getWinners(page);
+  const winnersStats = await API.getWinners(page, state.sortBy, state.order);
   const winnersResponse = winnersStats?.winners
     .map(async (winner, i) => {
       const car = await API.getCar(winner.id);

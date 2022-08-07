@@ -121,8 +121,8 @@ export const switchEngineToDriveMode = async (id: number): Promise<IDriveMode | 
 
 export const getWinners = async (
   page: number,
-  sort = 'time',
-  order = 'ASC',
+  sort: string,
+  order: string,
   limit = 10,
 ): Winners => {
   try {
