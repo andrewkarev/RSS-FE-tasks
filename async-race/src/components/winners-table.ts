@@ -3,8 +3,17 @@ import { getWinners } from './app-render';
 import state from './app-state';
 import { updatePaginationButtonsState } from './pagination';
 
+let winnersContainer: HTMLElement | null;
+let sortByWinsButton: HTMLElement | null;
+let sortByTimeButton: HTMLElement | null;
+
+const initWwinnersItems = () => {
+  winnersContainer = document.getElementById('winning-cars');
+  sortByWinsButton = document.getElementById('sort-by-wins');
+  sortByTimeButton = document.getElementById('sort-by-time');
+};
+
 const updateWinnersView = async () => {
-  const winnersContainer = document.getElementById('winning-cars');
   const { winners, count: winnersCount } = await getWinners(state.currentWinnersPage);
 
   state.winnersAtAll = winnersCount || 0;
@@ -38,4 +47,22 @@ const handleRaceResults = async (id: number, duration: number) => {
   await updateWinnersView();
 };
 
-export { handleRaceResults, updateWinnersView };
+const handleWinnersButtonClick = () => {
+  sortByWinsButton?.addEventListener('click', async () => {
+    state.sortBy = 'wins';
+
+    state.winsOrder = state.winsOrder === 'ASC' ? 'DESC' : 'ASC';
+    state.order = state.winsOrder;
+    await updateWinnersView();
+  });
+
+  sortByTimeButton?.addEventListener('click', async () => {
+    state.sortBy = 'time';
+
+    state.timeOrder = state.timeOrder === 'ASC' ? 'DESC' : 'ASC';
+    state.order = state.timeOrder;
+    await updateWinnersView();
+  });
+};
+
+export { handleRaceResults, initWwinnersItems, handleWinnersButtonClick };
