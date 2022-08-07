@@ -37,6 +37,16 @@ const handleWinnersPaginationButtonClick = async (isForward: boolean) => {
   if (winnersContainer && winners) winnersContainer.innerHTML = winners?.join('');
 };
 
+const updatePaginationButtonsView = (button: HTMLElement | null, addition: boolean) => {
+  if (addition) {
+    button?.classList.add('disabled');
+    button?.setAttribute('disabled', '');
+  } else {
+    button?.classList.remove('disabled');
+    button?.removeAttribute('disabled');
+  }
+};
+
 const updatePaginationButtonsState = () => {
   const isGaragePage = state.currentPage === 'garage';
   const elementsAtAll = isGaragePage ? state.carsInGarage : state.winnersAtAll;
@@ -44,35 +54,24 @@ const updatePaginationButtonsState = () => {
   const pageNumber = isGaragePage ? state.currentGaragePage : state.currentWinnersPage;
   const lastPage = Math.ceil(elementsAtAll / elementsPerPageLimit);
 
-  if (pageNumber === 1 && elementsAtAll <= elementsPerPageLimit) {
-    previousPageButton?.classList.add('disabled');
-    previousPageButton?.setAttribute('disabled', '');
-    nextPageButton?.classList.add('disabled');
-    nextPageButton?.setAttribute('disabled', '');
-  }
-
-  if (pageNumber === 1 && elementsAtAll > elementsPerPageLimit) {
-    previousPageButton?.classList.add('disabled');
-    previousPageButton?.setAttribute('disabled', '');
-    nextPageButton?.classList.remove('disabled');
-    nextPageButton?.removeAttribute('disabled');
-  }
-
-  if (pageNumber !== 1 && pageNumber < lastPage) {
-    previousPageButton?.classList.remove('disabled');
-    previousPageButton?.removeAttribute('disabled');
-    nextPageButton?.classList.remove('disabled');
-    nextPageButton?.removeAttribute('disabled');
-  }
-
-  if (pageNumber !== 1 && pageNumber === lastPage) {
-    previousPageButton?.classList.remove('disabled');
-    previousPageButton?.removeAttribute('disabled');
-    nextPageButton?.classList.add('disabled');
-    nextPageButton?.setAttribute('disabled', '');
+  if (pageNumber === 1) {
+    updatePaginationButtonsView(previousPageButton, true);
+    elementsAtAll <= elementsPerPageLimit
+      ? updatePaginationButtonsView(nextPageButton, true)
+      : updatePaginationButtonsView(nextPageButton, false);
+  } else {
+    updatePaginationButtonsView(previousPageButton, false);
+    pageNumber < lastPage
+      ? updatePaginationButtonsView(nextPageButton, false)
+      : updatePaginationButtonsView(nextPageButton, true);
   }
 
   setToTheStateObject();
+
+  if (state.isRace && isGaragePage) {
+    updatePaginationButtonsView(previousPageButton, true);
+    updatePaginationButtonsView(nextPageButton, true);
+  }
 };
 
 const handlePaginationsButtonClick = () => {
