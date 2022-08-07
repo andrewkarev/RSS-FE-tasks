@@ -31,14 +31,12 @@ export const getRandomCarName = (): string => {
 };
 
 export const handleAnimationEnd = (id: number, duration: number) => {
-  if (!state.raceWinnerId && state.isRace) {
-    state.raceWinnerId = id;
+  state.raceWinnerId = id;
 
-    const winnerCar = document.getElementById(`car-name-${id}`);
-    const winnerTime = +(duration / 1000).toFixed(2);
-    const winnreName = winnerCar?.innerText || '';
+  const winnerCar = document.getElementById(`car-name-${id}`);
+  const winnerTime = +(duration / 1000).toFixed(2);
+  const winnreName = winnerCar?.innerText || '';
 
-    const message = showWinningMessage(winnreName, winnerTime);
-    window.addEventListener('click', () => message.remove());
-  }
+  const message = showWinningMessage(winnreName, winnerTime);
+  window.addEventListener('click', () => message.remove());
 };

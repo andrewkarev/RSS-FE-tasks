@@ -1,6 +1,7 @@
 import * as API from './api';
 import state from './app-state';
 import { handleAnimationEnd } from './utils';
+import { handleRaceResults } from './winners-table';
 
 let carsContainer: HTMLElement | null;
 
@@ -46,7 +47,7 @@ const startCarMovementAnimation = (duration: number, id: number, car: HTMLElemen
   const flagWidth = finishFlag?.clientWidth;
   const start = performance.now();
 
-  const animate = (time: number): void => {
+  const animate = async (time: number): Promise<void> => {
     let timeFraction = ((time - start) / duration) ** 2;
     let trackWidth = 0;
 
@@ -59,8 +60,9 @@ const startCarMovementAnimation = (duration: number, id: number, car: HTMLElemen
 
     if (timeFraction < 1) {
       state.carsAnimationId[`${id}`] = window.requestAnimationFrame(animate);
-    } else {
+    } else if (!state.raceWinnerId && state.isRace) {
       handleAnimationEnd(id, duration);
+      await handleRaceResults(id, duration);
     }
   };
 
