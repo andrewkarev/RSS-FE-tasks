@@ -187,7 +187,7 @@ export const renderWinner = (
 
 export const renderWinners = (winners: string[], winnersAtAll: number, page = 1): string => `
   <div class="winners" id="winners">
-    <h1 class="winners__title">Winners &nbsp;${winnersAtAll}</h1>
+    <h1 class="winners__title">Winners &nbsp;<span id="winners-total-count">${winnersAtAll}</span></h1>
     <h2 class="winners__subtitle">Page &nbsp; <span id="winners-page-count">${page}</span></h2>
     <table class="winners__table">
       <thead>
