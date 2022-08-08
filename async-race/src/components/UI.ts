@@ -129,7 +129,7 @@ export const getCarImage = (color: string): string => `
   </svg>
 `;
 
-export const renderTrackCar = (id: number, name: string, color: string, isEngineStarted?: boolean): string => `
+export const renderTrackCar = (id: number, name: string, color: string): string => `
   <div class="garage__track-car" id ="track-car-${id}">
   <div class="garage__car-controls">
     <button class="garage__button garage__button-options button" id="button-select-${id}" type="button">Select</button>
@@ -139,8 +139,8 @@ export const renderTrackCar = (id: number, name: string, color: string, isEngine
   <div class="garage__track-road">
     <div class="garage__track-launch-pad">
       <div class="engine-controls">
-        <button class="engine-button start-engine-button ${isEngineStarted ? 'disabled' : ''}" id="start-engine-car-${id}">A</button>
-        <button class="engine-button stop-engine-button ${isEngineStarted ? '' : 'disabled'}" id="stop-engine-car-${id}" disabled>B</button>
+        <button class="engine-button start-engine-button" id="start-engine-car-${id}">A</button>
+        <button class="engine-button stop-engine-button" id="stop-engine-car-${id}" disabled>B</button>
       </div>
       <div class="garage__car" id="car-${id}">
         ${getCarImage(color)}
