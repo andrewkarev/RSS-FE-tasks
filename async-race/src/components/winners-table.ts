@@ -4,11 +4,13 @@ import state from './app-state';
 import { updatePaginationButtonsState } from './pagination';
 import appElements from './app-elements';
 
-const updateWinnersView = async () => {
+const updateWinnersView = async (): Promise<void> => {
   const { winners, count: winnersCount } = await getWinners(state.currentWinnersPage);
 
   state.winnersAtAll = winnersCount || 0;
-  if (appElements.winnersTotalCount) appElements.winnersTotalCount.innerHTML = `${state.winnersAtAll}`;
+  if (appElements.winnersTotalCount) {
+    appElements.winnersTotalCount.innerHTML = `${state.winnersAtAll}`;
+  }
 
   if (appElements.winnersContainer && winners) {
     appElements.winnersContainer.innerHTML = winners?.join('');
@@ -17,7 +19,7 @@ const updateWinnersView = async () => {
   updatePaginationButtonsState();
 };
 
-const handleRaceResults = async (id: number, duration: number) => {
+const handleRaceResults = async (id: number, duration: number): Promise<void> => {
   const response = await getWinner(id);
   const currentTime = +(duration / 1000).toFixed(2);
 
@@ -41,10 +43,9 @@ const handleRaceResults = async (id: number, duration: number) => {
   await updateWinnersView();
 };
 
-const handleWinnersButtonClick = () => {
+const handleWinnersButtonClick = (): void => {
   appElements.sortByWinsButton?.addEventListener('click', async () => {
     state.sortBy = 'wins';
-
     state.winsOrder = state.winsOrder === 'ASC' ? 'DESC' : 'ASC';
     state.order = state.winsOrder;
     await updateWinnersView();

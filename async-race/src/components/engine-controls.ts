@@ -1,6 +1,6 @@
 import * as API from './api';
 import state from './app-state';
-import { handleAnimationEnd } from './utils';
+import { handleAnimationEnd, disableElement, activateElement } from './utils';
 import { handleRaceResults } from './winners-table';
 import appElements from './app-elements';
 
@@ -8,20 +8,13 @@ const updateEngineButtonsView = (target: HTMLElement, isStart: boolean, id: numb
   const secondButton = isStart
     ? document.getElementById(`stop-engine-car-${id}`)
     : document.getElementById(`start-engine-car-${id}`);
+
   const removeButton = document.getElementById(`button-remove-${id}`);
 
-  if (isStart) {
-    removeButton?.setAttribute('disabled', '');
-    removeButton?.classList.add('disabled');
-  } else {
-    removeButton?.removeAttribute('disabled');
-    removeButton?.classList.remove('disabled');
-  }
+  isStart ? disableElement(removeButton) : activateElement(removeButton);
 
-  target.classList.add('disabled');
-  target.setAttribute('disabled', '');
-  secondButton?.classList.remove('disabled');
-  secondButton?.removeAttribute('disabled');
+  disableElement(target);
+  activateElement(secondButton);
 };
 
 const getRaceParams = async (id: number): Promise<{
@@ -70,16 +63,15 @@ const handleEngineButtonsClick = (): void => {
     let targetIdAttribute = '';
     let id = 0;
 
-    if (target instanceof HTMLButtonElement) {
-      targetIdAttribute = target.id;
-      id = Number(targetIdAttribute.slice(targetIdAttribute.lastIndexOf('-') + 1));
-    }
+    if (!(target instanceof HTMLButtonElement)) return;
 
+    targetIdAttribute = target.id;
+    id = Number(targetIdAttribute.slice(targetIdAttribute.lastIndexOf('-') + 1));
     const carToAnimate = document.getElementById(`car-${id}`);
 
     if (!carToAnimate) return;
 
-    if (targetIdAttribute.match('start-engine-car') && target instanceof HTMLElement) {
+    if (targetIdAttribute.match('start-engine-car')) {
       state.isRace = false;
       updateEngineButtonsView(target, true, id);
       const { velocity, distance } = await getRaceParams(id);
@@ -90,7 +82,7 @@ const handleEngineButtonsClick = (): void => {
       if (!engineStatus?.success) window.cancelAnimationFrame(state.carsAnimationId[`${id}`]);
     }
 
-    if (targetIdAttribute.match('stop-engine-car') && target instanceof HTMLElement) {
+    if (targetIdAttribute.match('stop-engine-car')) {
       await API.stopEngine(id);
       updateEngineButtonsView(target, false, id);
       window.cancelAnimationFrame(state.carsAnimationId[`${id}`]);

@@ -1,8 +1,9 @@
 import state from './app-state';
 import { getCars, getWinners } from './app-render';
 import appElements from './app-elements';
+import { setAppropriateButtonStats } from './utils';
 
-const setToTheStateObject = () => {
+const setToTheStateObject = (): void => {
   const isPrevActive = !appElements.previousPageButton?.hasAttribute('disabled');
   const isNextActive = !appElements.nextPageButton?.hasAttribute('disabled');
 
@@ -10,29 +11,24 @@ const setToTheStateObject = () => {
   state.paginationButtonsState.nextIsActive = isNextActive;
 };
 
-const handleGaragePaginationButtonClick = async (isForward: boolean) => {
+const handleGaragePaginationButtonClick = async (isForward: boolean): Promise<void> => {
   isForward ? state.currentGaragePage += 1 : state.currentGaragePage -= 1;
   const { cars } = await getCars(state.currentGaragePage);
-  if (appElements.carsContainer && cars) appElements.carsContainer.innerHTML = cars?.join('');
-};
 
-const handleWinnersPaginationButtonClick = async (isForward: boolean) => {
-  isForward ? state.currentWinnersPage += 1 : state.currentWinnersPage -= 1;
-  const { winners } = await getWinners(state.currentWinnersPage);
-  if (appElements.winnersContainer && winners) appElements.winnersContainer.innerHTML = winners?.join('');
-};
-
-const updatePaginationButtonsView = (button: HTMLElement | null, addition: boolean) => {
-  if (addition) {
-    button?.classList.add('disabled');
-    button?.setAttribute('disabled', '');
-  } else {
-    button?.classList.remove('disabled');
-    button?.removeAttribute('disabled');
+  if (appElements.carsContainer && cars) {
+    appElements.carsContainer.innerHTML = cars?.join('');
   }
 };
 
-const updatePaginationButtonsState = () => {
+const handleWinnersPaginationButtonClick = async (isForward: boolean): Promise<void> => {
+  isForward ? state.currentWinnersPage += 1 : state.currentWinnersPage -= 1;
+  const { winners } = await getWinners(state.currentWinnersPage);
+  if (appElements.winnersContainer && winners) {
+    appElements.winnersContainer.innerHTML = winners?.join('');
+  }
+};
+
+const updatePaginationButtonsState = (): void => {
   const isGaragePage = state.currentPage === 'garage';
   const elementsAtAll = isGaragePage ? state.carsInGarage : state.winnersAtAll;
   const elementsPerPageLimit = isGaragePage ? state.carsPerPageLimit : state.winnersPerPageLimit;
@@ -40,57 +36,55 @@ const updatePaginationButtonsState = () => {
   const lastPage = Math.ceil(elementsAtAll / elementsPerPageLimit);
 
   if (pageNumber === 1) {
-    updatePaginationButtonsView(appElements.previousPageButton, true);
+    setAppropriateButtonStats(appElements.previousPageButton, true);
     elementsAtAll <= elementsPerPageLimit
-      ? updatePaginationButtonsView(appElements.nextPageButton, true)
-      : updatePaginationButtonsView(appElements.nextPageButton, false);
+      ? setAppropriateButtonStats(appElements.nextPageButton, true)
+      : setAppropriateButtonStats(appElements.nextPageButton, false);
   } else {
-    updatePaginationButtonsView(appElements.previousPageButton, false);
+    setAppropriateButtonStats(appElements.previousPageButton, false);
     pageNumber < lastPage
-      ? updatePaginationButtonsView(appElements.nextPageButton, false)
-      : updatePaginationButtonsView(appElements.nextPageButton, true);
+      ? setAppropriateButtonStats(appElements.nextPageButton, false)
+      : setAppropriateButtonStats(appElements.nextPageButton, true);
   }
 
   setToTheStateObject();
 
   if (state.isRace && isGaragePage) {
-    updatePaginationButtonsView(appElements.previousPageButton, true);
-    updatePaginationButtonsView(appElements.nextPageButton, true);
+    setAppropriateButtonStats(appElements.previousPageButton, true);
+    setAppropriateButtonStats(appElements.nextPageButton, true);
   }
 };
 
-const handlePaginationsButtonClick = () => {
-  appElements.previousPageButton?.addEventListener('click', async () => {
-    if (state.currentPage === 'garage' && appElements.carsContainer) {
-      await handleGaragePaginationButtonClick(false);
-      if (appElements.garagePagesCounter) appElements.garagePagesCounter.innerHTML = `${state.currentGaragePage}`;
-      updatePaginationButtonsState();
+const handlePaginationsButtonClick = async (isPrev: boolean): Promise<void> => {
+  if (state.currentPage === 'garage' && appElements.carsContainer) {
+    await handleGaragePaginationButtonClick(isPrev);
+    if (appElements.garagePagesCounter) {
+      appElements.garagePagesCounter.innerHTML = `${state.currentGaragePage}`;
     }
+  }
 
-    if (state.currentPage === 'winners') {
-      await handleWinnersPaginationButtonClick(false);
-      if (appElements.winnersPageCounter) appElements.winnersPageCounter.innerHTML = `${state.currentWinnersPage}`;
-      updatePaginationButtonsState();
+  if (state.currentPage === 'winners') {
+    await handleWinnersPaginationButtonClick(isPrev);
+    if (appElements.winnersPageCounter) {
+      appElements.winnersPageCounter.innerHTML = `${state.currentWinnersPage}`;
     }
+  }
+
+  updatePaginationButtonsState();
+};
+
+const addListenersOnPaginationButtons = (): void => {
+  appElements.previousPageButton?.addEventListener('click', async () => {
+    await handlePaginationsButtonClick(false);
   });
 
   appElements.nextPageButton?.addEventListener('click', async () => {
-    if (state.currentPage === 'garage' && appElements.carsContainer) {
-      await handleGaragePaginationButtonClick(true);
-      if (appElements.garagePagesCounter) appElements.garagePagesCounter.innerHTML = `${state.currentGaragePage}`;
-      updatePaginationButtonsState();
-    }
-
-    if (state.currentPage === 'winners') {
-      await handleWinnersPaginationButtonClick(true);
-      if (appElements.winnersPageCounter) appElements.winnersPageCounter.innerHTML = `${state.currentWinnersPage}`;
-      updatePaginationButtonsState();
-    }
+    await handlePaginationsButtonClick(true);
   });
 };
 
 export {
-  handlePaginationsButtonClick,
+  addListenersOnPaginationButtons,
   updatePaginationButtonsState,
   setToTheStateObject,
 };

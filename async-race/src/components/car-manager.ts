@@ -5,9 +5,14 @@ import {
   deleteWinner as deleteWinnerAPI,
   getWinners as getWinnersAPI,
 } from './api';
+import {
+  getRandomColor,
+  getRandomCarName,
+  disableElement,
+  activateElement,
+} from './utils';
 import { renderTrackCar, getCarImage } from './UI';
 import { getCars, getWinners } from './app-render';
-import { getRandomColor, getRandomCarName } from './utils';
 import state from './app-state';
 import { updatePaginationButtonsState } from './pagination';
 import appElements from './app-elements';
@@ -28,42 +33,17 @@ const getCarAttributes = async (name: string, color: string): Promise<{
   };
 };
 
-const disableButton = (button: HTMLElement): void => {
-  button.classList.add('disabled');
-  button.setAttribute('disabled', '');
-};
-
-const activateButton = (button: HTMLElement): void => {
-  button.classList.remove('disabled');
-  button.removeAttribute('disabled');
-};
-
 const updateButtonView = (input: HTMLElement, button: HTMLElement): void => {
-  if (input instanceof HTMLInputElement && !input.value) {
-    disableButton(button);
-  }
-
-  if (input instanceof HTMLInputElement && input.value) {
-    activateButton(button);
-  }
+  if (!(input instanceof HTMLInputElement)) return;
+  if (!input.value) disableElement(button);
+  if (input.value) activateElement(button);
 };
 
 const updateButtonState = (input: HTMLElement, button: HTMLElement): void => {
-  input.addEventListener('focus', () => {
-    if (button) updateButtonView(input, button);
-  });
-
-  input.addEventListener('input', () => {
-    if (button) updateButtonView(input, button);
-  });
-
-  input.addEventListener('focusout', () => {
-    if (button) updateButtonView(input, button);
-  });
-
-  button.addEventListener('click', () => {
-    disableButton(button);
-  });
+  input.addEventListener('focus', () => updateButtonView(input, button));
+  input.addEventListener('input', () => updateButtonView(input, button));
+  input.addEventListener('focusout', () => updateButtonView(input, button));
+  button.addEventListener('click', () => disableElement(button));
 };
 
 const renderCarView = async (name: string, color: string, limit: number): Promise<void> => {
@@ -117,28 +97,26 @@ const createCar = (): void => {
 };
 
 const changeUpdateControlsView = (isOn = false): void => {
-  const updateInputElements = [appElements.updateModelInput, appElements.updateColorInput];
+  const inputElementsToUpdate = [appElements.updateModelInput, appElements.updateColorInput];
 
   if (!isOn) {
-    updateInputElements.forEach((item) => {
-      item?.classList.remove('disabled');
-      item?.removeAttribute('disabled');
+    inputElementsToUpdate.forEach((item) => {
+      activateElement(item);
     });
 
     if (appElements.updateModelInput && appElements.updateButton) {
       updateButtonState(appElements.updateModelInput, appElements.updateButton);
     }
   } else {
-    updateInputElements.forEach((item) => {
-      item?.classList.add('disabled');
-      item?.setAttribute('disabled', '');
+    inputElementsToUpdate.forEach((item) => {
+      disableElement(item);
     });
 
     if (appElements.updateModelInput instanceof HTMLInputElement) {
       appElements.updateModelInput.value = '';
     }
 
-    if (appElements.updateButton) disableButton(appElements.updateButton);
+    if (appElements.updateButton) disableElement(appElements.updateButton);
   }
 };
 
@@ -172,8 +150,10 @@ const updateCar = async (): Promise<void> => {
   }
 
   await updateCarAPI(state.selectedCarId, { name, color });
+
   const carNameElement = document.getElementById(`car-name-${state.selectedCarId}`);
   const carElement = document.getElementById(`car-${state.selectedCarId}`);
+
   if (carNameElement) carNameElement.textContent = name;
   if (carElement) carElement.innerHTML = getCarImage(color);
 
@@ -182,17 +162,18 @@ const updateCar = async (): Promise<void> => {
 
 const deleteWinner = async (page: number, isOnPage: boolean): Promise<void> => {
   await deleteWinnerAPI(state.selectedCarId);
-  if (isOnPage) {
-    const { winners, count: winnersCount } = await getWinners(page);
-    state.winnersAtAll = winnersCount || 0;
 
-    if (appElements.winnersTotalCount) {
-      appElements.winnersTotalCount.innerHTML = `${state.winnersAtAll}`;
-    }
+  if (!isOnPage) return;
 
-    if (appElements.winnersContainer) {
-      appElements.winnersContainer.innerHTML = winners.join('');
-    }
+  const { winners, count: winnersCount } = await getWinners(page);
+  state.winnersAtAll = winnersCount || 0;
+
+  if (appElements.winnersTotalCount) {
+    appElements.winnersTotalCount.innerHTML = `${state.winnersAtAll}`;
+  }
+
+  if (appElements.winnersContainer) {
+    appElements.winnersContainer.innerHTML = winners.join('');
   }
 };
 
@@ -217,6 +198,7 @@ const deleteCar = async (): Promise<void> => {
 
   if (state.carsInGarage >= state.carsPerPageLimit) {
     const { cars } = await getCars(state.currentGaragePage);
+
     if (appElements.carsContainer && cars) {
       appElements.carsContainer.innerHTML = cars?.join('');
     }
@@ -279,4 +261,8 @@ const handleGenerateButtonClick = (): void => {
   appElements.generateButton?.addEventListener('click', () => generaterandomCars());
 };
 
-export { handleUpdateButtonClick, createCar, handleGenerateButtonClick };
+export {
+  handleUpdateButtonClick,
+  createCar,
+  handleGenerateButtonClick,
+};

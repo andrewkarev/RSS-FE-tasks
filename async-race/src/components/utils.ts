@@ -31,7 +31,7 @@ export const getRandomCarName = (): string => {
   return `${brandOption} ${modelOption}`;
 };
 
-export const handleAnimationEnd = (id: number, duration: number) => {
+export const handleAnimationEnd = (id: number, duration: number): void => {
   state.raceWinnerId = id;
 
   const winnerCar = document.getElementById(`car-name-${id}`);
@@ -42,7 +42,7 @@ export const handleAnimationEnd = (id: number, duration: number) => {
   window.addEventListener('click', () => message.remove());
 };
 
-export const initAppElements = () => {
+export const initAppElements = (): void => {
   appElements.raceButton = document.getElementById('button-race');
   appElements.resetButton = document.getElementById('button-reset');
   appElements.root = document.getElementById('body');
@@ -67,4 +67,21 @@ export const initAppElements = () => {
   appElements.winnersPageCounter = document.getElementById('winners-page-count');
   appElements.winnersContainer = document.getElementById('winning-cars');
   appElements.winnersTotalCount = document.getElementById('winners-total-count');
+};
+
+export const disableElement = (element: HTMLElement | null): void => {
+  element?.classList.add('disabled');
+  element?.setAttribute('disabled', '');
+};
+
+export const activateElement = (element: HTMLElement | null): void => {
+  element?.classList.remove('disabled');
+  element?.removeAttribute('disabled');
+};
+
+export const setAppropriateButtonStats = (
+  button: HTMLElement | null,
+  isAddition: boolean,
+): void => {
+  isAddition ? disableElement(button) : activateElement(button);
 };
