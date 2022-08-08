@@ -2,25 +2,12 @@ import state from './app-state';
 import IEngine from './interfaces/IEngine';
 import { getRaceParams, startCarMovementAnimation, updateEngineButtonsView } from './engine-controls';
 import { switchEngineToDriveMode, stopEngine } from './api';
-
-let raceButton: HTMLElement | null;
-let resetButton: HTMLElement | null;
-let generateButton: HTMLElement | null;
-let previousPageButton: HTMLElement | null;
-let nextPageButton: HTMLElement | null;
-
-const initRaceButtons = () => {
-  raceButton = document.getElementById('button-race');
-  resetButton = document.getElementById('button-reset');
-  generateButton = document.getElementById('button-generate');
-  previousPageButton = document.getElementById('button-prev');
-  nextPageButton = document.getElementById('button-next');
-};
+import appElements from './app-elements';
 
 const setAppropriateButtonStats = (button: HTMLElement, isAddition: boolean) => {
   if (isAddition) {
     button.classList.add('disabled');
-    button.setAttribute('disbled', '');
+    button.setAttribute('disabled', '');
   } else {
     button.classList.remove('disabled');
     button.removeAttribute('disabled');
@@ -31,10 +18,10 @@ const updateRaceButtonsView = (firstButton: HTMLElement, secondButton: HTMLEleme
   setAppropriateButtonStats(firstButton, false);
   setAppropriateButtonStats(secondButton, true);
 
-  generateButton?.classList.toggle('disabled');
-  generateButton?.hasAttribute('disabled')
-    ? generateButton.removeAttribute('disabled')
-    : generateButton?.setAttribute('disabled', '');
+  appElements.generateButton?.classList.toggle('disabled');
+  appElements.generateButton?.hasAttribute('disabled')
+    ? appElements.generateButton.removeAttribute('disabled')
+    : appElements.generateButton?.setAttribute('disabled', '');
 };
 
 const stopAllEngines = async () => {
@@ -100,22 +87,26 @@ const disablePaginationButtons = (button: HTMLElement) => {
 };
 
 const handleRaceButtonClick = () => {
-  raceButton?.addEventListener('click', async () => {
-    if (resetButton && raceButton) {
-      updateRaceButtonsView(resetButton, raceButton);
-      setAppropriateButtonStats(resetButton, true);
+  appElements.raceButton?.addEventListener('click', async () => {
+    if (appElements.resetButton && appElements.raceButton) {
+      updateRaceButtonsView(appElements.resetButton, appElements.raceButton);
+      setAppropriateButtonStats(appElements.resetButton, true);
     }
 
-    if (previousPageButton && nextPageButton) {
-      disablePaginationButtons(previousPageButton);
-      disablePaginationButtons(nextPageButton);
+    if (appElements.createButton) {
+      setAppropriateButtonStats(appElements.createButton, true);
+    }
+
+    if (appElements.previousPageButton && appElements.nextPageButton) {
+      disablePaginationButtons(appElements.previousPageButton);
+      disablePaginationButtons(appElements.nextPageButton);
     }
 
     changeCarsTrackButtonView();
     await launchAllEngines();
 
-    if (resetButton) {
-      setAppropriateButtonStats(resetButton, false);
+    if (appElements.resetButton) {
+      setAppropriateButtonStats(appElements.resetButton, false);
     }
   });
 };
@@ -126,19 +117,27 @@ const restorePaginationButtonsView = (button: HTMLElement) => {
 };
 
 const handleResetButtonClick = () => {
-  resetButton?.addEventListener('click', async () => {
+  appElements.resetButton?.addEventListener('click', async () => {
     await stopAllEngines();
 
-    if (resetButton && raceButton) updateRaceButtonsView(raceButton, resetButton);
-
-    if (state.paginationButtonsState.prevIsActive && previousPageButton) {
-      restorePaginationButtonsView(previousPageButton);
+    if (appElements.resetButton && appElements.raceButton) {
+      updateRaceButtonsView(appElements.raceButton, appElements.resetButton);
     }
 
-    if (state.paginationButtonsState.nextIsActive && nextPageButton) {
-      restorePaginationButtonsView(nextPageButton);
+    if (state.paginationButtonsState.prevIsActive && appElements.previousPageButton) {
+      restorePaginationButtonsView(appElements.previousPageButton);
+    }
+
+    if (state.paginationButtonsState.nextIsActive && appElements.nextPageButton) {
+      restorePaginationButtonsView(appElements.nextPageButton);
+    }
+
+    if (appElements.createButton
+      && appElements.createModelInput instanceof HTMLInputElement
+      && appElements.createModelInput.value) {
+      setAppropriateButtonStats(appElements.createButton, false);
     }
   });
 };
 
-export { initRaceButtons, handleRaceButtonClick, handleResetButtonClick };
+export { handleRaceButtonClick, handleResetButtonClick };

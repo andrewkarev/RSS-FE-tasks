@@ -2,12 +2,7 @@ import * as API from './api';
 import state from './app-state';
 import { handleAnimationEnd } from './utils';
 import { handleRaceResults } from './winners-table';
-
-let carsContainer: HTMLElement | null;
-
-const getCarsContainer = (): void => {
-  carsContainer = document.getElementById('cars');
-};
+import appElements from './app-elements';
 
 const updateEngineButtonsView = (target: HTMLElement, isStart: boolean, id: number): void => {
   const secondButton = isStart
@@ -70,9 +65,7 @@ const startCarMovementAnimation = (duration: number, id: number, car: HTMLElemen
 };
 
 const handleEngineButtonsClick = (): void => {
-  getCarsContainer();
-
-  carsContainer?.addEventListener('click', async (e) => {
+  appElements.carsContainer?.addEventListener('click', async (e) => {
     const { target } = e;
     let targetIdAttribute = '';
     let id = 0;

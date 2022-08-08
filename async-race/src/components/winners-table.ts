@@ -2,23 +2,17 @@ import { getWinner, updateWinner, createwinner } from './api';
 import { getWinners } from './app-render';
 import state from './app-state';
 import { updatePaginationButtonsState } from './pagination';
-
-let winnersContainer: HTMLElement | null;
-let sortByWinsButton: HTMLElement | null;
-let sortByTimeButton: HTMLElement | null;
-
-const initWwinnersItems = () => {
-  winnersContainer = document.getElementById('winning-cars');
-  sortByWinsButton = document.getElementById('sort-by-wins');
-  sortByTimeButton = document.getElementById('sort-by-time');
-};
+import appElements from './app-elements';
 
 const updateWinnersView = async () => {
   const { winners, count: winnersCount } = await getWinners(state.currentWinnersPage);
 
   state.winnersAtAll = winnersCount || 0;
+  if (appElements.winnersTotalCount) appElements.winnersTotalCount.innerHTML = `${state.winnersAtAll}`;
 
-  if (winnersContainer && winners) winnersContainer.innerHTML = winners?.join('');
+  if (appElements.winnersContainer && winners) {
+    appElements.winnersContainer.innerHTML = winners?.join('');
+  }
 
   updatePaginationButtonsState();
 };
@@ -48,7 +42,7 @@ const handleRaceResults = async (id: number, duration: number) => {
 };
 
 const handleWinnersButtonClick = () => {
-  sortByWinsButton?.addEventListener('click', async () => {
+  appElements.sortByWinsButton?.addEventListener('click', async () => {
     state.sortBy = 'wins';
 
     state.winsOrder = state.winsOrder === 'ASC' ? 'DESC' : 'ASC';
@@ -56,7 +50,7 @@ const handleWinnersButtonClick = () => {
     await updateWinnersView();
   });
 
-  sortByTimeButton?.addEventListener('click', async () => {
+  appElements.sortByTimeButton?.addEventListener('click', async () => {
     state.sortBy = 'time';
 
     state.timeOrder = state.timeOrder === 'ASC' ? 'DESC' : 'ASC';
@@ -65,4 +59,4 @@ const handleWinnersButtonClick = () => {
   });
 };
 
-export { handleRaceResults, initWwinnersItems, handleWinnersButtonClick };
+export { handleRaceResults, handleWinnersButtonClick };
