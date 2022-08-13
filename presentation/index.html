@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>Introduction</section>
+      <section>
+        <section>What is <span style="color: #f0ed42;">DRY</span>?</section>
+        <section>
+          "<span style="color: #f0ed42;">D</span>on't <span style="color: #f0ed42;">R</span>epeat <span
+            style="color: #f0ed42;">Y</span>ourself"<br>
+          or<br>
+          "<span style="color: #f0ed42;">D</span>uplication <span style="color: #f0ed42;">i</span>s <span
+            style="color: #f0ed42;">e</span>vil"<br>
+        </section>
+        <section>
+          <span style="color: #f0ed42;">DRY</span> was first mentioned in the book <br>
+          <a href="https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X">
+            «The Pragmatic Programmer»</a><br>
+          by Andrew Hunt and David Thomas, 1999<br>
+          <blockquote>
+            "Each piece of knowledge must have a single, monosemantic, reliable representation in the system"
+          </blockquote>
+        </section>
+        <section>
+          <p>Ways to combine code duplications</p>
+          <ul>
+            <li>Methods</li>
+            <li>Modules</li>
+            <li>Components</li>
+          </ul>
+        </section>
+        <section>
+          <p>
+            <span style="color: #f0ed42;">DRY</span>
+            is based on:
+          </p>
+          <ul>
+            <li>Decomposition of tasks</li>
+            <li>Modular structure</li>
+          </ul>
+        </section>
+        <section>
+          <p>
+            Advantages of the
+            <span style="color: #f0ed42;">DRY</span>
+            usage
+          </p>
+          <ul>
+            <li>The amount of code written reduces</li>
+            <li>Code becomes easier to refactor, change and make additions to it</li>
+            <li>Code becomes easier to maintain in the future</li>
+            <li>Code structure is simplified</li>
+          </ul>
+        </section>
+        <section>
+          <p>Is it always appropriate to use <span style="color: #f0ed42;">DRY</span>?</p>
+          <p>
+            <span style="color: #4ba54b;">similar code</span>
+            VS
+            <span style="color: rgb(227, 83, 83);">code with identical logic</span>
+          </p>
+        </section>
+        <section>
+          <p>Examples of the usage:</p>
+        </section>
+        <section data-markdown>
+          ### CSS
+          <pre>
+            ``` CSS
+            #twitter-icon {
+              width: 20px;
+              height: 20px;
+            }
+
+            #facebook-icon {
+              width: 20px;
+              height: 20px;
+            }
+            ```
+          </pre>
+          <pre>
+            ``` CSS
+            #twitter-icon,
+            #facebook-icon {
+              width: 20px;
+              height: 20px;
+            }
+            ```
+          </pre>
+        </section>
+        <section data-markdown>
+          ### Loops
+          <pre>
+            ``` js
+            let apple = 'apple',
+                orange = 'orange',
+                banana = 'banana',
+                peach = 'peach';
+
+            apple.toUpperCase();
+            orange.toUpperCase();
+            banana.toUpperCase();
+            peach.toUpperCase();
+            ```
+          </pre>
+          <pre>
+            ``` js
+            const fruits = ['apple', 'orange', 'banana', 'peach'];
+
+            fruits.forEach(fruit => fruit.toUpperCase());
+            ```
+          </pre>
+        </section>
+        <section style="font-size: 36px;" data-markdown>
+          #### Functions
+          <pre>
+            ``` js
+            const monthNumber = Math.floor((Math.random() * 12) + 1);
+
+            if (monthNumber &#60; 3 || monthNumber === 12) {
+              console.log("It is a winter month. Time to go skiing.");
+            } else if (monthNumber &#62;= 3 && monthNumber &#60; 6) {
+              console.log("It is a spring month. Time to skateboard.");
+            } else if (monthNumber &#62;= 6 && monthNumber &#60; 9) {
+              console.log("It is a summer month. Time to sunbathe on the beach.");
+            } else {
+              console.log("It is a autumn month. Time to drink hot chocolate.");
+            }
+            ```
+          </pre>
+          <pre>
+            ``` js
+            const monthNumber = Math.floor((Math.random() * 12) + 1);
+            const defineWhatItIsTimeFor = (timeOftheYear, action) => {
+              console.log(`It is a ${timeOftheYear} month. Time to ${action}.`);
+            }
+
+            if (monthNumber &#60; 3 || monthNumber === 12) {
+              defineWhatIsItTimeFor("winter", "go skiing");
+            } else if (monthNumber &#62;= 3 && monthNumber &#60; 6) {
+              defineWhatIsItTimeFor("spring", "skateboard");
+            } else if (monthNumber &#62;= 6 && monthNumber &#60; 9) {
+              defineWhatIsItTimeFor("summer", "sunbathe on the beach");
+            } else {
+              defineWhatIsItTimeFor("autumn", "drink hot chocolate");
+            }
+            ```
+          </pre>
+        </section>
+      </section>
+      <section>
+        <section>What is <span style="color: #f0ed42;">KISS</span>?</section>
+        <section>
+          <p>"<span style="color: #f0ed42;">K</span>eep <span style="color: #f0ed42;">i</span>t <span
+              style="color: #f0ed42;">s</span>imple, <span style="color: #f0ed42;">s</span>tupid "</p>
+          <p>"<span style="color: #f0ed42;">K</span>eep <span style="color: #f0ed42;">i</span>t <span
+              style="color: #f0ed42;">s</span>imple, <span style="color: #f0ed42;">s</span>illy"</p>
+          <p>"<span style="color: #f0ed42;">K</span>eep <span style="color: #f0ed42;">i</span>t <span
+              style="color: #f0ed42;">s</span>hort and <span style="color: #f0ed42;">s</span>imple"</p>
+          <p>"<span style="color: #f0ed42;">K</span>eep <span style="color: #f0ed42;">i</span>t <span
+              style="color: #f0ed42;">s</span>imple and <span style="color: #f0ed42;">s</span>traightforward"</p>
+          <p>"<span style="color: #f0ed42;">K</span>eep <span style="color: #f0ed42;">i</span>t <span
+              style="color: #f0ed42;">s</span>mall and <span style="color: #f0ed42;">s</span>imple"</p>
+        </section>
+        <section>
+          <p>Kelly Johnson</p>
+          <img src="./images/Kelly-Jonson.jpeg" alt="Kelly Johnson">
+        </section>
+        <section>
+          <ul>
+            <li>Make each program do one thing well</li>
+            <li>To do a new job, build afresh rather than complicate old programs by adding a new 'features'</li>
+            <li>Don't invent complex systems to do simple tasks</li>
+          </ul>
+          <blockquote>
+            "Everything must be made as simple as possible, but not one bit simpler"
+            Albert Einstein
+          </blockquote>
+        </section>
+        <section>
+          <p>
+            Advantages of the
+            <span style="color: #f0ed42;">KISS</span>
+            usage
+          </p>
+          <ul>
+            <li>The amount of code written reduces</li>
+            <li>The code is easier to read and understand</li>
+            <li>The code is not overloaded with redundant logic</li>
+            <li>It's easier to support and to develop further</li>
+          </ul>
+        </section>
+        <section>
+          <p>Examples of the usage:</p>
+          <ul>
+            <li>Application design</li>
+            <li>Application development</li>
+          </ul>
+        </section>
+        <section>
+          <p>In design:</p>
+          <ul style="font-size: 24px;">
+            <li>it makes no sense to implement additional functions that will not be used at all or their use is
+              extremely unlikely</li>
+            <li>do not overload the interface with options that most users will not need</li>
+            <li>it makes no sense to implement complex business logic that takes into account absolutely all possible
+              behaviors of the system, user and environment</li>
+          </ul>
+        </section>
+        <section>
+          <p>In development:</p>
+          <ul style="font-size: 24px;">
+            <li>it makes no sense to increase the level of abstraction indefinitely</li>
+            <li>it makes no sense to include redundant functions in the project that may someday be needed (here KISS
+              intersects with the YAGNI principle)</li>
+            <li>you should not include a huge library if you only need a couple of functions from it</li>
+            <li>decomposing something complex into simple components is an architecturally correct approach (here KISS
+              has something in common with DRY)</li>
+            <li>absolute mathematical accuracy or extreme precision are not always needed, and the data can and should
+              be processed with the accuracy that is sufficient for a qualitative solution of the problem</li>
+          </ul>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>
