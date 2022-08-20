@@ -13,7 +13,7 @@ import { handleWinnersButtonClick } from './components/winners-table';
 import { initAppElements } from './components/utils';
 
 const initApp = async () => {
-  await renderApp(1);
+  await renderApp();
   initAppElements();
   changePage();
   createCar();
