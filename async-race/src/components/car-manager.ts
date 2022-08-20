@@ -97,20 +97,16 @@ const createCar = (): void => {
 };
 
 const changeUpdateControlsView = (isOn = false): void => {
-  const inputElementsToUpdate = [appElements.updateModelInput, appElements.updateColorInput];
-
   if (!isOn) {
-    inputElementsToUpdate.forEach((item) => {
-      activateElement(item);
-    });
+    activateElement(appElements.updateModelInput);
+    activateElement(appElements.updateColorInput);
 
     if (appElements.updateModelInput && appElements.updateButton) {
       updateButtonState(appElements.updateModelInput, appElements.updateButton);
     }
   } else {
-    inputElementsToUpdate.forEach((item) => {
-      disableElement(item);
-    });
+    disableElement(appElements.updateModelInput);
+    disableElement(appElements.updateColorInput);
 
     if (appElements.updateModelInput instanceof HTMLInputElement) {
       appElements.updateModelInput.value = '';
