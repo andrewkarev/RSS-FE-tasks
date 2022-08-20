@@ -81,7 +81,7 @@ const handleCreateCarButtonClick = async (e: Event): Promise<void> => {
   }
 
   if (appElements.createColorInput instanceof HTMLInputElement) {
-    color = appElements.createColorInput?.value;
+    color = appElements.createColorInput.value;
   }
 
   await renderCarView(name, color, currentPageCarLimit);
