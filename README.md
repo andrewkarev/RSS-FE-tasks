@@ -1,5 +1,2 @@
-# andrewkarev-JSFE2022Q1
-Private repository for @andrewkarev
-
-[Shelter-task](https://rolling-scopes-school.github.io/andrewkarev-JSFE2022Q1/shelter/pages/main/index.html)</br>
-[News-API](https://rolling-scopes-school.github.io/andrewkarev-JSFE2022Q1/news-api/)</br>
+[task](https://github.com/rolling-scopes-school/tasks/tree/master/tasks/online-store)</br>
+[solution](https://andrewkarev.github.io/RSS-FE-tasks/online-store/)</br>
